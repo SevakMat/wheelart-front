@@ -1,4 +1,3 @@
-import { ISearchForm } from "../components/dashboard/Dashboard";
 import { SendCarData } from "../services/scrapping.service";
 import { toast } from "react-toastify";
 import { AppDispatch } from "../store";
@@ -6,7 +5,7 @@ import { setLoadingEffect } from "../store/effects/auth.effects";
 
 
 export const SendCarDataEffect = (
-  searchForm: ISearchForm,
+  searchForm: any,
   userId: string,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ): any => {

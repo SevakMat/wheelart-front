@@ -1,14 +1,14 @@
-import DashboardPage from "../../pages/Dashborad"
+import HomePage from "../../pages/HomePage"
 import ProtectedRoute from "../types/ProtectedRoute"
 
 
 
 const ProtectedPageRoute: ProtectedRoute = {
     isPrivate: true,
-    routerProps:[
+    routerProps: [
         {
-            path: "/dashboard",
-            element: <DashboardPage/>,
+            path: "/home",
+            element: <HomePage />,
         }
     ]
 }
