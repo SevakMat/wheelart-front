@@ -1,5 +1,5 @@
 import Carousel from "react-material-ui-carousel";
-import Item from "./Item";
+import CarouselItem from "./CarouselItem";
 import { Button, styled } from "@mui/material";
 
 const CustomButton = styled(Button)(() => ({
@@ -55,7 +55,7 @@ function HomeCarousel() {
   return (
     <Carousel sx={{ width: "100%" }}>
       {items.map((item) => (
-        <Item key={item.id} item={item} />
+        <CarouselItem key={item.id} item={item} />
       ))}
     </Carousel>
   );

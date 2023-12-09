@@ -2,7 +2,8 @@ import { Box } from "@mui/system";
 
 import { RootState, useAppSelector } from "../../store";
 
-import HomeCarousel from "./HomeCarousel";
+import MainCarousel from "./MainCarousel";
+import Products from "./Products";
 
 const HomePage = () => {
   const { user } = useAppSelector((state: RootState) => state.auth);
@@ -17,10 +18,11 @@ const HomePage = () => {
       }}
     >
       <Box>
-        <HomeCarousel />
+        <MainCarousel />
+        <Products />
       </Box>
 
-      <Box>1 mobile 2 mobile 3 mobile</Box>
+      {/* <Box>1 mobile 2 mobile 3 mobile</Box> */}
     </Box>
   );
 };
