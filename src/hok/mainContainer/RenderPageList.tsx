@@ -13,22 +13,21 @@ const CustomLink = styled(Link)(() => ({
 
 const RenderPageList = () => {
   return (
-    <Box component="div" sx={{ width: "100%", fontFamily: "sans-serif" }}>
-      <CustomLink href="/welcome">Accueli</CustomLink>
-      <CustomLink href="/rims">Janets</CustomLink>
-      <CustomLink href="/accessories">Accessoires</CustomLink>
-      <CustomLink href="/faq">FAQ</CustomLink>
-
-      <Box component="div" sx={{ display: "flex", float: "right", gap: 2 }}>
-        <Link href="/search">
-          <CiSearch color="white" size={30} />
-        </Link>
-        <Link href="/account">
-          <CiUser color="white" size={30} />
-        </Link>
-        <Link href="card">
-          <CiShoppingBasket color="white" size={30} />
-        </Link>
+    <Box
+      sx={{
+        display: "flex",
+        width: "100%",
+        fontFamily: "sans-serif",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+      }}
+    >
+      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <CustomLink href="/welcome">Accueli</CustomLink>
+        <CustomLink href="/rims">Janets</CustomLink>
+        <CustomLink href="/accessories">Accessoires</CustomLink>
+        <CustomLink href="/blog">Blog</CustomLink>
+        <CustomLink href="/faq">FAQ</CustomLink>
       </Box>
     </Box>
   );
