@@ -4,11 +4,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export default function ProductCard({ image, info, price }: any) {
+export default function ProductCard({ image, info, price = "" }: any) {
   return (
     <Card
       sx={{
-        maxWidth: 300,
+        maxWidth: price === "" ? 350 : 300,
         textAlign: "center",
         boxShadow: "none",
       }}
@@ -17,9 +17,9 @@ export default function ProductCard({ image, info, price }: any) {
         <CardMedia
           component="img"
           sx={{
-            width: "250px",
-            height: "250px",
-            objectFit: "contain",
+            width: price === "" ? "100%" : "250px",
+            height: price === "" ? "200px" : "250px",
+            objectFit: price === "" ? "cover" : "contain",
             marginLeft: "auto",
             marginRight: "auto",
           }}
@@ -27,7 +27,7 @@ export default function ProductCard({ image, info, price }: any) {
         />
         <CardContent>
           <Typography gutterBottom variant="body2" component="div">
-            {info} {console.log(info)}
+            {info}
           </Typography>
           <Typography variant="h5" color="text.primary">
             {price}

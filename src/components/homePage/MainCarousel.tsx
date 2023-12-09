@@ -3,7 +3,7 @@ import CarouselItem from "./CarouselItem";
 import { Button, styled } from "@mui/material";
 
 const CustomButton = styled(Button)(() => ({
-  color: "gold",
+  color: "#ffaa00",
   background: "white",
   borderRadius: 0,
   padding: "10px 30px",
