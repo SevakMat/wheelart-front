@@ -1,4 +1,4 @@
-import { AuthTypes, iSetLoadingAction, LoginRequestSuccess, LogOutRequestSuccess, User } from "../types/auth";
+import { AuthTypes, iSetLoadingAction, LoginRequestSuccess, LogOutRequestSuccess, User } from "../../types/auth/auth";
 
 export const loginRequestSuccess = (user: User): LoginRequestSuccess => ({
     type: AuthTypes.LOGIN_REQUEST_SUCCESS,

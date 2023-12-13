@@ -3,14 +3,15 @@ import thunk from "redux-thunk";
 import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import {shallowEqual, TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import { shallowEqual, TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { PersistConfig } from "redux-persist/es/types";
 
-import authReducer from "./reducers/auth";
+import authReducer from "./reducers/auth/auth";
+import carReducer from "./reducers/car/car";
 
 const rootReducer = combineReducers({
     auth: authReducer,
-
+    car: carReducer
 });
 
 const persistConfig: PersistConfig<any> = {

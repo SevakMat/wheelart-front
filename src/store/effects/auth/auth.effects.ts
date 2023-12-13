@@ -1,17 +1,17 @@
 import { NavigateFunction } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AppDispatch } from "..";
+import { AppDispatch } from "../..";
 import {
   loginRequest,
   logOutRequest,
   SignUpRequest,
-} from "../../services/auth.service";
-import { LoginData, SignInData } from "../../services/types";
+} from "../../../services/auth.service";
+import { LoginData, SignInData } from "../../../services/types";
 import {
   loginRequestSuccess,
   logOutRequestSuccess,
   setLoading,
-} from "../actions/auth.actions";
+} from "../../actions/auth/auth.actions";
 
 export const loginEffect = (
   loginData: LoginData,
