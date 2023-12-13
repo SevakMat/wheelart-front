@@ -22,6 +22,14 @@ export default function ProductCard({ image, info, price = "" }: any) {
             objectFit: price === "" ? "cover" : "contain",
             marginLeft: "auto",
             marginRight: "auto",
+
+            "@media (max-width: 1090px)": {
+              width: "180px",
+              height: "180px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              objectFit: "cover",
+            },
           }}
           image={image}
         />
