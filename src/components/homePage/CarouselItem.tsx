@@ -1,25 +1,24 @@
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 
-const Item = ({ item }: any) => {
+const CarouselItem = ({ item }: any) => {
   return (
-    <>
-      <Paper elevation={0} sx={{ position: "relative" }}>
+    <Box sx={{ position: "relative", overflow: "hidden", maxHeight: "90vh" }}>
+      <Box sx={{}}>
         <img
           src={item.image}
           style={{
+            position: "relative",
             width: "100%",
-            // height: "auto",
-            objectFit: "cover",
-            maxHeight: "90vh",
-            margin: "0",
+            height: "100%",
+            display: "block",
           }}
         />
-      </Paper>
+      </Box>
+
       <Box
         sx={{
           position: "absolute",
-          background: "transparent",
-          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          background: "rgba(0, 0, 0, 0.6)",
           maxWidth: "500px",
           width: "100%",
           maxHeight: "250px",
@@ -29,19 +28,23 @@ const Item = ({ item }: any) => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          top: "45%",
+          top: "50%",
           left: "50%",
-          transform: " translateX(-50%)",
+          transform: "translate(-50%, -50%)",
           color: "white",
+          padding: "20px",
 
-          // width: "100%",
-          // height: "100%",
+          // Responsive adjustments
+          "@media (max-width: 600px)": {
+            fontSize: "14px",
+            padding: "10px",
+          },
         }}
       >
         {item.text}
       </Box>
-    </>
+    </Box>
   );
 };
 
-export default Item;
+export default CarouselItem;
