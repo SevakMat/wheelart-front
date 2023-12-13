@@ -69,7 +69,10 @@ export const logOutEffect = (navigate: NavigateFunction): any => {
     }
   };
 };
-export const signUpEffect = (signInData: SignInData, navigate: NavigateFunction): any => {
+export const signUpEffect = (
+  signInData: SignInData,
+  navigate: NavigateFunction
+): any => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoadingEffect(true));
@@ -77,7 +80,7 @@ export const signUpEffect = (signInData: SignInData, navigate: NavigateFunction)
       await SignUpRequest(signInData);
 
       toast.success("Successfully sign Up");
-      navigate('/login');
+      navigate("/login");
 
       dispatch(setLoadingEffect(false));
     } catch (error: any) {
