@@ -53,7 +53,7 @@ function HomeCarousel() {
   ];
 
   return (
-    <Carousel sx={{ width: "100%" }}>
+    <Carousel swipe sx={{ width: "100%" }}>
       {items.map((item) => (
         <CarouselItem key={item.id} item={item} />
       ))}

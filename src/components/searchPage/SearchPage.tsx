@@ -3,13 +3,40 @@ import { useDispatch } from "react-redux"
 import { AppDispatch, RootState, useAppSelector } from "../../store"
 import { getCarsEffect, getModelsByCarEffect, getModificationsByCarEffect, getYearsByCarEffect } from "../../store/effects/car/car.effects"
 
-const SearchPage = () => {
+import CreateField from "./CreateField";
 
-  const dispatch: AppDispatch = useDispatch()
+const SearchPage = () => {
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCarsEffect())
-  }, [])
+    dispatch(getCarsEffect());
+  }, []);
+
+  // const carList = useAppSelector((state: RootState) => state.car.CarTypeList)
+
+  const carList = [
+    { name: "Bmw", image: "asdasdasdasd" },
+    { name: "Mercedes", image: "asdasdasdasd" },
+    { name: "Opel", image: "asdasdasdasd" },
+  ];
+
+  const modelList = [
+    { name: "Series3", image: "asdasdasdasd" },
+    { name: "Series5", image: "asdasdasdasd" },
+    { name: "Series7", image: "asdasdasdasd" },
+  ];
+
+  const typeList = [
+    { name: "E93", image: "asdasdasdasd" },
+    { name: "E60", image: "asdasdasdasd" },
+    { name: "E36", image: "asdasdasdasd" },
+  ];
+
+  const sizeList = [
+    { name: "R16", image: "asdasdasdasd" },
+    { name: "R17", image: "asdasdasdasd" },
+    { name: "R18", image: "asdasdasdasd" },
+  ];
 
   const { CarTypeList, ModelList, YearList, ModificationList } = useAppSelector((state: RootState) => state.car)
 
@@ -33,23 +60,12 @@ const SearchPage = () => {
   }
 
   return (<div>
-    <button
-      onClick={getModalByCar}
-    >
-      getModalByCar
-    </button>
-    <button
-      onClick={getYearByCar}
-    >
-      getYearByCar
-    </button>
-
-    <button
-      onClick={getModifiCATIONSByCar}
-    >
-      getModifiCATIONSByCar
-    </button>
+    <CreateField list={carList} fieldType="Make" />
+    <CreateField list={modelList} fieldType="Model" />
+    <CreateField list={typeList} fieldType="Type" />
+    <CreateField list={sizeList} fieldType="Size" />
   </div>)
 }
 
-export default SearchPage
+
+export default SearchPage;

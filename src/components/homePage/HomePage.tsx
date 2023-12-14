@@ -14,8 +14,11 @@ const HomePage = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        margin: "auto",
+        margin: "0px auto",
         width: "92%",
+
+        maxWidth: "1100px",
+        position: "relative",
       }}
     >
       <Box>

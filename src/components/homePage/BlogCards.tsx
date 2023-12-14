@@ -23,7 +23,12 @@ const BlogCards = () => {
   return (
     <>
       <h2>En savoir plus</h2>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         {blogs.map((blog) => {
           return <ProductCard image={blog.image} info={blog.info} />;
         })}
