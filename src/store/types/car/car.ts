@@ -1,6 +1,8 @@
 export enum CarTypes {
   GET_CAR_LIST_SUCCESS = "GET_CAR_LIST_SUCCESS",
   GET_MODEL_LIST_SUCCESS = "GET_MODEL_LIST_SUCCESS",
+  GET_YEAR_LIST_SUCCESS = "GET_YEAR_LIST_SUCCESS",
+  GET_MODIFICATIONS_LIST_SUCCESS = "GET_MODIFICATIONS_LIST_SUCCESS",
 
 }
 
@@ -13,17 +15,25 @@ export interface ModelType {
   name: string,
   imageUrl: string
 }
+export interface YearType {
+  name: string,
+  imageUrl: string
+}
 
+export interface ModificationsType {
+  name: string,
+  imageUrl: string
+}
 
 export interface CarState {
   selectedCarType: string
   CarTypeList: CarType[];
 
   selectedModelType: string
-  ModelList: CarType[];
+  ModelList: ModelType[];
 
   selectedYearType: string
-  YearList: CarType[];
+  YearList: YearType[];
 
   selectedModificationType: string
   ModificationList: CarType[];
@@ -39,4 +49,15 @@ export interface GetModelListSuccess {
   modelList: ModelType[];
 }
 
-export type CarActionTypes = GetCarListSuccess | GetModelListSuccess;
+export interface GetYearListSuccess {
+  type: CarTypes.GET_YEAR_LIST_SUCCESS;
+  yearList: YearType[];
+}
+export interface GetModificationListSuccess {
+  type: CarTypes.GET_MODIFICATIONS_LIST_SUCCESS;
+  modificationList: ModificationsType[];
+}
+
+
+
+export type CarActionTypes = GetCarListSuccess | GetModelListSuccess | GetYearListSuccess | GetModificationListSuccess;

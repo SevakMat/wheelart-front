@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { AppDispatch, RootState, useAppSelector } from "../../store"
-import { getCarsEffect, getModelByCarEffect } from "../../store/effects/car/car.effects"
+import { getCarsEffect, getModelsByCarEffect, getModificationsByCarEffect, getYearsByCarEffect } from "../../store/effects/car/car.effects"
 
 const SearchPage = () => {
 
@@ -11,19 +11,43 @@ const SearchPage = () => {
     dispatch(getCarsEffect())
   }, [])
 
-  const carList = useAppSelector((state: RootState) => state.car.CarTypeList)
-  console.log(123, carList);
+  const { CarTypeList, ModelList, YearList, ModificationList } = useAppSelector((state: RootState) => state.car)
+
+  console.log("CarTypeList", CarTypeList);
+  console.log("ModelList", ModelList);
+  console.log("YearList", YearList);
+  console.log("ModificationList", ModificationList);
+
 
   const getModalByCar = () => {
-    dispatch(getModelByCarEffect("bmw"))
+    dispatch(getModelsByCarEffect("bmw"))
+  }
+  const getYearByCar = () => {
+
+    dispatch(getYearsByCarEffect("bmw", "3-series"))
   }
 
+  const getModifiCATIONSByCar = () => {
+
+    dispatch(getModificationsByCarEffect("bmw", "3-series", "2008"))
+  }
 
   return (<div>
     <button
       onClick={getModalByCar}
     >
-      asdasd
+      getModalByCar
+    </button>
+    <button
+      onClick={getYearByCar}
+    >
+      getYearByCar
+    </button>
+
+    <button
+      onClick={getModifiCATIONSByCar}
+    >
+      getModifiCATIONSByCar
     </button>
   </div>)
 }

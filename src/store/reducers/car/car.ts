@@ -29,7 +29,19 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
     case CarTypes.GET_MODEL_LIST_SUCCESS:
       return {
         ...state,
-        CarTypeList: action.modelList,
+        ModelList: action.modelList,
+      };
+
+    case CarTypes.GET_YEAR_LIST_SUCCESS:
+      return {
+        ...state,
+        YearList: action.yearList,
+      };
+
+    case CarTypes.GET_MODIFICATIONS_LIST_SUCCESS:
+      return {
+        ...state,
+        ModificationList: action.modificationList,
       };
 
     // case AuthTypes.LOGOUT_REQUEST_SUCCESS:
