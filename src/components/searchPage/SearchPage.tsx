@@ -2,6 +2,8 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { AppDispatch, RootState, useAppSelector } from "../../store"
 import { getCarsEffect, getModelsByCarEffect, getModificationsByCarEffect, getYearsByCarEffect } from "../../store/effects/car/car.effects"
+import { getWheelsListByCarDateEffect } from "../../store/effects/wheel/wheel.effect";
+import Products from "../homePage/Products";
 
 import CreateField from "./CreateField";
 
@@ -12,59 +14,51 @@ const SearchPage = () => {
     dispatch(getCarsEffect());
   }, []);
 
-  // const carList = useAppSelector((state: RootState) => state.car.CarTypeList)
 
-  const carList = [
-    { name: "Bmw", image: "asdasdasdasd" },
-    { name: "Mercedes", image: "asdasdasdasd" },
-    { name: "Opel", image: "asdasdasdasd" },
-  ];
-
-  const modelList = [
-    { name: "Series3", image: "asdasdasdasd" },
-    { name: "Series5", image: "asdasdasdasd" },
-    { name: "Series7", image: "asdasdasdasd" },
-  ];
-
-  const typeList = [
-    { name: "E93", image: "asdasdasdasd" },
-    { name: "E60", image: "asdasdasdasd" },
-    { name: "E36", image: "asdasdasdasd" },
-  ];
-
-  const sizeList = [
-    { name: "R16", image: "asdasdasdasd" },
-    { name: "R17", image: "asdasdasdasd" },
-    { name: "R18", image: "asdasdasdasd" },
-  ];
-
-  const { CarTypeList, ModelList, YearList, ModificationList } = useAppSelector((state: RootState) => state.car)
-
-  console.log("CarTypeList", CarTypeList);
-  console.log("ModelList", ModelList);
-  console.log("YearList", YearList);
-  console.log("ModificationList", ModificationList);
+  const { CarTypeList, ModelList, YearList, ModificationList, selectedCarType, selectedYearType, selectedModelType } = useAppSelector((state: RootState) => state.car)
+  const { WheelList } = useAppSelector((state: RootState) => state.wheel)
 
 
-  const getModalByCar = () => {
-    dispatch(getModelsByCarEffect("bmw"))
-  }
-  const getYearByCar = () => {
 
-    dispatch(getYearsByCarEffect("bmw", "3-series"))
+
+  const onSelect = (filedName: string, selectedElement: any) => {
+    switch (filedName) {
+      case 'Make':
+        dispatch(getModelsByCarEffect(selectedElement))
+        break;
+      case 'Model':
+        dispatch(getYearsByCarEffect(selectedCarType, selectedElement))
+        break;
+      case 'Year':
+        dispatch(getModificationsByCarEffect(selectedCarType, selectedModelType, selectedElement))
+        break;
+      case 'Modification':
+        dispatch(getWheelsListByCarDateEffect(selectedCarType, selectedModelType, selectedYearType, selectedElement))
+        break;
+    }
   }
 
-  const getModifiCATIONSByCar = () => {
-
-    dispatch(getModificationsByCarEffect("bmw", "3-series", "2008"))
-  }
-
-  return (<div>
-    <CreateField list={carList} fieldType="Make" />
-    <CreateField list={modelList} fieldType="Model" />
-    <CreateField list={typeList} fieldType="Type" />
-    <CreateField list={sizeList} fieldType="Size" />
-  </div>)
+  return (
+    <div>
+      {
+        CarTypeList?.length > 0 &&
+        <CreateField list={CarTypeList} fieldType="Make" onSelect={onSelect} />
+      }
+      {
+        ModelList?.length > 0 &&
+        <CreateField list={ModelList} fieldType="Model" onSelect={onSelect} />
+      }
+      {
+        YearList?.length > 0 &&
+        <CreateField list={YearList} fieldType="Year" onSelect={onSelect} />
+      }
+      {
+        ModificationList?.length > 0 &&
+        <CreateField list={ModificationList} fieldType="Modification" onSelect={onSelect} />
+      }
+      {WheelList?.length > 0 && <Products wheelList={WheelList} />}
+    </div>
+  )
 }
 
 

@@ -3,7 +3,6 @@ export enum CarTypes {
   GET_MODEL_LIST_SUCCESS = "GET_MODEL_LIST_SUCCESS",
   GET_YEAR_LIST_SUCCESS = "GET_YEAR_LIST_SUCCESS",
   GET_MODIFICATIONS_LIST_SUCCESS = "GET_MODIFICATIONS_LIST_SUCCESS",
-
 }
 
 export interface CarType {
@@ -47,15 +46,18 @@ export interface GetCarListSuccess {
 export interface GetModelListSuccess {
   type: CarTypes.GET_MODEL_LIST_SUCCESS;
   modelList: ModelType[];
+  carType: string
 }
 
 export interface GetYearListSuccess {
   type: CarTypes.GET_YEAR_LIST_SUCCESS;
   yearList: YearType[];
+  modelType: string
 }
 export interface GetModificationListSuccess {
   type: CarTypes.GET_MODIFICATIONS_LIST_SUCCESS;
   modificationList: ModificationsType[];
+  year: string
 }
 
 

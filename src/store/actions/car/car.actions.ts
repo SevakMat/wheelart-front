@@ -5,17 +5,20 @@ export const getCarListSuccess = (carList: CarType[]): GetCarListSuccess => ({
   carList
 })
 
-export const getModelListSuccess = (modelList: ModelType[]): GetModelListSuccess => ({
+export const getModelListSuccess = (modelList: ModelType[], make: string): GetModelListSuccess => ({
   type: CarTypes.GET_MODEL_LIST_SUCCESS,
-  modelList
+  modelList,
+  carType: make
 })
 
-export const getYearListSuccess = (yearList: YearType[]): GetYearListSuccess => ({
+export const getYearListSuccess = (yearList: YearType[], model: string): GetYearListSuccess => ({
   type: CarTypes.GET_YEAR_LIST_SUCCESS,
-  yearList
+  yearList,
+  modelType: model
 })
 
-export const getModificationsListSuccess = (modificationList: ModificationsType[]): GetModificationListSuccess => ({
+export const getModificationsListSuccess = (modificationList: ModificationsType[], year: string): GetModificationListSuccess => ({
   type: CarTypes.GET_MODIFICATIONS_LIST_SUCCESS,
-  modificationList
+  modificationList,
+  year
 })

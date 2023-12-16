@@ -42,7 +42,7 @@ export const getModelsByCarEffect = (make: string): any => {
         data: { data }
       } = result;
 
-      dispatch(getModelListSuccess(data));
+      dispatch(getModelListSuccess(data, make));
 
 
       // dispatch(setLoadingEffect(false));
@@ -72,7 +72,7 @@ export const getYearsByCarEffect = (make: string, model: string): any => {
 
       console.log("getYearsByCarEffect", data);
 
-      dispatch(getYearListSuccess(data));
+      dispatch(getYearListSuccess(data, model));
 
 
       // dispatch(setLoadingEffect(false));
@@ -102,7 +102,7 @@ export const getModificationsByCarEffect = (make: string, model: string, year: s
       } = result;
 
 
-      dispatch(getModificationsListSuccess(data));
+      dispatch(getModificationsListSuccess(data, year));
 
       // dispatch(setLoadingEffect(false));
     } catch (error: any) {
