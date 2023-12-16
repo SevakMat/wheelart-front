@@ -16,7 +16,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AppDispatch } from '../../store';
 import { useDispatch } from 'react-redux';
-import { signUpEffect } from '../../store/effects/auth.effects';
+import { signUpEffect } from '../../store/effects/auth/auth.effects';
 import { useNavigate } from 'react-router-dom';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 

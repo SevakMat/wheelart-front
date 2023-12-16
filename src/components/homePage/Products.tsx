@@ -1,58 +1,18 @@
-import { useState } from "react";
 import { Box, Button, List } from "@mui/material";
 import ProductCard from "./ProductCard";
 
-const Products = () => {
-  const [wheelList, setWheelList] = useState([
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500",
-      info: 'Set of 4 18" WheelArt special',
-      price: `${850.0} EUR`,
-    },
-  ]);
+
+type WheelType = {
+  image: string,
+  info: string,
+  price: string,
+}
+interface ProductsProps {
+  wheelList: any[]
+}
+
+const Products = ({ wheelList }: ProductsProps) => {
+
 
   return (
     <>
