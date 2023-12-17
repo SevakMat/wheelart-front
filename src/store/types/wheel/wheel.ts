@@ -3,8 +3,10 @@ export enum WheelServerTypes {
 }
 
 export interface WheelType {
-  name: string,
-  imageUrl: string
+  price: string,
+  sizeR: string,
+  rimModel: string,
+  imageUrl: string,
 }
 
 export interface WheelState {

@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux"
 import { AppDispatch, RootState, useAppSelector } from "../../store"
 import { getCarsEffect, getModelsByCarEffect, getModificationsByCarEffect, getYearsByCarEffect } from "../../store/effects/car/car.effects"
 import { getWheelsListByCarDateEffect } from "../../store/effects/wheel/wheel.effect";
-import Products from "../homePage/Products";
+import WheelsContent from "../shere/wheels/WheelsContent";
 
 import CreateField from "./CreateField";
+import FiltersBlock from "./FiltersBlock";
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -56,7 +57,8 @@ const SearchPage = () => {
         ModificationList?.length > 0 &&
         <CreateField list={ModificationList} fieldType="Modification" onSelect={onSelect} />
       }
-      {WheelList?.length > 0 && <Products wheelList={WheelList} />}
+      {WheelList?.length > 0 && <WheelsContent wheelList={WheelList} />}
+      <FiltersBlock />
     </div>
   )
 }

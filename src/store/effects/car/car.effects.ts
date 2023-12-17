@@ -23,8 +23,6 @@ export const getCarsEffect = (): any => {
       console.log(error);
 
     } finally {
-      console.log("finally");
-
       // dispatch(setLoadingEffect(false));
     }
   };
@@ -50,10 +48,7 @@ export const getModelsByCarEffect = (make: string): any => {
       // dispatch(setLoadingEffect(false));
       // toast.error("Logined faild");
       console.log(error);
-
     } finally {
-      console.log("finally");
-
       // dispatch(setLoadingEffect(false));
     }
   };
@@ -82,7 +77,6 @@ export const getYearsByCarEffect = (make: string, model: string): any => {
       console.log(error);
 
     } finally {
-      console.log("finally");
 
       // dispatch(setLoadingEffect(false));
     }
@@ -111,7 +105,6 @@ export const getModificationsByCarEffect = (make: string, model: string, year: s
       console.log(error);
 
     } finally {
-      console.log("finally");
 
       // dispatch(setLoadingEffect(false));
     }
