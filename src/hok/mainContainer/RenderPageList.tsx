@@ -1,13 +1,25 @@
-import { Link, MenuItem, styled, Box } from "@mui/material";
-import { CiSearch, CiUser, CiShoppingBasket } from "react-icons/ci";
+import { Link, styled, Box } from "@mui/material";
+
+import "../../fonts/monsterrat.css";
+import "../../fonts/roboto.css";
 
 const CustomLink = styled(Link)(() => ({
   color: "#fff",
-  fontSize: 20,
+  fontSize: 18,
   textDecoration: "none",
-  padding: "0px 30px",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  transition: "background-color 0.3s",
+  borderRadius: 2,
+  padding: "0 5px",
+  fontFamily: "'Montserrat', sans-serif",
+
   "&:hover": {
-    textDecoration: "underline",
+    background: "white",
+
+    color: "black",
+    textDecoration: "none", // Remove underline on hover
   },
 }));
 
@@ -17,12 +29,21 @@ const RenderPageList = () => {
       sx={{
         display: "flex",
         width: "100%",
+        height: "100%",
         fontFamily: "sans-serif",
         alignItems: "center",
-        justifyContent: "space-evenly",
+        paddingRight: 2,
+        margin: 0,
       }}
     >
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+      <Box
+        sx={{
+          display: { xs: "none", md: "flex" },
+          gap: 1,
+          alignItems: "center",
+          height: "40px",
+        }}
+      >
         <CustomLink href="/welcome">Accueli</CustomLink>
         <CustomLink href="/rims">Janets</CustomLink>
         <CustomLink href="/accessories">Accessoires</CustomLink>
