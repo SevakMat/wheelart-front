@@ -11,8 +11,8 @@ interface WheelCardProps {
 
 export default function WheelCard({ wheel }: WheelCardProps) {
 
-  const { price, sizeR, rimModel, imageUrl } = wheel
-  const wheelInfo = `Set of 4 R${sizeR}`
+  const { price, sizeR, rimModel, imageUrl, centerBore, pcd, studHoles, id } = wheel
+  const wheelInfo = `Size R${sizeR} `
 
   return (
     <Card
@@ -44,7 +44,14 @@ export default function WheelCard({ wheel }: WheelCardProps) {
         />
         <CardContent>
           <Typography gutterBottom variant="body2" component="div">
+            {` ID - ${id}`} <br />
+
             {wheelInfo} <br />
+            {` CBR - ${centerBore}`} <br />
+            {` PCD - ${pcd}`} <br />
+            {` studHoles - ${studHoles}`} <br />
+
+
             {rimModel}
           </Typography>
           <Typography variant="h5" color="text.primary">

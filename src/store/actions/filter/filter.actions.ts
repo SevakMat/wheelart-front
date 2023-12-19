@@ -5,8 +5,7 @@ export const getFiltersListSuccess = (filters: Filters): GetFilterListSuccess =>
   filters
 })
 
-
 export const getSelectedFiltersListSuccess = (selectedFilters: SelectedFilters): GetSelectedFilterListSuccess => ({
   type: FilterServerTypes.GET_SELECTED_FILTER_LIST_SUCCESS,
   selectedFilters
-})  
+})

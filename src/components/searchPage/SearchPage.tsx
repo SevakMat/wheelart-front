@@ -57,8 +57,9 @@ const SearchPage = () => {
         ModificationList?.length > 0 &&
         <CreateField list={ModificationList} fieldType="Modification" onSelect={onSelect} />
       }
-      {WheelList?.length > 0 && <WheelsContent wheelList={WheelList} />}
       <FiltersBlock />
+
+      {WheelList?.length > 0 && <WheelsContent wheelList={WheelList} />}
     </div>
   )
 }
