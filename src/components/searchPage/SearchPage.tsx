@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { AppDispatch, RootState, useAppSelector } from "../../store"
 import { getCarsEffect, getModelsByCarEffect, getModificationsByCarEffect, getYearsByCarEffect } from "../../store/effects/car/car.effects"
 import { getWheelsListByCarDateEffect } from "../../store/effects/wheel/wheel.effect";
+import TiresContent from "../shere/tires/TiresContent";
 import WheelsContent from "../shere/wheels/WheelsContent";
 
 import CreateField from "./CreateField";
@@ -18,6 +19,7 @@ const SearchPage = () => {
 
   const { CarTypeList, ModelList, YearList, ModificationList, selectedCarType, selectedYearType, selectedModelType } = useAppSelector((state: RootState) => state.car)
   const { WheelList } = useAppSelector((state: RootState) => state.wheel)
+  const { tireList } = useAppSelector((state: RootState) => state.tire)
 
 
 
@@ -60,6 +62,9 @@ const SearchPage = () => {
       <FiltersBlock />
 
       {WheelList?.length > 0 && <WheelsContent wheelList={WheelList} />}
+      {tireList?.length > 0 && <TiresContent tiresList={tireList} />}
+
+
     </div>
   )
 }

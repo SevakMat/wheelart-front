@@ -10,12 +10,15 @@ import authReducer from "./reducers/auth/auth";
 import carReducer from "./reducers/car/car";
 import wheelReducer from "./reducers/wheel/wheel";
 import filterReducer from "./reducers/filter/filter";
+import tireReducer from "./reducers/tire/tire";
 
 const rootReducer = combineReducers({
     auth: authReducer,
     car: carReducer,
     wheel: wheelReducer,
-    filter: filterReducer
+    filter: filterReducer,
+    tire: tireReducer,
+
 });
 
 const persistConfig: PersistConfig<any> = {

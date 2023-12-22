@@ -1,6 +1,7 @@
 import { log } from "console";
 import { AppDispatch } from "../..";
 import { getWheelsListByCarDateService } from "../../../services/wheel.service";
+import { getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
 import { getWheelsListByCarDateAction } from "../../actions/wheel/wheel.actions";
 
 export const getWheelsListByCarDateEffect = (make: string, model: string, year: string, modification: string): any => {
@@ -12,11 +13,13 @@ export const getWheelsListByCarDateEffect = (make: string, model: string, year: 
 
       const result = await getWheelsListByCarDateService(make, model, year, modification);
       const {
-        data: { data }
+        data: { data: { rims, tires } }
       } = result;
 
 
-      dispatch(getWheelsListByCarDateAction(data));
+      dispatch(getWheelsListByCarDateAction(rims));
+      dispatch(getTiresListByCarDateAction(tires));
+
 
       // dispatch(setLoadingEffect(false));
     } catch (error: any) {
