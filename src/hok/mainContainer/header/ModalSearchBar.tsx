@@ -27,6 +27,10 @@ const style = {
   "@media (max-width: 470px)": {
     width: 280,
   },
+
+  "@media (max-width: 350px)": {
+    width: 250,
+  },
 };
 
 export default function ModalSearchBar() {
@@ -49,9 +53,24 @@ export default function ModalSearchBar() {
           <TextField
             variant="standard"
             InputProps={{ disableUnderline: true, style: { fontSize: 24 } }}
-            sx={{ input: { color: "white" }, width: "80%" }}
+            sx={{
+              input: { color: "white" },
+              width: "80%",
+              height: "20px",
+              justifyContent: "center",
+            }}
           />
-          <Button sx={{ color: "white", fontWeight: "bold", fontSize: 18 }}>
+          <Button
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              fontSize: 18,
+
+              "@media (max-width: 470px)": {
+                fontSize: 12,
+              },
+            }}
+          >
             Search
           </Button>
         </Box>

@@ -8,7 +8,7 @@ const MainContainer: FC<IMainContainer> = ({ children }) => {
   return (
     <Box>
       <Header />
-      {/* {children} */}
+      {children}
       {/* <Footer /> */}
     </Box>
   );

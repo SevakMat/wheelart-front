@@ -4,19 +4,18 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
-import SearchIcon from "@mui/icons-material/Search";
 
 import RenderPageList from "../RenderPageList";
 import SearchBar from "./SearchBar";
 import ModalSearchBar from "./ModalSearchBar";
 import ModalMenu from "./ModalMenu";
+import { customBreakpoints } from "../../../customBreakpoints";
 
 import "../../../fonts/roboto.css";
 import "../../../fonts/monsterrat.css";
@@ -43,19 +42,7 @@ const styles = {
   },
 };
 
-const theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 420,
-      md: 1000,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
-});
-
-function ResponsiveAppBar() {
+function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -69,7 +56,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={customBreakpoints}>
       <AppBar
         position="static"
         elevation={0}
@@ -93,7 +80,7 @@ function ResponsiveAppBar() {
 
               "@media (max-width: 470px)": {
                 paddingLeft: 0,
-                justifyContent: "center",
+                justifyContent: "space-between",
               },
             }}
           >
@@ -140,7 +127,6 @@ function ResponsiveAppBar() {
                 color="inherit"
                 sx={{ padding: 0 }}
               >
-                {/* <MenuIcon /> */}
                 <ModalMenu />
               </IconButton>
               <Menu
@@ -201,6 +187,7 @@ function ResponsiveAppBar() {
                 WHEEL ART
               </Box>
             </Link>
+
             {/* main part */}
             <Box
               sx={{
@@ -216,7 +203,6 @@ function ResponsiveAppBar() {
               </Box>
 
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                {/* <SearchIcon sx={{ fontSize: 28 }} /> */}
                 <ModalSearchBar />
               </Box>
 
@@ -235,4 +221,4 @@ function ResponsiveAppBar() {
     </ThemeProvider>
   );
 }
-export default ResponsiveAppBar;
+export default Header;

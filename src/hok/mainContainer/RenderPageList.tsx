@@ -27,18 +27,18 @@ const RenderPageList = () => {
   return (
     <Box
       sx={{
-        display: "flex",
+        display: { xs: "none", md: "flex" },
         width: "100%",
         height: "100%",
         fontFamily: "sans-serif",
         alignItems: "center",
-        paddingRight: 2,
         margin: 0,
+        paddingRight: 2,
       }}
     >
       <Box
         sx={{
-          display: { xs: "none", md: "flex" },
+          display: "flex",
           gap: 1,
           alignItems: "center",
           height: "40px",

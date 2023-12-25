@@ -1,22 +1,15 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { Link } from "@mui/icons-material";
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+
+import { Facebook, Instagram } from "@mui/icons-material";
 
 import "../../../fonts/monsterrat.css";
 
@@ -48,6 +41,29 @@ const SnapchatIcon = ({ color = "#000000" }) => {
   );
 };
 
+const pageLinks = [
+  {
+    href: "/welcome",
+    name: "Accueli",
+  },
+  {
+    href: "/rims",
+    name: "Janets",
+  },
+  {
+    href: "/accessories",
+    name: "Accessoires",
+  },
+  {
+    href: "/blog",
+    name: "Blog",
+  },
+  {
+    href: "/faq",
+    name: "FAQ",
+  },
+];
+
 export default function ModalMenu() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -74,11 +90,11 @@ export default function ModalMenu() {
 
       <Divider sx={{ bgcolor: "white" }} />
       <List>
-        {["Accueli", "Janets", "Accessoires", "Blog", "FAQ"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        {pageLinks.map((link) => (
+          <ListItem key={link.name} disablePadding>
+            <ListItemButton href={link.href}>
               <ListItemText
-                primary={text}
+                primary={link.name}
                 sx={{
                   color: "white",
                   "& span": { fontFamily: "'Montserrat', sans-serif" },
@@ -128,8 +144,6 @@ export default function ModalMenu() {
     </div>
   );
 
-  // Remove this const when copying and pasting into your project.
-
   return (
     <>
       {/* Ensure that the onClick is correctly assigned to the IconButton */}
@@ -170,21 +184,6 @@ export default function ModalMenu() {
       >
         {drawer}
       </Drawer>
-
-      {/* Ensure that the open prop is controlled by the mobileOpen state
-      <Drawer
-        variant="permanent"
-        sx={{
-          display: { xs: "none", md: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-          },
-        }}
-        open={mobileOpen}
-      >
-        {drawer}
-      </Drawer> */}
     </>
   );
 }
