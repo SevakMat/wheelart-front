@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 
 import { RootState, useAppSelector } from "../../store";
 
-import MainCarousel from "./MainCarousel";
+import MainCarousel from "./Carousel/MainCarousel";
 import Products from "./Products";
 import BlogCards from "./BlogCards";
 
@@ -15,9 +15,9 @@ const HomePage = () => {
         display: "flex",
         flexDirection: "column",
         margin: "0px auto",
-        width: "92%",
+        width: "100%",
 
-        maxWidth: "1100px",
+        maxWidth: "1920px",
         position: "relative",
       }}
     >
