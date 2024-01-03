@@ -2,21 +2,27 @@ import { Reducer } from "redux";
 import { GetWheelListSuccess, WheelActionTypes, WheelServerTypes, WheelState } from "../../types/wheel/wheel";
 
 const initialState: WheelState = {
-  WheelList: [],
+  wheelList: [],
+  wheel: null
+
 }
 
 type ReducerType = Reducer<WheelState, WheelActionTypes>
 
 
-const reducer: ReducerType = (state = initialState, action: GetWheelListSuccess) => {
+const reducer: ReducerType = (state = initialState, action: WheelActionTypes) => {
 
   switch (action.type) {
     case WheelServerTypes.GET_WHEEL_LIST_SUCCESS:
       return {
         ...state,
-        WheelList: action.wheelList,
+        wheelList: action.wheelList,
       };
-
+    case WheelServerTypes.GET_WHEEL_SUCCESS:
+      return {
+        ...state,
+        wheel: action.wheel,
+      };
 
     // case AuthTypes.LOGOUT_REQUEST_SUCCESS:
     //   return {

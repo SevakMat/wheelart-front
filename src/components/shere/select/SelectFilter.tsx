@@ -66,7 +66,7 @@ export default function SelectFilter({ filterType, name, lable }: SelectFilterPr
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {filterType.map((filter: any, index) => (
+          {filterType?.map((filter: any, index) => (
             <MenuItem key={index} value={filter[lable]}>
               {/* <Checkbox checked={personName.indexOf(name) > -1} /> */}
               <ListItemText primary={` count -${filter.count}, type -${filter[lable]}`} />

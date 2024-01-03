@@ -3,7 +3,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { TextField } from "@mui/material";
 import { CarType } from "../../store/types/car/car";
 
 
@@ -11,10 +10,10 @@ interface CreateFieldProps {
   list: CarType[];
   fieldType: string;
   onSelect: (filedName: string, e: any) => void
-
+  value: string | null
 }
 
-export default function CreateField({ list, fieldType, onSelect }: CreateFieldProps) {
+export default function CreateField({ list, fieldType, onSelect, value }: CreateFieldProps) {
   const [selected, setSelected] = React.useState("");
   const [currentList, setCurrentList] = React.useState(list);
 
@@ -27,20 +26,12 @@ export default function CreateField({ list, fieldType, onSelect }: CreateFieldPr
     e.stopPropagation();
   };
 
-  // const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-  //   let filtered = list.filter((listItem: { name: string }) => {
-  //     return listItem.name.toLowerCase().includes(e.target.value.toLowerCase());
-  //   });
-  //   setCurrentList(filtered);
-  // };
-  // console.log(currentList);
 
   return (
     <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
       <InputLabel>{fieldType}</InputLabel>
       <Select
-        value={selected}
+        value={value ?? undefined}
         onChange={handleChange}
         onKeyDown={handleSearchKeyDown}
       >

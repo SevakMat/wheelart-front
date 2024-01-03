@@ -65,11 +65,7 @@ export const getYearsByCarEffect = (make: string, model: string): any => {
         data: { data }
       } = result;
 
-      console.log("getYearsByCarEffect", data);
-
       dispatch(getYearListSuccess(data, model));
-
-
       // dispatch(setLoadingEffect(false));
     } catch (error: any) {
       // dispatch(setLoadingEffect(false));

@@ -37,7 +37,7 @@ const Products = ({ wheelList }: ProductsProps) => {
             },
           }}
         >
-          {wheelList.map((wheel) => {
+          {wheelList?.map((wheel) => {
             return (
               <li>
                 <ProductCard

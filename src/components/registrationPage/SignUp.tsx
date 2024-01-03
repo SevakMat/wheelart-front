@@ -5,8 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -44,15 +42,6 @@ const SignUp = () => {
 
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      FirstName: data.get('firstName'),
-      LatName: data.get('lastName'),
-
-    });
-
 
     dispatch(signUpEffect({
       email: data.get('email') as string,
