@@ -30,7 +30,7 @@ const TiresContent = ({ tiresList }: TyresListProps) => {
             },
           }}
         >
-          {tiresList.map((tire: TireType, index: number) => {
+          {tiresList?.map((tire: TireType, index: number) => {
             return (
               <li>
                 <TyreCard

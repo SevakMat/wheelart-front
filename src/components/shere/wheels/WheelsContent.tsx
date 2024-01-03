@@ -30,7 +30,7 @@ const WheelsContent = ({ wheelList }: ProductsProps) => {
             },
           }}
         >
-          {wheelList.map((wheel: WheelType, index: number) => {
+          {wheelList?.map((wheel: WheelType, index: number) => {
             return (
               <li>
                 <WheelCard

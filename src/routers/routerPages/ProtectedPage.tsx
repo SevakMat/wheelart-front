@@ -1,5 +1,6 @@
 import HomePage from "../../pages/HomePage";
 import SearchPage from "../../pages/SearchPage";
+import WheelPage from "../../pages/WheelPage";
 
 import ProtectedRoute from "../types/ProtectedRoute";
 
@@ -17,6 +18,10 @@ const ProtectedPageRoute: ProtectedRoute = {
         {
             path: "/search",
             element: <SearchPage />
+        },
+        {
+            path: "/wheels/:id",
+            element: <WheelPage />
         },
     ],
 };

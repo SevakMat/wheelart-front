@@ -1,8 +1,8 @@
 import { log } from "console";
 import { AppDispatch } from "../..";
-import { getWheelsListByCarDateService } from "../../../services/wheel.service";
+import { getWheelDataService, getWheelsListByCarDateService } from "../../../services/wheel.service";
 import { getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
-import { getWheelsListByCarDateAction } from "../../actions/wheel/wheel.actions";
+import { getWheelAction, getWheelsListByCarDateAction } from "../../actions/wheel/wheel.actions";
 
 export const getWheelsListByCarDateEffect = (make: string, model: string, year: string, modification: string): any => {
   return async (dispatch: AppDispatch) => {
@@ -18,6 +18,40 @@ export const getWheelsListByCarDateEffect = (make: string, model: string, year: 
 
 
       dispatch(getWheelsListByCarDateAction(rims));
+      // dispatch(getTiresListByCarDateAction(tires));
+
+
+      // dispatch(setLoadingEffect(false));
+    } catch (error: any) {
+      // dispatch(setLoadingEffect(false));
+      // toast.error("Logined faild");
+      console.log(error);
+
+    } finally {
+      // dispatch(setLoadingEffect(false));
+    }
+  };
+};
+
+
+export const getWheelEffect = (id?: string, makeValue?: string | null, modelValue?: string | null, yearValue?: string | null, modificationValue?: string | null): any => {
+  return async (dispatch: AppDispatch) => {
+    try {
+
+
+      // dispatch(setLoadingEffect(true));
+      // Get user
+
+
+      const result = await getWheelDataService(id, makeValue, modelValue, yearValue, modificationValue);
+      const {
+        data: {
+          wheel,
+          tires
+        }
+      } = result;
+
+      dispatch(getWheelAction(wheel));
       dispatch(getTiresListByCarDateAction(tires));
 
 
@@ -28,7 +62,6 @@ export const getWheelsListByCarDateEffect = (make: string, model: string, year: 
       console.log(error);
 
     } finally {
-      console.log("finally");
 
       // dispatch(setLoadingEffect(false));
     }
