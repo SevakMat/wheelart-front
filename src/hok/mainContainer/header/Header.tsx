@@ -6,12 +6,12 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 
-import RenderPageList from "../RenderPageList";
+import RenderPageList from "./NavPageList";
 import SearchBar from "./SearchBar";
 import ModalSearchBar from "./ModalSearchBar";
 import ModalMenu from "./ModalMenu";
@@ -34,8 +34,8 @@ const styles = {
   },
 
   logoStyle: {
-    width: 60,
-    height: 58,
+    width: 55,
+    height: 52,
     ":hover": { transform: "rotate(360deg)" },
     transition: "transform 1.2s",
     transitionDelay: "0.2s",
@@ -63,7 +63,6 @@ function Header() {
         sx={{
           height: 65,
           background: "#161616",
-          justifyContent: "center",
         }}
       >
         <Container maxWidth="xl">
@@ -72,7 +71,6 @@ function Header() {
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              paddingLeft: "10%",
 
               "@media (max-width: 1200px)": {
                 paddingLeft: 0,

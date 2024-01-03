@@ -1,5 +1,5 @@
 import { Box, Button, Link } from "@mui/material";
-import ProductCard from "./ProductCard";
+import ProductCard from "./products/ProductCard";
 
 const blogs = [
   {

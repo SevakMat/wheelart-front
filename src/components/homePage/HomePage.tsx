@@ -2,8 +2,9 @@ import { Box } from "@mui/system";
 
 import { RootState, useAppSelector } from "../../store";
 
-import MainCarousel from "./Carousel/MainCarousel";
-import Products from "./Products";
+import Carousel from "./Carousel/Carousel";
+import ShortInfo from "./ShortInfo";
+import Products from "./products/Products";
 import BlogCards from "./BlogCards";
 
 const HomePage = () => {
@@ -22,7 +23,8 @@ const HomePage = () => {
       }}
     >
       <Box>
-        <MainCarousel />
+        <Carousel />
+        <ShortInfo />
         <Products />
         <BlogCards />
       </Box>

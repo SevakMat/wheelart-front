@@ -1,11 +1,10 @@
 import { Link, styled, Box } from "@mui/material";
 
-import "../../fonts/monsterrat.css";
-import "../../fonts/roboto.css";
+import "../../../fonts/monsterrat.css";
 
 const CustomLink = styled(Link)(() => ({
   color: "#fff",
-  fontSize: 18,
+  fontSize: 16,
   textDecoration: "none",
   height: "100%",
   display: "flex",

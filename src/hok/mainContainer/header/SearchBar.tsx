@@ -60,7 +60,7 @@ const SarchBar = () => {
           <SearchIcon sx={{ fontSize: 28 }} />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder="Search…"
+          placeholder="Recherche…"
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
