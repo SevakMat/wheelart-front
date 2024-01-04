@@ -2,7 +2,6 @@ import { CardMedia } from "@mui/material";
 import { useEffect } from "react"
 import { useDispatch } from "react-redux";
 import { useLocation, useParams } from 'react-router-dom';
-import { SHA1 } from 'crypto-js';
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { getWheelEffect } from "../../store/effects/wheel/wheel.effect";

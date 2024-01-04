@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import MainCarousel from "./MainCarousel";
 import Products from "./Products";
 import BlogCards from "./BlogCards";
+import { useTranslation } from "react-i18next";
 
 const wheelList = [
   {
@@ -49,6 +50,8 @@ const wheelList = [
 ]
 const HomePage = () => {
 
+  const [t, i18n] = useTranslation("global")
+
   return (
     <Box
       sx={{
@@ -61,11 +64,18 @@ const HomePage = () => {
         position: "relative",
       }}
     >
-      <Box>
+      {/* <Box>
         <MainCarousel />
         <Products wheelList={wheelList} />
         <BlogCards />
-      </Box>
+      </Box> */}
+
+      {t("header.message")}
+
+
+      <button onClick={() => i18n.changeLanguage("fr")}>
+        change language
+      </button>
 
       {/* <Box>1 mobile 2 mobile 3 mobile</Box> */}
     </Box>
