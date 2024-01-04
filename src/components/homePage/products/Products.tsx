@@ -194,10 +194,12 @@ const Products = () => {
           size="large"
           variant="contained"
           sx={{
-            backgroundColor: "black",
-            "&:hover": { background: "grey" },
-            borderRadius: 1,
+            backgroundColor: "#00A70D",
+            "&:hover": { background: "#00DE11", boxShadow: "none" },
+            borderRadius: 2,
             textTransform: "none",
+            boxShadow: "none",
+            padding: "10px 50px",
           }}
         >
           Tout afficher

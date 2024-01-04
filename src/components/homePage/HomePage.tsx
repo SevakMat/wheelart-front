@@ -6,6 +6,7 @@ import Carousel from "./Carousel/Carousel";
 import ShortInfo from "./ShortInfo";
 import Products from "./products/Products";
 import BlogCards from "./BlogCards";
+import About from "./About";
 
 const HomePage = () => {
   const { user } = useAppSelector((state: RootState) => state.auth);
@@ -26,6 +27,7 @@ const HomePage = () => {
         <Carousel />
         <ShortInfo />
         <Products />
+        <About />
         <BlogCards />
       </Box>
 

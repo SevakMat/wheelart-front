@@ -1,5 +1,6 @@
-import { Box, Button, Link } from "@mui/material";
-import ProductCard from "./products/ProductCard";
+import { Box, Button, Link, Typography } from "@mui/material";
+
+import "../../fonts/monsterrat.css";
 
 const blogs = [
   {
@@ -21,38 +22,30 @@ const blogs = [
 
 const BlogCards = () => {
   return (
-    <>
-      <h2>En savoir plus</h2>
-      <Box
+    <Box sx={{ padding: "50px 100px" }}>
+      <Typography
+        variant="h2"
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        {blogs.map((blog) => {
-          return <ProductCard image={blog.image} info={blog.info} />;
-        })}
-      </Box>
-      <Box
-        sx={{
-          margin: "50px",
+          fontFamily: "'Montserrat', sans-serif",
           textAlign: "center",
         }}
       >
-        <Button
-          size="large"
-          variant="contained"
-          sx={{
-            backgroundColor: "#ffaa00",
-            "&:hover": { background: "#a17f1a" },
-            borderRadius: 1,
-            textTransform: "none",
-          }}
-        >
-          Tout afficher
-        </Button>
-      </Box>
-    </>
+        Notre blog
+      </Typography>
+
+      <Button
+        size="large"
+        variant="contained"
+        sx={{
+          backgroundColor: "#ffaa00",
+          "&:hover": { background: "#a17f1a" },
+          borderRadius: 1,
+          textTransform: "none",
+        }}
+      >
+        Tout afficher
+      </Button>
+    </Box>
   );
 };
 

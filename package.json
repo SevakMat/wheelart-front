@@ -61,6 +61,9 @@
   },
   "devDependencies": {
     "@types/react-swipeable-views": "^0.13.5",
-    "@types/react-swipeable-views-utils": "^0.13.7"
+    "@types/react-swipeable-views-utils": "^0.13.7",
+    "file-loader": "^6.2.0",
+    "ts-loader": "^9.5.1",
+    "url-loader": "^4.1.1"
   }
 }

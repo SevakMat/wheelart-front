@@ -16,6 +16,7 @@ export default function ProductCard({ image, info, price }: any) {
     <Card
       sx={{
         boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+        borderRadius: 2,
 
         "&:hover": {
           boxShadow:
