@@ -5,8 +5,9 @@ import { RootState, useAppSelector } from "../../store";
 import Carousel from "./Carousel/Carousel";
 import ShortInfo from "./ShortInfo";
 import Products from "./products/Products";
-import BlogCards from "./BlogCards";
 import About from "./About";
+import BlogsHome from "./blogs/BlogsHome";
+import Footer from "../../hok/mainContainer/Footer";
 
 const HomePage = () => {
   const { user } = useAppSelector((state: RootState) => state.auth);
@@ -28,7 +29,8 @@ const HomePage = () => {
         <ShortInfo />
         <Products />
         <About />
-        <BlogCards />
+        <BlogsHome />
+        <Footer />
       </Box>
 
       {/* <Box>1 mobile 2 mobile 3 mobile</Box> */}

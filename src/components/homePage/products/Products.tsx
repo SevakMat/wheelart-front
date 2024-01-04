@@ -187,7 +187,6 @@ const Products = () => {
       <Box
         sx={{
           margin: "50px",
-          textAlign: "center",
         }}
       >
         <Button
