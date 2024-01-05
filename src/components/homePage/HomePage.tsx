@@ -73,7 +73,6 @@ const HomePage = () => {
         <About />
         <BlogsHome />
       </Box>
-      {/* <Box>1 mobile 2 mobile 3 mobile</Box> */}
     </Box>
   );
 };
