@@ -1,9 +1,11 @@
 import { Box } from "@mui/system";
 
-import MainCarousel from "./MainCarousel";
-import Products from "./Products";
-import BlogCards from "./BlogCards";
-import { useTranslation } from "react-i18next";
+import Carousel from "./carousel/Carousel";
+import ShortInfo from "./ShortInfo";
+import Products from "./products/Products";
+import About from "./About";
+import BlogsHome from "./blogs/BlogsHome";
+// import { useTranslation } from "react-i18next";
 
 const wheelList = [
   {
@@ -50,7 +52,7 @@ const wheelList = [
 ]
 const HomePage = () => {
 
-  const [t, i18n] = useTranslation("global")
+  // const [t, i18n] = useTranslation("global")
 
   return (
     <Box
@@ -58,25 +60,19 @@ const HomePage = () => {
         display: "flex",
         flexDirection: "column",
         margin: "0px auto",
-        width: "92%",
+        width: "100%",
 
-        maxWidth: "1100px",
+        maxWidth: "1920px",
         position: "relative",
       }}
     >
-      {/* <Box>
-        <MainCarousel />
-        <Products wheelList={wheelList} />
-        <BlogCards />
-      </Box> */}
-
-      {t("header.message")}
-
-
-      <button onClick={() => i18n.changeLanguage("fr")}>
-        change language
-      </button>
-
+      <Box>
+        <Carousel />
+        <ShortInfo />
+        <Products />
+        <About />
+        <BlogsHome />
+      </Box>
       {/* <Box>1 mobile 2 mobile 3 mobile</Box> */}
     </Box>
   );

@@ -1,5 +1,5 @@
 import { Box, Button, List } from "@mui/material";
-import ProductCard from "./ProductCard";
+// import ProductCard from "./ProductCard";
 
 
 type WheelListType = {
@@ -40,11 +40,11 @@ const Products = ({ wheelList }: ProductsProps) => {
           {wheelList?.map((wheel) => {
             return (
               <li>
-                <ProductCard
+                {/* <ProductCard
                   image={wheel.image}
                   info={wheel.info}
                   price={wheel.price}
-                />
+                /> */}
               </li>
             );
           })}
