@@ -2,14 +2,14 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import { IMainContainer } from "../interfaces";
 import Header from "./header/Header";
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 
 const MainContainer: FC<IMainContainer> = ({ children }) => {
   return (
     <Box>
       <Header />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </Box>
   );
 };

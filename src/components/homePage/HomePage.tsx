@@ -2,12 +2,12 @@ import { Box } from "@mui/system";
 
 import { RootState, useAppSelector } from "../../store";
 
-import Carousel from "./Carousel/Carousel";
+import Carousel from "./carousel/Carousel";
 import ShortInfo from "./ShortInfo";
 import Products from "./products/Products";
 import About from "./About";
 import BlogsHome from "./blogs/BlogsHome";
-import Footer from "../../hok/mainContainer/Footer";
+import Footer from "../../hok/mainContainer/footer/Footer";
 
 const HomePage = () => {
   const { user } = useAppSelector((state: RootState) => state.auth);
