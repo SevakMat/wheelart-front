@@ -3,6 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import BlogCard from "./BlogCard";
 
 import "../../../fonts/monsterrat.css";
+import { useTranslation } from "react-i18next";
 
 const blogs = [
   {
@@ -23,6 +24,8 @@ const blogs = [
 ];
 
 const HomeBlogs = () => {
+  const [t] = useTranslation("home")
+
   return (
     <Box sx={{ padding: "50px 100px" }}>
       <Typography
@@ -32,7 +35,7 @@ const HomeBlogs = () => {
           textAlign: "center",
         }}
       >
-        Notre Blog
+        {t("ourBlog.header")}
       </Typography>
       <Box
         sx={{
@@ -41,8 +44,10 @@ const HomeBlogs = () => {
           padding: "30px 0",
         }}
       >
-        {blogs.map((blog) => (
-          <BlogCard image={blog.image} title={blog.title} />
+        {blogs.map((blog, index) => (
+          <span key={index}>
+            <BlogCard image={blog.image} title={blog.title} />
+          </span>
         ))}
       </Box>
 
@@ -59,7 +64,7 @@ const HomeBlogs = () => {
             padding: "10px 50px",
           }}
         >
-          En savoir plus
+          {t("buttons.learnMore")}
         </Button>
       </Box>
     </Box>

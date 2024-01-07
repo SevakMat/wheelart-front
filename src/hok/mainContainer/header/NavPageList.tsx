@@ -1,4 +1,5 @@
 import { Link, styled, Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import "../../../fonts/monsterrat.css";
 
@@ -23,6 +24,8 @@ const CustomLink = styled(Link)(() => ({
 }));
 
 const RenderPageList = () => {
+  const [t] = useTranslation("global")
+
   return (
     <Box
       sx={{
@@ -43,11 +46,11 @@ const RenderPageList = () => {
           height: "40px",
         }}
       >
-        <CustomLink href="/welcome">Accueli</CustomLink>
-        <CustomLink href="/rims">Janets</CustomLink>
-        <CustomLink href="/accessories">Accessoires</CustomLink>
-        <CustomLink href="/blog">Blog</CustomLink>
-        <CustomLink href="/faq">FAQ</CustomLink>
+        <CustomLink href="/welcome">{t("header.welcome")}</CustomLink>
+        <CustomLink href="/rims">{t("header.rims")}</CustomLink>
+        <CustomLink href="/accessories">{t("header.accessories")}</CustomLink>
+        <CustomLink href="/blog">{t("header.blog")}</CustomLink>
+        <CustomLink href="/faq">{t("header.faq")}</CustomLink>
       </Box>
     </Box>
   );
