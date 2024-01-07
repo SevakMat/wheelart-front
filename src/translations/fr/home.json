@@ -1,0 +1,52 @@
+{
+  "slider": {
+    "headers": {
+      "welcomeToWheelArt": "Bienvenue chez Wheel Art",
+      "alloyWheels": "Jantes en alliage",
+      "accessories": "Accessoires",
+      "tires": "Pneus"
+    },
+    "infos": {
+      "first": "Une multitude de jantes en aluminium pour une multitude de véhicules. Aggressivité, stabilité et élégance font de ces 3 mots votre devise.",
+      "second": "Un choix multiple de jantes",
+      "three": "Découvrez tous nos accessoires",
+      "four": "Choisissez votre pneu préféré"
+    }
+  },
+  "search": {
+    "make": "Marque",
+    "model": "Modèle",
+    "year": "Année",
+    "modification": "Modification"
+  },
+  "content": {
+    "findYourRim": "Trouvez votre jante",
+    "TheLargestAssortmentInFrance": "Le plus grand assortiment en France",
+    "highQuality": "Haute qualité",
+    "climateNeutral": "Neutre en carbone",
+    "recyclableMaterials": "Matériaux recyclables",
+    "innovativeDesign": "Design innovant",
+    "popularProducts": "Produits populaires"
+  },
+  "about": {
+    "header": "Qui sommes-nous",
+    "firstBlog": {
+      "1": "Bienvenue sur WHEELART.FR, où la passion pour l'automobile rencontre l'expertise technique ! Installée à ",
+      "link": "Grigny",
+      "2": " (Essonne) depuis 2020, notre équipe répond à la demande croissante de jantes en aluminium en Île-de-France. Nous nous engageons à offrir une expérience d'achat personnalisée, rapide et efficace, proposant une gamme complète de pneus de qualité pour différents styles de conduite."
+    },
+    "secondBlog": "Avec une forte culture automobile et une vaste expérience commerciale, nous fournissons des produits et des services offrant le meilleur rapport qualité-prix. Découvrez différentes tailles de jantes (de 17 à 22 pouces) et une variété de couleurs pour correspondre à vos préférences. Pour des demandes spécifiques, contactez-nous directement par téléphone ou via la section 'contact'.",
+    "threeBlog": "Visitez notre showroom pour une expérience sans faille, comprenant des services de montage. Achetez des produits et effectuez le montage et l'équilibrage sur place. Pour s'adapter à tous les budgets, nous proposons des facilités de paiement en 3 ou 4 fois. L'équipe Wheel Art a hâte de vous accueillir !"
+  },
+  "ourBlog": {
+    "header": "Notre Blog"
+  },
+  "buttons": {
+    "research": "Recherche",
+    "showAll": "Tout Afficher",
+    "learnMore": "En savoir plus",
+    "findHere": "Trouver ici",
+    "clickHere": "Cliquez ici",
+    "discoverHere": "Découvrir ici"
+  }
+}

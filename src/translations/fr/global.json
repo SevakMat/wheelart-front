@@ -1,5 +1,27 @@
 {
   "header": {
-    "message": "bonjux"
+    "welcome": "Bienvenue",
+    "rims": "Jantes",
+    "accessories": "Accessoires",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "research": "Recherche"
+  },
+  "footer": {
+    "shortcuts": "Raccourcis",
+    "whoAreWe": "Qui sommes-nous ?",
+    "contact": "Contact",
+    "underWarranty": "Sous garantie",
+    "CVG": "CVG",
+    "refundPolicy": "Politique de remboursement",
+    "legalNotice": "Mentions légales",
+    "termsOfUse": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "hoursAddress": "Horaires / Adresse",
+    "hoursInfo": "Nous sommes à votre disposition du lundi au samedi, de 9h30 à 13h / 14h à 18h.",
+    "addressInfo": "Nous serons ravis de vous accueillir dans le showroom :",
+    "addressInfoLink": "10B Rue Jean Jacques Rousseau, 91350 Grigny",
+    "contactDetails": "Coordonnées",
+    "contactDetailsInfo": "N'hésitez pas à nous contacter par téléphone au :"
   }
 }

@@ -5,25 +5,37 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { TextField } from "@mui/material";
 
-function Field({ list, fieldType }: any) {
-  const [selected, setSelected] = React.useState("");
+interface FieldProps {
+  list?: any[];
+  fieldType: string;
+  onSelect: (filedName: string, e: any) => void
+  value: string | null
+}
+
+
+function Field({ list, fieldType, onSelect, value }: FieldProps) {
+
   const [currentList, setCurrentList] = React.useState(list);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setSelected(event.target.value);
-    console.log(event.target.value);
+    onSelect(fieldType, event.target.value)
   };
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
   };
 
+  React.useEffect(() => {
+    setCurrentList(list)
+  }, [list])
+
   const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let filtered = list.filter((listItem: { name: string }) => {
+    let filtered = list?.filter((listItem: { name: string }) => {
       return listItem.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
     setCurrentList(filtered);
   };
+  console.log(444, value);
 
   return (
     <FormControl
@@ -51,7 +63,7 @@ function Field({ list, fieldType }: any) {
         {fieldType}
       </InputLabel>
       <Select
-        value={selected}
+        value={value && list?.length ? value : undefined}
         onChange={handleChange}
         onKeyDown={handleSearchKeyDown}
         inputProps={{ IconComponent: () => null }}
@@ -83,10 +95,10 @@ function Field({ list, fieldType }: any) {
           onChange={searchFilter}
           size="small"
         />
-        {currentList.map((listItem: { name: string }) => (
+        {currentList?.length && currentList?.map((listItem: { name: string }, index: number) => (
           <MenuItem
             sx={{ display: "flex", justifyContent: "center" }}
-            key={listItem.name}
+            key={index}
             value={listItem.name}
           >
             {listItem.name}

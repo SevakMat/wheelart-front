@@ -1,4 +1,5 @@
 import { Box, Button, List } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { WheelType } from "../../../store/types/wheel/wheel";
 import WheelCard from "./WheelCard";
 
@@ -7,6 +8,7 @@ interface ProductsProps {
 }
 
 const WheelsContent = ({ wheelList }: ProductsProps) => {
+  const [t] = useTranslation("home")
 
   return (
     <>
@@ -57,7 +59,7 @@ const WheelsContent = ({ wheelList }: ProductsProps) => {
             textTransform: "none",
           }}
         >
-          Tout afficher
+          {t("button.showAll")}
         </Button>
       </Box>
     </>
