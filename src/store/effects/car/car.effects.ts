@@ -6,15 +6,12 @@ export const getCarsEffect = (): any => {
   return async (dispatch: AppDispatch) => {
     try {
       // dispatch(setLoadingEffect(true));
-      // Get user
-
       const result = await GetCarData();
       const {
         data: { data }
       } = result;
 
       dispatch(getCarListSuccess(data));
-
 
       // dispatch(setLoadingEffect(false));
     } catch (error: any) {
@@ -27,7 +24,6 @@ export const getCarsEffect = (): any => {
     }
   };
 };
-
 
 export const getModelsByCarEffect = (make: string): any => {
   return async (dispatch: AppDispatch) => {
@@ -78,7 +74,6 @@ export const getYearsByCarEffect = (make: string, model: string): any => {
     }
   };
 };
-
 
 export const getModificationsByCarEffect = (make: string, model: string, year: string): any => {
   return async (dispatch: AppDispatch) => {
