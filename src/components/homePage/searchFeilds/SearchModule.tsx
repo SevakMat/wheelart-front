@@ -1,5 +1,5 @@
 import { Box, Button, Divider, styled } from "@mui/material";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,22 +14,24 @@ import Field from "./Field";
 
 const SearchModule = () => {
   const dispatch: AppDispatch = useDispatch();
+
   const navigate = useNavigate();
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const [t] = useTranslation("home")
+  const queryParams = useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+  const [t] = useTranslation("home");
 
-  const makeValue = queryParams.get("make");
-  const modelValue = queryParams.get("model");
-  const yearValue = queryParams.get("year");
-  const modificationValue = queryParams.get("modification");
+  const makeValue = queryParams.get("make") ?? undefined;
+  const modelValue = queryParams.get("model") ?? undefined;
+  const yearValue = queryParams.get("year") ?? undefined;
+  const modificationValue = queryParams.get("modification") ?? undefined;
 
-
-  const fieldTypes = [t("search.make"), t("search.model"), t("search.year"), t("search.modification")];
   useEffect(() => {
     dispatch(getCarsEffect());
   }, [dispatch]);
 
+  // need to optimize this part
   useEffect(() => {
     if (makeValue) {
       dispatch(getModelsByCarEffect(makeValue));
@@ -49,52 +51,14 @@ const SearchModule = () => {
     ModificationList,
   } = useAppSelector((state: RootState) => state.car);
 
-  const getFieldList = (fieldType: string) => {
-    switch (fieldType) {
-      case "Make":
-        return CarTypeList;
-      case "Model":
-        return ModelList;
-      case "Year":
-        return YearList;
-      case "Modification":
-        return ModificationList;
-      default:
-        return [];
-    }
-  };
-
-  const getFieldValue = (fieldType: string) => {
-    switch (fieldType) {
-      case "Make":
-        return makeValue;
-      case "Model":
-        return modelValue;
-      case "Year":
-        return yearValue;
-      case "Modification":
-        return modificationValue;
-      default:
-        return null;
-    }
-  };
-
   const onSelect = useCallback(
     (fieldName: string, selectedElement: any) => {
-      const searchParams = new URLSearchParams(location.search);
-      switch (fieldName) {
-        case "Make":
-        case "Model":
-        case "Year":
-        case "Modification":
-          searchParams.set(fieldName.toLowerCase(), selectedElement);
-          navigate(`${location.pathname}?${searchParams.toString()}`, {
-            replace: true,
-          });
-          break;
-      }
+      queryParams.set(fieldName.toLowerCase(), selectedElement);
+      navigate(`${location.pathname}?${queryParams.toString()}`, {
+        replace: true,
+      });
     },
-    [navigate, location.search, location.pathname]
+    [navigate, queryParams, location.pathname]
   );
 
   const CustomDivider = styled(Divider)({
@@ -102,34 +66,33 @@ const SearchModule = () => {
     height: 25,
     margin: "auto 0",
   });
-
-  console.log("mec");
+  console.log(222);
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      {fieldTypes.map((fieldType, index) => (
-        <span key={index}>
-          <Field
-            list={getFieldList(fieldType)}
-            fieldType={fieldType}
-            onSelect={onSelect}
-            value={getFieldValue(fieldType)}
-          />
-          {index !== 3 && <CustomDivider orientation="vertical" flexItem />}
-        </span>
-      ))}
-
+      <Field list={CarTypeList} fieldType={"Make"} onSelect={onSelect} value={makeValue} />
+      <CustomDivider orientation="vertical" flexItem />
+      <Field list={ModelList} fieldType={"Model"} onSelect={onSelect} value={modelValue} />
+      <CustomDivider orientation="vertical" flexItem />
+      <Field list={YearList} fieldType={"Year"} onSelect={onSelect} value={yearValue} />
+      <CustomDivider orientation="vertical" flexItem />
+      <Field
+        list={ModificationList}
+        fieldType={"Modification"}
+        onSelect={onSelect}
+        value={modificationValue}
+      />
       <Button
         sx={{
           borderRadius: 20,
           background: "black",
           color: "white",
           padding: 1,
-
           "&:hover": {
             bgcolor: "#8b0000",
           },
         }}
+        onClick={() => { navigate(`/rims?make=${makeValue}&model=${modelValue}&year=${yearValue}&modification=${modificationValue}`) }}
       >
         {t("buttons.research")}
       </Button>
