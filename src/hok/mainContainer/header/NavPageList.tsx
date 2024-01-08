@@ -43,7 +43,7 @@ const RenderPageList = () => {
           height: "40px",
         }}
       >
-        <CustomLink href="/welcome">Accueli</CustomLink>
+        <CustomLink href="/home">Accueli</CustomLink>
         <CustomLink href="/rims">Janets</CustomLink>
         <CustomLink href="/accessories">Accessoires</CustomLink>
         <CustomLink href="/blog">Blog</CustomLink>

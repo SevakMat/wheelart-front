@@ -2,11 +2,7 @@ import { useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import {
-  AppDispatch,
-  RootState,
-  useAppSelector,
-} from "../../store";
+import { AppDispatch, RootState, useAppSelector } from "../../store";
 import {
   getCarsEffect,
   getModelsByCarEffect,
@@ -15,7 +11,6 @@ import {
 } from "../../store/effects/car/car.effects";
 import { getWheelsListByCarDateEffect } from "../../store/effects/wheel/wheel.effect";
 import TiresContent from "../shere/tires/TiresContent";
-import WheelsContent from "../shere/wheels/WheelsContent";
 
 import CreateField from "./CreateField";
 
@@ -37,7 +32,6 @@ const SearchPage = () => {
   const fieldTypes = ["Make", "Model", "Year", "Modification"];
 
   useEffect(() => {
-
     if (makeValue) {
       dispatch(getModelsByCarEffect(makeValue));
     }
@@ -109,7 +103,6 @@ const SearchPage = () => {
         case "Model":
         case "Year":
         case "Modification":
-
           searchParams.set(fieldName.toLowerCase(), selectedElement);
           navigate(`${location.pathname}?${searchParams.toString()}`, {
             replace: true,
@@ -122,18 +115,19 @@ const SearchPage = () => {
 
   return (
     <div>
-      {fieldTypes.map((fieldType) => (
-        CarTypeList?.length > 0 && (
-          <CreateField
-            key={fieldType}
-            list={getFieldList(fieldType)}
-            fieldType={fieldType}
-            onSelect={onSelect}
-            value={getFieldValue(fieldType)}
-          />
-        )
-      ))}
-      <WheelsContent wheelList={wheelList} />
+      {fieldTypes.map(
+        (fieldType) =>
+          CarTypeList?.length > 0 && (
+            <CreateField
+              key={fieldType}
+              list={getFieldList(fieldType)}
+              fieldType={fieldType}
+              onSelect={onSelect}
+              value={getFieldValue(fieldType)}
+            />
+          )
+      )}
+
       {tireList?.length > 0 && <TiresContent tiresList={tireList} />}
     </div>
   );
