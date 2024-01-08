@@ -11,7 +11,18 @@ const InfoCustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
 }));
 
-export default function ProductCard({ image, info, price }: any) {
+export default function RimCard({ image, info, price, isPopular }: any) {
+  let width, height;
+
+  if (isPopular) {
+    width = 250;
+    height = 380;
+  } else {
+    width = 210;
+    height = 340;
+  }
+  console.log(width, height);
+
   return (
     <Card
       sx={{
@@ -26,8 +37,8 @@ export default function ProductCard({ image, info, price }: any) {
     >
       <CardActionArea
         sx={{
-          height: 370,
-          width: 250,
+          height: height, //380
+          width: width, //250
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
@@ -40,8 +51,9 @@ export default function ProductCard({ image, info, price }: any) {
           component="img"
           image={image}
           sx={{
-            width: 230,
-            height: 220,
+            // width: 230,
+            // height: 220,
+            objectFit: "cover",
             marginRight: "auto",
             marginLeft: "auto",
             left: 0,
@@ -92,7 +104,12 @@ export default function ProductCard({ image, info, price }: any) {
                 textAlign: "end",
               }}
             >
-              <InfoCustomTypo variant="h5" sx={{ color: "#4CBB17" }}>
+              <InfoCustomTypo
+                sx={{
+                  color: "#4CBB17",
+                  fontSize: price.toString().length === 4 ? "24px" : "22px",
+                }}
+              >
                 {price}
               </InfoCustomTypo>
               <p

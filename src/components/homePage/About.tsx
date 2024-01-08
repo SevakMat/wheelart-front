@@ -55,7 +55,7 @@ const About = () => {
               objectFit: "cover",
               boxShadow:
                 "rgba(255, 255, 255, 0.3) 0px 0px 300px -20px, rgba(255, 255, 255, 0.3) 0px 10px 500px -30px",
-              borderRadius: 20,
+              borderRadius: 10,
             }}
           />
         </Box>
@@ -95,7 +95,7 @@ const About = () => {
               objectFit: "cover",
               boxShadow:
                 "rgba(255, 255, 255, 0.3) 0px 0px 300px -20px, rgba(255, 255, 255, 0.3) 0px 10px 500px -30px",
-              borderRadius: 20,
+              borderRadius: 10,
             }}
           />
         </Box>
@@ -112,7 +112,7 @@ const About = () => {
               objectFit: "cover",
               boxShadow:
                 "rgba(255, 255, 255, 0.3) 0px 0px 300px -20px, rgba(255, 255, 255, 0.3) 0px 10px 500px -30px",
-              borderRadius: 20,
+              borderRadius: 10,
             }}
           />
         </Box>

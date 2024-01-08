@@ -1,16 +1,15 @@
 import { CardMedia } from "@mui/material";
-import { useEffect } from "react"
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from "react-router-dom";
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { getWheelEffect } from "../../store/effects/wheel/wheel.effect";
 import TiresContent from "../shere/tires/TiresContent";
 
-const WheelContainer = () => {
+const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
-
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -20,13 +19,13 @@ const WheelContainer = () => {
   const yearValue = queryParams.get("year");
   const modificationValue = queryParams.get("modification");
 
-
   const { wheel } = useAppSelector((state: RootState) => state.wheel);
   const { tireList } = useAppSelector((state: RootState) => state.tire);
 
-
   useEffect(() => {
-    dispatch(getWheelEffect(id, makeValue, modelValue, yearValue, modificationValue));
+    dispatch(
+      getWheelEffect(id, makeValue, modelValue, yearValue, modificationValue)
+    );
   }, []);
 
   return (
@@ -59,9 +58,8 @@ const WheelContainer = () => {
         />
       </div>
       {tireList?.length > 0 && <TiresContent tiresList={tireList} />}
-
     </div>
-  )
-}
+  );
+};
 
-export default WheelContainer
+export default SingleRim;

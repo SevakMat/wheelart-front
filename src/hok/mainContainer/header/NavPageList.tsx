@@ -24,7 +24,7 @@ const CustomLink = styled(Link)(() => ({
 }));
 
 const RenderPageList = () => {
-  const [t] = useTranslation("global")
+  const [t] = useTranslation("global");
 
   return (
     <Box
