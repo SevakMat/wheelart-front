@@ -16,7 +16,7 @@ const ProtectedPageRoute: ProtectedRoute = {
             element: <div>asd</div>,
         },
         {
-            path: "/search",
+            path: "/rims",
             element: <SearchPage />
         },
         {

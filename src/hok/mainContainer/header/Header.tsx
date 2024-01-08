@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -43,13 +45,13 @@ const styles = {
 };
 
 function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [t, i18n] = useTranslation<"global", undefined>("global");
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+
+  // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -212,6 +214,14 @@ function Header() {
                   <AccountCircleIcon style={{ color: "white" }} />
                 </IconButton>
               </Box>
+              <button onClick={() => {
+                i18n.changeLanguage("fr")
+                localStorage.setItem("ln", "fr")
+              }}>FR</button>
+              <button onClick={() => {
+                localStorage.setItem("ln", "en")
+                i18n.changeLanguage("en")
+              }}>EN</button>
             </Box>
           </Toolbar>
         </Container>

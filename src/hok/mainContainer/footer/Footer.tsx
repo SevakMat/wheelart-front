@@ -3,8 +3,9 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { Facebook, Instagram } from "@mui/icons-material";
 import { Box, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const TikTokIcon = ({ color = "#000000" }) => {
   return (
@@ -43,6 +44,8 @@ const CustomLink = styled(Link)(() => ({
 }));
 
 export default function Footer() {
+  const [t] = useTranslation("global")
+
   return (
     <Box
       component="footer"
@@ -60,54 +63,53 @@ export default function Footer() {
             sx={{ display: "flex", flexDirection: "column" }}
           >
             <Typography variant="h6" color="white" gutterBottom>
-              Raccourcis
+              {t("footer.shortcuts")}
             </Typography>
-            <CustomLink href="/who-are-we">Qui Sommes-Nous?</CustomLink>
-            <CustomLink href="/contact">Contact</CustomLink>
-            <CustomLink href="/warranty">La Garantie</CustomLink>
-            <CustomLink href="/genral-terms-conditions">CVG</CustomLink>
+            <CustomLink href="/who-are-we">{t("footer.whoAreWe")}</CustomLink>
+            <CustomLink href="/contact">{t("footer.contact")}</CustomLink>
+            <CustomLink href="/warranty">{t("footer.underWarranty")}</CustomLink>
+            <CustomLink href="/genral-terms-conditions">{t("footer.CVG")}</CustomLink>
             <CustomLink href="/refund-policy">
-              Politique de remboursement
+              {t("footer.refundPolicy")}
             </CustomLink>
-            <CustomLink href="/legal-notice">Mentions Légales</CustomLink>
+            <CustomLink href="/legal-notice">{t("footer.legalNotice")}</CustomLink>
             <CustomLink href="/terms-of-use">
-              Conditions d'utilisation
+              {t("footer.termsOfUse")}
             </CustomLink>
             <CustomLink href="/privacy-policy">
-              Politique De Confidentialité
+              {t("footer.privacyPolicy")}
             </CustomLink>
           </Grid>
 
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="white" gutterBottom>
-              Horaires / Adresse
+              {t("footer.hoursAddress")}
             </Typography>
             <Typography variant="body1" color="#d3d3d3">
-              Nous sommes à votre disposition du Lundi au Samedi, de 9h30 à 13h
-              / 14h à 18h.
+              {t("footer.hoursInfo")}
             </Typography>
             <Typography
               variant="body1"
               color="#d3d3d3"
               sx={{ marginTop: "25px" }}
             >
-              Nous serons ravis de vous accueillir au showroom :{" "}
+              {t("footer.addressInfo")}
               <CustomLink
                 sx={{ textDecoration: "underline", color: "white" }}
                 target="_blank"
                 href="https://www.google.com/maps/place/WHEEL+ART+(Jantes+et+Pneus)/@48.7501207,2.3216116,11z/data=!4m6!3m5!1s0x47e5dfd96d8cbab9:0x9858f8dcde05b066!8m2!3d48.6479621!4d2.379003!16s%2Fg%2F11mgjgv7v4?entry=ttu"
               >
-                10B Rue Jean Jacques Rousseau, 91350 Grigny
+                {t("footer.addressInfoLink")}
               </CustomLink>
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="white" gutterBottom>
-              Coordonnées
+              {t("footer.contactDetails")}
             </Typography>
             <Typography variant="body1" color="#d3d3d3">
-              N’hésitez pas à nous joindre par téléphone au :
+              {t("footer.contactDetailsInfo")}
             </Typography>
             <Typography variant="body1" color="white">
               06 14 91 25 52

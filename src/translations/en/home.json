@@ -1,0 +1,52 @@
+{
+  "slider": {
+    "headers": {
+      "welcomeToWheelArt": "Welcome to Wheel Art",
+      "alloyWheels": "Alloy wheels",
+      "accessories": "Accessories",
+      "tires": "Tires"
+    },
+    "infos": {
+      "first": "A multitude of aluminum rims, for a multitude of vehicles. Aggression, Stability and Elegance, make these 3 words your motto.",
+      "second": "A multiple choice of rims",
+      "three": "Find all our accessories",
+      "four": "Choose your favorite tire"
+    }
+  },
+  "search": {
+    "make": "Make",
+    "model": "Model",
+    "year": "Year",
+    "modification": "Modification"
+  },
+  "content": {
+    "findYourRim": "Find your rim",
+    "TheLargestAssortmentInFrance": "The largest assortment in France",
+    "highQuality": "High quality",
+    "climateNeutral": "Climate neutral",
+    "recyclableMaterials": "Recyclable materials",
+    "innovativeDesign": "Innovative design",
+    "popularProducts": "Popular products"
+  },
+  "about": {
+    "header": "Who are we",
+    "firstBlog": {
+      "1": "Welcome to WHEELART.FR, where passion for automobiles meets technical expertise! Established in ",
+      "link": "Grigny",
+      "2": " (Essonne) since 2020, our team responds to the growing demand for aluminum rims in Île-de-France. We are committed to providing a personalized, fast and efficient shopping experience, offering a full range of quality tires for different driving styles."
+    },
+    "secondBlog": "With a strong automotive culture and extensive business experience, we provide products and services with the best value for money. Discover different rim sizes (from 17 to 22 inches) and a variety of colors to match your preferences. For specific requests, contact us directly by phone or via the 'contact' section.",
+    "threeBlog": "Visit our showroom for a seamless experience, including assembly services. Purchase products and perform on-site assembly and balancing. To suit all budgets, we offer payment facilities in 3 or 4 installments.  The Wheel Art team looks forward to welcoming you!"
+  },
+  "ourBlog": {
+    "header": "Our Blog"
+  },
+  "buttons": {
+    "research": "Search",
+    "showAll": "Show All",
+    "learnMore": "learn More",
+    "findHere": "Find Here",
+    "clickHere": "Click Here",
+    "discoverHere": "Discover Here"
+  }
+}

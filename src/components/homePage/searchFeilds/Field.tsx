@@ -5,21 +5,30 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { TextField } from "@mui/material";
 
-function Field({ list, fieldType }: any) {
-  const [selected, setSelected] = React.useState("");
+interface FieldProps {
+  list?: any[];
+  fieldType: string;
+  onSelect: (fieldName: string, selectedValue: string) => void;
+  value?: string;
+}
+
+function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
   const [currentList, setCurrentList] = React.useState(list);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setSelected(event.target.value);
-    console.log(event.target.value);
+    onSelect(fieldType, event.target.value as string);
   };
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
   };
 
+  React.useEffect(() => {
+    setCurrentList(list);
+  }, [list]);
+
   const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let filtered = list.filter((listItem: { name: string }) => {
+    const filtered = list?.filter((listItem: { name: string }) => {
       return listItem.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
     setCurrentList(filtered);
@@ -51,7 +60,7 @@ function Field({ list, fieldType }: any) {
         {fieldType}
       </InputLabel>
       <Select
-        value={selected}
+        value={list.some((item) => item.name === value) ? value : ""}
         onChange={handleChange}
         onKeyDown={handleSearchKeyDown}
         inputProps={{ IconComponent: () => null }}
@@ -83,15 +92,16 @@ function Field({ list, fieldType }: any) {
           onChange={searchFilter}
           size="small"
         />
-        {currentList.map((listItem: { name: string }) => (
-          <MenuItem
-            sx={{ display: "flex", justifyContent: "center" }}
-            key={listItem.name}
-            value={listItem.name}
-          >
-            {listItem.name}
-          </MenuItem>
-        ))}
+        {currentList?.length > 0 &&
+          currentList?.map((listItem: { name: string }, index: number) => (
+            <MenuItem
+              sx={{ display: "flex", justifyContent: "center" }}
+              key={index}
+              value={listItem.name}
+            >
+              {listItem.name}
+            </MenuItem>
+          ))}
       </Select>
     </FormControl>
   );
