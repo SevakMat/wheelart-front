@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, Button, List, Typography } from "@mui/material";
 import RimCard from "../../shere/rims/RimCard";
+import { useTranslation } from "react-i18next";
 
 const Products = () => {
   const [rimList, setRimList] = useState([
@@ -93,6 +94,7 @@ const Products = () => {
       price: `€${850.0}`,
     },
   ]);
+  const [t] = useTranslation("home");
 
   return (
     <Box
@@ -100,10 +102,8 @@ const Products = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        // paddingTop: "5%",
         left: 0,
         right: 0,
-        // background: "#848884",
       }}
     >
       <Box
@@ -113,7 +113,6 @@ const Products = () => {
           width: "100%",
         }}
       >
-        {/* Black transparent layer */}
         <div
           style={{
             position: "absolute",
@@ -124,7 +123,6 @@ const Products = () => {
             background: "rgba(0, 0, 0, 1)",
           }}
         />
-
         <Box
           sx={{
             backgroundImage:
@@ -146,11 +144,10 @@ const Products = () => {
             textTransform="uppercase"
             sx={{ color: "white", fontWeight: "bold" }}
           >
-            Produits populaires
+            {t("content.popularProducts")}
           </Typography>
         </Box>
       </Box>
-
       <Box sx={{ margin: "0 100px", paddingTop: 4 }}>
         <List
           sx={{
@@ -158,7 +155,6 @@ const Products = () => {
             flexWrap: "wrap",
             justifyContent: "space-between",
             rowGap: 3,
-
             "@media (max-width: 1090px)": {
               alignItems: "flex-start",
               display: "flex",
@@ -202,7 +198,7 @@ const Products = () => {
             padding: "10px 50px",
           }}
         >
-          Tout afficher
+          {t("buttons.showAll")}
         </Button>
       </Box>
     </Box>

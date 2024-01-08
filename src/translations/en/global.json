@@ -1,5 +1,27 @@
 {
   "header": {
-    "message": "!hi"
+    "welcome": "Welcome",
+    "rims": "Rims",
+    "accessories": "Accessories",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "research": "Research"
+  },
+  "footer": {
+    "shortcuts": "Shortcuts",
+    "whoAreWe": "Who are we?",
+    "contact": "Contact",
+    "underWarranty": "Under warranty",
+    "CVG": "CVG",
+    "refundPolicy": "Refund Policy",
+    "legalNotice": "Legal Notice",
+    "termsOfUse": "Terms of use",
+    "privacyPolicy": "Privacy Policy",
+    "hoursAddress": "Hours / Address",
+    "hoursInfo": "We are at your disposal from Monday to Saturday, from 9:30 a.m. to 1 p.m. / 2 p.m. to 6 p.m.",
+    "addressInfo": "We will be delighted to welcome you to the showroom:",
+    "addressInfoLink": "10B Rue Jean Jacques Rousseau, 91350 Grigny",
+    "contactDetails": "Contact details",
+    "contactDetailsInfo": "Do not hesitate to contact us by telephone at:"
   }
 }

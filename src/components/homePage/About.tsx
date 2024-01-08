@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Link, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import "../../fonts/monsterrat.css";
 // import HomeAbout from "../../images/HomeAbout.jpg";
@@ -19,6 +20,8 @@ const CustomTypo = styled(Typography)(() => ({
 }));
 
 const About = () => {
+  const [t] = useTranslation("home")
+
   return (
     <Box
       sx={{
@@ -37,7 +40,7 @@ const About = () => {
           variant="h2"
           sx={{ fontFamily: "'Montserrat', sans-serif" }}
         >
-          Qui Sommes Nous
+          {t("about.header")}
         </Typography>
       </Box>
 
@@ -59,8 +62,7 @@ const About = () => {
 
         <TypoWrapper>
           <CustomTypo>
-            Bienvenue sur WHEELART.FR, où la passion pour l'automobile rencontre
-            l'expertise technique! Établie à{" "}
+            {t("about.firstBlog.1")}
             <Link
               href="https://www.google.fr/maps/place/WHEEL+ART/@48.6443899,2.3828517,15z/data=!4m5!3m4!1s0x47e5dfd96d8cbab9:0x9858f8dcde05b066!8m2!3d48.6474422!4d2.379192"
               sx={{
@@ -69,13 +71,9 @@ const About = () => {
                 "&:hover": { color: "grey" },
               }}
             >
-              Grigny
-            </Link>{" "}
-            (Essonne) depuis 2020, notre équipe répond à la demande croissante
-            de jantes en aluminium en Île-de-France. Nous nous engageons à
-            offrir une expérience d'achat personnalisée, rapide et efficace,
-            proposant une gamme complète de pneus de qualité pour différents
-            styles de conduite.
+              {t("about.firstBlog.link")}
+            </Link>
+            {t("about.firstBlog.2")}
           </CustomTypo>
         </TypoWrapper>
       </Box>
@@ -83,13 +81,7 @@ const About = () => {
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <TypoWrapper>
           <CustomTypo>
-            Avec une forte culture automobile et une vaste expérience
-            commerciale, nous fournissons des produits et des services avec le
-            meilleur rapport qualité/prix. Découvrez différentes tailles de
-            jantes (de 17 à 22 pouces) et une variété de couleurs pour
-            correspondre à vos préférences. Pour des demandes spécifiques,
-            contactez-nous directement par téléphone ou via la section
-            "contact".
+            {t("about.secondBlog")}
           </CustomTypo>
         </TypoWrapper>
 
@@ -126,12 +118,7 @@ const About = () => {
         </Box>
         <TypoWrapper>
           <CustomTypo>
-            Visitez notre salle d'exposition pour une expérience sans couture, y
-            compris des services d'assemblage. Achetez des produits et effectuez
-            l'assemblage et l'équilibrage sur place. Pour s'adapter à tous les
-            budgets, nous proposons des facilités de paiement en 3 ou 4 fois.
-            <br />
-            L'équipe Wheel Art a hâte de vous accueillir!
+            {t("about.threeBlog")}
           </CustomTypo>
         </TypoWrapper>
       </Box>

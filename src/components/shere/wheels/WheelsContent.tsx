@@ -1,18 +1,14 @@
 import { Box, Button, List } from "@mui/material";
-// import ProductCard from "./ProductCard";
+import { useTranslation } from "react-i18next";
+import { WheelType } from "../../../store/types/wheel/wheel";
+import WheelCard from "./WheelCard";
 
-
-type WheelListType = {
-  image: string,
-  info: string,
-  price: string,
-}
 interface ProductsProps {
-  wheelList: WheelListType[]
+  wheelList: WheelType[]
 }
 
-const Products = ({ wheelList }: ProductsProps) => {
-
+const WheelsContent = ({ wheelList }: ProductsProps) => {
+  const [t] = useTranslation("home")
 
   return (
     <>
@@ -24,7 +20,6 @@ const Products = ({ wheelList }: ProductsProps) => {
             flexWrap: "wrap",
             justifyContent: "space-between",
             rowGap: 3,
-
             "@media (max-width: 1090px)": {
               alignItems: "flex-start",
               display: "flex",
@@ -37,14 +32,12 @@ const Products = ({ wheelList }: ProductsProps) => {
             },
           }}
         >
-          {wheelList?.map((wheel) => {
+          {wheelList?.map((wheel: WheelType, index: number) => {
             return (
               <li>
-                {/* <ProductCard
-                  image={wheel.image}
-                  info={wheel.info}
-                  price={wheel.price}
-                /> */}
+                <WheelCard
+                  wheel={wheel}
+                />
               </li>
             );
           })}
@@ -66,11 +59,11 @@ const Products = ({ wheelList }: ProductsProps) => {
             textTransform: "none",
           }}
         >
-          Tout afficher
+          {t("button.showAll")}
         </Button>
       </Box>
     </>
   );
 };
 
-export default Products;
+export default WheelsContent;

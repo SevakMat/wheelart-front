@@ -9,6 +9,7 @@ export const getFiltersEffect = (selectedFilters: SelectedFilters): any => {
     try {
 
       dispatch(getSelectedFiltersListSuccess(selectedFilters));
+      console.log("selectedFilters", selectedFilters);
 
       const result = await GetAllFilters(selectedFilters);
       const {

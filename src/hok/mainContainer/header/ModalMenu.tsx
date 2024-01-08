@@ -2,7 +2,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -12,6 +11,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Facebook, Instagram } from "@mui/icons-material";
 
 import "../../../fonts/monsterrat.css";
+import { Link } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
@@ -41,31 +42,32 @@ const SnapchatIcon = ({ color = "#000000" }) => {
   );
 };
 
-const pageLinks = [
-  {
-    href: "/welcome",
-    name: "Accueli",
-  },
-  {
-    href: "/rims",
-    name: "Janets",
-  },
-  {
-    href: "/accessories",
-    name: "Accessoires",
-  },
-  {
-    href: "/blog",
-    name: "Blog",
-  },
-  {
-    href: "/faq",
-    name: "FAQ",
-  },
-];
-
 export default function ModalMenu() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [t] = useTranslation("global")
+
+  const pageLinks = [
+    {
+      href: "/welcome",
+      name: t("header.welcome"),
+    },
+    {
+      href: "/rims",
+      name: t("header.rims"),
+    },
+    {
+      href: "/accessories",
+      name: t("header.accessories"),
+    },
+    {
+      href: "/blog",
+      name: t("header.blog"),
+    },
+    {
+      href: "/faq",
+      name: t("header.faq"),
+    },
+  ];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -127,18 +129,20 @@ export default function ModalMenu() {
       </List>
       <List sx={{ paddingLeft: "16px" }}>
         <ListItem sx={{ padding: 0 }}>
-          <IconButton href="https://www.facebook.com/" sx={{ paddingLeft: 0 }}>
+
+          <Link href="https://www.facebook.com/" sx={{ paddingLeft: 0 }}>
             <Facebook style={{ fill: "white" }} />
-          </IconButton>
-          <IconButton href="https://www.instagram.com/">
+          </Link>
+
+          <Link href="https://www.instagram.com/">
             <Instagram style={{ fill: "white" }} />
-          </IconButton>
-          <IconButton href="https://www.twitter.com/">
+          </Link>
+          <Link href="https://www.twitter.com/">
             <TikTokIcon color="white" />
-          </IconButton>
-          <IconButton href="https://www.twitter.com/">
+          </Link>
+          <Link href="https://www.twitter.com/">
             <SnapchatIcon color="white" />
-          </IconButton>
+          </Link>
         </ListItem>
       </List>
     </div>
@@ -146,18 +150,13 @@ export default function ModalMenu() {
 
   return (
     <>
-      {/* Ensure that the onClick is correctly assigned to the IconButton */}
-      <IconButton
+      <Box
         color="inherit"
-        aria-label="open drawer"
-        edge="start"
         onClick={handleDrawerToggle}
-        sx={{ display: { md: "none" }, padding: 0 }}
+        sx={{ display: { md: "none", xs: "flex" }, padding: 0 }}
       >
         <MenuIcon />
-      </IconButton>
-
-      {/* Ensure that the open prop is controlled by the mobileOpen state */}
+      </Box>
       <Drawer
         variant="temporary"
         open={mobileOpen}
@@ -172,12 +171,12 @@ export default function ModalMenu() {
             width: drawerWidth,
             background: "rgba(0, 0, 0, 0.8)",
             overflow: "auto",
-            scrollbarWidth: "none", // Hide the scrollbar for firefox
+            scrollbarWidth: "none",
             "&::-webkit-scrollbar": {
-              display: "none", // Hide the scrollbar for WebKit browsers (Chrome, Safari, Edge, etc.)
+              display: "none",
             },
             "&-ms-overflow-style:": {
-              display: "none", // Hide the scrollbar for IE
+              display: "none",
             },
           },
         }}
