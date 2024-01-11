@@ -4,24 +4,28 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, CardActionArea } from "@mui/material";
 import styled from "@emotion/styled";
+import Tooltip from "@mui/material/Tooltip";
 
 import "../../../fonts/monsterrat.css";
 
-const InfoCustomTypo = styled(Typography)(() => ({
-  fontFamily: "'Montserrat', sans-serif",
-}));
-
 export default function RimCard({ image, info, price, isPopular }: any) {
-  let width, height;
+  let width, height, fontSize: number;
 
   if (isPopular) {
     width = 250;
     height = 380;
+    fontSize = 24;
   } else {
     width = 210;
     height = 340;
+    fontSize = 14;
   }
   console.log(width, height);
+
+  const InfoCustomTypo = styled(Typography)(() => ({
+    fontFamily: "'Montserrat', sans-serif",
+    // fontSize: fontSize,
+  }));
 
   return (
     <Card
@@ -77,7 +81,9 @@ export default function RimCard({ image, info, price, isPopular }: any) {
         >
           {/* name */}
           <Box sx={{ paddingBottom: 1 }}>
-            <InfoCustomTypo sx={{ fontWeight: "bold", fontSize: 18 }}>
+            <InfoCustomTypo
+              sx={{ fontWeight: "bold", fontSize: "18px !important" }}
+            >
               {info.name}
             </InfoCustomTypo>
           </Box>
@@ -93,7 +99,27 @@ export default function RimCard({ image, info, price, isPopular }: any) {
             >
               <InfoCustomTypo>Taille: {info.size}</InfoCustomTypo>
               <InfoCustomTypo>Largeur: {info.width}</InfoCustomTypo>
-              <InfoCustomTypo>Couleur: {info.color}</InfoCustomTypo>
+              <InfoCustomTypo
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                Couleur:
+                {/* color round */}
+                <Tooltip title={info.color} placement="right" arrow>
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      lineHeight: "100px",
+                      borderRadius: "50%",
+                      background: info.color,
+                      marginLeft: 1,
+                    }}
+                  />
+                </Tooltip>
+              </InfoCustomTypo>
             </Box>
 
             <Box
