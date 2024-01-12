@@ -1,16 +1,29 @@
-import { Pagination } from "@mui/material";
 import * as React from "react";
+import { Pagination } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { RootState, useAppSelector } from "../../../store";
 
 function PaginationBlock() {
-  const [page, setPage] = React.useState(1);
+  const { rimsCount, wheelList } = useAppSelector((state: RootState) => state.wheel)
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+  const makeValue = queryParams.get("page") ?? undefined;
+
+
   const handlePageChange = (e: any, value: any) => {
-    console.log(e, value);
-    setPage(value);
+    navigate(`?page=${value}`, {
+      replace: true,
+    });
   };
 
+  const paginationCount = Math.ceil(rimsCount / wheelList.length)
   return (
     <center>
-      <div
+      {wheelList.length > 0 && <div
         style={{
           display: "flex",
           flexDirection: "column-reverse",
@@ -19,11 +32,12 @@ function PaginationBlock() {
         }}
       >
         <Pagination
-          count={20}
+          count={paginationCount}
           onChange={handlePageChange}
           sx={{ color: "black" }}
+          page={makeValue ? +makeValue : 1}
         />
-      </div>
+      </div>}
     </center>
   );
 }

@@ -11,7 +11,17 @@ const InfoCustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
 }));
 
-export default function RimCard({ image, info, price, isPopular }: any) {
+interface RimCardProps {
+  image: string
+  price: string
+  isPopular: boolean
+  rimWidth: number
+  color: string
+  name: string
+  size: string
+}
+
+export default function RimCard({ image, price, isPopular, rimWidth, color, name, size }: RimCardProps) {
   let width, height;
 
   if (isPopular) {
@@ -21,7 +31,6 @@ export default function RimCard({ image, info, price, isPopular }: any) {
     width = 210;
     height = 340;
   }
-  console.log(width, height);
 
   return (
     <Card
@@ -78,7 +87,7 @@ export default function RimCard({ image, info, price, isPopular }: any) {
           {/* name */}
           <Box sx={{ paddingBottom: 1 }}>
             <InfoCustomTypo sx={{ fontWeight: "bold", fontSize: 18 }}>
-              {info.name}
+              {name}
             </InfoCustomTypo>
           </Box>
 
@@ -91,9 +100,9 @@ export default function RimCard({ image, info, price, isPopular }: any) {
                 justifyContent: "flex-end",
               }}
             >
-              <InfoCustomTypo>Taille: {info.size}</InfoCustomTypo>
-              <InfoCustomTypo>Largeur: {info.width}</InfoCustomTypo>
-              <InfoCustomTypo>Couleur: {info.color}</InfoCustomTypo>
+              <InfoCustomTypo>Taille: {size}</InfoCustomTypo>
+              <InfoCustomTypo>Largeur: {rimWidth}</InfoCustomTypo>
+              <InfoCustomTypo>Couleur: {color}</InfoCustomTypo>
             </Box>
 
             <Box

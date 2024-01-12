@@ -167,7 +167,7 @@ const Products = () => {
             },
           }}
         >
-          {rimList.map((rim) => {
+          {/* {rimList.map((rim) => {
             return (
               <li>
                 <RimCard
@@ -178,7 +178,8 @@ const Products = () => {
                 />
               </li>
             );
-          })}
+          })} */}
+          asd
         </List>
       </Box>
       <Box

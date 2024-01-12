@@ -1,7 +1,7 @@
 export enum WheelServerTypes {
   GET_WHEEL_LIST_SUCCESS = "GET_WHEEL_LIST_SUCCESS",
   GET_WHEEL_SUCCESS = "GET_WHEEL_SUCCESS",
-
+  GET_RIMS_COUNT_SUCCESS = "GET_RIMS_COUNT_SUCCESS",
 }
 
 export interface WheelType {
@@ -18,7 +18,7 @@ export interface WheelType {
 export interface WheelState {
   wheelList: WheelType[];
   wheel: WheelType | null;
-
+  rimsCount: number
 }
 
 
@@ -32,6 +32,10 @@ export interface GetWheelSuccess {
   wheel: WheelType;
 }
 
+export interface GetRimsCountSuccess {
+  type: WheelServerTypes.GET_RIMS_COUNT_SUCCESS;
+  rimsCount: number;
+}
 
 
-export type WheelActionTypes = GetWheelListSuccess | GetWheelSuccess;
+export type WheelActionTypes = GetWheelListSuccess | GetWheelSuccess | GetRimsCountSuccess;

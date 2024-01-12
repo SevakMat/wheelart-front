@@ -3,6 +3,11 @@ import { Box, Typography } from "@mui/material";
 import FilterField from "./FilterField";
 
 import "../../fonts/monsterrat.css";
+import { AppDispatch, RootState, useAppSelector } from "../../store";
+import { useDispatch } from "react-redux";
+import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
+import { useEffect, useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const carList = [
   { name: "Bmw", image: "asdasdasdasd" },
@@ -28,7 +33,38 @@ const sizeList = [
   { name: "R18", image: "asdasdasdasd" },
 ];
 
+
+
 const RimFilter = () => {
+
+  const { filters, selectedFilters } = useAppSelector((state: RootState) => state.filter)
+  const dispatch: AppDispatch = useDispatch();
+  const location = useLocation();
+
+  const queryParams = useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+  const pageValue = queryParams.get("page") ?? undefined;
+
+
+  const { sizeR, pcd, centerBore, studHoles } = filters
+
+
+  useEffect(() => {
+    // const sizeRValues = queryParams.getAll('sizeR').map(Number);
+
+    // const test = {
+    //   centerBore: [],
+    //   pcd: [],
+    //   sizeR: sizeRValues,
+    //   studHoles: [],
+    // }
+
+    // dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 1 }))
+    dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
+
+  }, [dispatch])
+
   return (
     <Box
       sx={{
@@ -67,18 +103,18 @@ const RimFilter = () => {
         }}
       >
         {/* Size */}
-        <FilterField list={modelList} fieldType="Taille" />
+        <FilterField list={sizeR} fieldType="Taille" name='sizeR' />
         {/* Center distance */}
-        <FilterField list={typeList} fieldType="Entraxe" />
+        {/* <FilterField list={pcd} fieldType="Entraxe" /> */}
         {/* Bore */}
-        <FilterField list={sizeList} fieldType="Alésage" />
+        {/* <FilterField list={sizeList} fieldType="Alésage" /> */}
         {/* Width */}
-        <FilterField list={sizeList} fieldType="Largeur" />
+        {/* <FilterField list={sizeList} fieldType="Largeur" /> */}
         {/* ET offset */}
-        <FilterField list={sizeList} fieldType="Déport ET" />
+        {/* <FilterField list={sizeList} fieldType="Déport ET" /> */}
         {/* Color */}
-        <FilterField list={sizeList} fieldType="Couleur" />
-        <FilterField list={sizeList} fieldType="Style" />
+        {/* <FilterField list={sizeList} fieldType="Couleur" /> */}
+        {/* <FilterField list={sizeList} fieldType="Style" /> */}
       </Box>
     </Box>
   );

@@ -3,7 +3,8 @@ import { GetWheelListSuccess, WheelActionTypes, WheelServerTypes, WheelState } f
 
 const initialState: WheelState = {
   wheelList: [],
-  wheel: null
+  wheel: null,
+  rimsCount: 0
 
 }
 
@@ -23,6 +24,11 @@ const reducer: ReducerType = (state = initialState, action: WheelActionTypes) =>
         ...state,
         wheel: action.wheel,
       };
+
+    case WheelServerTypes.GET_RIMS_COUNT_SUCCESS: return {
+      ...state,
+      rimsCount: action.rimsCount,
+    };
 
     // case AuthTypes.LOGOUT_REQUEST_SUCCESS:
     //   return {
