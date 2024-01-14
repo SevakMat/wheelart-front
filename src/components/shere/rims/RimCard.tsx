@@ -19,9 +19,10 @@ interface RimCardProps {
   color: string
   name: string
   size: string
+  rimId: string
 }
 
-export default function RimCard({ image, price, isPopular, rimWidth, color, name, size }: RimCardProps) {
+export default function RimCard({ image, price, isPopular, rimWidth, color, name, size, rimId }: RimCardProps) {
   let width, height;
 
   if (isPopular) {
@@ -100,6 +101,9 @@ export default function RimCard({ image, price, isPopular, rimWidth, color, name
                 justifyContent: "flex-end",
               }}
             >
+
+              <InfoCustomTypo>rimId: {rimId}</InfoCustomTypo>
+
               <InfoCustomTypo>Taille: {size}</InfoCustomTypo>
               <InfoCustomTypo>Largeur: {rimWidth}</InfoCustomTypo>
               <InfoCustomTypo>Couleur: {color}</InfoCustomTypo>

@@ -15,12 +15,15 @@ function PaginationBlock() {
 
 
   const handlePageChange = (e: any, value: any) => {
-    navigate(`?page=${value}`, {
-      replace: true,
-    });
+
+    queryParams.set('page', value);
+
+    navigate(`?${queryParams.toString()}`);
+
   };
 
-  const paginationCount = Math.ceil(rimsCount / wheelList.length)
+  const paginationCount = Math.ceil(rimsCount / 12)
+
   return (
     <center>
       {wheelList.length > 0 && <div

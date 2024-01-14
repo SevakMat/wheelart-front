@@ -51,19 +51,19 @@ const RimFilter = () => {
 
 
   useEffect(() => {
-    // const sizeRValues = queryParams.getAll('sizeR').map(Number);
+    const sizeRValues = queryParams.getAll('sizeR').map(Number);
 
-    // const test = {
-    //   centerBore: [],
-    //   pcd: [],
-    //   sizeR: sizeRValues,
-    //   studHoles: [],
-    // }
+    const test = {
+      centerBore: [],
+      pcd: [],
+      sizeR: sizeRValues,
+      studHoles: [],
+    }
 
-    // dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 1 }))
-    dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
+    dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 0 }))
+    // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
 
-  }, [dispatch])
+  }, [dispatch, queryParams, pageValue])
 
   return (
     <Box

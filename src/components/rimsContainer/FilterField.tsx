@@ -3,14 +3,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Box, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { useDispatch } from "react-redux";
-import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface FilterFieldProp {
@@ -21,53 +18,51 @@ interface FilterFieldProp {
 }
 
 function FilterField({ list, fieldType, name }: FilterFieldProp) {
-  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
   const [selected, setSelected] = React.useState<string[]>([]);
   const [currentList, setCurrentList] = React.useState(list);
 
-  const { selectedFilters } = useAppSelector((state: RootState) => state.filter)
+  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+
 
   React.useEffect(() => {
     setCurrentList(list)
   }, [list])
 
+  React.useEffect(() => {
+    const sizeRValues: any = queryParams.getAll(name).map(Number);
+
+    setSelected(
+      // On autofill we get a stringified value.
+      typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
+    );
+  }, [queryParams])
+
   const handleChange = (event: SelectChangeEvent<typeof selected>) => {
     const pathname = location.pathname;
-    console.log(777, event.target.value);
 
     const queryString = (event.target.value as string[]).map((size: any) => `sizeR=${size}`).join('&');
-
 
     navigate(`?${queryString}`, {
       replace: true,
     });
 
-
-    const newData = {
-      ...selectedFilters,
-      [name]: event.target.value,
-      pagination: 0
-    }
-
-
-    // ashxatox
-    dispatch(getFiltersEffect(newData))
-
     const {
       target: { value },
     } = event;
-    setSelected(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+
   };
+
+
+
+
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
-
   };
 
   const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -144,7 +139,7 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
           >
             <Checkbox checked={selected.indexOf(listItem[name]) > -1} />
             <ListItemText primary={listItem.name} />
-            {listItem[name]}
+            {listItem[name]},{listItem.count}
           </MenuItem>
         ))}
       </Select>

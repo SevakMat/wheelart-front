@@ -27,7 +27,8 @@ const RimsList = () => {
                   rimWidth={100}
                   color="Grey"
                   name={rim.rimModel}
-                  size={rim.id}
+                  size={rim.sizeR}
+                  rimId={rim.id}
 
                 />
               </li>
