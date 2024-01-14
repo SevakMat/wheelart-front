@@ -9,7 +9,7 @@ export const getWheelsListByCarDateService = async (make: string, model: string,
 }
 
 
-export const getWheelDataService = async (id?: string, make?: string | null, model?: string | null, year?: string | null, modification?: string | null): Promise<any> => {
+export const getSingleRimService = async (id?: string, make?: string | null, model?: string | null, year?: string | null, modification?: string | null): Promise<any> => {
   const url = `api/rims/${id}`
 
   return axios.post(url, { make, model, year, modification })

@@ -1,6 +1,6 @@
 import { log } from "console";
 import { AppDispatch } from "../..";
-import { getWheelDataService, getWheelsListByCarDateService } from "../../../services/wheel.service";
+import { getSingleRimService, getWheelsListByCarDateService } from "../../../services/wheel.service";
 import { getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
 import { getWheelAction, getWheelsListByCarDateAction } from "../../actions/wheel/wheel.actions";
 
@@ -38,18 +38,10 @@ export const getWheelEffect = (id?: string, makeValue?: string | null, modelValu
   return async (dispatch: AppDispatch) => {
     try {
 
-
-      // dispatch(setLoadingEffect(true));
-      // Get user
+      const result = await getSingleRimService(id, makeValue, modelValue, yearValue, modificationValue);
 
 
-      const result = await getWheelDataService(id, makeValue, modelValue, yearValue, modificationValue);
-      const {
-        data: {
-          wheel,
-          tires
-        }
-      } = result;
+      const { data: { wheel, tires } } = result;
 
       dispatch(getWheelAction(wheel));
       dispatch(getTiresListByCarDateAction(tires));
