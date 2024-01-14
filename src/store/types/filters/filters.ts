@@ -1,14 +1,12 @@
 export enum FilterServerTypes {
   GET_FILTER_LIST_SUCCESS = "GET_FILTER_LIST_SUCCESS",
   GET_SELECTED_FILTER_LIST_SUCCESS = "GET_SELECTED_FILTER_LIST_SUCCESS",
-
-
 }
-
+export type FilterName = "sizeR" | "pcd" | "centerBore" | "studHoles"
 
 export interface FilterType {
   count: number,
-  filterName: string
+  filterName: FilterName
 }
 
 export interface Filters {
@@ -22,6 +20,7 @@ export interface SelectedFilters {
   pcd: number[],
   studHoles: number[],
   centerBore: number[],
+  pagination?: number
 }
 
 

@@ -8,14 +8,14 @@ import { PersistConfig } from "redux-persist/es/types";
 
 import authReducer from "./reducers/auth/auth";
 import carReducer from "./reducers/car/car";
-import wheelReducer from "./reducers/wheel/wheel";
+import rimReducer from "./reducers/rim/rim";
 import filterReducer from "./reducers/filter/filter";
 import tireReducer from "./reducers/tire/tire";
 
 const rootReducer = combineReducers({
     auth: authReducer,
     car: carReducer,
-    wheel: wheelReducer,
+    rim: rimReducer,
     filter: filterReducer,
     tire: tireReducer,
 

@@ -20,12 +20,13 @@ const SearchModule = () => {
   const queryParams = useMemo(() => new URLSearchParams(location.search), [
     location.search,
   ]);
-  const [t] = useTranslation("home");
 
   const makeValue = queryParams.get("make") ?? undefined;
   const modelValue = queryParams.get("model") ?? undefined;
   const yearValue = queryParams.get("year") ?? undefined;
   const modificationValue = queryParams.get("modification") ?? undefined;
+
+  const [t] = useTranslation("home");
 
   useEffect(() => {
     dispatch(getCarsEffect());
@@ -66,7 +67,6 @@ const SearchModule = () => {
     height: 25,
     margin: "auto 0",
   });
-  console.log(222);
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>

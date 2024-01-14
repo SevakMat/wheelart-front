@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 
 import Carousel from "./carousel/Carousel";
 import ShortInfo from "./ShortInfo";
-import Products from "./products/Products";
+import PopularProducts from "./PopularProducts/PopularProducts";
 import About from "./About";
 import BlogsHome from "./blogs/BlogsHome";
 
@@ -22,7 +22,7 @@ const HomePage = () => {
       <Box>
         <Carousel />
         <ShortInfo />
-        <Products />
+        <PopularProducts />
         <About />
         <BlogsHome />
       </Box>

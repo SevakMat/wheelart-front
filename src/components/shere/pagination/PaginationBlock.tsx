@@ -1,16 +1,32 @@
-import { Pagination } from "@mui/material";
 import * as React from "react";
+import { Pagination } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { RootState, useAppSelector } from "../../../store";
 
 function PaginationBlock() {
-  const [page, setPage] = React.useState(1);
+  const { rimsCount, rimList } = useAppSelector((state: RootState) => state.rim)
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+  const makeValue = queryParams.get("page") ?? undefined;
+
+
   const handlePageChange = (e: any, value: any) => {
-    console.log(e, value);
-    setPage(value);
+
+    queryParams.set('page', value);
+
+    navigate(`?${queryParams.toString()}`);
+
   };
+
+  const paginationCount = Math.ceil(rimsCount / 12)
 
   return (
     <center>
-      <div
+      {rimList.length > 0 && <div
         style={{
           display: "flex",
           flexDirection: "column-reverse",
@@ -19,11 +35,12 @@ function PaginationBlock() {
         }}
       >
         <Pagination
-          count={20}
+          count={paginationCount}
           onChange={handlePageChange}
           sx={{ color: "black" }}
+          page={makeValue ? +makeValue : 1}
         />
-      </div>
+      </div>}
     </center>
   );
 }

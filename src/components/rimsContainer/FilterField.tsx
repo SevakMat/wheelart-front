@@ -3,32 +3,70 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Box, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function FilterField({ list, fieldType }: any) {
+interface FilterFieldProp {
+  list: any
+  fieldType: any
+  name: 'sizeR' | 'pcd' | 'studHoles' | 'centerBore'
+
+}
+
+function FilterField({ list, fieldType, name }: FilterFieldProp) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [selected, setSelected] = React.useState<string[]>([]);
   const [currentList, setCurrentList] = React.useState(list);
 
+  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+
+
+  React.useEffect(() => {
+    setCurrentList(list)
+  }, [list])
+
+  React.useEffect(() => {
+    const sizeRValues: any = queryParams.getAll(name).map(Number);
+
+    setSelected(
+      // On autofill we get a stringified value.
+      typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
+    );
+  }, [queryParams])
+
   const handleChange = (event: SelectChangeEvent<typeof selected>) => {
+    const pathname = location.pathname;
+
+    const queryString = (event.target.value as string[]).map((size: any) => `sizeR=${size}`).join('&');
+
+    navigate(`?${queryString}`, {
+      replace: true,
+    });
+
     const {
       target: { value },
     } = event;
-    setSelected(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+
   };
+
+
+
+
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
   };
 
   const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let filtered = list.filter((listItem: { name: string }) => {
+    let filtered = list.filter((listItem: any) => {
       return listItem.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
     setCurrentList(filtered);
@@ -93,15 +131,15 @@ function FilterField({ list, fieldType }: any) {
           onChange={searchFilter}
           size="small"
         />
-        {currentList.map((listItem: { name: string }) => (
+        {currentList?.length && currentList.map((listItem: any, index: number) => (
           <MenuItem
             sx={{ display: "flex", justifyContent: "center" }}
-            key={listItem.name}
-            value={listItem.name}
+            key={index}
+            value={listItem[name]}
           >
-            <Checkbox checked={selected.indexOf(listItem.name) > -1} />
-            {/* <ListItemText primary={listItem.name} /> */}
-            {listItem.name}
+            <Checkbox checked={selected.indexOf(listItem[name]) > -1} />
+            <ListItemText primary={listItem.name} />
+            {listItem[name]},{listItem.count}
           </MenuItem>
         ))}
       </Select>
