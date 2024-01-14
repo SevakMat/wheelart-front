@@ -1,10 +1,10 @@
-import SingleRimPage from "../components/rimsContainer/SingleRimPage";
+import SingleRimContainer from "../components/rimsContainer/SingleRimContainer";
 import MainContainer from "../hok/mainContainer/MainContainer";
 
 const RimPage = (): JSX.Element => {
   return (
     <MainContainer>
-      <SingleRimPage />
+      <SingleRimContainer />
     </MainContainer>
   );
 };

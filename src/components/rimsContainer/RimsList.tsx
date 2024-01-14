@@ -5,7 +5,7 @@ import { RootState, useAppSelector } from "../../store";
 
 const RimsList = () => {
 
-  const { wheelList } = useAppSelector((state: RootState) => state.wheel)
+  const { rimList } = useAppSelector((state: RootState) => state.rim)
 
   return (
     <Box>
@@ -17,7 +17,7 @@ const RimsList = () => {
             gap: 3,
           }}
         >
-          {wheelList.map((rim) => {
+          {rimList.map((rim: any) => {
             return (
               <li>
                 <RimCard
@@ -29,7 +29,6 @@ const RimsList = () => {
                   name={rim.rimModel}
                   size={rim.sizeR}
                   rimId={rim.id}
-
                 />
               </li>
             );

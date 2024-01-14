@@ -1,31 +1,31 @@
 import { Reducer } from "redux";
-import { GetWheelListSuccess, WheelActionTypes, WheelServerTypes, WheelState } from "../../types/wheel/wheel";
+import { RimActionTypes, RimServerTypes, RimState } from "../../types/rim/rim";
 
-const initialState: WheelState = {
-  wheelList: [],
-  wheel: null,
+const initialState: RimState = {
+  rimList: [],
+  rim: null,
   rimsCount: 0
 
 }
 
-type ReducerType = Reducer<WheelState, WheelActionTypes>
+type ReducerType = Reducer<RimState, RimActionTypes>
 
 
-const reducer: ReducerType = (state = initialState, action: WheelActionTypes) => {
+const reducer: ReducerType = (state = initialState, action: RimActionTypes) => {
 
   switch (action.type) {
-    case WheelServerTypes.GET_WHEEL_LIST_SUCCESS:
+    case RimServerTypes.GET_RIM_LIST_SUCCESS:
       return {
         ...state,
-        wheelList: action.wheelList,
+        rimList: action.rimList,
       };
-    case WheelServerTypes.GET_WHEEL_SUCCESS:
+    case RimServerTypes.GET_RIM_SUCCESS:
       return {
         ...state,
-        wheel: action.wheel,
+        rim: action.rim,
       };
 
-    case WheelServerTypes.GET_RIMS_COUNT_SUCCESS: return {
+    case RimServerTypes.GET_RIMS_COUNT_SUCCESS: return {
       ...state,
       rimsCount: action.rimsCount,
     };

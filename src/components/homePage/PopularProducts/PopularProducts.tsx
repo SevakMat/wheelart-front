@@ -2,96 +2,89 @@ import { useState } from "react";
 import { Box, Button, List, Typography } from "@mui/material";
 import RimCard from "../../shere/rims/RimCard";
 import { useTranslation } from "react-i18next";
+import Link from '@mui/material/Link';
 
-const Products = () => {
+const PopularProducts = () => {
   const [rimList, setRimList] = useState([
     {
-      image:
+      imageUrl:
         "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "1"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY989-01_02.jpg?v=1680618516&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "2"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY768-01BG.jpg?v=1689760271&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "1"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY989-01_02_8c93b44c-8593-4daf-8f01-e4b1d2d60e82.jpg?v=1680616563&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "2"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/ARC19141-5354.jpg?v=1702657110&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "1"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/files/XFE6919_c0937298-746c-413a-8ad6-eb7add7de43f.jpg?v=1697017120&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "2"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/Rubin_59407_08_52fd6a7a-e5fb-43f1-97b4-2eaabf74e7fa.jpg?v=1680618592&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "1"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY1417-01.jpg?v=1692454085&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
       price: `€${850.0}`,
+      id: "2"
     },
   ]);
   const [t] = useTranslation("home");
@@ -167,19 +160,22 @@ const Products = () => {
             },
           }}
         >
-          {/* {rimList.map((rim) => {
+          {rimList.map((rim) => {
             return (
               <li>
                 <RimCard
-                  image={rim.image}
-                  info={rim.info}
+                  isPopular={false}
+                  image={rim.imageUrl}
                   price={rim.price}
-                  isPopular={true}
+                  rimWidth={100}
+                  color="Grey"
+                  name={rim.rimModel}
+                  size={rim.sizeR}
+                  rimId={rim.id}
                 />
               </li>
             );
-          })} */}
-          asd
+          })}
         </List>
       </Box>
       <Box
@@ -187,9 +183,7 @@ const Products = () => {
           margin: "50px",
         }}
       >
-        <Button
-          size="large"
-          variant="contained"
+        <Link
           sx={{
             backgroundColor: "#00A70D",
             "&:hover": { background: "#00DE11", boxShadow: "none" },
@@ -198,12 +192,13 @@ const Products = () => {
             boxShadow: "none",
             padding: "10px 50px",
           }}
+          href="/rims"
         >
           {t("buttons.showAll")}
-        </Button>
+        </Link>
       </Box>
     </Box>
   );
 };
 
-export default Products;
+export default PopularProducts;

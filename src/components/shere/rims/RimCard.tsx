@@ -7,13 +7,29 @@ import styled from "@emotion/styled";
 import Tooltip from "@mui/material/Tooltip";
 
 import "../../../fonts/monsterrat.css";
+import { useNavigate } from "react-router-dom";
 
 const InfoCustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
   // fontSize: fontSize,
 }));
 
-export default function RimCard({ image, info, price, isPopular }: any) {
+interface RimCardProps {
+  isPopular: boolean;
+  image: string;
+  price: string
+  rimWidth: number
+  color: string;
+  name: string
+  size: string;
+  rimId: string;
+}
+
+export default function RimCard({ isPopular, image, price, rimWidth, color, name, size, rimId }: RimCardProps) {
+
+  const navigate = useNavigate();
+
+
   let width, height, fontSize: number;
 
   if (isPopular) {
@@ -26,8 +42,6 @@ export default function RimCard({ image, info, price, isPopular }: any) {
     fontSize = 14;
   }
 
-
-
   return (
     <Card
       sx={{
@@ -39,6 +53,7 @@ export default function RimCard({ image, info, price, isPopular }: any) {
             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
         },
       }}
+      onClick={() => { navigate(`${rimId}`) }}
     >
       <CardActionArea
         sx={{
@@ -85,7 +100,7 @@ export default function RimCard({ image, info, price, isPopular }: any) {
             <InfoCustomTypo
               sx={{ fontWeight: "bold", fontSize: "18px !important" }}
             >
-              {info.name}
+              {name}
             </InfoCustomTypo>
           </Box>
 
@@ -98,8 +113,8 @@ export default function RimCard({ image, info, price, isPopular }: any) {
                 justifyContent: "flex-end",
               }}
             >
-              <InfoCustomTypo>Taille: {info.size}</InfoCustomTypo>
-              <InfoCustomTypo>Largeur: {info.width}</InfoCustomTypo>
+              <InfoCustomTypo>Taille: {size}</InfoCustomTypo>
+              <InfoCustomTypo>Largeur: {rimWidth}</InfoCustomTypo>
               <InfoCustomTypo
                 sx={{
                   display: "flex",
@@ -108,14 +123,14 @@ export default function RimCard({ image, info, price, isPopular }: any) {
               >
                 Couleur:
                 {/* color round */}
-                <Tooltip title={info.color} placement="right" arrow>
+                <Tooltip title={color} placement="right" arrow>
                   <Box
                     sx={{
                       width: "20px",
                       height: "20px",
                       lineHeight: "100px",
                       borderRadius: "50%",
-                      background: info.color,
+                      background: color,
                       marginLeft: 1,
                     }}
                   />
@@ -137,7 +152,7 @@ export default function RimCard({ image, info, price, isPopular }: any) {
                   fontSize: price.toString().length === 4 ? "24px" : "22px",
                 }}
               >
-                {price}
+                €{price}
               </InfoCustomTypo>
               <p
                 style={{

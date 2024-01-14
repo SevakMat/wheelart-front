@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { RootState, useAppSelector } from "../../../store";
 
 function PaginationBlock() {
-  const { rimsCount, wheelList } = useAppSelector((state: RootState) => state.wheel)
+  const { rimsCount, rimList } = useAppSelector((state: RootState) => state.rim)
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,7 +26,7 @@ function PaginationBlock() {
 
   return (
     <center>
-      {wheelList.length > 0 && <div
+      {rimList.length > 0 && <div
         style={{
           display: "flex",
           flexDirection: "column-reverse",

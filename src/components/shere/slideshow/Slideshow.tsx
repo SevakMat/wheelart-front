@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { useState } from "react";
 
 interface SlideshowProps {
-  images: string[];
+  images: (string | undefined)[];
 }
 
 const Slideshow = ({ images }: SlideshowProps) => {

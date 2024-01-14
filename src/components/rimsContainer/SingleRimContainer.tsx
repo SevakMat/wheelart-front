@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { getWheelEffect } from "../../store/effects/wheel/wheel.effect";
+import { getRimEffect } from "../../store/effects/rim/rim.effect";
 
 import {
   Box,
@@ -25,6 +25,7 @@ import QuantityInput from "../shere/quantityInput/QuantityInput";
 import RimCard from "../shere/rims/RimCard";
 import Slideshow from "../shere/slideshow/Slideshow";
 const SingleRim = () => {
+
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
 
@@ -36,12 +37,12 @@ const SingleRim = () => {
   const yearValue = queryParams.get("year");
   const modificationValue = queryParams.get("modification");
 
-  const { wheel } = useAppSelector((state: RootState) => state.wheel);
+  const { rim } = useAppSelector((state: RootState) => state.rim);
   const { tireList } = useAppSelector((state: RootState) => state.tire);
 
   useEffect(() => {
     dispatch(
-      getWheelEffect(id, makeValue, modelValue, yearValue, modificationValue)
+      getRimEffect(id, makeValue, modelValue, yearValue, modificationValue)
     );
   }, []);
 
@@ -49,67 +50,30 @@ const SingleRim = () => {
 
   const suggestions = [
     {
-      image:
+      imageUrl:
         "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
-      price: `€${850.0}`,
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
+      price: `${850.0}`,
+      id: "1"
     },
     {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY989-01_02.jpg?v=1680618516&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
-      price: `€${850.0}`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY768-01BG.jpg?v=1689760271&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
-      price: `€${850.0}`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/products/DY989-01_02_8c93b44c-8593-4daf-8f01-e4b1d2d60e82.jpg?v=1680616563&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Grey",
-      },
-      price: `€${850.0}`,
-    },
-    {
-      image:
-        "https://wheelart.fr/cdn/shop/products/ARC19141-5354.jpg?v=1702657110&width=990",
-      info: {
-        name: "DY1417-01",
-        size: '17"',
-        width: 255,
-        color: "Black",
-      },
-      price: `€${850.0}`,
+      imageUrl:
+        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
+      rimModel: "DY1417-01",
+      sizeR: '17"',
+      width: 255,
+      color: "Grey",
+      price: `${850.0}`,
+      id: "2"
     },
   ];
 
-  const images = [
-    "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-    "https://wheelart.fr/cdn/shop/products/ARC19141-5354.jpg?v=1702657110&width=990",
-    "https://wheelart.fr/cdn/shop/products/DY768-01BG.jpg?v=1689760271&width=990",
-  ];
+  const images = [rim?.imageUrl, rim?.imageUrl, rim?.imageUrl, rim?.imageUrl]
+  console.log(rim);
+
 
   return (
     <Box sx={{ margin: "30px 20px" }}>
@@ -118,7 +82,7 @@ const SingleRim = () => {
           <Slideshow images={images} />
           <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
             <Typography variant="h4">
-              Set of 4 18″ DY768-01 Aluminum Rims
+              Set of 4 {rim?.sizeR}″ {rim?.rimModel} Aluminum Rims
             </Typography>
             <Box>
               <Typography sx={{ fontSize: 12, color: "#C0C0C0" }}>
@@ -133,7 +97,7 @@ const SingleRim = () => {
               />
             </Box>
             <Typography variant="h5" component="p">
-              €850
+              €{rim?.price}
             </Typography>
             <Typography sx={{ maxWidth: 500 }}>
               Before each purchase, we advise you to check the parameters of
@@ -186,23 +150,23 @@ const SingleRim = () => {
               </TableHead>
               <TableRow>
                 <TableCell variant="head">Model</TableCell>
-                <TableCell>DY768-01</TableCell>
+                <TableCell>{rim?.rimModel}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Size</TableCell>
-                <TableCell>18"</TableCell>
+                <TableCell>{rim?.sizeR}"</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Center distance</TableCell>
-                <TableCell>5x120</TableCell>
+                <TableCell>{rim?.studHoles}x{rim?.pcd}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Width</TableCell>
-                <TableCell> 8.0J</TableCell>
+                <TableCell> {rim?.width}J</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Bore</TableCell>
-                <TableCell>65.1</TableCell>
+                <TableCell>{rim?.centerBore}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">ET offset</TableCell>
@@ -210,7 +174,7 @@ const SingleRim = () => {
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Color</TableCell>
-                <TableCell>Glossy Black Polished Face</TableCell>
+                <TableCell>{rim?.color}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">EAN</TableCell>
@@ -218,12 +182,12 @@ const SingleRim = () => {
               </TableRow>
               <TableRow>
                 <TableCell variant="head">GRAM(4)</TableCell>
-                <TableCell>50000</TableCell>
+                <TableCell>{rim?.gram}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">The pack includes</TableCell>
                 <TableCell>
-                  4x RIMS DY768-01 4 X LOGOS 4 X VALVES TR413
+                  4x RIMS {rim?.rimModel} <br />4x LOGOS <br />4x VALVES TR413
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -258,9 +222,13 @@ const SingleRim = () => {
                   <li>
                     <RimCard
                       isPopular={false}
-                      image={rim.image}
-                      info={rim.info}
+                      image={rim.imageUrl}
                       price={rim.price}
+                      rimWidth={100}
+                      color="Grey"
+                      name={rim.rimModel}
+                      size={rim.sizeR}
+                      rimId={rim.id}
                     />
                   </li>
                 );
