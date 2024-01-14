@@ -43,8 +43,8 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
   }, [queryParams])
 
   const handleChange = (event: SelectChangeEvent<typeof selected>) => {
-    const pathname = location.pathname;
 
+    const pathname = location.pathname;
     const queryString = (event.target.value as string[]).map((size: any) => `sizeR=${size}`).join('&');
 
     navigate(`?${queryString}`, {
@@ -56,10 +56,6 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
     } = event;
 
   };
-
-
-
-
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();

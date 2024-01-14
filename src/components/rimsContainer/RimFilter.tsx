@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
 import { useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getWheelsListByCarDateEffect } from "../../store/effects/rim/rim.effect";
 
 const carList = [
   { name: "Bmw", image: "asdasdasdasd" },
@@ -33,8 +34,6 @@ const sizeList = [
   { name: "R18", image: "asdasdasdasd" },
 ];
 
-
-
 const RimFilter = () => {
 
   const { filters, selectedFilters } = useAppSelector((state: RootState) => state.filter)
@@ -46,21 +45,33 @@ const RimFilter = () => {
   ]);
   const pageValue = queryParams.get("page") ?? undefined;
 
-
   const { sizeR, pcd, centerBore, studHoles } = filters
+  const makeValue = queryParams.get("make");
+  const modelValue = queryParams.get("model");
+  const yearValue = queryParams.get("year");
+  const modificationValue = queryParams.get("modification");
 
 
   useEffect(() => {
-    const sizeRValues = queryParams.getAll('sizeR').map(Number);
+    if (false) {
+      // const sizeRValues = queryParams.getAll('sizeR').map(Number);
+      // console.log(55555, sizeRValues);
 
-    const test = {
-      centerBore: [],
-      pcd: [],
-      sizeR: sizeRValues,
-      studHoles: [],
+      // const test = {
+      //   centerBore: [],
+      //   pcd: [],
+      //   sizeR: sizeRValues,
+      //   studHoles: [],
+      // }
+
+      // dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 0 }))
+    } else {
+
+      console.log("mtav");
+
+      dispatch(getWheelsListByCarDateEffect(makeValue, modelValue, yearValue, modificationValue))
     }
 
-    dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 0 }))
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
 
   }, [dispatch, queryParams, pageValue])

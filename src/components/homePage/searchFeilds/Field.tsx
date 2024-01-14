@@ -60,7 +60,7 @@ function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
         {fieldType}
       </InputLabel>
       <Select
-        value={list.some((item) => item.name === value) ? value : ""}
+        value={list.some((item) => item.slug === value) ? value : ""}
         onChange={handleChange}
         onKeyDown={handleSearchKeyDown}
         inputProps={{ IconComponent: () => null }}
@@ -93,11 +93,11 @@ function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
           size="small"
         />
         {currentList?.length > 0 &&
-          currentList?.map((listItem: { name: string }, index: number) => (
+          currentList?.map((listItem: { name: string, slug: string }, index: number) => (
             <MenuItem
               sx={{ display: "flex", justifyContent: "center" }}
               key={index}
-              value={listItem.name}
+              value={listItem.slug}
             >
               {listItem.name}
             </MenuItem>

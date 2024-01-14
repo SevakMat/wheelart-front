@@ -4,34 +4,25 @@ import { getSingleRimService, getRimsListByCarDateService } from "../../../servi
 import { getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
 import { getRimAction, getRimsListByCarDateAction } from "../../actions/rim/rim";
 
-// export const getWheelsListByCarDateEffect = (make: string, model: string, year: string, modification: string): any => {
-//   return async (dispatch: AppDispatch) => {
-//     try {
-//       // dispatch(setLoadingEffect(true));
-//       // Get user
+export const getWheelsListByCarDateEffect = (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): any => {
+  return async (dispatch: AppDispatch) => {
+    try {
+
+      const result = await getRimsListByCarDateService(make, model, year, modification);
+      const {
+        data: { data: { rims, tires } }
+      } = result;
 
 
-//       const result = await getRimsListByCarDateService(make, model, year, modification);
-//       const {
-//         data: { data: { rims, tires } }
-//       } = result;
+      dispatch(getRimsListByCarDateAction(rims));
+      dispatch(getTiresListByCarDateAction(tires));
 
-
-//       dispatch(getRimsListByCarDateAction(rims));
-//       // dispatch(getTiresListByCarDateAction(tires));
-
-
-//       // dispatch(setLoadingEffect(false));
-//     } catch (error: any) {
-//       // dispatch(setLoadingEffect(false));
-//       // toast.error("Logined faild");
-//       console.log(error);
-
-//     } finally {
-//       // dispatch(setLoadingEffect(false));
-//     }
-//   };
-// };
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+    }
+  };
+};
 
 
 export const getRimEffect = (id?: string, makeValue?: string | null, modelValue?: string | null, yearValue?: string | null, modificationValue?: string | null): any => {
@@ -46,8 +37,6 @@ export const getRimEffect = (id?: string, makeValue?: string | null, modelValue?
       dispatch(getRimAction(singleRim));
       dispatch(getTiresListByCarDateAction(tires));
 
-
-      // dispatch(setLoadingEffect(false));
     } catch (error: any) {
       // dispatch(setLoadingEffect(false));
       // toast.error("Logined faild");

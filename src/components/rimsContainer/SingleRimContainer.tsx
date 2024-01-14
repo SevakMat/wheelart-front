@@ -72,7 +72,6 @@ const SingleRim = () => {
   ];
 
   const images = [rim?.imageUrl, rim?.imageUrl, rim?.imageUrl, rim?.imageUrl]
-  console.log(rim);
 
 
   return (
