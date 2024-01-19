@@ -1,92 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Button, List, Typography } from "@mui/material";
 import RimCard from "../../shere/rims/RimCard";
 import { useTranslation } from "react-i18next";
 import Link from "@mui/material/Link";
+import { useDispatch } from "react-redux";
+import { AppDispatch, RootState, useAppSelector } from "../../../store";
+import { getPopularRimsEffect } from "../../../store/effects/rim/rim.effect";
 
 const PopularProducts = () => {
-  const [rimList, setRimList] = useState([
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "1",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "2",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "1",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "2",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "1",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "2",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "1",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "2",
-    },
-  ]);
+  const dispatch: AppDispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPopularRimsEffect());
+  }, []);
+
+  const { popularRims } = useAppSelector((state: RootState) => state.rim);
+
   const [t] = useTranslation("home");
 
   return (
@@ -161,13 +90,13 @@ const PopularProducts = () => {
             },
           }}
         >
-          {rimList.map((rim) => {
+          {popularRims.map((rim) => {
             return (
               <li>
                 <RimCard
                   isPopular={true}
                   image={rim.imageUrl}
-                  price={rim.price}
+                  price={12}
                   rimWidth={100}
                   color="Grey"
                   name={rim.rimModel}
