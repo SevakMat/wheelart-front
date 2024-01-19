@@ -8,6 +8,7 @@ import {
   GetYearListSuccess,
   ModificationsType,
   GetModificationListSuccess,
+  GetTestListSuccess,
 } from "../../types/car/car";
 
 export const getCarListSuccess = (carList: CarType[]): GetCarListSuccess => ({
@@ -40,4 +41,15 @@ export const getModificationsListSuccess = (
   type: CarTypes.GET_MODIFICATIONS_LIST_SUCCESS,
   modificationList,
   year,
+});
+
+export const getTestListSuccess = (
+  ModelList?: ModelType[],
+  YearList?: YearType[],
+  ModificationList?: ModificationsType[]
+): GetTestListSuccess => ({
+  type: CarTypes.GET_TEST_LIST_SUCCESS,
+  ModelList,
+  YearList,
+  ModificationList,
 });

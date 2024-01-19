@@ -16,10 +16,10 @@ export interface Filters {
   centerBore: FilterType[],
 }
 export interface SelectedFilters {
-  sizeR: number[],
-  pcd: number[],
-  studHoles: number[],
-  centerBore: number[],
+  sizeR?: number[],
+  pcd?: number[],
+  studHoles?: number[],
+  centerBore?: number[],
   pagination?: number
 }
 

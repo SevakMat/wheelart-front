@@ -2,6 +2,7 @@ import * as React from "react";
 import { Pagination } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RootState, useAppSelector } from "../../../store";
+import { useParamsHook } from "../../../hook/useParams";
 
 function PaginationBlock() {
   const { rimsCount, rimList } = useAppSelector((state: RootState) => state.rim)
@@ -11,8 +12,7 @@ function PaginationBlock() {
   const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
     location.search,
   ]);
-  const makeValue = queryParams.get("page") ?? undefined;
-
+  const { page: pageValue } = useParamsHook()
 
   const handlePageChange = (e: any, value: any) => {
 
@@ -38,7 +38,7 @@ function PaginationBlock() {
           count={paginationCount}
           onChange={handlePageChange}
           sx={{ color: "black" }}
-          page={makeValue ? +makeValue : 1}
+          page={pageValue ? +pageValue : 1}
         />
       </div>}
     </center>

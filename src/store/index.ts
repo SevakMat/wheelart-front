@@ -6,11 +6,11 @@ import { persistStore, persistReducer } from "redux-persist";
 import { shallowEqual, TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { PersistConfig } from "redux-persist/es/types";
 
-import authReducer from "./reducers/auth/auth";
-import carReducer from "./reducers/car/car";
-import rimReducer from "./reducers/rim/rim";
-import filterReducer from "./reducers/filter/filter";
-import tireReducer from "./reducers/tire/tire";
+import authReducer from "./reducers/auth/auth.reducers";
+import carReducer from "./reducers/car/car.reducers";
+import rimReducer from "./reducers/rim/rim.reducers";
+import filterReducer from "./reducers/filter/filter.reducers";
+import tireReducer from "./reducers/tire/tire.reducers";
 
 const rootReducer = combineReducers({
     auth: authReducer,
