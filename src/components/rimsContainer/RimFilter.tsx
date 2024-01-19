@@ -1,52 +1,46 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import { Box, Typography } from "@mui/material";
 
-import FilterField from "./FilterField";
+import { AppDispatch, RootState, useAppSelector } from "../../store";
+import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
+import { getRimsByCarDetailsEffect } from "../../store/effects/rim/rim.effect";
+
+import { useParamsHook, useParamsHookArrays } from "../../hook/useParams";
+import { useShowRimsBy } from "../../hook/showRimsBy";
+
+import RimFilterField from "./RimFilterField";
 
 import "../../fonts/monsterrat.css";
-import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { useDispatch } from "react-redux";
-import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
-import { getWheelsListByCarDateEffect } from "../../store/effects/rim/rim.effect";
-import { useParamsHook } from "../../hook/useParams";
-import { useShowRimsBy } from "../../hook/showRimsBy";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
 
 const RimFilter = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const { filters } = useAppSelector((state: RootState) => state.filter)
-  const { sizeR } = filters
+  const { sizeR, pcd, centerBore } = filters
+  const [searchParams] = useSearchParams();
 
   const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue, page: pageValue } = useParamsHook()
 
   const rimsRequestDetection = useShowRimsBy()
-  const location = useLocation();
 
-  const queryParams = useMemo(() => new URLSearchParams(location.search), [
-    location.search,
-  ]);
+  const urlParamsArray = useParamsHookArrays(searchParams)
 
   useEffect(() => {
-    const sizeRValues = queryParams.getAll('sizeR').map(Number);
-
-    const test = {
-      centerBore: [],
-      pcd: [],
-      sizeR: sizeRValues,
-      studHoles: [],
-    }
 
     if (rimsRequestDetection === 'by-rim') {
 
-      dispatch(getFiltersEffect({ ...test, pagination: pageValue ? + pageValue : 0 }))
+      dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
     } else {
-      dispatch(getWheelsListByCarDateEffect(makeValue, modelValue, yearValue, modificationValue))
+      dispatch(getRimsByCarDetailsEffect(makeValue, modelValue, yearValue, modificationValue))
     }
 
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
 
-  }, [dispatch, queryParams, pageValue])
+  }, [dispatch, pageValue, searchParams])
 
 
 
@@ -87,12 +81,9 @@ const RimFilter = () => {
             "rgba(50, 50, 93, 0.25) 0px 0px 20px 0px, rgba(0, 0, 0, 0.3) 0px 0px 20px 0px",
         }}
       >
-        {/* Size */}
-        <FilterField list={sizeR} fieldType="Taille" name='sizeR' />
-        {/* Center distance */}
-        {/* <FilterField list={pcd} fieldType="Entraxe" /> */}
-        {/* Bore */}
-        {/* <FilterField list={sizeList} fieldType="Alésage" /> */}
+        <RimFilterField list={sizeR} fieldType="Taille" name='sizeR' />
+        <RimFilterField list={pcd} fieldType="Entraxe" name='pcd' />
+        <RimFilterField list={centerBore} fieldType="Alésage" name='centerBore' />
         {/* Width */}
         {/* <FilterField list={sizeList} fieldType="Largeur" /> */}
         {/* ET offset */}

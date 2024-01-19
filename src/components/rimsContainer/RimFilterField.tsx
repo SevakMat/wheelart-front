@@ -11,13 +11,13 @@ import Checkbox from "@mui/material/Checkbox";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useLocation, useNavigate } from "react-router-dom";
 
-interface FilterFieldProp {
+interface RimFilterFieldProps {
   list: any
   fieldType: any
   name: 'sizeR' | 'pcd' | 'studHoles' | 'centerBore'
 }
 
-function FilterField({ list, fieldType, name }: FilterFieldProp) {
+function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
 
   const useStyles = makeStyles({
     root: {
@@ -48,16 +48,26 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
 
   useEffect(() => {
     const sizeRValues: any = queryParams.getAll(name).map(Number);
+    console.log(sizeRValues);
+
     setSelected(
       typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
     );
   }, [queryParams])
 
   const handleChange = (event: SelectChangeEvent<typeof selected>) => {
-    const queryString = (event.target.value as string[]).map((size: any) => `sizeR=${size}`).join('&');
-    navigate(`?${queryString}`, {
-      replace: true,
-    });
+    const selectedQueryArray = event.target.value as string[]
+    if (selectedQueryArray.length > 0) {
+      queryParams.set(name, event.target.value as string);
+      navigate(`${location.pathname}?${queryParams.toString()}`, {
+        replace: true,
+      })
+    } else {
+      queryParams.delete(name);
+      navigate(`${location.pathname}?${queryParams.toString()}`, {
+        replace: true,
+      })
+    }
   };
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -131,4 +141,4 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
   );
 }
 
-export default FilterField;
+export default RimFilterField;

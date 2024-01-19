@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useParamsHook } from "../../../hook/useParams";
 import { AppDispatch, RootState, useAppSelector } from "../../../store";
 import {
   getCarsEffect, getCarDetailsEffect,
@@ -11,19 +12,15 @@ import Field from "./Field";
 
 const SearchCars = () => {
   const dispatch: AppDispatch = useDispatch();
+  const [t] = useTranslation("home");
 
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = useMemo(() => new URLSearchParams(location.search), [
     location.search,
   ]);
+  const { make, model, year, modification } = useParamsHook()
 
-  const make = queryParams.get("make") ?? undefined;
-  const model = queryParams.get("model") ?? undefined;
-  const year = queryParams.get("year") ?? undefined;
-  const modification = queryParams.get("modification") ?? undefined;
-
-  const [t] = useTranslation("home");
 
   useEffect(() => {
     dispatch(getCarsEffect());
