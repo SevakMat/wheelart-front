@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import { Box, Typography } from "@mui/material";
 
 import FilterField from "./FilterField";
@@ -6,7 +7,6 @@ import "../../fonts/monsterrat.css";
 import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { useDispatch } from "react-redux";
 import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
-import { useEffect, useMemo } from "react";
 import { getWheelsListByCarDateEffect } from "../../store/effects/rim/rim.effect";
 import { useParamsHook } from "../../hook/useParams";
 import { useShowRimsBy } from "../../hook/showRimsBy";

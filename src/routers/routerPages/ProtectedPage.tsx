@@ -1,5 +1,4 @@
 import HomePage from "../../pages/HomePage";
-import SearchPage from "../../pages/SearchPage";
 import SingleRimPage from "../../pages/SingleRimPage";
 import RimsPage from "../../pages/RimsPage";
 import ProtectedRoute from "../types/ProtectedRoute";
@@ -14,10 +13,6 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/accessories",
       element: <div>asd</div>,
-    },
-    {
-      path: "/search",
-      element: <SearchPage />,
     },
     {
       path: "/rims",

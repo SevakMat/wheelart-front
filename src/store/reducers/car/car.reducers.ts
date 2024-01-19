@@ -60,13 +60,9 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
         YearList: action.YearList?.length ? action.YearList : [],
         ModificationList: action.ModificationList?.length ? action.ModificationList : [],
       };
-
-
-
     default:
       return state;
   }
 };
-
 
 export default reducer;
