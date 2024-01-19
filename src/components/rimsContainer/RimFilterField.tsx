@@ -48,8 +48,6 @@ function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
 
   useEffect(() => {
     const sizeRValues: any = queryParams.getAll(name).map(Number);
-    console.log(sizeRValues);
-
     setSelected(
       typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
     );

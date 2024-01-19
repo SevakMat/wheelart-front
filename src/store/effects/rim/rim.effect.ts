@@ -1,18 +1,26 @@
 import { AppDispatch } from "../..";
 import { getSingleRimService, getRimsListByCarDateService } from "../../../services/rim.service";
 import { getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
-import { getRimAction, getRimsListByCarDateAction } from "../../actions/rim/rim";
+import { getRimAction, getRimsListByCarDateAction, getRimsListCountAction } from "../../actions/rim/rim";
 
-export const getRimsByCarDetailsEffect = (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): any => {
+interface getRimsByCarDetailsEffectProps {
+
+}
+
+export const getRimsByCarDetailsEffect = (make?: string | null, model?: string | null, year?: string | null, modification?: string | null, pagination?: number): any => {
   return async (dispatch: AppDispatch) => {
     try {
 
-      const result = await getRimsListByCarDateService(make, model, year, modification);
+      const result = await getRimsListByCarDateService(make, model, year, modification, pagination);
       const {
-        data: { data: { rims, tires } }
+        data: { data: { rims, tires, rimsCount } }
       } = result;
+
       dispatch(getRimsListByCarDateAction(rims));
       dispatch(getTiresListByCarDateAction(tires));
+      dispatch(getRimsListCountAction(rimsCount));
+
+
     } catch (error: any) {
       console.log(error);
     } finally {

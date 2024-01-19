@@ -35,7 +35,7 @@ const RimFilter = () => {
 
       dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
     } else {
-      dispatch(getRimsByCarDetailsEffect(makeValue, modelValue, yearValue, modificationValue))
+      dispatch(getRimsByCarDetailsEffect(makeValue, modelValue, yearValue, modificationValue, pageValue ? + pageValue : 0))
     }
 
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
