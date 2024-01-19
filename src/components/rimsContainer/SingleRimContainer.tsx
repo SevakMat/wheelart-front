@@ -23,13 +23,15 @@ import RimCard from "../shere/rims/RimCard";
 import Slideshow from "../shere/slideshow/Slideshow";
 import { useParamsHook } from "../../hook/useParams";
 const SingleRim = () => {
-
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
 
-
-  const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue } = useParamsHook()
-
+  const {
+    make: makeValue,
+    model: modelValue,
+    year: yearValue,
+    modification: modificationValue,
+  } = useParamsHook();
 
   const { rim } = useAppSelector((state: RootState) => state.rim);
 
@@ -49,8 +51,8 @@ const SingleRim = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `${850.0}`,
-      id: "1"
+      price: 850,
+      id: "1",
     },
     {
       imageUrl:
@@ -59,13 +61,12 @@ const SingleRim = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `${850.0}`,
-      id: "2"
+      price: 850,
+      id: "2",
     },
   ];
 
-  const images = [rim?.imageUrl, rim?.imageUrl, rim?.imageUrl, rim?.imageUrl]
-
+  const images = [rim?.imageUrl, rim?.imageUrl, rim?.imageUrl, rim?.imageUrl];
 
   return (
     <Box sx={{ margin: "30px 20px" }}>
@@ -150,7 +151,9 @@ const SingleRim = () => {
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Center distance</TableCell>
-                <TableCell>{rim?.studHoles}x{rim?.pcd}</TableCell>
+                <TableCell>
+                  {rim?.studHoles}x{rim?.pcd}
+                </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell variant="head">Width</TableCell>
@@ -179,7 +182,9 @@ const SingleRim = () => {
               <TableRow>
                 <TableCell variant="head">The pack includes</TableCell>
                 <TableCell>
-                  4x RIMS {rim?.rimModel} <br />4x LOGOS <br />4x VALVES TR413
+                  4x RIMS {rim?.rimModel} <br />
+                  4x LOGOS <br />
+                  4x VALVES TR413
                 </TableCell>
               </TableRow>
               <TableRow>

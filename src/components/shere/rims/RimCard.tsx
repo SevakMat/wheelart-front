@@ -17,18 +17,25 @@ const InfoCustomTypo = styled(Typography)(() => ({
 interface RimCardProps {
   isPopular: boolean;
   image: string;
-  price: string
-  rimWidth: number
+  price: number;
+  rimWidth: number;
   color: string;
-  name: string
+  name: string;
   size: string;
   rimId: string;
 }
 
-export default function RimCard({ isPopular, image, price, rimWidth, color, name, size, rimId }: RimCardProps) {
-
+export default function RimCard({
+  isPopular,
+  image,
+  price,
+  rimWidth,
+  color,
+  name,
+  size,
+  rimId,
+}: RimCardProps) {
   const navigate = useNavigate();
-
 
   let width, height, fontSize: number;
 
@@ -53,7 +60,9 @@ export default function RimCard({ isPopular, image, price, rimWidth, color, name
             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
         },
       }}
-      onClick={() => { navigate(`${rimId}`) }}
+      onClick={() => {
+        navigate(`${rimId}`);
+      }}
     >
       <CardActionArea
         sx={{

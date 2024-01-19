@@ -2,26 +2,26 @@ import { CarTypes, CarDetailsType, GetCarListSuccess, GetModelListSuccess, GetYe
 
 export const getCarListSuccess = (carList: CarDetailsType[]): GetCarListSuccess => ({
   type: CarTypes.GET_CAR_LIST_SUCCESS,
-  carList
-})
+  carList,
+});
 
 export const getModelListSuccess = (modelList: CarDetailsType[], make: string): GetModelListSuccess => ({
   type: CarTypes.GET_MODEL_LIST_SUCCESS,
   modelList,
-  carType: make
-})
+  carType: make,
+});
 
 export const getYearListSuccess = (yearList: CarDetailsType[], model: string): GetYearListSuccess => ({
   type: CarTypes.GET_YEAR_LIST_SUCCESS,
   yearList,
-  modelType: model
-})
+  modelType: model,
+});
 
 export const getModificationsListSuccess = (modificationList: CarDetailsType[], year: string): GetModificationListSuccess => ({
   type: CarTypes.GET_MODIFICATIONS_LIST_SUCCESS,
   modificationList,
-  year
-})
+  year,
+});
 
 
 export const getTestListSuccess = (ModelList?: CarDetailsType[], YearList?: CarDetailsType[], ModificationList?: CarDetailsType[]): GetTestListSuccess => ({
@@ -29,5 +29,4 @@ export const getTestListSuccess = (ModelList?: CarDetailsType[], YearList?: CarD
   ModelList,
   YearList,
   ModificationList,
-})
-
+});

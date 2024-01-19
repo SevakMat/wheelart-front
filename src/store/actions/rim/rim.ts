@@ -1,16 +1,34 @@
-import { GetRimsCountSuccess, GetRimListSuccess, GetRimSuccess, RimServerTypes, RimType } from "../../types/rim/rim";
+import {
+  GetRimsCountSuccess,
+  GetRimListSuccess,
+  GetRimSuccess,
+  RimServerTypes,
+  RimType,
+  GetPopularRimsSuccess,
+} from "../../types/rim/rim";
 
-export const getRimsListByCarDateAction = (rimList: RimType[]): GetRimListSuccess => ({
+export const getRimsListByCarDateAction = (
+  rimList: RimType[]
+): GetRimListSuccess => ({
   type: RimServerTypes.GET_RIM_LIST_SUCCESS,
-  rimList
-})
+  rimList,
+});
 
 export const getRimAction = (rim: RimType): GetRimSuccess => ({
   type: RimServerTypes.GET_RIM_SUCCESS,
-  rim
-})
+  rim,
+});
 
-export const getRimsListCountAction = (rimsCount: number): GetRimsCountSuccess => ({
+export const getRimsListCountAction = (
+  rimsCount: number
+): GetRimsCountSuccess => ({
   type: RimServerTypes.GET_RIMS_COUNT_SUCCESS,
-  rimsCount
-})
+  rimsCount,
+});
+
+export const getPopularRimsAction = (
+  popularRims: RimType[]
+): GetPopularRimsSuccess => ({
+  type: RimServerTypes.GET_POPULAR_RIMS_SUCCESS,
+  popularRims,
+});
