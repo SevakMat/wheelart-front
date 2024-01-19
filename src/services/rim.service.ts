@@ -3,8 +3,6 @@ import axios from "../config/axios"
 
 export const getRimsListByCarDateService = async (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): Promise<any> => {
   const url = `api/rims/by-car`
-  console.log(make, model, year, modification);
-
   return axios.post(url, { where: { make, model, year, modification } })
 }
 

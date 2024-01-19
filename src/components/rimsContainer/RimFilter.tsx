@@ -7,56 +7,27 @@ import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { useDispatch } from "react-redux";
 import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
 import { useEffect, useMemo } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
 import { getWheelsListByCarDateEffect } from "../../store/effects/rim/rim.effect";
-import { showRimsBy } from "./helpers/showRimsBy";
+import { useParamsHook } from "../../hook/useParams";
+import { useShowRimsBy } from "../../hook/showRimsBy";
+import { useLocation } from "react-router-dom";
 
-const carList = [
-  { name: "Bmw", image: "asdasdasdasd" },
-  { name: "Mercedes", image: "asdasdasdasd" },
-  { name: "Opel", image: "asdasdasdasd" },
-];
-
-const modelList = [
-  { name: "Series3", image: "asdasdasdasd" },
-  { name: "Series5", image: "asdasdasdasd" },
-  { name: "Series7", image: "asdasdasdasd" },
-];
-
-const typeList = [
-  { name: "E93", image: "asdasdasdasd" },
-  { name: "E60", image: "asdasdasdasd" },
-  { name: "E36", image: "asdasdasdasd" },
-];
-
-const sizeList = [
-  { name: "R16", image: "asdasdasdasd" },
-  { name: "R17", image: "asdasdasdasd" },
-  { name: "R18", image: "asdasdasdasd" },
-];
-// pettqa get all  anell u desstructure aanel .
 const RimFilter = () => {
 
-  const { filters, selectedFilters } = useAppSelector((state: RootState) => state.filter)
-  let [searchParams, setSearchParams] = useSearchParams();
-
   const dispatch: AppDispatch = useDispatch();
+  const { filters } = useAppSelector((state: RootState) => state.filter)
+  const { sizeR } = filters
+
+  const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue, page: pageValue } = useParamsHook()
+
+  const rimsRequestDetection = useShowRimsBy()
   const location = useLocation();
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [
     location.search,
   ]);
-  const pageValue = queryParams.get("page") ?? undefined;
-
-  const { sizeR, pcd, centerBore, studHoles } = filters
-  const makeValue = queryParams.get("make");
-  const modelValue = queryParams.get("model");
-  const yearValue = queryParams.get("year");
-  const modificationValue = queryParams.get("modification");
-
 
   useEffect(() => {
-    const rimsRequestDetection = showRimsBy(searchParams)
     const sizeRValues = queryParams.getAll('sizeR').map(Number);
 
     const test = {
@@ -66,14 +37,10 @@ const RimFilter = () => {
       studHoles: [],
     }
 
-    if (rimsRequestDetection === 'byRim') {
-      console.log("byRim");
+    if (rimsRequestDetection === 'by-rim') {
 
-      dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 0 }))
+      dispatch(getFiltersEffect({ ...test, pagination: pageValue ? + pageValue : 0 }))
     } else {
-      console.log("byCar");
-
-
       dispatch(getWheelsListByCarDateEffect(makeValue, modelValue, yearValue, modificationValue))
     }
 
@@ -82,7 +49,6 @@ const RimFilter = () => {
   }, [dispatch, queryParams, pageValue])
 
 
-  useEffect(() => { }, [])
 
   return (
     <Box

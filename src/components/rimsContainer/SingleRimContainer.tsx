@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { getRimEffect } from "../../store/effects/rim/rim.effect";
@@ -9,36 +9,29 @@ import {
   Box,
   Button,
   List,
-  ListItem,
   Table,
   TableCell,
   TableHead,
   TableRow,
   Typography,
-  styled,
 } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
-import TiresContent from "../shere/tires/TiresContent";
 import QuantityInput from "../shere/quantityInput/QuantityInput";
 import RimCard from "../shere/rims/RimCard";
 import Slideshow from "../shere/slideshow/Slideshow";
+import { useParamsHook } from "../../hook/useParams";
 const SingleRim = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
 
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
 
-  const makeValue = queryParams.get("make");
-  const modelValue = queryParams.get("model");
-  const yearValue = queryParams.get("year");
-  const modificationValue = queryParams.get("modification");
+  const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue } = useParamsHook()
+
 
   const { rim } = useAppSelector((state: RootState) => state.rim);
-  const { tireList } = useAppSelector((state: RootState) => state.tire);
 
   useEffect(() => {
     dispatch(
