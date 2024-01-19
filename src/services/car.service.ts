@@ -17,3 +17,12 @@ export const GetModificationsByCarData = async (make: string, model: string, yea
 
   return axios.get(url)
 }
+
+
+
+export const getCarDetailsService = async (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): Promise<any> => {
+  const url = `api/rims/car-details`
+  console.log(make, model, year, modification);
+
+  return axios.post(url, { where: { make, model, year, modification } })
+}

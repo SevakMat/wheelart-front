@@ -52,6 +52,17 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
         ModificationList: action.modificationList,
         selectedYearType: action.year
       };
+
+    case CarTypes.GET_TEST_LIST_SUCCESS:
+      return {
+        ...state,
+        ModelList: action.ModelList?.length ? action.ModelList : [],
+        YearList: action.YearList?.length ? action.YearList : [],
+        ModificationList: action.ModificationList?.length ? action.ModificationList : [],
+      };
+
+
+
     default:
       return state;
   }

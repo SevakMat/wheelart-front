@@ -7,8 +7,9 @@ import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { useDispatch } from "react-redux";
 import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
 import { useEffect, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { getWheelsListByCarDateEffect } from "../../store/effects/rim/rim.effect";
+import { showRimsBy } from "./helpers/showRimsBy";
 
 const carList = [
   { name: "Bmw", image: "asdasdasdasd" },
@@ -33,10 +34,12 @@ const sizeList = [
   { name: "R17", image: "asdasdasdasd" },
   { name: "R18", image: "asdasdasdasd" },
 ];
-
+// pettqa get all  anell u desstructure aanel .
 const RimFilter = () => {
 
   const { filters, selectedFilters } = useAppSelector((state: RootState) => state.filter)
+  let [searchParams, setSearchParams] = useSearchParams();
+
   const dispatch: AppDispatch = useDispatch();
   const location = useLocation();
 
@@ -53,21 +56,23 @@ const RimFilter = () => {
 
 
   useEffect(() => {
-    if (false) {
-      // const sizeRValues = queryParams.getAll('sizeR').map(Number);
-      // console.log(55555, sizeRValues);
+    const rimsRequestDetection = showRimsBy(searchParams)
+    const sizeRValues = queryParams.getAll('sizeR').map(Number);
 
-      // const test = {
-      //   centerBore: [],
-      //   pcd: [],
-      //   sizeR: sizeRValues,
-      //   studHoles: [],
-      // }
+    const test = {
+      centerBore: [],
+      pcd: [],
+      sizeR: sizeRValues,
+      studHoles: [],
+    }
 
-      // dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 0 }))
+    if (rimsRequestDetection === 'byRim') {
+      console.log("byRim");
+
+      dispatch(getFiltersEffect({ ...test, pagination: pageValue ? +pageValue : 0 }))
     } else {
+      console.log("byCar");
 
-      console.log("mtav");
 
       dispatch(getWheelsListByCarDateEffect(makeValue, modelValue, yearValue, modificationValue))
     }
@@ -75,6 +80,9 @@ const RimFilter = () => {
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
 
   }, [dispatch, queryParams, pageValue])
+
+
+  useEffect(() => { }, [])
 
   return (
     <Box

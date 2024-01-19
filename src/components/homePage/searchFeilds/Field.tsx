@@ -60,7 +60,9 @@ function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
         {fieldType}
       </InputLabel>
       <Select
-        value={list.some((item) => item.slug === value) ? value : ""}
+        value={list.some((item) => {
+          return item.slug === value
+        }) ? value : ""}
         onChange={handleChange}
         onKeyDown={handleSearchKeyDown}
         inputProps={{ IconComponent: () => null }}
