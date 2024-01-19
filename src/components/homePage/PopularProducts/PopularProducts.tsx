@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Button, List, Typography } from "@mui/material";
 import RimCard from "../../shere/rims/RimCard";
 import { useTranslation } from "react-i18next";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
 
 const PopularProducts = () => {
   const [rimList, setRimList] = useState([
@@ -13,8 +13,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "1"
+      price: 850,
+      id: "1",
     },
     {
       imageUrl:
@@ -23,8 +23,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "2"
+      price: 850,
+      id: "2",
     },
     {
       imageUrl:
@@ -33,8 +33,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "1"
+      price: 850,
+      id: "1",
     },
     {
       imageUrl:
@@ -43,8 +43,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "2"
+      price: 850,
+      id: "2",
     },
     {
       imageUrl:
@@ -53,8 +53,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "1"
+      price: 850,
+      id: "1",
     },
     {
       imageUrl:
@@ -63,8 +63,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "2"
+      price: 850,
+      id: "2",
     },
     {
       imageUrl:
@@ -73,8 +73,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "1"
+      price: 850,
+      id: "1",
     },
     {
       imageUrl:
@@ -83,8 +83,8 @@ const PopularProducts = () => {
       sizeR: '17"',
       width: 255,
       color: "Grey",
-      price: `€${850.0}`,
-      id: "2"
+      price: 850,
+      id: "2",
     },
   ]);
   const [t] = useTranslation("home");
@@ -148,6 +148,7 @@ const PopularProducts = () => {
             flexWrap: "wrap",
             justifyContent: "space-between",
             rowGap: 3,
+            maxWidth: 1100,
             "@media (max-width: 1090px)": {
               alignItems: "flex-start",
               display: "flex",
@@ -164,7 +165,7 @@ const PopularProducts = () => {
             return (
               <li>
                 <RimCard
-                  isPopular={false}
+                  isPopular={true}
                   image={rim.imageUrl}
                   price={rim.price}
                   rimWidth={100}
@@ -183,7 +184,10 @@ const PopularProducts = () => {
           margin: "50px",
         }}
       >
-        <Link
+        <Button
+          size="large"
+          variant="contained"
+          href="/rims"
           sx={{
             backgroundColor: "#00A70D",
             "&:hover": { background: "#00DE11", boxShadow: "none" },
@@ -192,10 +196,9 @@ const PopularProducts = () => {
             boxShadow: "none",
             padding: "10px 50px",
           }}
-          href="/rims"
         >
           {t("buttons.showAll")}
-        </Link>
+        </Button>
       </Box>
     </Box>
   );
