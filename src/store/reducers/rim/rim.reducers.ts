@@ -29,24 +29,9 @@ const reducer: ReducerType = (state = initialState, action: RimActionTypes) => {
       ...state,
       rimsCount: action.rimsCount,
     };
-
-    // case AuthTypes.LOGOUT_REQUEST_SUCCESS:
-    //   return {
-    //     ...state,
-    //     authLoading: false,
-    //     isLoggedIn: false,
-    //     user: null,
-    //   };
-    // case AuthTypes.SET_LOADING:
-    //   return {
-    //     ...state,
-    //     authLoading: action.loading,
-    //   };
-
     default:
       return state;
   }
 };
-
 
 export default reducer;

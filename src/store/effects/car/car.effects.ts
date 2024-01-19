@@ -1,6 +1,6 @@
 import { AppDispatch } from "../..";
-import { GetCarData, GetModelByCarData, GetModificationsByCarData, GetYearByCarData } from "../../../services/car.service";
-import { getCarListSuccess, getModelListSuccess, getYearListSuccess, getModificationsListSuccess } from "../../actions/car/car.actions";
+import { GetCarData, getCarDetailsService } from "../../../services/car.service";
+import { getCarListSuccess, getModelListSuccess, getYearListSuccess, getModificationsListSuccess, getTestListSuccess } from "../../actions/car/car.actions";
 
 export const getCarsEffect = (): any => {
   return async (dispatch: AppDispatch) => {
@@ -25,80 +25,111 @@ export const getCarsEffect = (): any => {
   };
 };
 
-export const getModelsByCarEffect = (make: string): any => {
+
+export const getCarDetailsEffect = (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): any => {
   return async (dispatch: AppDispatch) => {
     try {
-      // dispatch(setLoadingEffect(true));
-      // Get user
 
-      const result = await GetModelByCarData(make);
+      const result = await getCarDetailsService(make, model, year, modification);
       const {
-        data: { data }
+        data: { data: { modelDada,
+          yearDada,
+          modificationDada } }
       } = result;
 
-      dispatch(getModelListSuccess(data, make));
+      console.log(
+        modelDada,
+        yearDada,
+        modificationDada
+      );
 
 
-      // dispatch(setLoadingEffect(false));
+      dispatch(getTestListSuccess(modelDada, yearDada, modificationDada));
+
+      // dispatch(getRimsListByCarDateAction(rims));
+      // dispatch(getTiresListByCarDateAction(tires));
+
     } catch (error: any) {
-      // dispatch(setLoadingEffect(false));
-      // toast.error("Logined faild");
       console.log(error);
     } finally {
-      // dispatch(setLoadingEffect(false));
     }
   };
 };
 
-export const getYearsByCarEffect = (make: string, model: string): any => {
-  return async (dispatch: AppDispatch) => {
-    try {
-      // dispatch(setLoadingEffect(true));
-      // Get user
+// export const getModelsByCarEffect = (make: string): any => {
+//   return async (dispatch: AppDispatch) => {
+//     try {
+//       // dispatch(setLoadingEffect(true));
+//       // Get user
 
-      const result = await GetYearByCarData(make, model);
-      const {
-        data: { data }
-      } = result;
+//       const result = await GetModelByCarData(make);
+//       const {
+//         data: { data }
+//       } = result;
 
-      dispatch(getYearListSuccess(data, model));
-      // dispatch(setLoadingEffect(false));
-    } catch (error: any) {
-      // dispatch(setLoadingEffect(false));
-      // toast.error("Logined faild");
-      console.log(error);
-
-    } finally {
-
-      // dispatch(setLoadingEffect(false));
-    }
-  };
-};
-
-export const getModificationsByCarEffect = (make: string, model: string, year: string): any => {
-  return async (dispatch: AppDispatch) => {
-    try {
-      // dispatch(setLoadingEffect(true));
-      // Get user
-
-      const result = await GetModificationsByCarData(make, model, year);
-      const {
-        data: { data }
-      } = result;
+//       dispatch(getModelListSuccess(data, make));
 
 
-      dispatch(getModificationsListSuccess(data, year));
+//       // dispatch(setLoadingEffect(false));
+//     } catch (error: any) {
+//       // dispatch(setLoadingEffect(false));
+//       // toast.error("Logined faild");
+//       console.log(error);
+//     } finally {
+//       // dispatch(setLoadingEffect(false));
+//     }
+//   };
+// };
 
-      // dispatch(setLoadingEffect(false));
-    } catch (error: any) {
-      // dispatch(setLoadingEffect(false));
-      // toast.error("Logined faild");
-      console.log(error);
+// export const getYearsByCarEffect = (make: string, model: string): any => {
+//   return async (dispatch: AppDispatch) => {
+//     try {
+//       // dispatch(setLoadingEffect(true));
+//       // Get user
 
-    } finally {
+//       const result = await GetYearByCarData(make, model);
+//       const {
+//         data: { data }
+//       } = result;
 
-      // dispatch(setLoadingEffect(false));
-    }
-  };
-};
+//       dispatch(getYearListSuccess(data, model));
+//       // dispatch(setLoadingEffect(false));
+//     } catch (error: any) {
+//       // dispatch(setLoadingEffect(false));
+//       // toast.error("Logined faild");
+//       console.log(error);
+
+//     } finally {
+
+//       // dispatch(setLoadingEffect(false));
+//     }
+//   };
+// };
+
+// export const getModificationsByCarEffect = (make: string, model: string, year: string): any => {
+//   return async (dispatch: AppDispatch) => {
+//     try {
+//       // dispatch(setLoadingEffect(true));
+//       // Get user
+
+//       const result = await GetModificationsByCarData(make, model, year);
+//       const {
+//         data: { data }
+//       } = result;
+
+
+//       dispatch(getModificationsListSuccess(data, year));
+
+//       // dispatch(setLoadingEffect(false));
+//     } catch (error: any) {
+//       // dispatch(setLoadingEffect(false));
+//       // toast.error("Logined faild");
+//       console.log(error);
+
+//     } finally {
+
+//       // dispatch(setLoadingEffect(false));
+//     }
+//   };
+// };
 

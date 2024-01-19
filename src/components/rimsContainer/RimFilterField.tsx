@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -10,67 +11,13 @@ import Checkbox from "@mui/material/Checkbox";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useLocation, useNavigate } from "react-router-dom";
 
-interface FilterFieldProp {
+interface RimFilterFieldProps {
   list: any
   fieldType: any
   name: 'sizeR' | 'pcd' | 'studHoles' | 'centerBore'
-
 }
 
-function FilterField({ list, fieldType, name }: FilterFieldProp) {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const [currentList, setCurrentList] = React.useState(list);
-
-  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
-    location.search,
-  ]);
-
-
-  React.useEffect(() => {
-    setCurrentList(list)
-  }, [list])
-
-  React.useEffect(() => {
-    const sizeRValues: any = queryParams.getAll(name).map(Number);
-
-    setSelected(
-      // On autofill we get a stringified value.
-      typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
-    );
-  }, [queryParams])
-
-  const handleChange = (event: SelectChangeEvent<typeof selected>) => {
-    const pathname = location.pathname;
-
-    const queryString = (event.target.value as string[]).map((size: any) => `sizeR=${size}`).join('&');
-
-    navigate(`?${queryString}`, {
-      replace: true,
-    });
-
-    const {
-      target: { value },
-    } = event;
-
-  };
-
-
-
-
-
-  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-  };
-
-  const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let filtered = list.filter((listItem: any) => {
-      return listItem.name.toLowerCase().includes(e.target.value.toLowerCase());
-    });
-    setCurrentList(filtered);
-  };
+function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
 
   const useStyles = makeStyles({
     root: {
@@ -82,8 +29,55 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
       },
     },
   });
-
   const classes = useStyles();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [selected, setSelected] = React.useState<string[]>([]);
+  const [currentList, setCurrentList] = React.useState(list);
+
+  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
+    location.search,
+  ]);
+
+
+  useEffect(() => {
+    setCurrentList(list)
+  }, [list])
+
+  useEffect(() => {
+    const sizeRValues: any = queryParams.getAll(name).map(Number);
+    console.log(sizeRValues);
+
+    setSelected(
+      typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
+    );
+  }, [queryParams])
+
+  const handleChange = (event: SelectChangeEvent<typeof selected>) => {
+    const selectedQueryArray = event.target.value as string[]
+    if (selectedQueryArray.length > 0) {
+      queryParams.set(name, event.target.value as string);
+      navigate(`${location.pathname}?${queryParams.toString()}`, {
+        replace: true,
+      })
+    } else {
+      queryParams.delete(name);
+      navigate(`${location.pathname}?${queryParams.toString()}`, {
+        replace: true,
+      })
+    }
+  };
+
+  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+  };
+
+  const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const filtered = list.filter((listItem: any) => listItem.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    setCurrentList(filtered);
+  };
 
   return (
     <FormControl
@@ -147,4 +141,4 @@ function FilterField({ list, fieldType, name }: FilterFieldProp) {
   );
 }
 
-export default FilterField;
+export default RimFilterField;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SearchModule from "../searchFeilds/SearchModule";
+import SearchCars from "../searchFeilds/SearchCars";
 
 import "../../../fonts/monsterrat.css";
 import Slider from "./Slider";
@@ -22,7 +22,6 @@ function SwipeableTextMobileStepper() {
       }}
     >
       <Slider />
-
       <Box
         sx={{
           display: "flex",
@@ -97,7 +96,7 @@ function SwipeableTextMobileStepper() {
             justifyContent: "center",
           }}
         >
-          <SearchModule />
+          <SearchCars />
         </Box>
       </Box>
     </Box>

@@ -7,7 +7,6 @@ const initialState: TireState = {
 
 type ReducerType = Reducer<TireState, TireActionTypes>
 
-
 const reducer: ReducerType = (state = initialState, action: GetTireListSuccess) => {
 
   switch (action.type) {
@@ -21,6 +20,5 @@ const reducer: ReducerType = (state = initialState, action: GetTireListSuccess) 
       return state;
   }
 };
-
 
 export default reducer;

@@ -1,4 +1,4 @@
-import { CarTypes, CarType, GetCarListSuccess, ModelType, GetModelListSuccess, YearType, GetYearListSuccess, ModificationsType, GetModificationListSuccess } from "../../types/car/car";
+import { CarTypes, CarType, GetCarListSuccess, ModelType, GetModelListSuccess, YearType, GetYearListSuccess, ModificationsType, GetModificationListSuccess, GetTestListSuccess } from "../../types/car/car";
 
 export const getCarListSuccess = (carList: CarType[]): GetCarListSuccess => ({
   type: CarTypes.GET_CAR_LIST_SUCCESS,
@@ -22,3 +22,12 @@ export const getModificationsListSuccess = (modificationList: ModificationsType[
   modificationList,
   year
 })
+
+
+export const getTestListSuccess = (ModelList?: ModelType[], YearList?: YearType[], ModificationList?: ModificationsType[]): GetTestListSuccess => ({
+  type: CarTypes.GET_TEST_LIST_SUCCESS,
+  ModelList,
+  YearList,
+  ModificationList,
+})
+

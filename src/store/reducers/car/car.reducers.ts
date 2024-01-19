@@ -18,8 +18,6 @@ type ReducerType = Reducer<CarState, CarActionTypes>
 
 const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
   switch (action.type) {
-
-
     case CarTypes.GET_CAR_LIST_SUCCESS:
       return {
         ...state,
@@ -31,10 +29,10 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
         ...state,
         ModelList: action.modelList,
         selectedCarType: action.carType,
-        YearList: [],
-        ModificationList: [],
-        selectedYearType: "",
-        selectedModificationType: "",
+        // YearList: [],
+        // ModificationList: [],
+        // selectedYearType: "",
+        // selectedModificationType: "",
 
       };
 
@@ -43,8 +41,8 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
         ...state,
         YearList: action.yearList,
         selectedModelType: action.modelType,
-        ModificationList: [],
-        selectedModificationType: "",
+        // ModificationList: [],
+        // selectedModificationType: "",
 
       };
 
@@ -54,10 +52,17 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
         ModificationList: action.modificationList,
         selectedYearType: action.year
       };
+
+    case CarTypes.GET_TEST_LIST_SUCCESS:
+      return {
+        ...state,
+        ModelList: action.ModelList?.length ? action.ModelList : [],
+        YearList: action.YearList?.length ? action.YearList : [],
+        ModificationList: action.ModificationList?.length ? action.ModificationList : [],
+      };
     default:
       return state;
   }
 };
-
 
 export default reducer;
