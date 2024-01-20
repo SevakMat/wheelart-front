@@ -66,13 +66,13 @@ const SingleRim = () => {
     },
   ];
 
-  const images = [rim?.imageUrl, rim?.imageUrl, rim?.imageUrl, rim?.imageUrl];
+  const images = rim?.imageUrl.split(';').filter((item: any) => item !== 'undefined');
 
   return (
     <Box sx={{ margin: "30px 20px" }}>
       <Box>
         <Stack direction="row" spacing={5}>
-          <Slideshow images={images} />
+          {images && <Slideshow images={images} />}
           <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
             <Typography variant="h4">
               Set of 4 {rim?.sizeR}″ {rim?.rimModel} Aluminum Rims

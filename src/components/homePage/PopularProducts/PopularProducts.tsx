@@ -96,9 +96,9 @@ const PopularProducts = () => {
                 <RimCard
                   isPopular={true}
                   image={rim.imageUrl}
-                  price={12}
-                  rimWidth={100}
-                  color="Grey"
+                  price={rim.price}
+                  rimWidth={rim.width}
+                  color={rim.color}
                   name={rim.rimModel}
                   size={rim.sizeR}
                   rimId={rim.id}

@@ -7,7 +7,7 @@ export enum RimServerTypes {
 
 export interface RimType {
   id: string;
-  price: string;
+  price: number;
   sizeR: string;
   rimModel: string;
   imageUrl: string;

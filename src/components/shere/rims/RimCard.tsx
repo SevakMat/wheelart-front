@@ -61,7 +61,7 @@ export default function RimCard({
         },
       }}
       onClick={() => {
-        navigate(`${rimId}`);
+        navigate(`/rims/${rimId}`);
       }}
     >
       <CardActionArea
