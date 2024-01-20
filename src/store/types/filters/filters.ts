@@ -16,6 +16,7 @@ export interface Filters {
   centerBore: FilterType[],
   color: FilterType[],
   width: FilterType[],
+  price: FilterType[],
 }
 export interface SelectedFilters {
   sizeR?: number[],
@@ -24,7 +25,7 @@ export interface SelectedFilters {
   centerBore?: number[],
   width?: number[],
   color?: number[],
-
+  price?: FilterType[],
   pagination?: number
 }
 

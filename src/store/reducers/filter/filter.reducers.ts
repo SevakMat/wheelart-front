@@ -9,6 +9,8 @@ const initialState = {
     centerBore: [],
     color: [],
     width: [],
+    price: [],
+
   },
   selectedFilters: {
     sizeR: [],
@@ -17,6 +19,7 @@ const initialState = {
     centerBore: [],
     color: [],
     width: [],
+    price: [],
   }
 }
 

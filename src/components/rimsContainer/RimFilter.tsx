@@ -22,7 +22,7 @@ const RimFilter = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const { filters } = useAppSelector((state: RootState) => state.filter)
-  const { sizeR, pcd, centerBore, studHoles, color, width } = filters
+  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters
   const [searchParams] = useSearchParams();
 
   const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue, page: pageValue } = useParamsHook()
@@ -90,6 +90,7 @@ const RimFilter = () => {
         <RimFilterField list={studHoles} fieldType="studHoles" name='studHoles' />
         <RimFilterField list={color} fieldType="color" name='color' />
         <RimFilterField list={width} fieldType="width" name='width' />
+        <RimFilterField list={price} fieldType="price" name='price' />
       </Box>
     </Box>
   );
