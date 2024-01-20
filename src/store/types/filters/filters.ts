@@ -14,12 +14,17 @@ export interface Filters {
   pcd: FilterType[],
   studHoles: FilterType[],
   centerBore: FilterType[],
+  color: FilterType[],
+  width: FilterType[],
 }
 export interface SelectedFilters {
   sizeR?: number[],
   pcd?: number[],
   studHoles?: number[],
   centerBore?: number[],
+  width?: number[],
+  color?: number[],
+
   pagination?: number
 }
 

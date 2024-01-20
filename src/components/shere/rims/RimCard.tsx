@@ -139,7 +139,7 @@ export default function RimCard({
                       height: "20px",
                       lineHeight: "100px",
                       borderRadius: "50%",
-                      background: color,
+                      background: color !== 'test' ? color : "black",
                       marginLeft: 1,
                     }}
                   />

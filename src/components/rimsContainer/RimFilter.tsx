@@ -22,7 +22,7 @@ const RimFilter = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const { filters } = useAppSelector((state: RootState) => state.filter)
-  const { sizeR, pcd, centerBore } = filters
+  const { sizeR, pcd, centerBore, studHoles, color, width } = filters
   const [searchParams] = useSearchParams();
 
   const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue, page: pageValue } = useParamsHook()
@@ -34,11 +34,9 @@ const RimFilter = () => {
   useEffect(() => {
 
     if (rimsRequestDetection === 'by-rim') {
-      console.log("byfilter");
 
       dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
     } else {
-      console.log("bycar");
 
       dispatch(getRimsByCarDetailsEffect(location, navigate, makeValue, modelValue, yearValue, modificationValue, pageValue ? + pageValue : 0))
     }
@@ -86,16 +84,12 @@ const RimFilter = () => {
             "rgba(50, 50, 93, 0.25) 0px 0px 20px 0px, rgba(0, 0, 0, 0.3) 0px 0px 20px 0px",
         }}
       >
-        <RimFilterField list={sizeR} fieldType="Taille" name='sizeR' />
-        <RimFilterField list={pcd} fieldType="Entraxe" name='pcd' />
-        <RimFilterField list={centerBore} fieldType="Alésage" name='centerBore' />
-        {/* Width */}
-        {/* <FilterField list={sizeList} fieldType="Largeur" /> */}
-        {/* ET offset */}
-        {/* <FilterField list={sizeList} fieldType="Déport ET" /> */}
-        {/* Color */}
-        {/* <FilterField list={sizeList} fieldType="Couleur" /> */}
-        {/* <FilterField list={sizeList} fieldType="Style" /> */}
+        <RimFilterField list={sizeR} fieldType="sizeR" name='sizeR' />
+        <RimFilterField list={pcd} fieldType="pcd" name='pcd' />
+        <RimFilterField list={centerBore} fieldType="centerBore" name='centerBore' />
+        <RimFilterField list={studHoles} fieldType="studHoles" name='studHoles' />
+        <RimFilterField list={color} fieldType="color" name='color' />
+        <RimFilterField list={width} fieldType="width" name='width' />
       </Box>
     </Box>
   );

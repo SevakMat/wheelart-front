@@ -14,7 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 interface RimFilterFieldProps {
   list: any
   fieldType: any
-  name: 'sizeR' | 'pcd' | 'studHoles' | 'centerBore'
+  name: 'sizeR' | 'pcd' | 'studHoles' | 'centerBore' | 'width' | 'color'
 }
 
 function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
@@ -47,13 +47,16 @@ function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
   }, [list])
 
   useEffect(() => {
-    const sizeRValues: any = queryParams.getAll(name).map(Number);
+    const queryParamsArray: any = queryParams.getAll(name).map(Number);
+    // const queryParamsArray: any = queryParams.getAll(name) // toxnumem aranc number
+
     setSelected(
-      typeof sizeRValues === "string" ? sizeRValues.split(",") : sizeRValues
+      typeof queryParamsArray === "string" ? queryParamsArray.split(",") : queryParamsArray
     );
   }, [queryParams])
 
   const handleChange = (event: SelectChangeEvent<typeof selected>) => {
+
     const selectedQueryArray = event.target.value as string[]
     if (selectedQueryArray.length > 0) {
       queryParams.set(name, event.target.value as string);
@@ -72,8 +75,12 @@ function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
     e.stopPropagation();
   };
 
+
   const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const filtered = list.filter((listItem: any) => listItem.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    const filtered = list.filter((listItem: any) => {
+      const itemName = String(listItem[name]); // Convert to string, handle null or undefined
+      return itemName && itemName.toLowerCase().includes(e.target.value.toLowerCase());
+    });
     setCurrentList(filtered);
   };
 
@@ -131,7 +138,7 @@ function RimFilterField({ list, fieldType, name }: RimFilterFieldProps) {
           >
             <Checkbox checked={selected.indexOf(listItem[name]) > -1} />
             <ListItemText primary={listItem.name} />
-            {listItem[name]},{listItem.count}
+            {listItem[name]}({listItem.count})
           </MenuItem>
         ))}
       </Select>
