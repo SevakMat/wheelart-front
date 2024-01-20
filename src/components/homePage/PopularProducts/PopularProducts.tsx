@@ -134,3 +134,8 @@ const PopularProducts = () => {
 };
 
 export default PopularProducts;
+
+
+// voshm senc, erb vor cherez car ekav, gnum berum enq by - cary, u berum enq select exac filtrery(cari)
+// hajordy ete menq filtr enq ogtagorcum, antesum enq mashni detalnery u ashxatacnum enq erkrord effecty,
+//   aysinqn erkrordum petqa stugenq u mashni tvyalnerty hanenq, u not select enq dnum pcd u tenc banerin

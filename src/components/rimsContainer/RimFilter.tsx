@@ -13,10 +13,12 @@ import { useShowRimsBy } from "../../hook/showRimsBy";
 import RimFilterField from "./RimFilterField";
 
 import "../../fonts/monsterrat.css";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 
 const RimFilter = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
   const { filters } = useAppSelector((state: RootState) => state.filter)
@@ -32,10 +34,13 @@ const RimFilter = () => {
   useEffect(() => {
 
     if (rimsRequestDetection === 'by-rim') {
+      console.log("byfilter");
 
       dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
     } else {
-      dispatch(getRimsByCarDetailsEffect(makeValue, modelValue, yearValue, modificationValue, pageValue ? + pageValue : 0))
+      console.log("bycar");
+
+      dispatch(getRimsByCarDetailsEffect(location, navigate, makeValue, modelValue, yearValue, modificationValue, pageValue ? + pageValue : 0))
     }
 
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
