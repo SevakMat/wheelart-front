@@ -25,7 +25,7 @@ const RimsList = () => {
                   image={rim.imageUrl}
                   price={rim.price}
                   rimWidth={100}
-                  color="Grey"
+                  color={rim.color}
                   name={rim.rimModel}
                   size={rim.sizeR}
                   rimId={rim.id}
