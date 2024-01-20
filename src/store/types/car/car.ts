@@ -6,66 +6,53 @@ export enum CarTypes {
   GET_TEST_LIST_SUCCESS = "GET_TEST_LIST_SUCCESS",
 }
 
-export interface CarType {
+export interface CarDetailsType {
   name: string,
-  imageUrl: string
-}
-
-export interface ModelType {
-  name: string,
-  imageUrl: string
-}
-export interface YearType {
-  name: string,
-  imageUrl: string
-}
-
-export interface ModificationsType {
-  name: string,
-  imageUrl: string
+  logo: string,
+  slug: string
 }
 
 export interface CarState {
   selectedCarType: string
-  CarTypeList: CarType[];
+  CarTypeList: CarDetailsType[];
 
   selectedModelType: string
-  ModelList: ModelType[];
+  ModelList: CarDetailsType[];
 
   selectedYearType: string
-  YearList: YearType[];
+  YearList: CarDetailsType[];
 
   selectedModificationType: string
-  ModificationList: CarType[];
+  ModificationList: CarDetailsType[];
 }
 
 export interface GetCarListSuccess {
   type: CarTypes.GET_CAR_LIST_SUCCESS;
-  carList: CarType[];
+  carList: CarDetailsType[];
 }
 
 export interface GetModelListSuccess {
   type: CarTypes.GET_MODEL_LIST_SUCCESS;
-  modelList: ModelType[];
+  modelList: CarDetailsType[];
   carType: string
 }
 
 export interface GetYearListSuccess {
   type: CarTypes.GET_YEAR_LIST_SUCCESS;
-  yearList: YearType[];
+  yearList: CarDetailsType[];
   modelType: string
 }
 export interface GetModificationListSuccess {
   type: CarTypes.GET_MODIFICATIONS_LIST_SUCCESS;
-  modificationList: ModificationsType[];
+  modificationList: CarDetailsType[];
   year: string
 }
 
 export interface GetTestListSuccess {
   type: CarTypes.GET_TEST_LIST_SUCCESS;
-  ModelList?: ModelType[];
-  YearList?: YearType[];
-  ModificationList?: CarType[];
+  ModelList?: CarDetailsType[];
+  YearList?: CarDetailsType[];
+  ModificationList?: CarDetailsType[];
 }
 
 

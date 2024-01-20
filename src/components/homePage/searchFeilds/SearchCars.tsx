@@ -37,9 +37,9 @@ const SearchCars = () => {
       dispatch(getCarDetailsEffect(make));
     }
     else {
-      console.log(123456);
     }
   }, [make, model, year, dispatch]);
+
 
   const {
     CarTypeList,
@@ -66,15 +66,15 @@ const SearchCars = () => {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Field list={CarTypeList} fieldType={"Make"} onSelect={onSelect} value={make} />
+      <Field options={CarTypeList} fieldType="Make" onSelect={onSelect} value={make} />
       <CustomDivider orientation="vertical" flexItem />
-      <Field list={ModelList} fieldType={"Model"} onSelect={onSelect} value={model} />
+      <Field options={ModelList} fieldType="Model" onSelect={onSelect} value={model} />
       <CustomDivider orientation="vertical" flexItem />
-      <Field list={YearList} fieldType={"Year"} onSelect={onSelect} value={year} />
+      <Field options={YearList} fieldType="Year" onSelect={onSelect} value={year} />
       <CustomDivider orientation="vertical" flexItem />
       <Field
-        list={ModificationList}
-        fieldType={"Modification"}
+        options={ModificationList}
+        fieldType="Modification"
         onSelect={onSelect}
         value={modification}
       />

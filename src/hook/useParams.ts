@@ -11,6 +11,10 @@ const parseMapToArray = (searchParams: URLSearchParams): Record<string, (string 
   const result: Record<string, (string | number)[]> = {};
 
   searchParams.forEach((value, key) => {
+
+    if (key === "make" || key === "model" || key === "year" || key === "modification" || key === "page") {
+      return
+    }
     const parsedValue = isNaN(Number(value)) ? value : Number(value);
     if (parsedValue === 0) {
       return
