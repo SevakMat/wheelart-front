@@ -4,8 +4,8 @@ import {
   getRimsListByCarDateService,
   getPopularRimsService,
 } from "../../../services/rim.service";
-import { getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
-import { getPopularRimsAction, getRimAction, getRimsListByCarDateAction, getRimsListCountAction } from "../../actions/rim/rim";
+import { getRecommendedTiresAction, getTiresListByCarDateAction } from "../../actions/tire/tire.actions";
+import { getPopularRimsAction, getRecommendedRimsAction, getRimAction, getRimsListByCarDateAction, getRimsListCountAction } from "../../actions/rim/rim";
 import { Location, NavigateFunction } from "react-router-dom";
 
 export const getRimsByCarDetailsEffect = (location: Location<any>, navigate: NavigateFunction, make?: string | null, model?: string | null, year?: string | null, modification?: string | null, pagination?: number): any => {
@@ -46,10 +46,12 @@ export const getRimEffect = (
         modificationValue
       );
       const {
-        data: { singleRim, tires },
+        data: { singleRim, recommendedRims, recommendedTires },
       } = result;
       dispatch(getRimAction(singleRim));
-      dispatch(getTiresListByCarDateAction(tires));
+      dispatch(getRecommendedTiresAction(recommendedTires));
+      dispatch(getRecommendedRimsAction(recommendedRims));
+
     } catch (error: any) {
       console.log(error);
     } finally {

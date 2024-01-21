@@ -3,6 +3,7 @@ import { RimActionTypes, RimServerTypes, RimState } from "../../types/rim/rim";
 
 const initialState: RimState = {
   rimList: [],
+  recommendedRims: [],
   rim: null,
   rimsCount: 0,
   popularRims: [],
@@ -28,11 +29,15 @@ const reducer: ReducerType = (state = initialState, action: RimActionTypes) => {
         ...state,
         rimsCount: action.rimsCount,
       };
-
     case RimServerTypes.GET_POPULAR_RIMS_SUCCESS:
       return {
         ...state,
         popularRims: action.popularRims,
+      };
+    case RimServerTypes.GET_RECOMMENDED_RIMS_SUCCESS:
+      return {
+        ...state,
+        recommendedRims: action.recommendedRims
       };
 
     default:

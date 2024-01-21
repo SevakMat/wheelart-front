@@ -3,6 +3,7 @@ export enum RimServerTypes {
   GET_RIM_SUCCESS = "GET_RIM_SUCCESS",
   GET_RIMS_COUNT_SUCCESS = "GET_RIMS_COUNT_SUCCESS",
   GET_POPULAR_RIMS_SUCCESS = "GET_POPULAR_RIMS_SUCCESS",
+  GET_RECOMMENDED_RIMS_SUCCESS = "GET_RECOMMENDED_RIMS_SUCCESS"
 }
 
 export interface RimType {
@@ -17,6 +18,7 @@ export interface RimType {
   width: number;
   color: string;
   gram: number;
+  score: number;
 }
 
 export interface RimState {
@@ -24,6 +26,7 @@ export interface RimState {
   rim: RimType | null;
   rimsCount: number;
   popularRims: RimType[];
+  recommendedRims: RimType[];
 }
 
 export interface GetRimListSuccess {
@@ -45,9 +48,14 @@ export interface GetPopularRimsSuccess {
   type: RimServerTypes.GET_POPULAR_RIMS_SUCCESS;
   popularRims: RimType[];
 }
+export interface GetRecommendedRimsSuccess {
+  type: RimServerTypes.GET_RECOMMENDED_RIMS_SUCCESS;
+  recommendedRims: RimType[];
+}
 
 export type RimActionTypes =
   | GetRimListSuccess
   | GetRimSuccess
   | GetRimsCountSuccess
-  | GetPopularRimsSuccess;
+  | GetPopularRimsSuccess
+  | GetRecommendedRimsSuccess;
