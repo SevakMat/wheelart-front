@@ -22,6 +22,9 @@ import QuantityInput from "../shere/quantityInput/QuantityInput";
 import RimCard from "../shere/rims/RimCard";
 import Slideshow from "../shere/slideshow/Slideshow";
 import { useParamsHook } from "../../hook/useParams";
+import TireCard from "../shere/tires/TireCard";
+import { RimType } from "../../store/types/rim/rim";
+
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
@@ -33,38 +36,16 @@ const SingleRim = () => {
     modification: modificationValue,
   } = useParamsHook();
 
-  const { rim } = useAppSelector((state: RootState) => state.rim);
+  const { rim, recommendedRims } = useAppSelector((state: RootState) => state.rim);
+  const { recommendedTires } = useAppSelector((state: RootState) => state.tire);
 
   useEffect(() => {
     dispatch(
       getRimEffect(id, makeValue, modelValue, yearValue, modificationValue)
     );
-  }, []);
+  }, [id]);
 
-  const [value, setValue] = useState<number | null>(0);
 
-  const suggestions = [
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "1",
-    },
-    {
-      imageUrl:
-        "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      rimModel: "DY1417-01",
-      sizeR: '17"',
-      width: 255,
-      color: "Grey",
-      price: 850,
-      id: "2",
-    },
-  ];
 
   const images = rim?.imageUrl.split(';').filter((item: any) => item !== 'undefined');
 
@@ -83,10 +64,8 @@ const SingleRim = () => {
               </Typography>
               <Rating
                 name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
+                value={rim?.score}
+
               />
             </Box>
             <Typography variant="h5" component="p">
@@ -202,6 +181,38 @@ const SingleRim = () => {
             </Table>
           </Box>
 
+
+          <Box>
+            <Typography variant="h3" sx={{ textAlign: "center" }}>
+              Recommended Tires
+            </Typography>
+            <List
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 3,
+                justifyContent: "center",
+              }}
+            >
+              {recommendedTires.length > 0 && recommendedTires.map((tire) => {
+                return (
+                  <li>
+                    <TireCard
+                      isPopular={true}
+                      image={tire.imageUrl}
+                      price={100}
+                      tireWidth={tire.tireWidth}
+                      marka={tire.marka}
+                      tireAspectRatio={tire.tireAspectRatio}
+                      tireDiameter={tire.rimDiameter}
+                      tireId={tire.id}
+                      color="black"
+                    />
+                  </li>
+                );
+              })}
+            </List>
+          </Box>
           <Box>
             <Typography variant="h3" sx={{ textAlign: "center" }}>
               Products you might like
@@ -214,7 +225,7 @@ const SingleRim = () => {
                 justifyContent: "center",
               }}
             >
-              {suggestions.map((rim) => {
+              {recommendedRims.length > 0 && recommendedRims.map((rim: RimType) => {
                 return (
                   <li>
                     <RimCard

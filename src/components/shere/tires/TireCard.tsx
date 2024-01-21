@@ -2,55 +2,180 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import { TireType } from "../../../store/types/tire/tire";
+import { Box, CardActionArea } from "@mui/material";
+import styled from "@emotion/styled";
+import Tooltip from "@mui/material/Tooltip";
+
+import "../../../fonts/monsterrat.css";
+import { useNavigate } from "react-router-dom";
+
+const InfoCustomTypo = styled(Typography)(() => ({
+  fontFamily: "'Montserrat', sans-serif",
+  // fontSize: fontSize,
+}));
 
 interface TireCardProps {
-  tire: TireType
+  isPopular: boolean;
+  image: string;
+  price: number;
+  tireWidth: number;
+  marka: string;
+  tireAspectRatio: number
+  tireDiameter: number;
+  tireId: number;
+  color: string;
 }
 
-export default function TireCard({ tire }: TireCardProps) {
+export default function TireCard({
+  isPopular,
+  image,
+  price,
+  tireWidth,
+  marka,
+  tireAspectRatio,
+  tireDiameter,
+  tireId,
+  color
+}: TireCardProps) {
+  const navigate = useNavigate();
 
-  const { id, imageUrl, marka, rimDiameter, stock, tireAspectRatio, tireWidth } = tire
+  let width, height, fontSize: number;
+
+  if (isPopular) {
+    width = 250;
+    height = 380;
+    fontSize = 24;
+  } else {
+    width = 210;
+    height = 340;
+    fontSize = 14;
+  }
 
   return (
     <Card
       sx={{
-        maxWidth: 300,
-        textAlign: "center",
-        boxShadow: "none",
+        boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+        borderRadius: 2,
+
+        "&:hover": {
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+        },
+      }}
+      onClick={() => {
+        navigate(`/rims/${tireId}`);
       }}
     >
-      <CardActionArea>
+      <CardActionArea
+        sx={{
+          height: height, //380
+          width: width, //250
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          padding: 1,
+          overflow: "hidden",
+        }}
+      >
         <CardMedia
           component="img"
+          image={image}
           sx={{
-            width: "100%",
-            height: "200px",
+            // width: 230,
+            // height: 220,
             objectFit: "cover",
-            marginLeft: "auto",
             marginRight: "auto",
+            marginLeft: "auto",
+            left: 0,
+            right: 0,
 
-            "@media (max-width: 1090px)": {
-              width: "180px",
-              height: "180px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              objectFit: "cover",
+            transformOrigin: "70% 90%",
+            transition: "transform .25s, visibility .25s ease-in",
+            "&:hover": {
+              transform: "scale(2)",
             },
           }}
-          image={imageUrl}
         />
-        <CardContent>
-          <Typography gutterBottom variant="body2" component="div">
-            {` marka - ${marka}`} <br />
-            {`  ${tireWidth}/${tireAspectRatio}/${rimDiameter}`} <br />
 
+        <CardContent
+          sx={{
+            marginTop: 3,
+            width: "100%",
+            padding: 0,
+            zIndex: 1,
+          }}
+        >
+          {/* name */}
+          <Box sx={{ paddingBottom: 1 }}>
+            <InfoCustomTypo
+              sx={{ fontWeight: "bold", fontSize: "18px !important" }}
+            >
+              {marka}
+            </InfoCustomTypo>
+          </Box>
 
-          </Typography>
-          <Typography variant="h5" color="text.primary">
-            {1000} EUR
-          </Typography>
+          {/* middle info */}
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+              }}
+            >
+              <InfoCustomTypo>tireAspectRatio: {tireAspectRatio}</InfoCustomTypo>
+              <InfoCustomTypo>Largeur: {tireWidth}</InfoCustomTypo>
+              <InfoCustomTypo
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                Couleur:
+                {/* color round */}
+                <Tooltip title={color} placement="right" arrow>
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      lineHeight: "100px",
+                      borderRadius: "50%",
+                      background: color !== 'test' ? color : "black",
+                      marginLeft: 1,
+                    }}
+                  />
+                </Tooltip>
+              </InfoCustomTypo>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                textAlign: "end",
+              }}
+            >
+              <InfoCustomTypo
+                sx={{
+                  color: "#4CBB17",
+                  fontSize: price.toString().length === 4 ? "24px" : "22px",
+                }}
+              >
+                €{price}
+              </InfoCustomTypo>
+              <p
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  margin: 0,
+                  fontSize: 11,
+                }}
+              >
+                pour 4 jantes
+              </p>
+            </Box>
+          </Box>
         </CardContent>
       </CardActionArea>
     </Card>
