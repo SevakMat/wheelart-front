@@ -21,6 +21,7 @@ import { customBreakpoints } from "../../../customBreakpoints";
 
 import "../../../fonts/roboto.css";
 import "../../../fonts/monsterrat.css";
+import ChangeLanguage from "./ChangeLanguage";
 
 const wheelArtLogo =
   "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500";
@@ -45,9 +46,9 @@ const styles = {
 };
 
 function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [t, i18n] = useTranslation<"global", undefined>("global");
-
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
 
   // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
   //   setAnchorElNav(event.currentTarget);
@@ -214,14 +215,9 @@ function Header() {
                   <AccountCircleIcon style={{ color: "white" }} />
                 </IconButton>
               </Box>
-              <button onClick={() => {
-                i18n.changeLanguage("fr")
-                localStorage.setItem("ln", "fr")
-              }}>FR</button>
-              <button onClick={() => {
-                localStorage.setItem("ln", "en")
-                i18n.changeLanguage("en")
-              }}>EN</button>
+              <Box sx={{ paddingLeft: 2 }}>
+                <ChangeLanguage />
+              </Box>
             </Box>
           </Toolbar>
         </Container>
