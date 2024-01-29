@@ -2,6 +2,7 @@ import HomePage from "../../pages/HomePage";
 import SingleRimPage from "../../pages/SingleRimPage";
 import RimsPage from "../../pages/RimsPage";
 import ProtectedRoute from "../types/ProtectedRoute";
+import ShopBasketPage from "../../pages/ShopBasketPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -21,6 +22,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/rims/:id",
       element: <SingleRimPage />,
+    },
+    {
+      path: "/shop-basket",
+      element: <ShopBasketPage />,
     },
   ],
 };
