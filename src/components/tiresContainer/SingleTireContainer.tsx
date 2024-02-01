@@ -6,6 +6,9 @@ import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { getRimEffect } from "../../store/effects/rim/rim.effect";
 
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   List,
@@ -14,9 +17,6 @@ import {
   TableHead,
   TableRow,
   Typography,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
 } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
@@ -30,7 +30,7 @@ import { RimType } from "../../store/types/rim/rim";
 
 import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 
-const SingleRim = () => {
+const SingleTireContanier = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
 
@@ -52,9 +52,13 @@ const SingleRim = () => {
     );
   }, [id]);
 
-  const images = rim?.imageUrl
-    .split(";")
-    .filter((item: any) => item !== "undefined");
+  // const images = rim?.imageUrl
+  //   .split(";")
+  //   .filter((item: any) => item !== "undefined");
+
+  const images = [
+    "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
+  ];
 
   return (
     <Box sx={{ margin: "30px 20px" }}>
@@ -108,8 +112,8 @@ const SingleRim = () => {
               </Button>
             </Box>
             {/* <Box>
-                <Button>Add to favorites</Button>
-              </Box> */}
+              <Button>Add to favorites</Button>
+            </Box> */}
 
             <Box sx={{ width: "100%", paddingBottom: 5 }}>
               <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
@@ -270,4 +274,4 @@ const SingleRim = () => {
   );
 };
 
-export default SingleRim;
+export default SingleTireContanier;
