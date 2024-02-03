@@ -20,7 +20,7 @@ interface TireCardProps {
   price: number;
   tireWidth: number;
   marka: string;
-  tireAspectRatio: number
+  tireAspectRatio: number;
   tireDiameter: number;
   tireId: number;
   color: string;
@@ -35,7 +35,7 @@ export default function TireCard({
   tireAspectRatio,
   tireDiameter,
   tireId,
-  color
+  color,
 }: TireCardProps) {
   const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ export default function TireCard({
         },
       }}
       onClick={() => {
-        navigate(`/rims/${tireId}`);
+        navigate(`/tires/:id`);
       }}
     >
       <CardActionArea
@@ -90,11 +90,11 @@ export default function TireCard({
             left: 0,
             right: 0,
 
-            transformOrigin: "70% 90%",
-            transition: "transform .25s, visibility .25s ease-in",
-            "&:hover": {
-              transform: "scale(2)",
-            },
+            // transformOrigin: "70% 90%",
+            // transition: "transform .25s, visibility .25s ease-in",
+            // "&:hover": {
+            //   transform: "scale(2)",
+            // },
           }}
         />
 
@@ -124,7 +124,7 @@ export default function TireCard({
                 justifyContent: "flex-end",
               }}
             >
-              <InfoCustomTypo>tireAspectRatio: {tireAspectRatio}</InfoCustomTypo>
+              <InfoCustomTypo>AR: {tireAspectRatio}</InfoCustomTypo>
               <InfoCustomTypo>Largeur: {tireWidth}</InfoCustomTypo>
               <InfoCustomTypo
                 sx={{
@@ -141,7 +141,7 @@ export default function TireCard({
                       height: "20px",
                       lineHeight: "100px",
                       borderRadius: "50%",
-                      background: color !== 'test' ? color : "black",
+                      background: color !== "test" ? color : "black",
                       marginLeft: 1,
                     }}
                   />
@@ -172,7 +172,7 @@ export default function TireCard({
                   fontSize: 11,
                 }}
               >
-                pour 4 jantes
+                pour 4 pneus
               </p>
             </Box>
           </Box>
