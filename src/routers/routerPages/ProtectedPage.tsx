@@ -2,6 +2,8 @@ import HomePage from "../../pages/HomePage";
 import SingleRimPage from "../../pages/SingleRimPage";
 import RimsPage from "../../pages/RimsPage";
 import ProtectedRoute from "../types/ProtectedRoute";
+import AccsPage from "../../pages/AccsPage";
+import SingleAccsPage from "../../pages/SingleAccsPage";
 import TiresPage from "../../pages/TiresPage";
 import SingleTirePage from "../../pages/SingleTirePage";
 
@@ -14,7 +16,11 @@ const ProtectedPageRoute: ProtectedRoute = {
     },
     {
       path: "/accessories",
-      element: <div>asd</div>,
+      element: <AccsPage />,
+    },
+    {
+      path: "/accessories/:id",
+      element: <SingleAccsPage />,
     },
     {
       path: "/rims",
