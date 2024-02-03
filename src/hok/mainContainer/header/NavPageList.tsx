@@ -48,6 +48,7 @@ const RenderPageList = () => {
       >
         <CustomLink href="/welcome">{t("header.welcome")}</CustomLink>
         <CustomLink href="/rims">{t("header.rims")}</CustomLink>
+        <CustomLink href="/tires">{t("header.tires")}</CustomLink>
         <CustomLink href="/accessories">{t("header.accessories")}</CustomLink>
         <CustomLink href="/blog">{t("header.blog")}</CustomLink>
         <CustomLink href="/faq">{t("header.faq")}</CustomLink>
