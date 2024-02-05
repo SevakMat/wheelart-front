@@ -14,9 +14,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
     {
@@ -25,9 +25,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
     {
@@ -36,9 +36,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
     {
@@ -47,9 +47,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
     {
@@ -58,9 +58,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
     {
@@ -69,9 +69,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
     {
@@ -80,9 +80,9 @@ const AccsList = () => {
         "https://img.freepik.com/free-vector/industry-realistic-nuts-bolts-collection_23-2149395071.jpg?w=740&t=st=1706956490~exp=1706957090~hmac=ea7b22d73d5f6558c496b88f5800e05a508ea1c2c08bcad96387ac2966cb9f45",
       price: 12,
       id: 1,
-      make: "brand",
-      length: 100,
-      color: "metallic",
+      title: "M14x1,50 27mm",
+      length: 27,
+      color: "gray",
       gram: 1200,
     },
   ];
@@ -105,7 +105,7 @@ const AccsList = () => {
                   image={accs.image}
                   price={accs.price}
                   accsId={accs.id}
-                  make={accs.make}
+                  title={accs.title}
                   length={accs.length}
                   color={accs.color}
                   gram={accs.gram}
