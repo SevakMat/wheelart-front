@@ -8,7 +8,7 @@ const ShopBasketContainer = () => {
       <Box
         sx={{
           backgroundImage:
-            "url(https://img.freepik.com/premium-photo/empty-shopping-basket-pink-background-3d-rendering-illustration_379823-2367.jpg?w=1060)",
+            "url(https://img.freepik.com/premium-photo/3d-rendering-shopping-cart-abstract-geometric-composition_172660-465.jpg?w=1060)",
 
           height: "100%",
           backgroundPosition: "center",
@@ -31,7 +31,7 @@ const ShopBasketContainer = () => {
             fontFamily: "'Montserrat', sans-serif",
           }}
         >
-          My Basket
+          Mon Panier
         </Typography>
       </Box>
       <Box

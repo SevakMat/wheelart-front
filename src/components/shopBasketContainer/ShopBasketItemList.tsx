@@ -1,7 +1,18 @@
 import { Box, List } from "@mui/material";
+import ShopBasketCard from "./ShopBasketCard";
 
 const ShopBasketItemList = () => {
-  const itemList: any = [];
+  const itemList: any = [
+    <ShopBasketCard
+      image={"rim.imageUrl"}
+      price={12}
+      rimWidth={100}
+      color="Grey"
+      name={"DY768-01"}
+      size={"1"}
+      rimId={"1"}
+    />,
+  ];
 
   return (
     <Box>
