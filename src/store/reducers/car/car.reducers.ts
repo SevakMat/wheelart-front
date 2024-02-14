@@ -9,7 +9,7 @@ const initialState: CarState = {
 
   selectedCarType: "",
   selectedModelType: "",
-  selectedYearType: "",
+  selectedGenerationType: "",
   selectedModificationType: "",
 }
 

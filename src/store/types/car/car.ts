@@ -19,7 +19,7 @@ export interface CarState {
   selectedModelType: string
   ModelList: CarDetailsType[];
 
-  selectedYearType: string
+  selectedGenerationType: string
   GenerationList: CarDetailsType[];
 
   selectedModificationType: string

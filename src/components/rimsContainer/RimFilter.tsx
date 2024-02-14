@@ -25,7 +25,7 @@ const RimFilter = () => {
   const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters
   const [searchParams] = useSearchParams();
 
-  const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue, page: pageValue } = useParamsHook()
+  const { make: makeValue, model: modelValue, generation: generationValue, modification: modificationValue, page: pageValue } = useParamsHook()
 
   const rimsRequestDetection = useShowRimsBy()
 
@@ -38,7 +38,7 @@ const RimFilter = () => {
       dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
     } else {
 
-      dispatch(getRimsByCarDetailsEffect(location, navigate, makeValue, modelValue, yearValue, modificationValue, pageValue ? + pageValue : 0))
+      dispatch(getRimsByCarDetailsEffect(location, navigate, makeValue, modelValue, generationValue, modificationValue, pageValue ? + pageValue : 0))
     }
 
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
