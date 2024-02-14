@@ -2,9 +2,11 @@ import { Button, styled, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 const CustomBox = styled(Box)(() => ({
-  fontSize: 20,
+  fontSize: 15,
   display: "flex",
   flexDirection: "column",
+  textAlign: "center",
+  alignItems: "center",
   rowGap: 10,
 }));
 
@@ -12,7 +14,7 @@ const CustomH3 = styled(Box)(() => ({
   margin: 0,
   padding: 0,
   fontWeight: "bold",
-  fontSize: 30,
+  fontSize: 20,
 }));
 
 const CustomParagraph = styled(Box)(() => ({
@@ -24,22 +26,21 @@ const CustomButton = styled(Button)(() => ({
   justifyContent: "center",
   color: "white",
   fontWeight: "bold",
-  width: 200,
+  width: 150,
+  height: 30,
   background:
     "radial-gradient(circle, rgba(77,81,99,1) 0%, rgba(176,159,159,1) 100%)",
 }));
 
 export const CaruselItemInfoF = () => {
-  const [t] = useTranslation("home")
+  const [t] = useTranslation("home");
 
   return [
     {
       label: (
         <CustomBox>
-          <CustomH3 >{t("slider.headers.welcomeToWheelArt")}</CustomH3>
-          <CustomParagraph>
-            {t("slider.infos.first")}
-          </CustomParagraph>
+          <CustomH3>{t("slider.headers.welcomeToWheelArt")}</CustomH3>
+          <CustomParagraph>{t("slider.infos.first")}</CustomParagraph>
         </CustomBox>
       ),
       imgPath:
@@ -79,7 +80,7 @@ export const CaruselItemInfoF = () => {
         "https://img.freepik.com/free-photo/dark-storage-full-big-variety-new-tyres-busy-warehouse_613910-17116.jpg?w=900&t=st=1703277935~exp=1703278535~hmac=d14411d9038b0ae355e38be7839480df4b6c82af284d2933d3fd497257c174e8",
     },
   ];
-}
+};
 
 // export const caruselItemInfo = [
 //   {

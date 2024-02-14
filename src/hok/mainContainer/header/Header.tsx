@@ -61,7 +61,7 @@ function Header() {
   return (
     <ThemeProvider theme={customBreakpoints}>
       <AppBar
-        position="static"
+        position="fixed"
         elevation={0}
         sx={{
           height: 65,
