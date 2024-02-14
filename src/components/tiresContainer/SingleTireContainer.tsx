@@ -36,7 +36,7 @@ const SingleTireContanier = () => {
   const {
     make: makeValue,
     model: modelValue,
-    year: yearValue,
+    generation: generationValue,
     modification: modificationValue,
   } = useParamsHook();
 
@@ -47,7 +47,7 @@ const SingleTireContanier = () => {
 
   useEffect(() => {
     dispatch(
-      getRimEffect(id, makeValue, modelValue, yearValue, modificationValue)
+      getRimEffect(id, makeValue, modelValue, generationValue, modificationValue)
     );
   }, [id]);
 

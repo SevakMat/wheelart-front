@@ -27,7 +27,7 @@ const AccsFilter = () => {
   const {
     make: makeValue,
     model: modelValue,
-    year: yearValue,
+    generation: generationValue,
     modification: modificationValue,
     page: pageValue,
   } = useParamsHook();
@@ -51,7 +51,7 @@ const AccsFilter = () => {
           navigate,
           makeValue,
           modelValue,
-          yearValue,
+          generationValue,
           modificationValue,
           pageValue ? +pageValue : 0
         )
