@@ -208,10 +208,10 @@ function Header() {
               </Box>
 
               <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
-                <IconButton href="/account">
+                <IconButton href="/shop-basket">
                   <LocalMallIcon style={{ color: "white" }} />
                 </IconButton>
-                <IconButton href="/search" sx={{ paddingRight: 0 }}>
+                <IconButton href="/account" sx={{ paddingRight: 0 }}>
                   <AccountCircleIcon style={{ color: "white" }} />
                 </IconButton>
               </Box>

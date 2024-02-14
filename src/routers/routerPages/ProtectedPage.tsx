@@ -2,10 +2,11 @@ import HomePage from "../../pages/HomePage";
 import SingleRimPage from "../../pages/SingleRimPage";
 import RimsPage from "../../pages/RimsPage";
 import ProtectedRoute from "../types/ProtectedRoute";
-import AccsPage from "../../pages/AccsPage";
-import SingleAccsPage from "../../pages/SingleAccsPage";
+import ShopBasketPage from "../../pages/ShopBasketPage";
 import TiresPage from "../../pages/TiresPage";
 import SingleTirePage from "../../pages/SingleTirePage";
+import AccsPage from "../../pages/AccsPage";
+import SingleAccsPage from "../../pages/SingleAccsPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -29,6 +30,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/rims/:id",
       element: <SingleRimPage />,
+    },
+    {
+      path: "/shop-basket",
+      element: <ShopBasketPage />,
     },
     {
       path: "/tires",
