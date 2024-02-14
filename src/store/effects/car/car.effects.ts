@@ -26,17 +26,21 @@ export const getCarsEffect = (): any => {
 };
 
 
-export const getCarDetailsEffect = (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): any => {
+export const getCarDetailsEffect = (make?: string | null, model?: string | null, generation?: string | null, modification?: string | null): any => {
   return async (dispatch: AppDispatch) => {
     try {
 
-      const result = await getCarDetailsService(make, model, year, modification);
+      const result = await getCarDetailsService(make, model, generation, modification);
       const {
-        data: { data: { modelDada,
-          yearDada,
-          modificationDada } }
+        data: { data: {
+          modelDada,
+          modificationDada,
+          generationDada
+        } }
       } = result;
-      dispatch(getTestListSuccess(modelDada, yearDada, modificationDada));
+      console.log(333333, generationDada);
+
+      dispatch(getTestListSuccess(modelDada, generationDada, modificationDada));
       // dispatch(getRimsListByCarDateAction(rims));
       // dispatch(getTiresListByCarDateAction(tires));
 

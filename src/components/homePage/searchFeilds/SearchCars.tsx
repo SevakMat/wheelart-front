@@ -19,7 +19,7 @@ const SearchCars = () => {
   const queryParams = useMemo(() => new URLSearchParams(location.search), [
     location.search,
   ]);
-  const { make, model, year, modification } = useParamsHook()
+  const { make, model, generation, modification } = useParamsHook()
 
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const SearchCars = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (make && model && year) {
-      dispatch(getCarDetailsEffect(make, model, year));
+    if (make && model && generation) {
+      dispatch(getCarDetailsEffect(make, model, generation));
     }
     else if (make && model) {
       dispatch(getCarDetailsEffect(make, model));
@@ -38,13 +38,13 @@ const SearchCars = () => {
     }
     else {
     }
-  }, [make, model, year, dispatch]);
+  }, [make, model, generation, dispatch]);
 
 
   const {
     CarTypeList,
     ModelList,
-    YearList,
+    GenerationList,
     ModificationList,
   } = useAppSelector((state: RootState) => state.car);
 
@@ -63,6 +63,7 @@ const SearchCars = () => {
     height: 25,
     margin: "auto 0",
   });
+  console.log(4444, GenerationList);
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -70,7 +71,7 @@ const SearchCars = () => {
       <CustomDivider orientation="vertical" flexItem />
       <Field options={ModelList} fieldType="Model" onSelect={onSelect} value={model} />
       <CustomDivider orientation="vertical" flexItem />
-      <Field options={YearList} fieldType="Year" onSelect={onSelect} value={year} />
+      <Field options={GenerationList} fieldType="Generation" onSelect={onSelect} value={generation} />
       <CustomDivider orientation="vertical" flexItem />
       <Field
         options={ModificationList}
@@ -88,7 +89,7 @@ const SearchCars = () => {
             bgcolor: "#8b0000",
           },
         }}
-        onClick={() => { navigate(`/rims?make=${make}&model=${model}&year=${year}&modification=${modification}`) }}
+        onClick={() => { navigate(`/rims?make=${make}&model=${model}&generation=${generation}&modification=${modification}`) }}
       >
         {t("buttons.research")}
       </Button>

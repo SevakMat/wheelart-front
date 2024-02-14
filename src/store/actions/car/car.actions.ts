@@ -24,9 +24,9 @@ export const getModificationsListSuccess = (modificationList: CarDetailsType[], 
 });
 
 
-export const getTestListSuccess = (ModelList?: CarDetailsType[], YearList?: CarDetailsType[], ModificationList?: CarDetailsType[]): GetTestListSuccess => ({
+export const getTestListSuccess = (ModelList?: CarDetailsType[], GenerationList?: CarDetailsType[], ModificationList?: CarDetailsType[]): GetTestListSuccess => ({
   type: CarTypes.GET_TEST_LIST_SUCCESS,
   ModelList,
-  YearList,
+  GenerationList,
   ModificationList,
 });
