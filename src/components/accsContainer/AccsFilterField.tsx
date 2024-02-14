@@ -14,14 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 interface RimFilterFieldProps {
   list: any;
   fieldType: any;
-  name:
-    | "sizeR"
-    | "pcd"
-    | "studHoles"
-    | "centerBore"
-    | "width"
-    | "color"
-    | "price";
+  name: "width" | "length" | "gram" | "color" | "price";
 }
 
 function AccsFilterField({ list, fieldType, name }: RimFilterFieldProps) {

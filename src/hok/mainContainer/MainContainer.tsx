@@ -8,7 +8,7 @@ const MainContainer: FC<IMainContainer> = ({ children }) => {
   return (
     <Box>
       <Header />
-      {children}
+      <Box sx={{ marginTop: "65px" }}>{children}</Box>
       <Footer />
     </Box>
   );

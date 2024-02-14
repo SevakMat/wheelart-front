@@ -58,7 +58,7 @@ const SingleAccsContainer = () => {
           {images && <Slideshow images={images} />}
           <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
             <Typography variant="h4">
-              Set of 4 {rim?.sizeR}″ {rim?.rimModel} Aluminum Rims
+              Set of 4 {rim?.sizeR}″ {rim?.rimModel} Pneus
             </Typography>
             <Box>
               <Typography sx={{ fontSize: 12, color: "#C0C0C0" }}>
@@ -77,7 +77,7 @@ const SingleAccsContainer = () => {
               blog remains available for more details.
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 2, paddingTop: 3 }}>
+            <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
               <Box>
                 <QuantityInput />
               </Box>
@@ -103,50 +103,46 @@ const SingleAccsContainer = () => {
               </Button>
             </Box>
             {/* <Box>
-              <Button>Add to favorites</Button>
-            </Box> */}
+                <Button>Add to favorites</Button>
+              </Box> */}
+
+            <Box sx={{ width: "100%", paddingBottom: 5 }}>
+              <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
+                Details
+              </Typography>
+              <Table>
+                <TableRow>
+                  <TableCell variant="head">Largeur</TableCell>
+                  <TableCell>{rim?.rimModel}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell variant="head">Longueur</TableCell>
+                  <TableCell>{rim?.sizeR}"</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell variant="head">Couleur</TableCell>
+                  <TableCell>
+                    {rim?.studHoles}x{rim?.pcd}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell variant="head">EAN</TableCell>
+                  <TableCell> {rim?.width}J</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell variant="head">Gramme</TableCell>
+                  <TableCell>{rim?.centerBore}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell variant="head">Inclus</TableCell>
+                  <TableCell>50</TableCell>
+                </TableRow>
+              </Table>
+            </Box>
           </Stack>
         </Stack>
 
         <Stack direction="column" spacing={5}>
-          <Box sx={{ width: "50%", paddingTop: 5 }}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ fontSize: 30, fontWeight: "bold" }}>
-                    Details
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableRow>
-                <TableCell variant="head">Width</TableCell>
-                <TableCell>{rim?.rimModel}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell variant="head">Length</TableCell>
-                <TableCell>{rim?.sizeR}"</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell variant="head">Color</TableCell>
-                <TableCell>
-                  {rim?.studHoles}x{rim?.pcd}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell variant="head">EAN</TableCell>
-                <TableCell> {rim?.width}J</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell variant="head">Gram</TableCell>
-                <TableCell>{rim?.centerBore}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell variant="head">Included</TableCell>
-                <TableCell>50</TableCell>
-              </TableRow>
-            </Table>
-          </Box>
-
           <Box>
             <Typography variant="h3" sx={{ textAlign: "center" }}>
               Recommended Tires

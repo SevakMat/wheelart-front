@@ -21,7 +21,7 @@ interface AccsCardProps {
   color: string;
   gram: number;
   price: number;
-  make: string;
+  title: string;
   accsId: number;
 }
 
@@ -29,7 +29,7 @@ export default function AccsCard({
   isPopular,
   image,
   price,
-  make,
+  title,
   accsId,
   gram,
   color,
@@ -87,6 +87,7 @@ export default function AccsCard({
             marginLeft: "auto",
             left: 0,
             right: 0,
+            borderRadius: 2,
 
             // transformOrigin: "70% 90%",
             // transition: "transform .25s, visibility .25s ease-in",
@@ -109,7 +110,7 @@ export default function AccsCard({
             <InfoCustomTypo
               sx={{ fontWeight: "bold", fontSize: "18px !important" }}
             >
-              {make}
+              {title}
             </InfoCustomTypo>
           </Box>
 
@@ -122,9 +123,29 @@ export default function AccsCard({
                 justifyContent: "flex-end",
               }}
             >
-              <InfoCustomTypo>Length: {length}</InfoCustomTypo>
+              <InfoCustomTypo>Length: {length}mm</InfoCustomTypo>
               <InfoCustomTypo>Gram: {gram}</InfoCustomTypo>
-              <InfoCustomTypo>Color: {color}</InfoCustomTypo>
+              <InfoCustomTypo
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                Couleur:
+                {/* color round */}
+                <Tooltip title={color} placement="right" arrow>
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      lineHeight: "100px",
+                      borderRadius: "50%",
+                      background: color !== "test" ? color : "black",
+                      marginLeft: 1,
+                    }}
+                  />
+                </Tooltip>
+              </InfoCustomTypo>
             </Box>
 
             <Box
@@ -143,6 +164,15 @@ export default function AccsCard({
               >
                 €{price}
               </InfoCustomTypo>
+              <p
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  margin: 0,
+                  fontSize: 11,
+                }}
+              >
+                pour 20x
+              </p>
             </Box>
           </Box>
         </CardContent>

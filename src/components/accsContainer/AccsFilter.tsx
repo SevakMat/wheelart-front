@@ -98,21 +98,11 @@ const AccsFilter = () => {
             "rgba(50, 50, 93, 0.25) 0px 0px 20px 0px, rgba(0, 0, 0, 0.3) 0px 0px 20px 0px",
         }}
       >
-        <AccsFilterField list={sizeR} fieldType="sizeR" name="sizeR" />
-        <AccsFilterField list={pcd} fieldType="pcd" name="pcd" />
-        <AccsFilterField
-          list={centerBore}
-          fieldType="centerBore"
-          name="centerBore"
-        />
-        <AccsFilterField
-          list={studHoles}
-          fieldType="studHoles"
-          name="studHoles"
-        />
-        <AccsFilterField list={color} fieldType="color" name="color" />
-        <AccsFilterField list={width} fieldType="width" name="width" />
-        <AccsFilterField list={price} fieldType="price" name="price" />
+        <AccsFilterField list={sizeR} fieldType="Largeur" name="width" />
+        <AccsFilterField list={pcd} fieldType="Longueur" name="length" />
+        <AccsFilterField list={studHoles} fieldType="Gramme" name="gram" />
+        <AccsFilterField list={color} fieldType="Couleur" name="color" />
+        <AccsFilterField list={price} fieldType="Prix" name="price" />
       </Box>
     </Box>
   );

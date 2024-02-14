@@ -28,7 +28,7 @@ import { useParamsHook } from "../../hook/useParams";
 import TireCard from "../shere/tires/TireCard";
 import { RimType } from "../../store/types/rim/rim";
 
-import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
+import CreateAccordion from "../shere/accordion/CreateAccordion";
 
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -143,59 +143,42 @@ const SingleRim = () => {
                   <TableCell>50</TableCell>
                 </TableRow>
               </Table>
-              <Table>
-                <Accordion
-                  square={true}
-                  disableGutters
-                  sx={{ boxShadow: "none" }}
-                >
-                  <AccordionSummary
-                    expandIcon={<ExpandCircleDownIcon />}
-                    sx={{
-                      backgroundColor: "#F7F7F7",
-                      "&:hover": {
-                        backgroundColor: "#DEDEDE",
-                      },
-                    }}
-                  >
-                    <Typography variant="h5">More</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails sx={{ padding: 0, margin: 0 }}>
-                    <TableRow>
-                      <TableCell variant="head">Color</TableCell>
-                      <TableCell>{rim?.color}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell variant="head">EAN</TableCell>
-                      <TableCell>9830727110529</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell variant="head">GRAM(4)</TableCell>
-                      <TableCell>{rim?.gram}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell variant="head">The pack includes</TableCell>
-                      <TableCell>
-                        4x RIMS {rim?.rimModel} <br />
-                        4x LOGOS <br />
-                        4x VALVES TR413
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell variant="head">TPMs compatible</TableCell>
-                      <TableCell>Yes</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell variant="head">State</TableCell>
-                      <TableCell>Nine</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell variant="head">Look Style (Not OEM)</TableCell>
-                      <TableCell>Palmerstone</TableCell>
-                    </TableRow>
-                  </AccordionDetails>
-                </Accordion>
-              </Table>
+              <CreateAccordion>
+                <Table>
+                  <TableRow>
+                    <TableCell variant="head">Color</TableCell>
+                    <TableCell>{rim?.color}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell variant="head">EAN</TableCell>
+                    <TableCell>9830727110529</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell variant="head">GRAM(4)</TableCell>
+                    <TableCell>{rim?.gram}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell variant="head">The pack includes</TableCell>
+                    <TableCell>
+                      4x RIMS {rim?.rimModel} <br />
+                      4x LOGOS <br />
+                      4x VALVES TR413
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell variant="head">TPMs compatible</TableCell>
+                    <TableCell>Yes</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell variant="head">State</TableCell>
+                    <TableCell>Nine</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell variant="head">Look Style (Not OEM)</TableCell>
+                    <TableCell>Palmerstone</TableCell>
+                  </TableRow>
+                </Table>
+              </CreateAccordion>
             </Box>
           </Stack>
         </Stack>

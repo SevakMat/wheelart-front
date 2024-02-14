@@ -7,9 +7,8 @@ import "../../../fonts/monsterrat.css";
 import Slider from "./Slider";
 import { useTranslation } from "react-i18next";
 
-
 function SwipeableTextMobileStepper() {
-  const [t] = useTranslation("home")
+  const [t] = useTranslation("home");
 
   return (
     <Box
@@ -17,7 +16,6 @@ function SwipeableTextMobileStepper() {
         maxWidth: "100%",
         flexGrow: 1,
         position: "relative",
-        justifyContent: "flex-end",
         display: "flex",
       }}
     >
@@ -27,14 +25,14 @@ function SwipeableTextMobileStepper() {
           display: "flex",
           flexDirection: "column",
           position: "absolute",
-          width: 500,
+          width: 800,
           justifyContent: "center",
           textAlign: "center",
           marginLeft: "auto",
           marginRight: "auto",
           left: 0,
           right: 0,
-          bottom: 100,
+          bottom: "60%",
           padding: "1px 30px",
           borderRadius: 5,
           backdropFilter: "blur(5px)",
@@ -46,8 +44,9 @@ function SwipeableTextMobileStepper() {
           sx={{
             color: "white",
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: 50,
+            fontSize: 60,
             fontWeight: "bold",
+            letterSpacing: 8,
           }}
         >
           {t("content.findYourRim")}
@@ -69,7 +68,7 @@ function SwipeableTextMobileStepper() {
         sx={{
           position: "absolute",
           display: "flex",
-          bottom: 30,
+          bottom: "45%",
           marginLeft: "auto",
           marginRight: "auto",
           left: 0,
