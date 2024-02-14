@@ -14,29 +14,27 @@ const InfoCustomTypo = styled(Typography)(() => ({
   // fontSize: fontSize,
 }));
 
-interface TireCardProps {
+interface AccsCardProps {
   isPopular: boolean;
   image: string;
-  price: number;
-  tireWidth: number;
-  marka: string;
-  tireAspectRatio: number;
-  tireDiameter: number;
-  tireId: number;
+  length: number;
   color: string;
+  gram: number;
+  price: number;
+  title: string;
+  accsId: number;
 }
 
-export default function TireCard({
+export default function AccsCard({
   isPopular,
   image,
   price,
-  tireWidth,
-  marka,
-  tireAspectRatio,
-  tireDiameter,
-  tireId,
+  title,
+  accsId,
+  gram,
   color,
-}: TireCardProps) {
+  length,
+}: AccsCardProps) {
   const navigate = useNavigate();
 
   let width, height, fontSize: number;
@@ -63,7 +61,7 @@ export default function TireCard({
         },
       }}
       onClick={() => {
-        navigate(`/tires/:id`);
+        navigate(`/accessories/${accsId}`);
       }}
     >
       <CardActionArea
@@ -89,6 +87,7 @@ export default function TireCard({
             marginLeft: "auto",
             left: 0,
             right: 0,
+            borderRadius: 2,
 
             // transformOrigin: "70% 90%",
             // transition: "transform .25s, visibility .25s ease-in",
@@ -111,7 +110,7 @@ export default function TireCard({
             <InfoCustomTypo
               sx={{ fontWeight: "bold", fontSize: "18px !important" }}
             >
-              {marka}
+              {title}
             </InfoCustomTypo>
           </Box>
 
@@ -124,8 +123,8 @@ export default function TireCard({
                 justifyContent: "flex-end",
               }}
             >
-              <InfoCustomTypo>AR: {tireAspectRatio}</InfoCustomTypo>
-              <InfoCustomTypo>Largeur: {tireWidth}</InfoCustomTypo>
+              <InfoCustomTypo>Length: {length}mm</InfoCustomTypo>
+              <InfoCustomTypo>Gram: {gram}</InfoCustomTypo>
               <InfoCustomTypo
                 sx={{
                   display: "flex",
@@ -172,7 +171,7 @@ export default function TireCard({
                   fontSize: 11,
                 }}
               >
-                pour 4 pneus
+                pour 20x
               </p>
             </Box>
           </Box>

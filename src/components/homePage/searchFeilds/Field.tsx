@@ -4,16 +4,16 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { TextField } from "@mui/material";
-
+import { CarDetailsType } from "../../../store/types/car/car";
 interface FieldProps {
-  list?: any[];
+  options?: CarDetailsType[];
   fieldType: string;
   onSelect: (fieldName: string, selectedValue: string) => void;
   value?: string;
 }
 
-function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
-  const [currentList, setCurrentList] = React.useState(list);
+function Field({ options = [], fieldType, onSelect, value }: FieldProps) {
+  const [currentList, setCurrentList] = React.useState(options);
 
   const handleChange = (event: SelectChangeEvent) => {
     onSelect(fieldType, event.target.value as string);
@@ -24,11 +24,11 @@ function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
   };
 
   React.useEffect(() => {
-    setCurrentList(list);
-  }, [list]);
+    setCurrentList(options);
+  }, [options]);
 
   const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const filtered = list?.filter((listItem: { name: string }) => {
+    const filtered = options?.filter((listItem: { name: string }) => {
       return listItem.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
     setCurrentList(filtered);
@@ -60,9 +60,13 @@ function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
         {fieldType}
       </InputLabel>
       <Select
-        value={list.some((item) => {
-          return item.slug === value
-        }) ? value : ""}
+        value={
+          options.some((item) => {
+            return item.slug === value;
+          })
+            ? value
+            : ""
+        }
         onChange={handleChange}
         onKeyDown={handleSearchKeyDown}
         inputProps={{ IconComponent: () => null }}
@@ -95,15 +99,17 @@ function Field({ list = [], fieldType, onSelect, value }: FieldProps) {
           size="small"
         />
         {currentList?.length > 0 &&
-          currentList?.map((listItem: { name: string, slug: string }, index: number) => (
-            <MenuItem
-              sx={{ display: "flex", justifyContent: "center" }}
-              key={index}
-              value={listItem.slug}
-            >
-              {listItem.name}
-            </MenuItem>
-          ))}
+          currentList?.map(
+            (listItem: { name: string; slug: string }, index: number) => (
+              <MenuItem
+                sx={{ display: "flex", justifyContent: "center" }}
+                key={index}
+                value={listItem.slug}
+              >
+                {listItem.name}
+              </MenuItem>
+            )
+          )}
       </Select>
     </FormControl>
   );

@@ -71,29 +71,27 @@ function Slider() {
               <Box
                 sx={{
                   display: "flex",
-                  alignItems: "center",
-                  height: 50,
-                  pl: 2,
-                  top: "20%",
+                  height: 40,
+                  bottom: "30%", // Changed from top to bottom
                   position: "absolute",
                   zIndex: 1,
-                  left: "5%",
+                  left: "50%", // Keep it centered horizontally
+                  transform: "translateX(-50%)", // This will center the box correctly
                 }}
               >
                 <Typography
                   sx={{
                     width: "550px",
                     fontFamily: "'Montserrat', sans-serif",
-                    height: "150px",
+                    height: "100px",
                     color: "white",
                     borderRadius: 10,
-                    borderTopRightRadius: 0,
-                    borderBottomRightRadius: 0,
                     padding: "20px",
                     display: "flex",
                     alignItems: "center",
+                    justifyContent: "center",
                     background:
-                      "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6756827731092436) 56%, rgba(0,0,0,0) 100%)",
+                      "linear-gradient(90deg, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0.8) 100%)",
                   }}
                 >
                   {item.label}
@@ -111,6 +109,7 @@ function Slider() {
           top: "50%",
           transform: "translateY(-50%)",
           display: "flex",
+          zIndex: 4,
         }}
       >
         <Button
@@ -119,6 +118,7 @@ function Slider() {
           onClick={handleNext}
           disabled={activeStep === maxSteps - 1}
           sx={{
+            zIndex: 4,
             display: "flex",
             "&:hover": {
               backgroundColor: "transparent",
@@ -145,6 +145,7 @@ function Slider() {
           top: "50%",
           transform: "translateY(-50%)",
           display: "flex",
+          zIndex: 4,
         }}
       >
         <Button
@@ -153,6 +154,7 @@ function Slider() {
           onClick={handleBack}
           disabled={activeStep === 0}
           sx={{
+            zIndex: 4,
             display: "flex",
             "&:hover": {
               backgroundColor: "transparent",

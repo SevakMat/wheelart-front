@@ -6,13 +6,20 @@ const initialState = {
     sizeR: [],
     pcd: [],
     studHoles: [],
-    centerBore: []
+    centerBore: [],
+    color: [],
+    width: [],
+    price: [],
+
   },
   selectedFilters: {
     sizeR: [],
     pcd: [],
     studHoles: [],
     centerBore: [],
+    color: [],
+    width: [],
+    price: [],
   }
 }
 

@@ -10,42 +10,56 @@ import { getRimsByCarDetailsEffect } from "../../store/effects/rim/rim.effect";
 import { useParamsHook, useParamsHookArrays } from "../../hook/useParams";
 import { useShowRimsBy } from "../../hook/showRimsBy";
 
-import RimFilterField from "./RimFilterField";
+import AccsFilterField from "./AccsFilterField";
 
 import "../../fonts/monsterrat.css";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-
-const RimFilter = () => {
+const AccsFilter = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
-  const { filters } = useAppSelector((state: RootState) => state.filter)
-  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters
+  const { filters } = useAppSelector((state: RootState) => state.filter);
+  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters;
   const [searchParams] = useSearchParams();
 
-  const { make: makeValue, model: modelValue, year: yearValue, modification: modificationValue, page: pageValue } = useParamsHook()
+  const {
+    make: makeValue,
+    model: modelValue,
+    year: yearValue,
+    modification: modificationValue,
+    page: pageValue,
+  } = useParamsHook();
 
-  const rimsRequestDetection = useShowRimsBy()
+  const rimsRequestDetection = useShowRimsBy();
 
-  const urlParamsArray = useParamsHookArrays(searchParams)
+  const urlParamsArray = useParamsHookArrays(searchParams);
 
   useEffect(() => {
-
-    if (rimsRequestDetection === 'by-rim') {
-
-      dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
+    if (rimsRequestDetection === "by-rim") {
+      dispatch(
+        getFiltersEffect({
+          ...urlParamsArray,
+          pagination: pageValue ? +pageValue : 0,
+        })
+      );
     } else {
-
-      dispatch(getRimsByCarDetailsEffect(location, navigate, makeValue, modelValue, yearValue, modificationValue, pageValue ? + pageValue : 0))
+      dispatch(
+        getRimsByCarDetailsEffect(
+          location,
+          navigate,
+          makeValue,
+          modelValue,
+          yearValue,
+          modificationValue,
+          pageValue ? +pageValue : 0
+        )
+      );
     }
 
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
-
-  }, [dispatch, pageValue, searchParams])
-
-
+  }, [dispatch, pageValue, searchParams]);
 
   return (
     <Box
@@ -84,16 +98,14 @@ const RimFilter = () => {
             "rgba(50, 50, 93, 0.25) 0px 0px 20px 0px, rgba(0, 0, 0, 0.3) 0px 0px 20px 0px",
         }}
       >
-        <RimFilterField list={sizeR} fieldType="sizeR" name='sizeR' />
-        <RimFilterField list={pcd} fieldType="pcd" name='pcd' />
-        <RimFilterField list={centerBore} fieldType="centerBore" name='centerBore' />
-        <RimFilterField list={studHoles} fieldType="studHoles" name='studHoles' />
-        <RimFilterField list={color} fieldType="color" name='color' />
-        <RimFilterField list={width} fieldType="width" name='width' />
-        <RimFilterField list={price} fieldType="price" name='price' />
+        <AccsFilterField list={sizeR} fieldType="Largeur" name="width" />
+        <AccsFilterField list={pcd} fieldType="Longueur" name="length" />
+        <AccsFilterField list={studHoles} fieldType="Gramme" name="gram" />
+        <AccsFilterField list={color} fieldType="Couleur" name="color" />
+        <AccsFilterField list={price} fieldType="Prix" name="price" />
       </Box>
     </Box>
   );
 };
 
-export default RimFilter;
+export default AccsFilter;

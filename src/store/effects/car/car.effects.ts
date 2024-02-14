@@ -36,16 +36,7 @@ export const getCarDetailsEffect = (make?: string | null, model?: string | null,
           yearDada,
           modificationDada } }
       } = result;
-
-      console.log(
-        modelDada,
-        yearDada,
-        modificationDada
-      );
-
-
       dispatch(getTestListSuccess(modelDada, yearDada, modificationDada));
-
       // dispatch(getRimsListByCarDateAction(rims));
       // dispatch(getTiresListByCarDateAction(tires));
 

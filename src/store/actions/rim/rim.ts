@@ -5,6 +5,7 @@ import {
   RimServerTypes,
   RimType,
   GetPopularRimsSuccess,
+  GetRecommendedRimsSuccess,
 } from "../../types/rim/rim";
 
 export const getRimsListByCarDateAction = (
@@ -32,3 +33,7 @@ export const getPopularRimsAction = (
   type: RimServerTypes.GET_POPULAR_RIMS_SUCCESS,
   popularRims,
 });
+
+export const getRecommendedRimsAction = (
+  recommendedRims: RimType[]
+): GetRecommendedRimsSuccess => ({ type: RimServerTypes.GET_RECOMMENDED_RIMS_SUCCESS, recommendedRims });

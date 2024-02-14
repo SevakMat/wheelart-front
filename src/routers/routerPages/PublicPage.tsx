@@ -1,5 +1,5 @@
 import SignUp from "../../components/registrationPage/SignUp"
-import LoginPage from "../../pages/Login"
+import LoginPage from "../../pages/LoginPage"
 import PublicRouter from "../types/PublicRouter"
 
 
@@ -13,7 +13,7 @@ const PublicPageRoute: PublicRouter = {
         },
         {
             path: "/sign-up",
-            element: <SignUp/>,
+            element: <SignUp />,
         }
     ]
 }
