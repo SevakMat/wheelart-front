@@ -18,6 +18,8 @@ const CustomBox = styled(Box)(() => ({
 const CustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
   fontWeight: "bold",
+
+  "@media(max-width: 420px)": { fontSize: "12px" },
 }));
 
 const ShortInfo = () => {
@@ -40,22 +42,46 @@ const ShortInfo = () => {
       }}
     >
       <CustomBox sx={{ display: "flex", flexDirection: "column" }}>
-        <HighQualityIcon sx={{ fontSize: 80, color: "#2C2C2C" }} />
+        <HighQualityIcon
+          sx={{
+            fontSize: 80,
+            color: "#2C2C2C",
+            "@media(max-width: 420px)": { fontSize: 60 },
+          }}
+        />
         <CustomTypo>{t("content.highQuality")}</CustomTypo>
       </CustomBox>
 
       <CustomBox>
-        <LightModeIcon sx={{ fontSize: 80, color: "#FFC300" }} />
+        <LightModeIcon
+          sx={{
+            fontSize: 80,
+            color: "#FFC300",
+            "@media(max-width: 420px)": { fontSize: 60 },
+          }}
+        />
         <CustomTypo>{t("content.climateNeutral")}</CustomTypo>
       </CustomBox>
 
       <CustomBox>
-        <RecyclingIcon sx={{ fontSize: 80, color: "green" }} />
+        <RecyclingIcon
+          sx={{
+            fontSize: 80,
+            color: "green",
+            "@media(max-width: 420px)": { fontSize: 60 },
+          }}
+        />
         <CustomTypo>{t("content.recyclableMaterials")}</CustomTypo>
       </CustomBox>
 
       <CustomBox>
-        <AutoAwesomeIcon sx={{ fontSize: 80, color: "#FFDF00" }} />
+        <AutoAwesomeIcon
+          sx={{
+            fontSize: 80,
+            color: "#FFDF00",
+            "@media(max-width: 420px)": { fontSize: 60 },
+          }}
+        />
         <CustomTypo>{t("content.innovativeDesign")}</CustomTypo>
       </CustomBox>
     </Box>

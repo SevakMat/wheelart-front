@@ -21,8 +21,8 @@ const HomePage = () => {
     >
       <Box>
         <Carousel />
-        {/* <ShortInfo />
-        <PopularProducts />
+        <ShortInfo />
+        {/* <PopularProducts />
         <About />
         <BlogsHome /> */}
       </Box>

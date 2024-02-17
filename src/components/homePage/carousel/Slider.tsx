@@ -79,7 +79,9 @@ function Slider() {
                   height: 40,
                   bottom: "30%", // Changed from top to bottom
                   position: "absolute",
+                  width: "50%",
                   zIndex: 1,
+
                   left: "50%", // Keep it centered horizontally
                   transform: "translateX(-50%)", // This will center the box correctly
                 }}
@@ -88,15 +90,16 @@ function Slider() {
                   sx={{
                     fontFamily: "'Montserrat', sans-serif",
                     height: "100px",
+                    width: "100%",
                     flexWrap: "nowrap",
                     color: "white",
                     borderRadius: 10,
-                    padding: "20px 50px",
+                    padding: "20px 30px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     background:
-                      "linear-gradient(90deg, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0.8) 100%)",
+                      "radial-gradient(circle, rgba(30,0,0,0.8) 0%, rgba(39,15,0,0.8) 100%)",
                   }}
                 >
                   {item.label}
@@ -129,7 +132,7 @@ function Slider() {
                     alignItems: "center",
                     justifyContent: "center",
                     background:
-                      "linear-gradient(90deg, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0.8) 100%)",
+                      "radial-gradient(circle, rgba(30,0,0,0.8) 0%, rgba(39,15,0,0.8) 100%)",
                   }}
                 >
                   {item.label}
