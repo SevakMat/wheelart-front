@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-const carFilterString = '["make","model","year","modification"]'
+const carFilterString = '["make","model","generation","modification"]'
 
 export const useShowRimsBy = (): string => {
   const [searchParams] = useSearchParams();

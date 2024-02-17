@@ -19,8 +19,8 @@ export interface CarState {
   selectedModelType: string
   ModelList: CarDetailsType[];
 
-  selectedYearType: string
-  YearList: CarDetailsType[];
+  selectedGenerationType: string
+  GenerationList: CarDetailsType[];
 
   selectedModificationType: string
   ModificationList: CarDetailsType[];
@@ -51,7 +51,7 @@ export interface GetModificationListSuccess {
 export interface GetTestListSuccess {
   type: CarTypes.GET_TEST_LIST_SUCCESS;
   ModelList?: CarDetailsType[];
-  YearList?: CarDetailsType[];
+  GenerationList?: CarDetailsType[];
   ModificationList?: CarDetailsType[];
 }
 

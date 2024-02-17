@@ -4,12 +4,12 @@ import { CarActionTypes, CarState, CarTypes } from "../../types/car/car";
 const initialState: CarState = {
   CarTypeList: [],
   ModelList: [],
-  YearList: [],
+  GenerationList: [],
   ModificationList: [],
 
   selectedCarType: "",
   selectedModelType: "",
-  selectedYearType: "",
+  selectedGenerationType: "",
   selectedModificationType: "",
 }
 
@@ -57,7 +57,7 @@ const reducer: ReducerType = (state = initialState, action: CarActionTypes) => {
       return {
         ...state,
         ModelList: action.ModelList?.length ? action.ModelList : [],
-        YearList: action.YearList?.length ? action.YearList : [],
+        GenerationList: action.GenerationList?.length ? action.GenerationList : [],
         ModificationList: action.ModificationList?.length ? action.ModificationList : [],
       };
     default:

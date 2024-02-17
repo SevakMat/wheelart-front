@@ -20,7 +20,7 @@ export const GetModificationsByCarData = async (make: string, model: string, yea
 
 
 
-export const getCarDetailsService = async (make?: string | null, model?: string | null, year?: string | null, modification?: string | null): Promise<any> => {
+export const getCarDetailsService = async (make?: string | null, model?: string | null, generation?: string | null, modification?: string | null): Promise<any> => {
   const url = `api/rims/car-details`
-  return axios.post(url, { where: { make, model, year, modification } })
+  return axios.post(url, { where: { make, model, generation, modification } })
 }

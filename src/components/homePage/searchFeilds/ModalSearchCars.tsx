@@ -48,9 +48,8 @@ export default function ModalSearchCars() {
     }
   }, [make, model, year, dispatch]);
 
-  const { CarTypeList, ModelList, YearList, ModificationList } = useAppSelector(
-    (state: RootState) => state.car
-  );
+  const { CarTypeList, ModelList, GenerationList, ModificationList } =
+    useAppSelector((state: RootState) => state.car);
 
   const onSelect = React.useCallback(
     (fieldName: string, selectedElement: any) => {
@@ -146,7 +145,7 @@ export default function ModalSearchCars() {
                 value={model}
               />
               <Field
-                options={YearList}
+                options={GenerationList}
                 fieldType="Year"
                 onSelect={onSelect}
                 value={year}

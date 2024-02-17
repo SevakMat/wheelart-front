@@ -21,26 +21,25 @@ const SearchCars = () => {
     () => new URLSearchParams(location.search),
     [location.search]
   );
-  const { make, model, year, modification } = useParamsHook();
+  const { make, model, generation, modification } = useParamsHook();
 
   useEffect(() => {
     dispatch(getCarsEffect());
   }, [dispatch]);
 
   useEffect(() => {
-    if (make && model && year) {
-      dispatch(getCarDetailsEffect(make, model, year));
+    if (make && model && generation) {
+      dispatch(getCarDetailsEffect(make, model, generation));
     } else if (make && model) {
       dispatch(getCarDetailsEffect(make, model));
     } else if (make) {
       dispatch(getCarDetailsEffect(make));
     } else {
     }
-  }, [make, model, year, dispatch]);
+  }, [make, model, generation, dispatch]);
 
-  const { CarTypeList, ModelList, YearList, ModificationList } = useAppSelector(
-    (state: RootState) => state.car
-  );
+  const { CarTypeList, ModelList, GenerationList, ModificationList } =
+    useAppSelector((state: RootState) => state.car);
 
   const onSelect = useCallback(
     (fieldName: string, selectedElement: any) => {
@@ -57,6 +56,7 @@ const SearchCars = () => {
     height: 25,
     margin: "auto 0",
   });
+  console.log(4444, GenerationList);
 
   return (
     <Box
@@ -82,10 +82,10 @@ const SearchCars = () => {
       />
       <CustomDivider orientation="vertical" flexItem />
       <Field
-        options={YearList}
-        fieldType="Year"
+        options={GenerationList}
+        fieldType="Generation"
         onSelect={onSelect}
-        value={year}
+        value={generation}
       />
       <CustomDivider orientation="vertical" flexItem />
       <Field
@@ -108,7 +108,7 @@ const SearchCars = () => {
         }}
         onClick={() => {
           navigate(
-            `/rims?make=${make}&model=${model}&year=${year}&modification=${modification}`
+            `/rims?make=${make}&model=${model}&generation=${generation}&modification=${modification}`
           );
         }}
       >

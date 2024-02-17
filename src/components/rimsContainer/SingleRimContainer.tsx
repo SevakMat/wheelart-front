@@ -37,7 +37,7 @@ const SingleRim = () => {
   const {
     make: makeValue,
     model: modelValue,
-    year: yearValue,
+    generation: generationValue,
     modification: modificationValue,
   } = useParamsHook();
 
@@ -48,7 +48,7 @@ const SingleRim = () => {
 
   useEffect(() => {
     dispatch(
-      getRimEffect(id, makeValue, modelValue, yearValue, modificationValue)
+      getRimEffect(id, makeValue, modelValue, generationValue, modificationValue)
     );
   }, [id]);
 

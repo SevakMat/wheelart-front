@@ -32,7 +32,7 @@ const SingleAccsContainer = () => {
   const {
     make: makeValue,
     model: modelValue,
-    year: yearValue,
+    generation: generationValue,
     modification: modificationValue,
   } = useParamsHook();
 
@@ -43,7 +43,7 @@ const SingleAccsContainer = () => {
 
   useEffect(() => {
     dispatch(
-      getRimEffect(id, makeValue, modelValue, yearValue, modificationValue)
+      getRimEffect(id, makeValue, modelValue, generationValue, modificationValue)
     );
   }, [id]);
 

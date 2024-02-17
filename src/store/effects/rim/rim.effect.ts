@@ -8,11 +8,11 @@ import { getRecommendedTiresAction, getTiresListByCarDateAction } from "../../ac
 import { getPopularRimsAction, getRecommendedRimsAction, getRimAction, getRimsListByCarDateAction, getRimsListCountAction } from "../../actions/rim/rim";
 import { Location, NavigateFunction } from "react-router-dom";
 
-export const getRimsByCarDetailsEffect = (location: Location<any>, navigate: NavigateFunction, make?: string | null, model?: string | null, year?: string | null, modification?: string | null, pagination?: number): any => {
+export const getRimsByCarDetailsEffect = (location: Location<any>, navigate: NavigateFunction, make?: string | null, model?: string | null, generationValue?: string | null, modification?: string | null, pagination?: number): any => {
   return async (dispatch: AppDispatch) => {
     try {
 
-      const result = await getRimsListByCarDateService(make, model, year, modification, pagination);
+      const result = await getRimsListByCarDateService(make, model, generationValue, modification, pagination);
       const {
         data: { data: { rims, tires, rimsCount, wheelDetails } }
       } = result;
@@ -33,7 +33,7 @@ export const getRimEffect = (
   id?: string,
   makeValue?: string | null,
   modelValue?: string | null,
-  yearValue?: string | null,
+  generationValue?: string | null,
   modificationValue?: string | null
 ): any => {
   return async (dispatch: AppDispatch) => {
@@ -42,7 +42,7 @@ export const getRimEffect = (
         id,
         makeValue,
         modelValue,
-        yearValue,
+        generationValue,
         modificationValue
       );
       const {
