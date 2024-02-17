@@ -12,6 +12,7 @@ const CustomBox = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  textAlign: "center",
 }));
 
 const CustomTypo = styled(Typography)(() => ({
@@ -20,7 +21,7 @@ const CustomTypo = styled(Typography)(() => ({
 }));
 
 const ShortInfo = () => {
-  const [t] = useTranslation("home")
+  const [t] = useTranslation("home");
 
   return (
     <Box
@@ -29,6 +30,13 @@ const ShortInfo = () => {
         justifyContent: "center",
         gap: 20,
         padding: "10px 0",
+        maxWidth: "1920px",
+        width: "100%",
+
+        "@media(max-width: 900px)": {
+          flexWrap: "no-wrap",
+          gap: 1,
+        },
       }}
     >
       <CustomBox sx={{ display: "flex", flexDirection: "column" }}>

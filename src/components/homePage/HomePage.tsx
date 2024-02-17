@@ -21,10 +21,10 @@ const HomePage = () => {
     >
       <Box>
         <Carousel />
-        <ShortInfo />
+        {/* <ShortInfo />
         <PopularProducts />
         <About />
-        <BlogsHome />
+        <BlogsHome /> */}
       </Box>
     </Box>
   );

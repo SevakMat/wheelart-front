@@ -8,6 +8,10 @@ const CustomBox = styled(Box)(() => ({
   textAlign: "center",
   alignItems: "center",
   rowGap: 10,
+
+  "@media(max-width: 600px)": {
+    fontSize: 10,
+  },
 }));
 
 const CustomH3 = styled(Box)(() => ({
@@ -15,6 +19,10 @@ const CustomH3 = styled(Box)(() => ({
   padding: 0,
   fontWeight: "bold",
   fontSize: 20,
+
+  "@media(max-width: 600px)": {
+    fontSize: 15,
+  },
 }));
 
 const CustomParagraph = styled(Box)(() => ({
@@ -30,6 +38,12 @@ const CustomButton = styled(Button)(() => ({
   height: 30,
   background:
     "radial-gradient(circle, rgba(77,81,99,1) 0%, rgba(176,159,159,1) 100%)",
+
+  "@media(max-width: 600px)": {
+    fontSize: 10,
+    height: 20,
+    width: 120,
+  },
 }));
 
 export const CaruselItemInfoF = () => {

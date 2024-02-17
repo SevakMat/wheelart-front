@@ -37,8 +37,9 @@ function Field({ options = [], fieldType, onSelect, value }: FieldProps) {
   return (
     <FormControl
       sx={{
+        maxWidth: 180,
+        width: "100%",
         m: 1,
-        width: 180,
         background:
           "linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%)",
         border: "none",
