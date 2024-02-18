@@ -63,7 +63,7 @@ export default function TireCard({
         },
       }}
       onClick={() => {
-        navigate(`/tires/:id`);
+        navigate(`/tires/${tireId}`);
       }}
     >
       <CardActionArea

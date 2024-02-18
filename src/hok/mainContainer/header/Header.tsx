@@ -22,6 +22,7 @@ import { customBreakpoints } from "../../../customBreakpoints";
 import "../../../fonts/roboto.css";
 import "../../../fonts/monsterrat.css";
 import ChangeLanguage from "./ChangeLanguage";
+import { useNavigate } from "react-router-dom";
 
 const wheelArtLogo =
   "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500";
@@ -49,6 +50,8 @@ function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+  const navigate = useNavigate();
+
 
   // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
   //   setAnchorElNav(event.currentTarget);
@@ -208,7 +211,9 @@ function Header() {
               </Box>
 
               <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
-                <IconButton href="/shop-basket">
+                <IconButton onClick={() => {
+                  navigate(`/shop-basket`);
+                }}>
                   <LocalMallIcon style={{ color: "white" }} />
                 </IconButton>
                 <IconButton href="/account" sx={{ paddingRight: 0 }}>

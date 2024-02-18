@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,7 +9,6 @@ import styled from "@emotion/styled";
 import Tooltip from "@mui/material/Tooltip";
 
 import "../../../fonts/monsterrat.css";
-import { useNavigate } from "react-router-dom";
 
 const InfoCustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
