@@ -10,7 +10,7 @@ const CustomBox = styled(Box)(() => ({
   rowGap: 10,
 
   "@media(max-width: 600px)": {
-    fontSize: 10,
+    fontSize: 13,
   },
 }));
 
@@ -21,7 +21,7 @@ const CustomH3 = styled(Box)(() => ({
   fontSize: 20,
 
   "@media(max-width: 600px)": {
-    fontSize: 15,
+    fontSize: 18,
   },
 }));
 

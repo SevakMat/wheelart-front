@@ -22,6 +22,7 @@ function SwipeableTextMobileStepper() {
           flexGrow: 1,
           position: "relative",
           display: "flex",
+          userSelect: "none",
         }}
       >
         <Slider />

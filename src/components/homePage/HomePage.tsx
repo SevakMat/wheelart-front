@@ -22,9 +22,9 @@ const HomePage = () => {
       <Box>
         <Carousel />
         <ShortInfo />
-        {/* <PopularProducts />
+        <PopularProducts />
         <About />
-        <BlogsHome /> */}
+        {/* <BlogsHome /> */}
       </Box>
     </Box>
   );

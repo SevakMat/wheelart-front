@@ -66,9 +66,10 @@ function Header() {
         sx={{
           height: 65,
           background: "#161616",
+          userSelect: "none",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" disableGutters sx={{ padding: "0 10px" }}>
           <Toolbar
             disableGutters
             sx={{
@@ -92,7 +93,7 @@ function Header() {
                 color: "white",
                 justifyContent: "center",
                 alignItems: "center",
-                gap: 2,
+                gap: 1,
                 fontSize: 30,
                 textDecoration: "none",
                 whiteSpace: "nowrap",
@@ -215,7 +216,7 @@ function Header() {
                   <AccountCircleIcon style={{ color: "white" }} />
                 </IconButton>
               </Box>
-              <Box sx={{ paddingLeft: 2 }}>
+              <Box sx={{ paddingLeft: 1.5 }}>
                 <ChangeLanguage />
               </Box>
             </Box>

@@ -61,8 +61,8 @@ function Slider() {
                   overflow: "hidden",
                   width: "100%",
 
-                  "@media (max-width: 400px)": {
-                    height: "45vh",
+                  "@media (max-width: 500px)": {
+                    height: "100vh",
                   },
                   // "@media (max-width: 600px)": {
                   //   height: "60vh",
@@ -114,7 +114,7 @@ function Slider() {
                   bottom: "80%", // Changed from top to bottom
                   position: "absolute",
                   zIndex: 1,
-                  width: "75%",
+                  width: "85%",
                   justifyContent: "center",
                   left: "50%", // Keep it centered horizontally
                   transform: "translateX(-50%)", // This will center the box correctly
@@ -124,6 +124,7 @@ function Slider() {
                   sx={{
                     fontFamily: "'Montserrat', sans-serif",
                     height: "100px",
+                    width: "100%",
                     flexWrap: "nowrap",
                     color: "white",
                     borderRadius: 10,
