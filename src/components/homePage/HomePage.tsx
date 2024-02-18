@@ -24,7 +24,7 @@ const HomePage = () => {
         <ShortInfo />
         <PopularProducts />
         <About />
-        <BlogsHome />
+        {/* <BlogsHome /> */}
       </Box>
     </Box>
   );

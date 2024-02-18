@@ -11,6 +11,8 @@ import { autoPlay } from "react-swipeable-views-utils";
 import { CaruselItemInfoF } from "./constants/caruselItemInfo";
 
 import "../../../fonts/monsterrat.css";
+import { ThemeProvider } from "@emotion/react";
+import { customBreakpoints } from "../../../customBreakpoints";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -32,7 +34,7 @@ function Slider() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={customBreakpoints}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -50,40 +52,80 @@ function Slider() {
               <Box
                 component="img"
                 sx={{
-                  height: "calc(100vh - 65px)",
+                  maxHeight: "calc(100vh - 65px)",
+                  height: "100%",
+
+                  // height: "100%",
                   display: "block",
                   objectFit: "cover",
                   overflow: "hidden",
                   width: "100%",
 
                   "@media (max-width: 500px)": {
-                    height: "50vh",
+                    height: "100vh",
                   },
-                  "@media (max-width: 600px)": {
-                    height: "60vh",
-                  },
-                  "@media (max-width: 1025px)": {
-                    height: "70vh",
-                  },
+                  // "@media (max-width: 600px)": {
+                  //   height: "60vh",
+                  // },
+                  // "@media (max-width: 1025px)": {
+                  //   height: "70vh",
+                  // },
                 }}
                 src={item.imgPath}
               />
               <Box
                 sx={{
-                  display: "flex",
+                  display: { xs: "none", md: "flex" },
                   height: 40,
                   bottom: "30%", // Changed from top to bottom
                   position: "absolute",
+                  width: "50%",
                   zIndex: 1,
+
                   left: "50%", // Keep it centered horizontally
                   transform: "translateX(-50%)", // This will center the box correctly
                 }}
               >
                 <Typography
                   sx={{
-                    width: "550px",
                     fontFamily: "'Montserrat', sans-serif",
                     height: "100px",
+                    width: "100%",
+                    flexWrap: "nowrap",
+                    color: "white",
+                    borderRadius: 10,
+                    padding: "20px 30px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background:
+                      "radial-gradient(circle, rgba(30,0,0,0.8) 0%, rgba(39,15,0,0.8) 100%)",
+                  }}
+                >
+                  {item.label}
+                </Typography>
+              </Box>
+
+              {/* responsive */}
+              <Box
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                  height: 40,
+                  bottom: "80%", // Changed from top to bottom
+                  position: "absolute",
+                  zIndex: 1,
+                  width: "85%",
+                  justifyContent: "center",
+                  left: "50%", // Keep it centered horizontally
+                  transform: "translateX(-50%)", // This will center the box correctly
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    height: "100px",
+                    width: "100%",
+                    flexWrap: "nowrap",
                     color: "white",
                     borderRadius: 10,
                     padding: "20px",
@@ -91,7 +133,7 @@ function Slider() {
                     alignItems: "center",
                     justifyContent: "center",
                     background:
-                      "linear-gradient(90deg, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0.8) 100%)",
+                      "radial-gradient(circle, rgba(30,0,0,0.8) 0%, rgba(39,15,0,0.8) 100%)",
                   }}
                 >
                   {item.label}
@@ -119,7 +161,7 @@ function Slider() {
           disabled={activeStep === maxSteps - 1}
           sx={{
             zIndex: 4,
-            display: "flex",
+            display: { xs: "none", sm: "flex" },
             "&:hover": {
               backgroundColor: "transparent",
             },
@@ -130,7 +172,7 @@ function Slider() {
           ) : (
             <KeyboardArrowRight
               sx={{
-                fontSize: 80,
+                fontSize: 60,
                 color: activeStep === 3 ? "transparent" : "white",
               }}
             />
@@ -144,7 +186,7 @@ function Slider() {
           left: 1,
           top: "50%",
           transform: "translateY(-50%)",
-          display: "flex",
+          display: { xs: "none", sm: "flex" },
           zIndex: 4,
         }}
       >
@@ -166,14 +208,14 @@ function Slider() {
           ) : (
             <KeyboardArrowLeft
               sx={{
-                fontSize: 80,
+                fontSize: 60,
                 color: activeStep === 0 ? "transparent" : "white",
               }}
             />
           )}
         </Button>
       </Box>
-    </>
+    </ThemeProvider>
   );
 }
 

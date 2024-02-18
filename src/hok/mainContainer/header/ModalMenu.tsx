@@ -44,7 +44,7 @@ const SnapchatIcon = ({ color = "#000000" }) => {
 
 export default function ModalMenu() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [t] = useTranslation("global")
+  const [t] = useTranslation("global");
 
   const pageLinks = [
     {
@@ -74,7 +74,7 @@ export default function ModalMenu() {
   };
 
   const drawer = (
-    <div>
+    <div style={{ userSelect: "none" }}>
       <Box
         sx={{
           color: "white",
@@ -129,7 +129,6 @@ export default function ModalMenu() {
       </List>
       <List sx={{ paddingLeft: "16px" }}>
         <ListItem sx={{ padding: 0 }}>
-
           <Link href="https://www.facebook.com/" sx={{ paddingLeft: 0 }}>
             <Facebook style={{ fill: "white" }} />
           </Link>

@@ -70,7 +70,14 @@ const PopularProducts = () => {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ margin: "0 100px", paddingTop: 4 }}>
+      <Box
+        sx={{
+          paddingTop: 4,
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <List
           sx={{
             display: "flex",
@@ -78,13 +85,18 @@ const PopularProducts = () => {
             justifyContent: "space-between",
             rowGap: 3,
             maxWidth: 1100,
-            "@media (max-width: 1090px)": {
+            overflow: "hidden",
+            "@media (max-width: 1200px)": {
               alignItems: "flex-start",
               display: "flex",
+              flexDirection: "row",
               flexWrap: "nowrap",
               listStyle: "none",
               margin: "1rem 0",
               overflowX: "scroll",
+
+              scrollbarWidth: "thin",
+
               padding: "0 0 0 1rem",
               gap: 3,
             },
@@ -134,7 +146,6 @@ const PopularProducts = () => {
 };
 
 export default PopularProducts;
-
 
 // voshm senc, erb vor cherez car ekav, gnum berum enq by - cary, u berum enq select exac filtrery(cari)
 // hajordy ete menq filtr enq ogtagorcum, antesum enq mashni detalnery u ashxatacnum enq erkrord effecty,
