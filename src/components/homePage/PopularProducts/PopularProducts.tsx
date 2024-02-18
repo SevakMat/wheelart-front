@@ -6,6 +6,7 @@ import Link from "@mui/material/Link";
 import { useDispatch } from "react-redux";
 import { AppDispatch, RootState, useAppSelector } from "../../../store";
 import { getPopularRimsEffect } from "../../../store/effects/rim/rim.effect";
+import { useNavigate } from "react-router-dom";
 
 const PopularProducts = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -17,6 +18,7 @@ const PopularProducts = () => {
   const { popularRims } = useAppSelector((state: RootState) => state.rim);
 
   const [t] = useTranslation("home");
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -128,7 +130,7 @@ const PopularProducts = () => {
         <Button
           size="large"
           variant="contained"
-          href="/rims"
+          onClick={() => navigate("/rims")}
           sx={{
             backgroundColor: "#00A70D",
             "&:hover": { background: "#00DE11", boxShadow: "none" },

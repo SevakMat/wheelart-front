@@ -13,6 +13,7 @@ import { Facebook, Instagram } from "@mui/icons-material";
 import "../../../fonts/monsterrat.css";
 import { Link } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -45,10 +46,11 @@ const SnapchatIcon = ({ color = "#000000" }) => {
 export default function ModalMenu() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [t] = useTranslation("global");
+  const navigate = useNavigate();
 
   const pageLinks = [
     {
-      href: "/welcome",
+      href: "/home",
       name: t("header.welcome"),
     },
     {
@@ -94,7 +96,7 @@ export default function ModalMenu() {
       <List>
         {pageLinks.map((link) => (
           <ListItem key={link.name} disablePadding>
-            <ListItemButton href={link.href}>
+            <ListItemButton onClick={() => navigate(link.href)}>
               <ListItemText
                 primary={link.name}
                 sx={{
