@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import { Facebook, Instagram } from "@mui/icons-material";
 import { Box, styled } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const TikTokIcon = ({ color = "#000000" }) => {
   return (
@@ -44,8 +45,8 @@ const CustomLink = styled(Link)(() => ({
 }));
 
 export default function Footer() {
-  const [t] = useTranslation("global")
-
+  const [t] = useTranslation("global");
+  const navigate = useNavigate();
   return (
     <Box
       component="footer"
@@ -65,18 +66,28 @@ export default function Footer() {
             <Typography variant="h6" color="white" gutterBottom>
               {t("footer.shortcuts")}
             </Typography>
-            <CustomLink href="/who-are-we">{t("footer.whoAreWe")}</CustomLink>
-            <CustomLink href="/contact">{t("footer.contact")}</CustomLink>
-            <CustomLink href="/warranty">{t("footer.underWarranty")}</CustomLink>
-            <CustomLink href="/genral-terms-conditions">{t("footer.CVG")}</CustomLink>
-            <CustomLink href="/refund-policy">
+            <CustomLink onClick={() => navigate("/who-are-we")}>
+              {t("footer.whoAreWe")}
+            </CustomLink>
+            <CustomLink onClick={() => navigate("/contact")}>
+              {t("footer.contact")}
+            </CustomLink>
+            <CustomLink onClick={() => navigate("/warranty")}>
+              {t("footer.underWarranty")}
+            </CustomLink>
+            <CustomLink onClick={() => navigate("/genral-terms-conditions")}>
+              {t("footer.CVG")}
+            </CustomLink>
+            <CustomLink onClick={() => navigate("/refund-policy")}>
               {t("footer.refundPolicy")}
             </CustomLink>
-            <CustomLink href="/legal-notice">{t("footer.legalNotice")}</CustomLink>
-            <CustomLink href="/terms-of-use">
+            <CustomLink onClick={() => navigate("/legal-notice")}>
+              {t("footer.legalNotice")}
+            </CustomLink>
+            <CustomLink onClick={() => navigate("/terms-of-use")}>
               {t("footer.termsOfUse")}
             </CustomLink>
-            <CustomLink href="/privacy-policy">
+            <CustomLink onClick={() => navigate("/privacy-policy")}>
               {t("footer.privacyPolicy")}
             </CustomLink>
           </Grid>
@@ -136,7 +147,7 @@ export default function Footer() {
         <Box mt={5}>
           <Typography variant="body2" color="#d3d3d3" align="center">
             {"© "} {new Date().getFullYear()}{" "}
-            <Link color="inherit" href="https://wheelart.fr">
+            <Link color="inherit" onClick={() => navigate("/home")}>
               WHEEL ART
             </Link>
           </Typography>

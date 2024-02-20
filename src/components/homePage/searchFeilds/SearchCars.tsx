@@ -6,7 +6,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useParamsHook } from "../../../hook/useParams";
 import { AppDispatch, RootState, useAppSelector } from "../../../store";
 import {
-  getCarsEffect, getCarDetailsEffect,
+  getCarsEffect,
+  getCarDetailsEffect,
 } from "../../../store/effects/car/car.effects";
 import Field from "./Field";
 
@@ -16,11 +17,11 @@ const SearchCars = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const queryParams = useMemo(() => new URLSearchParams(location.search), [
-    location.search,
-  ]);
-  const { make, model, generation, modification } = useParamsHook()
-
+  const queryParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
+  const { make, model, generation, modification } = useParamsHook();
 
   useEffect(() => {
     dispatch(getCarsEffect());
@@ -29,24 +30,16 @@ const SearchCars = () => {
   useEffect(() => {
     if (make && model && generation) {
       dispatch(getCarDetailsEffect(make, model, generation));
-    }
-    else if (make && model) {
+    } else if (make && model) {
       dispatch(getCarDetailsEffect(make, model));
-    }
-    else if (make) {
+    } else if (make) {
       dispatch(getCarDetailsEffect(make));
-    }
-    else {
+    } else {
     }
   }, [make, model, generation, dispatch]);
 
-
-  const {
-    CarTypeList,
-    ModelList,
-    GenerationList,
-    ModificationList,
-  } = useAppSelector((state: RootState) => state.car);
+  const { CarTypeList, ModelList, GenerationList, ModificationList } =
+    useAppSelector((state: RootState) => state.car);
 
   const onSelect = useCallback(
     (fieldName: string, selectedElement: any) => {
@@ -66,12 +59,34 @@ const SearchCars = () => {
   console.log(4444, GenerationList);
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Field options={CarTypeList} fieldType="Make" onSelect={onSelect} value={make} />
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        maxWidth: "1000px",
+        width: "100%",
+      }}
+    >
+      <Field
+        options={CarTypeList}
+        fieldType="Make"
+        onSelect={onSelect}
+        value={make}
+      />
       <CustomDivider orientation="vertical" flexItem />
-      <Field options={ModelList} fieldType="Model" onSelect={onSelect} value={model} />
+      <Field
+        options={ModelList}
+        fieldType="Model"
+        onSelect={onSelect}
+        value={model}
+      />
       <CustomDivider orientation="vertical" flexItem />
-      <Field options={GenerationList} fieldType="Generation" onSelect={onSelect} value={generation} />
+      <Field
+        options={GenerationList}
+        fieldType="Generation"
+        onSelect={onSelect}
+        value={generation}
+      />
       <CustomDivider orientation="vertical" flexItem />
       <Field
         options={ModificationList}
@@ -82,6 +97,8 @@ const SearchCars = () => {
       <Button
         sx={{
           borderRadius: 20,
+          maxWidth: 120,
+          width: "100%",
           background: "black",
           color: "white",
           padding: 1,
@@ -89,7 +106,11 @@ const SearchCars = () => {
             bgcolor: "#8b0000",
           },
         }}
-        onClick={() => { navigate(`/rims?make=${make}&model=${model}&generation=${generation}&modification=${modification}`) }}
+        onClick={() => {
+          navigate(
+            `/rims?make=${make}&model=${model}&generation=${generation}&modification=${modification}`
+          );
+        }}
       >
         {t("buttons.research")}
       </Button>

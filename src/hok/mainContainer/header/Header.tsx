@@ -9,6 +9,7 @@ import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
@@ -53,6 +54,8 @@ function Header() {
   const navigate = useNavigate();
 
 
+  const navigate = useNavigate();
+
   // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
   //   setAnchorElNav(event.currentTarget);
   // };
@@ -69,9 +72,10 @@ function Header() {
         sx={{
           height: 65,
           background: "#161616",
+          userSelect: "none",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" disableGutters sx={{ padding: "0 10px" }}>
           <Toolbar
             disableGutters
             sx={{
@@ -89,13 +93,13 @@ function Header() {
             }}
           >
             <Link
-              href="/home"
+              onClick={() => navigate("/home")}
               sx={{
                 display: { xs: "none", md: "flex" },
                 color: "white",
                 justifyContent: "center",
                 alignItems: "center",
-                gap: 2,
+                gap: 1,
                 fontSize: 30,
                 textDecoration: "none",
                 whiteSpace: "nowrap",
@@ -155,7 +159,7 @@ function Header() {
               </Menu>
             </Box>
             <Link
-              href="/home"
+              onClick={() => navigate("/home")}
               sx={{
                 display: { xs: "flex", md: "none" },
                 color: "white",
@@ -211,16 +215,17 @@ function Header() {
               </Box>
 
               <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
-                <IconButton onClick={() => {
-                  navigate(`/shop-basket`);
-                }}>
+                <IconButton onClick={() => navigate("/shop-basket")}>
                   <LocalMallIcon style={{ color: "white" }} />
                 </IconButton>
-                <IconButton href="/account" sx={{ paddingRight: 0 }}>
+                <IconButton
+                  onClick={() => navigate("/account")}
+                  sx={{ paddingRight: 0 }}
+                >
                   <AccountCircleIcon style={{ color: "white" }} />
                 </IconButton>
               </Box>
-              <Box sx={{ paddingLeft: 2 }}>
+              <Box sx={{ paddingLeft: 1.5 }}>
                 <ChangeLanguage />
               </Box>
             </Box>

@@ -1,5 +1,14 @@
+@font-face {
+  font-family: "'Montserrat', sans-serif";
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+}
+
 body {
   margin: auto;
   padding: 0;
-  max-width: 1280px;
+  max-width: 1920px;
+}
+
+* {
+  font-family: "Montserrat" !important;
 }

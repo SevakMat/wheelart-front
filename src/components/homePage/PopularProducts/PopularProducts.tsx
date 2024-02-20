@@ -6,6 +6,7 @@ import Link from "@mui/material/Link";
 import { useDispatch } from "react-redux";
 import { AppDispatch, RootState, useAppSelector } from "../../../store";
 import { getPopularRimsEffect } from "../../../store/effects/rim/rim.effect";
+import { useNavigate } from "react-router-dom";
 
 const PopularProducts = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -17,6 +18,7 @@ const PopularProducts = () => {
   const { popularRims } = useAppSelector((state: RootState) => state.rim);
 
   const [t] = useTranslation("home");
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -70,7 +72,14 @@ const PopularProducts = () => {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ margin: "0 100px", paddingTop: 4 }}>
+      <Box
+        sx={{
+          paddingTop: 4,
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <List
           sx={{
             display: "flex",
@@ -78,13 +87,18 @@ const PopularProducts = () => {
             justifyContent: "space-between",
             rowGap: 3,
             maxWidth: 1100,
-            "@media (max-width: 1090px)": {
+            overflow: "hidden",
+            "@media (max-width: 1200px)": {
               alignItems: "flex-start",
               display: "flex",
+              flexDirection: "row",
               flexWrap: "nowrap",
               listStyle: "none",
               margin: "1rem 0",
               overflowX: "scroll",
+
+              scrollbarWidth: "thin",
+
               padding: "0 0 0 1rem",
               gap: 3,
             },
@@ -116,7 +130,7 @@ const PopularProducts = () => {
         <Button
           size="large"
           variant="contained"
-          href="/rims"
+          onClick={() => navigate("/rims")}
           sx={{
             backgroundColor: "#00A70D",
             "&:hover": { background: "#00DE11", boxShadow: "none" },
@@ -134,7 +148,6 @@ const PopularProducts = () => {
 };
 
 export default PopularProducts;
-
 
 // voshm senc, erb vor cherez car ekav, gnum berum enq by - cary, u berum enq select exac filtrery(cari)
 // hajordy ete menq filtr enq ogtagorcum, antesum enq mashni detalnery u ashxatacnum enq erkrord effecty,

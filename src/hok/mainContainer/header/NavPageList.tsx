@@ -1,5 +1,6 @@
 import { Link, styled, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import "../../../fonts/monsterrat.css";
 
@@ -17,7 +18,7 @@ const CustomLink = styled(Link)(() => ({
 
   "&:hover": {
     background: "white",
-
+    cursor: "pointer",
     color: "black",
     textDecoration: "none", // Remove underline on hover
   },
@@ -25,6 +26,8 @@ const CustomLink = styled(Link)(() => ({
 
 const RenderPageList = () => {
   const [t] = useTranslation("global");
+
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -46,12 +49,24 @@ const RenderPageList = () => {
           height: "40px",
         }}
       >
-        <CustomLink href="/welcome">{t("header.welcome")}</CustomLink>
-        <CustomLink href="/rims">{t("header.rims")}</CustomLink>
-        <CustomLink href="/tires">{t("header.tires")}</CustomLink>
-        <CustomLink href="/accessories">{t("header.accessories")}</CustomLink>
-        <CustomLink href="/blog">{t("header.blog")}</CustomLink>
-        <CustomLink href="/faq">{t("header.faq")}</CustomLink>
+        <CustomLink onClick={() => navigate("/home")}>
+          {t("header.welcome")}
+        </CustomLink>
+        <CustomLink onClick={() => navigate("/rims")}>
+          {t("header.rims")}
+        </CustomLink>
+        <CustomLink onClick={() => navigate("/tires")}>
+          {t("header.tires")}
+        </CustomLink>
+        <CustomLink onClick={() => navigate("/accessories")}>
+          {t("header.accessories")}
+        </CustomLink>
+        <CustomLink onClick={() => navigate("/blog")}>
+          {t("header.blog")}
+        </CustomLink>
+        <CustomLink onClick={() => navigate("/faq")}>
+          {t("header.faq")}
+        </CustomLink>
       </Box>
     </Box>
   );
