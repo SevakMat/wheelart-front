@@ -11,6 +11,7 @@ import carReducer from "./reducers/car/car.reducers";
 import rimReducer from "./reducers/rim/rim.reducers";
 import filterReducer from "./reducers/filter/filter.reducers";
 import tireReducer from "./reducers/tire/tire.reducers";
+import shopBusketReducer from "./reducers/shopBusket/shopBusket.reducers";
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     rim: rimReducer,
     filter: filterReducer,
     tire: tireReducer,
+    shopBusket: shopBusketReducer,
 
 });
 

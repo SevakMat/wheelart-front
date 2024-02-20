@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { getRimEffect } from "../../store/effects/rim/rim.effect";
 
+
 import {
   Box,
   Button,
@@ -29,6 +30,7 @@ import TireCard from "../shere/tires/TireCard";
 import { RimType } from "../../store/types/rim/rim";
 
 import CreateAccordion from "../shere/accordion/CreateAccordion";
+import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
 
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -89,6 +91,7 @@ const SingleRim = () => {
               <Button
                 variant="contained"
                 disableElevation
+                onClick={() => { dispatch(setShopBusketItemEffect(rim as RimType, "rim")) }}
                 sx={{
                   background: "#293239",
                   "&:hover": { background: "#314554" },

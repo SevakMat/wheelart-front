@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 import ClearIcon from "@mui/icons-material/Clear";
+import { useNavigate } from "react-router-dom";
 
 const InfoCustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
@@ -20,22 +21,25 @@ const InfoCustomTypo = styled(Typography)(() => ({
 interface ItemCardProps {
   image: string;
   price: number;
-  rimWidth: number;
+  itemWidth: number;
   color: string;
   name: string;
   size: string;
-  rimId: string;
+  itemId: string;
 }
 
 const ShopBasketCard = ({
   image,
   price,
-  rimWidth,
+  itemWidth,
   color,
   name,
   size,
-  rimId,
+  itemId,
 }: ItemCardProps) => {
+  const navigate = useNavigate();
+
+
   return (
     <Card
       sx={{
@@ -47,6 +51,9 @@ const ShopBasketCard = ({
           boxShadow:
             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
         },
+      }}
+      onClick={() => {
+        navigate(`/rims/${itemId}`);
       }}
     >
       <CardActionArea
@@ -65,7 +72,7 @@ const ShopBasketCard = ({
         <Box sx={{ overflow: "hidden", width: 530 }}>
           <CardMedia
             component="img"
-            image="https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990"
+            image={image}
             sx={{
               width: 230,
               height: 220,
@@ -116,7 +123,7 @@ const ShopBasketCard = ({
             >
               <InfoCustomTypo>Taille: {size}</InfoCustomTypo>
               <InfoCustomTypo sx={{ textAlign: "center" }}>
-                Largeur: {rimWidth}
+                Largeur: {itemWidth}
               </InfoCustomTypo>
               <InfoCustomTypo
                 sx={{
