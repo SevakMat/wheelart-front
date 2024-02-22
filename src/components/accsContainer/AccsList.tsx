@@ -2,7 +2,7 @@ import { Box, List } from "@mui/material";
 
 import { RootState, useAppSelector } from "../../store";
 
-import AccsCard from "../shere/accs/AccsCard";
+import AccsListCard from "./AccsListCard";
 
 const AccsList = () => {
   // const { rimList } = useAppSelector((state: RootState) => state.rim)
@@ -95,13 +95,17 @@ const AccsList = () => {
             display: "flex",
             flexWrap: "wrap",
             gap: 3,
+            justifyContent: "center",
+
+            "@media(max-width: 1000px)": {
+              gap: 1,
+            },
           }}
         >
           {fakeData.map((accs: any) => {
             return (
               <li>
-                <AccsCard
-                  isPopular={false}
+                <AccsListCard
                   image={accs.image}
                   price={accs.price}
                   accsId={accs.id}

@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import PaginationBlock from "../shere/pagination/PaginationBlock";
 import AccsList from "./AccsList";
 import AccsFilter from "./AccsFilter";
+import ModalAccsFilter from "./ModalAccsFilter";
 
 const AccsContainer = () => {
   return (
@@ -30,6 +31,13 @@ const AccsContainer = () => {
             paddingLeft: 15,
             letterSpacing: 30,
             fontFamily: "'Montserrat', sans-serif",
+
+            "@media(max-width: 800px)": {
+              fontSize: 20,
+              paddingLeft: 0,
+              letterSpacing: 10,
+              textAlign: "center",
+            },
           }}
         >
           Accessoires
@@ -43,8 +51,27 @@ const AccsContainer = () => {
         }}
       >
         <Box sx={{ display: "flex" }}>
-          <AccsFilter />
-          <AccsList />
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <AccsFilter />
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                display: { xs: "flex", md: "none" },
+                justifyContent: "center",
+              }}
+            >
+              <ModalAccsFilter />
+            </Box>
+            <AccsList />
+          </Box>
         </Box>
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
           <PaginationBlock />
