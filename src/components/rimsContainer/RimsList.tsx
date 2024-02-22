@@ -1,11 +1,10 @@
 import { Box, List } from "@mui/material";
 
-import RimCard from "../shere/rims/RimCard";
 import { RootState, useAppSelector } from "../../store";
+import RimListCard from "./RImListCard";
 
 const RimsList = () => {
-
-  const { rimList } = useAppSelector((state: RootState) => state.rim)
+  const { rimList } = useAppSelector((state: RootState) => state.rim);
 
   return (
     <Box>
@@ -20,8 +19,7 @@ const RimsList = () => {
           {rimList.map((rim: any) => {
             return (
               <li>
-                <RimCard
-                  isPopular={false}
+                <RimListCard
                   image={rim.imageUrl}
                   price={rim.price}
                   rimWidth={100}
