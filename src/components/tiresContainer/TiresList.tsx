@@ -162,6 +162,11 @@ const TiresList = () => {
             display: "flex",
             flexWrap: "wrap",
             gap: 3,
+            justifyContent: "center",
+
+            "@media(max-width: 1000px)": {
+              gap: 1,
+            },
           }}
         >
           {fakeData.map((tire: any) => {

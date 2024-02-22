@@ -52,8 +52,6 @@ function Header() {
   );
   const navigate = useNavigate();
 
-
-
   // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
   //   setAnchorElNav(event.currentTarget);
   // };
@@ -71,6 +69,7 @@ function Header() {
           height: 65,
           background: "#161616",
           userSelect: "none",
+          justifyContent: "center",
         }}
       >
         <Container maxWidth="xl" disableGutters sx={{ padding: "0 10px" }}>

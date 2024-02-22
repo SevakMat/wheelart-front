@@ -58,6 +58,10 @@ export default function ModalMenu() {
       name: t("header.rims"),
     },
     {
+      href: "/tires",
+      name: t("header.tires"),
+    },
+    {
       href: "/accessories",
       name: t("header.accessories"),
     },

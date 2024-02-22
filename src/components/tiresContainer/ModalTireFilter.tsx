@@ -1,81 +1,75 @@
 import * as React from "react";
-import clsx from "clsx";
-import { styled, css } from "@mui/system";
-import { Modal as BaseModal } from "@mui/base/Modal";
-import SearchCars from "./SearchCars";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch, RootState, useAppSelector } from "../../../store";
-import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useParamsHook } from "../../../hook/useParams";
-import {
-  getCarDetailsEffect,
-  getCarsEffect,
-} from "../../../store/effects/car/car.effects";
-import { Box, Button, Divider, Typography } from "@mui/material";
-import Field from "./Field";
+import { styled } from "@mui/material/styles";
+import { Box, Typography, css } from "@mui/material";
+import { Modal as BaseModal } from "@mui/base/Modal";
 
-export default function ModalSearchCars() {
+import { AppDispatch, RootState, useAppSelector } from "../../store";
+import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
+import { getRimsByCarDetailsEffect } from "../../store/effects/rim/rim.effect";
+import clsx from "clsx";
+
+import { useParamsHook, useParamsHookArrays } from "../../hook/useParams";
+import { useShowRimsBy } from "../../hook/showRimsBy";
+
+import TireFilterField from "./TireFilterField";
+
+import "../../fonts/monsterrat.css";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+
+export default function ModalTireFilter() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const dispatch: AppDispatch = useDispatch();
-  const [t] = useTranslation("home");
-
-  const navigate = useNavigate();
   const location = useLocation();
-  const queryParams = React.useMemo(
-    () => new URLSearchParams(location.search),
-    [location.search]
-  );
+  const navigate = useNavigate();
 
-  // url info
-  const { make, model, year, modification } = useParamsHook();
+  const dispatch: AppDispatch = useDispatch();
+  const { filters } = useAppSelector((state: RootState) => state.filter);
+  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters;
+  const [searchParams] = useSearchParams();
 
-  React.useEffect(() => {
-    dispatch(getCarsEffect());
-  }, [dispatch]);
+  const {
+    make: makeValue,
+    model: modelValue,
+    generation: generationValue,
+    modification: modificationValue,
+    page: pageValue,
+  } = useParamsHook();
 
-  React.useEffect(() => {
-    if (make && model && year) {
-      dispatch(getCarDetailsEffect(make, model, year));
-    } else if (make && model) {
-      dispatch(getCarDetailsEffect(make, model));
-    } else if (make) {
-      dispatch(getCarDetailsEffect(make));
+  const rimsRequestDetection = useShowRimsBy();
+
+  const urlParamsArray = useParamsHookArrays(searchParams);
+
+  useEffect(() => {
+    if (rimsRequestDetection === "by-rim") {
+      dispatch(
+        getFiltersEffect({
+          ...urlParamsArray,
+          pagination: pageValue ? +pageValue : 0,
+        })
+      );
     } else {
+      dispatch(
+        getRimsByCarDetailsEffect(
+          location,
+          navigate,
+          makeValue,
+          modelValue,
+          generationValue,
+          modificationValue,
+          pageValue ? +pageValue : 0
+        )
+      );
     }
-  }, [make, model, year, dispatch]);
 
-  const { CarTypeList, ModelList, GenerationList, ModificationList } =
-    useAppSelector((state: RootState) => state.car);
-
-  const onSelect = React.useCallback(
-    (fieldName: string, selectedElement: any) => {
-      queryParams.set(fieldName.toLowerCase(), selectedElement);
-      navigate(`${location.pathname}?${queryParams.toString()}`, {
-        replace: true,
-      });
-    },
-    [navigate, queryParams, location.pathname]
-  );
+    // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
+  }, [dispatch, pageValue, searchParams]);
 
   return (
-    <div>
-      <Box sx={{ textAlign: "center" }}>
-        <Typography
-          sx={{
-            color: "white",
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: 9,
-            paddingBottom: 1,
-            textShadow: "1px 1px 2px red",
-          }}
-        >
-          {t("content.TheLargestAssortmentInFrance")}
-        </Typography>
-      </Box>
+    <Box sx={{ paddingTop: 3 }}>
       <TriggerButton
         type="button"
         onClick={handleOpen}
@@ -83,10 +77,10 @@ export default function ModalSearchCars() {
           width: 480,
           fontSize: 28,
           height: 60,
-          borderRadius: 4,
+          borderRadius: 8,
+
           background:
-            "linear-gradient(90deg, rgba(54,7,7,0.9) 0%, rgba(159,13,13,0.9) 50%, rgba(97,5,5,0.9) 100%)",
-          boxShadow: "0px 0px 25px rgba(255, 0, 0, 0.5)",
+            "radial-gradient(circle, rgba(193,193,193,1) 0%, rgba(149,149,149,1) 100%)",
           border: "none",
           color: "white",
           textTransform: "uppercase",
@@ -97,13 +91,13 @@ export default function ModalSearchCars() {
           },
 
           "&:hover": {
-            boxShadow: "0px 0px 25px rgba(255, 255, 255, 0.5)",
+            boxShadow: "0px 0px 25px rgba(0, 0, 0, 0.5)",
             background:
-              "linear-gradient(90deg, rgba(54,7,7,0.9) 0%, rgba(159,13,13,0.9) 50%, rgba(97,5,5,0.9) 100%)",
+              "radial-gradient(circle, rgba(193,193,193,1) 0%, rgba(149,149,149,1) 100%)",
           },
         }}
       >
-        Trouvez votre jante
+        Filters
       </TriggerButton>
       <Modal
         aria-labelledby="unstyled-modal-title"
@@ -112,69 +106,58 @@ export default function ModalSearchCars() {
         onClose={handleClose}
         slots={{ backdrop: StyledBackdrop }}
       >
-        <ModalContent sx={{ width: 300, textAlign: "center" }}>
+        <ModalContent
+          sx={{
+            width: 300,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <h2 id="unstyled-modal-title" className="modal-title">
-            Trouvez votre jante
+            Filter
           </h2>
-          <div>
+          <Box>
             <Box
               sx={{
                 display: "flex",
-                alignItems: "center",
-                maxWidth: "1000px",
-                width: "100%",
                 flexDirection: "column",
+                alignItems: "center",
+                width: 280,
+                minWidth: 280,
               }}
             >
-              <Field
-                options={CarTypeList}
-                fieldType="Make"
-                onSelect={onSelect}
-                value={make}
-              />
-              <Field
-                options={ModelList}
-                fieldType="Model"
-                onSelect={onSelect}
-                value={model}
-              />
-              <Field
-                options={GenerationList}
-                fieldType="Year"
-                onSelect={onSelect}
-                value={year}
-              />
-              <Field
-                options={ModificationList}
-                fieldType="Modification"
-                onSelect={onSelect}
-                value={modification}
-              />
-              <Button
+              <Box
                 sx={{
-                  borderRadius: 20,
-                  maxWidth: 120,
-                  width: "100%",
-                  background: "black",
-                  color: "white",
-                  padding: 1,
-                  "&:hover": {
-                    bgcolor: "#8b0000",
-                  },
-                }}
-                onClick={() => {
-                  navigate(
-                    `/rims?make=${make}&model=${model}&year=${year}&modification=${modification}`
-                  );
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  rowGap: 1,
                 }}
               >
-                {t("buttons.research")}
-              </Button>
+                <TireFilterField list={null} fieldType="Size" name="size" />
+                <TireFilterField list={null} fieldType="Make" name="make" />
+                <TireFilterField
+                  list={null}
+                  fieldType="Aspect Ratio"
+                  name="aspectRatio"
+                />
+                <TireFilterField
+                  list={null}
+                  fieldType="Diameter"
+                  name="diameter"
+                />
+                <TireFilterField list={null} fieldType="Width" name="width" />
+                <TireFilterField list={null} fieldType="Season" name="season" />
+                <TireFilterField list={null} fieldType="Price" name="price" />
+              </Box>
             </Box>
-          </div>
+          </Box>
         </ModalContent>
       </Modal>
-    </div>
+    </Box>
   );
 }
 
