@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,25 +6,27 @@ import { Box, CardActionArea } from "@mui/material";
 import styled from "@emotion/styled";
 import Tooltip from "@mui/material/Tooltip";
 
-interface RimListCardProps {
+import { useNavigate } from "react-router-dom";
+
+interface AccsCardProps {
   image: string;
-  price: number;
-  rimWidth: number;
+  length: number;
   color: string;
-  name: string;
-  size: string;
-  rimId: string;
+  gram: number;
+  price: number;
+  title: string;
+  accsId: number;
 }
 
-export default function RimListCard({
+export default function AccsListCard({
   image,
   price,
-  rimWidth,
+  title,
+  accsId,
+  gram,
   color,
-  name,
-  size,
-  rimId,
-}: RimListCardProps) {
+  length,
+}: AccsCardProps) {
   const navigate = useNavigate();
 
   return (
@@ -41,7 +41,7 @@ export default function RimListCard({
         },
       }}
       onClick={() => {
-        navigate(`/rims/${rimId}`);
+        navigate(`/accessories/${accsId}`);
       }}
     >
       <CardActionArea
@@ -61,7 +61,7 @@ export default function RimListCard({
           },
 
           "@media(max-width: 410px)": {
-            height: 300,
+            height: 320,
             width: 170,
           },
         }}
@@ -70,19 +70,12 @@ export default function RimListCard({
           component="img"
           image={image}
           sx={{
-            // width: 230,
-            // height: 220,
             objectFit: "cover",
             marginRight: "auto",
             marginLeft: "auto",
             left: 0,
             right: 0,
-
-            transformOrigin: "70% 90%",
-            transition: "transform .25s, visibility .25s ease-in",
-            "&:hover": {
-              transform: "scale(2)",
-            },
+            borderRadius: 2,
           }}
         />
 
@@ -99,7 +92,7 @@ export default function RimListCard({
             <Typography
               sx={{ fontWeight: "bold", fontSize: "18px !important" }}
             >
-              {name}
+              {title}
             </Typography>
           </Box>
 
@@ -112,8 +105,11 @@ export default function RimListCard({
                 justifyContent: "flex-end",
               }}
             >
-              <Typography>Taille: {size}</Typography>
-              <Typography>Largeur: {rimWidth}</Typography>
+              <Typography>
+                Length: {length}
+                <p style={{ fontSize: 8, display: "inline" }}>mm</p>
+              </Typography>
+              <Typography>Gram: {gram}</Typography>
               <Typography
                 sx={{
                   display: "flex",
@@ -160,7 +156,7 @@ export default function RimListCard({
                   fontSize: 11,
                 }}
               >
-                pour 4 jantes
+                pour 20x
               </p>
             </Box>
           </Box>
