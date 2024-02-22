@@ -5,6 +5,7 @@ import RimFilter from "./RimFilter";
 import "../../fonts/monsterrat.css";
 import RimsList from "./RimsList";
 import PaginationBlock from "../shere/pagination/PaginationBlock";
+import ModalRimFilter from "./ModalRimFilter";
 
 const RimsContainer = () => {
   return (
@@ -33,6 +34,12 @@ const RimsContainer = () => {
             paddingLeft: 15,
             letterSpacing: 30,
             fontFamily: "'Montserrat', sans-serif",
+
+            "@media(max-width: 500px)": {
+              fontSize: 30,
+              paddingLeft: 0,
+              textAlign: "center",
+            },
           }}
         >
           Janets
@@ -46,8 +53,27 @@ const RimsContainer = () => {
         }}
       >
         <Box sx={{ display: "flex" }}>
-          <RimFilter />
-          <RimsList />
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <RimFilter />
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                display: { xs: "flex", md: "none" },
+                justifyContent: "center",
+              }}
+            >
+              <ModalRimFilter />
+            </Box>
+            <RimsList />
+          </Box>
         </Box>
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
           <PaginationBlock />
