@@ -1,8 +1,7 @@
 import { Box, List } from "@mui/material";
 
 import { RootState, useAppSelector } from "../../store";
-
-import TireCard from "../shere/tires/TireCard";
+import TireListCard from "./TireListCard";
 
 const TiresList = () => {
   const fakeData = [
@@ -162,13 +161,17 @@ const TiresList = () => {
             display: "flex",
             flexWrap: "wrap",
             gap: 3,
+            justifyContent: "center",
+
+            "@media(max-width: 1000px)": {
+              gap: 1,
+            },
           }}
         >
           {fakeData.map((tire: any) => {
             return (
               <li>
-                <TireCard
-                  isPopular={tire.isPopular}
+                <TireListCard
                   image={tire.image}
                   price={tire.price}
                   tireWidth={tire.tireWidth}
