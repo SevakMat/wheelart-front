@@ -1,64 +1,33 @@
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import { Box, Typography } from "@mui/material";
-
 import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
-import { getRimsByCarDetailsEffect } from "../../store/effects/rim/rim.effect";
-
+import {  getTireFiltersEffect } from "../../store/effects/filter/filter.effects";
 import { useParamsHook, useParamsHookArrays } from "../../hook/useParams";
-import { useShowRimsBy } from "../../hook/showRimsBy";
-
 import TireFilterField from "./TireFilterField";
 
 import "../../fonts/monsterrat.css";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 const TireFilter = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
-  const { filters } = useAppSelector((state: RootState) => state.filter);
-  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters;
+  const { tireFilters } = useAppSelector((state: RootState) => state.filter);
+  const { marka, rimDiameter, stock, tireAspectRatio, tireWidth } = tireFilters;
   const [searchParams] = useSearchParams();
 
-  const {
-    make: makeValue,
-    model: modelValue,
-    generation: generationValue,
-    modification: modificationValue,
-    page: pageValue,
-  } = useParamsHook();
-
-  const rimsRequestDetection = useShowRimsBy();
+  const { page: pageValue } = useParamsHook();
 
   const urlParamsArray = useParamsHookArrays(searchParams);
 
   useEffect(() => {
-    if (rimsRequestDetection === "by-rim") {
-      dispatch(
-        getFiltersEffect({
-          ...urlParamsArray,
-          pagination: pageValue ? +pageValue : 0,
-        })
-      );
-    } else {
-      dispatch(
-        getRimsByCarDetailsEffect(
-          location,
-          navigate,
-          makeValue,
-          modelValue,
-          generationValue,
-          modificationValue,
-          pageValue ? +pageValue : 0
-        )
-      );
-    }
+    dispatch(
+      getTireFiltersEffect({
+        ...urlParamsArray,
+        pagination: pageValue ? +pageValue : 0,
+      })
+    );
 
-    // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
   }, [dispatch, pageValue, searchParams]);
 
   return (
@@ -98,17 +67,15 @@ const TireFilter = () => {
             "rgba(50, 50, 93, 0.25) 0px 0px 20px 0px, rgba(0, 0, 0, 0.3) 0px 0px 20px 0px",
         }}
       >
-        <TireFilterField list={null} fieldType="Size" name="size" />
-        <TireFilterField list={null} fieldType="Make" name="make" />
+        <TireFilterField list={tireWidth} fieldType="Size" name="tireWidth" />
+        <TireFilterField list={marka} fieldType="Make" name="marka" />
         <TireFilterField
-          list={null}
+          list={tireAspectRatio}
           fieldType="Aspect Ratio"
-          name="aspectRatio"
+          name="tireAspectRatio"
         />
-        <TireFilterField list={null} fieldType="Diameter" name="diameter" />
-        <TireFilterField list={null} fieldType="Width" name="width" />
-        <TireFilterField list={null} fieldType="Season" name="season" />
-        <TireFilterField list={null} fieldType="Price" name="price" />
+        <TireFilterField list={rimDiameter} fieldType="Diameter" name="rimDiameter" />
+        <TireFilterField list={stock} fieldType="stock" name="stock" />
       </Box>
     </Box>
   );

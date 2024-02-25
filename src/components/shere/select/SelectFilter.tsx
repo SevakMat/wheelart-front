@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { FilterType } from '../../../store/types/filters/filters';
+import { RimFilterType } from '../../../store/types/filters/filters';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, RootState, useAppSelector } from '../../../store';
 import { getFiltersEffect } from '../../../store/effects/filter/filter.effects';
@@ -22,7 +22,7 @@ const MenuProps = {
 };
 
 interface SelectFilterProps {
-  filterType: FilterType[],
+  filterType: RimFilterType[],
   name: string,
   lable: string,
 }
@@ -31,12 +31,12 @@ export default function SelectFilter({ filterType, name, lable }: SelectFilterPr
   const [personName, setPersonName] = React.useState<string[]>([]);
   const dispatch: AppDispatch = useDispatch();
 
-  const { selectedFilters } = useAppSelector((state: RootState) => state.filter)
+  const { selectedRimFilters } = useAppSelector((state: RootState) => state.filter)
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
 
     const newData = {
-      ...selectedFilters,
+      ...selectedRimFilters,
       [lable]: event.target.value
     }
     dispatch(getFiltersEffect(newData))

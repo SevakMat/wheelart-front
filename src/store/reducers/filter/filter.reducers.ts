@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import { FilterActionTypes, FilterServerTypes, FilterState } from "../../types/filters/filters";
 
 const initialState = {
-  filters: {
+  rimFilters: {
     sizeR: [],
     pcd: [],
     studHoles: [],
@@ -10,9 +10,8 @@ const initialState = {
     color: [],
     width: [],
     price: [],
-
   },
-  selectedFilters: {
+  selectedRimFilters: {
     sizeR: [],
     pcd: [],
     studHoles: [],
@@ -20,23 +19,50 @@ const initialState = {
     color: [],
     width: [],
     price: [],
-  }
+  },
+  tireFilters: {
+    tireWidth: [],
+    tireAspectRatio: [],
+    rimDiameter: [],
+    marka: [],
+    stock: [],
+  },
+  selectedTireFilters: {
+    tireWidth: [],
+    tireAspectRatio: [],
+    rimDiameter: [],
+    marka: [],
+    stock: [],
+  },
 }
 
 type ReducerType = Reducer<FilterState, FilterActionTypes>
 
 const reducer: ReducerType = (state = initialState, action: FilterActionTypes) => {
   switch (action.type) {
-    case FilterServerTypes.GET_FILTER_LIST_SUCCESS:
+    case FilterServerTypes.GET_RIM_FILTER_LIST_SUCCESS:
       return {
         ...state,
-        filters: action.filters
+        rimFilters: action.rimFilters
       };
-    case FilterServerTypes.GET_SELECTED_FILTER_LIST_SUCCESS:
+    case FilterServerTypes.GET_RIM_SELECTED_FILTER_LIST_SUCCESS:
       return {
         ...state,
-        selectedFilters: action.selectedFilters
+        selectedRimFilters: action.selectedRimFilters
       };
+
+    case FilterServerTypes.GET_TIRE_FILTER_LIST_SUCCESS:
+      return {
+        ...state,
+        tireFilters: action.tireFilters
+      };
+    case FilterServerTypes.GET_TIRE_SELECTED_FILTER_LIST_SUCCESS:
+      return {
+        ...state,
+        selectedTireFilters: action.selectedTireFilters
+      };
+
+
     default:
       return state;
   }

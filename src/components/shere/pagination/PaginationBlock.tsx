@@ -4,8 +4,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { RootState, useAppSelector } from "../../../store";
 import { useParamsHook } from "../../../hook/useParams";
 
-function PaginationBlock() {
-  const { rimsCount, rimList } = useAppSelector((state: RootState) => state.rim)
+interface PaginationBlockProp {
+  count: number,
+  list: any
+}
+
+function PaginationBlock({ count, list }: PaginationBlockProp) {
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,11 +26,11 @@ function PaginationBlock() {
 
   };
 
-  const paginationCount = Math.ceil(rimsCount / 12)
+  const paginationCount = Math.ceil(count / 12)
 
   return (
     <center>
-      {rimList.length > 0 && <div
+      {list.length > 0 && <div
         style={{
           display: "flex",
           flexDirection: "column-reverse",

@@ -1,50 +1,90 @@
 export enum FilterServerTypes {
-  GET_FILTER_LIST_SUCCESS = "GET_FILTER_LIST_SUCCESS",
-  GET_SELECTED_FILTER_LIST_SUCCESS = "GET_SELECTED_FILTER_LIST_SUCCESS",
+  GET_RIM_FILTER_LIST_SUCCESS = "GET_RIM_FILTER_LIST_SUCCESS",
+  GET_RIM_SELECTED_FILTER_LIST_SUCCESS = "GET_RIM_SELECTED_FILTER_LIST_SUCCESS",
+  GET_TIRE_FILTER_LIST_SUCCESS = "GET_TIRE_FILTER_LIST_SUCCESS",
+  GET_TIRE_SELECTED_FILTER_LIST_SUCCESS = "GET_TIRE_SELECTED_FILTER_LIST_SUCCESS",
 }
-export type FilterName = "sizeR" | "pcd" | "centerBore" | "studHoles"
 
-export interface FilterType {
+export type RimFilterName = "sizeR" | "pcd" | "centerBore" | "studHoles"
+
+export type TireFilterName = "tireWidth" | "tireAspectRatio" | "rimDiameter" | "marka" | "marka"
+
+export interface RimFilterType {
   count: number,
-  filterName: FilterName
+  filterName: RimFilterName
+}
+export interface TireFilterType {
+  count: number,
+  filterName: TireFilterName
 }
 
-export interface Filters {
-  sizeR: FilterType[],
-  pcd: FilterType[],
-  studHoles: FilterType[],
-  centerBore: FilterType[],
-  color: FilterType[],
-  width: FilterType[],
-  price: FilterType[],
+export interface RimFilters {
+  sizeR: RimFilterType[],
+  pcd: RimFilterType[],
+  studHoles: RimFilterType[],
+  centerBore: RimFilterType[],
+  color: RimFilterType[],
+  width: RimFilterType[],
+  price: RimFilterType[],
 }
-export interface SelectedFilters {
+
+export interface TireFilters {
+  tireWidth: TireFilterName[];
+  tireAspectRatio: TireFilterName[];
+  rimDiameter: TireFilterName[];
+  marka: TireFilterName[];
+  stock: TireFilterName[];
+}
+
+export interface SelectedRimFilters {
   sizeR?: number[],
   pcd?: number[],
   studHoles?: number[],
   centerBore?: number[],
   width?: number[],
   color?: number[],
-  price?: FilterType[],
+  price?: TireFilterName[],
   pagination?: number
 }
 
+export interface SelectedTireFilters {
+  tireWidth?: number[];
+  tireAspectRatio?: number[];
+  rimDiameter?: number[];
+  marka?: number[];
+  stock?: number[];
+}
 
 export interface FilterState {
-  filters: Filters,
-  selectedFilters: SelectedFilters
+  rimFilters: RimFilters,
+  selectedRimFilters: SelectedRimFilters,
+  tireFilters: TireFilters,
+  selectedTireFilters: SelectedTireFilters,
 }
 
 
-export interface GetFilterListSuccess {
-  type: FilterServerTypes.GET_FILTER_LIST_SUCCESS;
-  filters: Filters;
+export interface GetRimFilterListSuccess {
+  type: FilterServerTypes.GET_RIM_FILTER_LIST_SUCCESS;
+  rimFilters: RimFilters;
 }
 
 
-export interface GetSelectedFilterListSuccess {
-  type: FilterServerTypes.GET_SELECTED_FILTER_LIST_SUCCESS;
-  selectedFilters: SelectedFilters;
+export interface GetRimSelectedFilterListSuccess {
+  type: FilterServerTypes.GET_RIM_SELECTED_FILTER_LIST_SUCCESS;
+  selectedRimFilters: SelectedRimFilters;
 }
 
-export type FilterActionTypes = GetFilterListSuccess | GetSelectedFilterListSuccess;
+
+export interface GetTireFilterListSuccess {
+  type: FilterServerTypes.GET_TIRE_FILTER_LIST_SUCCESS;
+  tireFilters: TireFilters;
+}
+
+
+export interface GetTireSelectedFilterListSuccess {
+  type: FilterServerTypes.GET_TIRE_SELECTED_FILTER_LIST_SUCCESS;
+  selectedTireFilters: SelectedTireFilters;
+}
+
+
+export type FilterActionTypes = GetRimFilterListSuccess | GetRimSelectedFilterListSuccess | GetTireFilterListSuccess | GetTireSelectedFilterListSuccess;

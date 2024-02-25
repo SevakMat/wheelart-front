@@ -6,8 +6,11 @@ import "../../fonts/monsterrat.css";
 import RimsList from "./RimsList";
 import PaginationBlock from "../shere/pagination/PaginationBlock";
 import ModalRimFilter from "./ModalRimFilter";
+import { RootState, useAppSelector } from "../../store";
 
 const RimsContainer = () => {
+  const { rimsCount,rimList } = useAppSelector((state: RootState) => state.rim)
+
   return (
     <Box>
       <Box
@@ -76,7 +79,7 @@ const RimsContainer = () => {
           </Box>
         </Box>
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-          <PaginationBlock />
+          <PaginationBlock  count={rimsCount} list={rimList}/>
         </Box>
       </Box>
     </Box>

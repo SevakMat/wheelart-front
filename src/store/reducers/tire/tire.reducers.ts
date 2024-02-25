@@ -4,7 +4,9 @@ import { TireActionTypes, TireServerTypes, TireState } from "../../types/tire/ti
 const initialState: TireState = {
   tireList: [],
   recommendedTires: [],
-  tire: null
+  tire: null,
+  tiresCount: 0,
+
 }
 
 type ReducerType = Reducer<TireState, TireActionTypes>
@@ -26,6 +28,11 @@ const reducer: ReducerType = (state = initialState, action: TireActionTypes) => 
       return {
         ...state,
         tire: action.tire,
+      };
+    case TireServerTypes.GET_TIRES_COUNT_SUCCESS:
+      return {
+        ...state,
+        tiresCount: action.tiresCount,
       };
     default:
       return state;
