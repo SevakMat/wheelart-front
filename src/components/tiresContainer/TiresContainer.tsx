@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import PaginationBlock from "../shere/pagination/PaginationBlock";
 import { ThemeProvider } from "@emotion/react";
 import TiresList from "./TiresList";
@@ -9,7 +9,10 @@ import ModalTireFilter from "./ModalTireFilter";
 import { RootState, useAppSelector } from "../../store";
 
 const TiresContainer = () => {
-  const { tiresCount,tireList } = useAppSelector((state: RootState) => state.tire)
+  const { tiresCount, tireList } = useAppSelector((state: RootState) => state.tire)
+
+  const isSmallScreen = useMediaQuery('(max-width:1000px)');
+
 
   return (
     <ThemeProvider theme={customBreakpoints}>
@@ -57,10 +60,11 @@ const TiresContainer = () => {
           }}
         >
           <Box sx={{ display: "flex" }}>
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              asds
-              <TireFilter />
-            </Box>
+            {!isSmallScreen &&
+              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                <TireFilter />
+              </Box>
+            }
             <Box
               sx={{
                 display: "flex",
@@ -68,19 +72,21 @@ const TiresContainer = () => {
                 flexDirection: "column",
               }}
             >
-              <Box
-                sx={{
-                  display: { xs: "flex", md: "none" },
-                  justifyContent: "center",
-                }}
-              >
-                <ModalTireFilter />
-              </Box>
+              {isSmallScreen &&
+                <Box
+                  sx={{
+                    display: { xs: "flex", md: "none" },
+                    justifyContent: "center",
+                  }}
+                >
+                  <ModalTireFilter />
+                </Box>
+              }
               <TiresList />
             </Box>
           </Box>
           <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-          <PaginationBlock count={tiresCount} list={tireList} />
+            <PaginationBlock count={tiresCount} list={tireList} />
           </Box>
         </Box>
       </Box>
