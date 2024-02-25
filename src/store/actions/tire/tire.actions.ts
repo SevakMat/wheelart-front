@@ -1,4 +1,4 @@
-import { GetRecommededTiresSuccess, GetTireListSuccess, GetTireSuccess, TireServerTypes, TireType } from "../../types/tire/tire";
+import { GetRecommededTiresSuccess, GetTireListSuccess, GetTireSuccess, GetTiresCountSuccess, TireServerTypes, TireType } from "../../types/tire/tire";
 
 export const getTiresListByCarDateAction = (tireList: TireType[]): GetTireListSuccess => ({
   type: TireServerTypes.GET_TIRE_LIST_SUCCESS,
@@ -14,3 +14,12 @@ export const getTireAction = (tire: TireType): GetTireSuccess => ({
   type: TireServerTypes.GET_TIRE_SUCCESS,
   tire,
 });
+
+
+export const getTiresListCountAction = (
+  tiresCount: number
+): GetTiresCountSuccess => ({
+  type: TireServerTypes.GET_TIRES_COUNT_SUCCESS,
+  tiresCount,
+});
+

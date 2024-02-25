@@ -15,13 +15,11 @@ interface TireFilterFieldProps {
   list: any;
   fieldType: any;
   name:
-    | "size"
-    | "make"
-    | "aspectRatio"
-    | "diameter"
-    | "width"
-    | "season"
-    | "price";
+    | "marka"
+    | "rimDiameter"
+    | "stock"
+    | "tireAspectRatio"
+    | "tireWidth"
 }
 
 function TireFilterField({ list, fieldType, name }: TireFilterFieldProps) {
@@ -92,7 +90,8 @@ function TireFilterField({ list, fieldType, name }: TireFilterFieldProps) {
     });
     setCurrentList(filtered);
   };
-
+  console.log(4444,list);
+  
   return (
     <FormControl
       classes={classes}

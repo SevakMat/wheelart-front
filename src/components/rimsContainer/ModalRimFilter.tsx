@@ -27,8 +27,8 @@ export default function ModalRimFilter() {
   const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
-  const { filters } = useAppSelector((state: RootState) => state.filter);
-  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters;
+  const { rimFilters } = useAppSelector((state: RootState) => state.filter);
+  const { sizeR, pcd, centerBore, studHoles, color, width, price } = rimFilters;
   const [searchParams] = useSearchParams();
 
   const {

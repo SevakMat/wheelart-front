@@ -6,8 +6,11 @@ import TireFilter from "./TireFilter";
 
 import { customBreakpoints } from "../../customBreakpoints";
 import ModalTireFilter from "./ModalTireFilter";
+import { RootState, useAppSelector } from "../../store";
 
 const TiresContainer = () => {
+  const { tiresCount,tireList } = useAppSelector((state: RootState) => state.tire)
+
   return (
     <ThemeProvider theme={customBreakpoints}>
       <Box>
@@ -55,9 +58,9 @@ const TiresContainer = () => {
         >
           <Box sx={{ display: "flex" }}>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              asds
               <TireFilter />
             </Box>
-
             <Box
               sx={{
                 display: "flex",
@@ -77,7 +80,7 @@ const TiresContainer = () => {
             </Box>
           </Box>
           <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-            <PaginationBlock />
+          <PaginationBlock count={tiresCount} list={tireList} />
           </Box>
         </Box>
       </Box>

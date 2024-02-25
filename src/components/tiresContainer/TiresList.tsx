@@ -2,157 +2,12 @@ import { Box, List } from "@mui/material";
 
 import { RootState, useAppSelector } from "../../store";
 import TireListCard from "./TireListCard";
+import { TireType } from "../../store/types/tire/tire";
 
 const TiresList = () => {
-  const fakeData = [
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-    {
-      isPopular: false,
-      image:
-        "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
-      price: 180,
-      tireWidth: 55,
-      marka: "WheelArt",
-      tireAspectRatio: 50,
-      tireDiameter: 100,
-      tireId: 3,
-      color: "black",
-    },
-  ];
 
-  // const { rimList } = useAppSelector((state: RootState) => state.rim)
-
+  const { tireList } = useAppSelector((state: RootState) => state.tire)
+  
   return (
     <Box>
       <Box sx={{ margin: "30px 10px" }}>
@@ -168,18 +23,18 @@ const TiresList = () => {
             },
           }}
         >
-          {fakeData.map((tire: any) => {
+          {tireList.map((tire: TireType, index:number) => {
             return (
-              <li>
+              <li key={index} >
                 <TireListCard
-                  image={tire.image}
-                  price={tire.price}
+                  image={tire.imageUrl}
+                  price={100}
                   tireWidth={tire.tireWidth}
                   marka={tire.marka}
                   tireAspectRatio={tire.tireAspectRatio}
-                  tireDiameter={tire.tireDiameter}
-                  tireId={tire.tireId}
-                  color={tire.color}
+                  tireDiameter={tire.rimDiameter}
+                  tireId={tire.id}
+                  color={"tire."}
                 />
               </li>
             );

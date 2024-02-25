@@ -27,8 +27,8 @@ export default function ModalTireFilter() {
   const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
-  const { filters } = useAppSelector((state: RootState) => state.filter);
-  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters;
+  const { tireFilters } = useAppSelector((state: RootState) => state.filter);
+  const { marka, rimDiameter, stock, tireAspectRatio, tireWidth } = tireFilters;
   const [searchParams] = useSearchParams();
 
   const {
@@ -137,21 +137,17 @@ export default function ModalTireFilter() {
                   rowGap: 1,
                 }}
               >
-                <TireFilterField list={null} fieldType="Size" name="size" />
-                <TireFilterField list={null} fieldType="Make" name="make" />
+                <TireFilterField list={tireWidth} fieldType="Size" name="tireWidth" />
+                <TireFilterField list={marka} fieldType="Make" name="marka" />
                 <TireFilterField
-                  list={null}
+                  list={tireAspectRatio}
                   fieldType="Aspect Ratio"
-                  name="aspectRatio"
+                  name="tireAspectRatio"
                 />
-                <TireFilterField
-                  list={null}
-                  fieldType="Diameter"
-                  name="diameter"
-                />
-                <TireFilterField list={null} fieldType="Width" name="width" />
-                <TireFilterField list={null} fieldType="Season" name="season" />
-                <TireFilterField list={null} fieldType="Price" name="price" />
+                <TireFilterField list={rimDiameter} fieldType="Diameter" name="rimDiameter" />
+
+                <TireFilterField list={stock} fieldType="stock" name="stock" />
+
               </Box>
             </Box>
           </Box>

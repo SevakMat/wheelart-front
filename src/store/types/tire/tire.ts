@@ -1,7 +1,8 @@
 export enum TireServerTypes {
   GET_TIRE_LIST_SUCCESS = "GET_TIRE_LIST_SUCCESS",
   GET_REQOMMENDED_TIRES_SUCCESS = "GET_REQOMMENDED_TIRES_SUCCESS",
-  GET_TIRE_SUCCESS = "GET_TIRE_SUCCESS"
+  GET_TIRE_SUCCESS = "GET_TIRE_SUCCESS",
+  GET_TIRES_COUNT_SUCCESS = "GET_TIRES_COUNT_SUCCESS"
 }
 
 export interface TireType {
@@ -17,7 +18,8 @@ export interface TireType {
 export interface TireState {
   tireList: TireType[];
   recommendedTires: TireType[],
-  tire: TireType | null
+  tire: TireType | null,
+  tiresCount:number
 }
 
 
@@ -35,4 +37,10 @@ export interface GetTireSuccess {
   tire: TireType;
 }
 
-export type TireActionTypes = GetTireListSuccess | GetRecommededTiresSuccess | GetTireSuccess;
+
+export interface GetTiresCountSuccess {
+  type: TireServerTypes.GET_TIRES_COUNT_SUCCESS;
+  tiresCount: number;
+}
+
+export type TireActionTypes = GetTireListSuccess | GetRecommededTiresSuccess | GetTireSuccess | GetTiresCountSuccess;

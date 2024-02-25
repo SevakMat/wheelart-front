@@ -43,7 +43,7 @@ const ShopBasketContainer = () => {
       >
         <ShopBasketItemList />
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-          <PaginationBlock />
+        <PaginationBlock count={30} list={null} />
         </Box>
       </Box>
     </Box>

@@ -21,8 +21,8 @@ const RimFilter = () => {
   const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
-  const { filters } = useAppSelector((state: RootState) => state.filter)
-  const { sizeR, pcd, centerBore, studHoles, color, width, price } = filters
+  const { rimFilters } = useAppSelector((state: RootState) => state.filter)
+  const { sizeR, pcd, centerBore, studHoles, color, width, price } = rimFilters
   const [searchParams] = useSearchParams();
 
   const { make: makeValue, model: modelValue, generation: generationValue, modification: modificationValue, page: pageValue } = useParamsHook()
@@ -45,6 +45,7 @@ const RimFilter = () => {
 
   }, [dispatch, pageValue, searchParams])
 
+console.log(sizeR);
 
 
   return (

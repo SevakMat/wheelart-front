@@ -1,11 +1,21 @@
-import { Filters, FilterServerTypes, GetFilterListSuccess, GetSelectedFilterListSuccess, SelectedFilters } from "../../types/filters/filters";
+import { RimFilters, FilterServerTypes, GetRimFilterListSuccess, GetRimSelectedFilterListSuccess, SelectedRimFilters, TireFilters, GetTireFilterListSuccess, GetTireSelectedFilterListSuccess, SelectedTireFilters } from "../../types/filters/filters";
 
-export const getFiltersListSuccess = (filters: Filters): GetFilterListSuccess => ({
-  type: FilterServerTypes.GET_FILTER_LIST_SUCCESS,
-  filters
+export const getRimFiltersListSuccess = (rimFilters: RimFilters): GetRimFilterListSuccess => ({
+  type: FilterServerTypes.GET_RIM_FILTER_LIST_SUCCESS,
+  rimFilters
 })
 
-export const getSelectedFiltersListSuccess = (selectedFilters: SelectedFilters): GetSelectedFilterListSuccess => ({
-  type: FilterServerTypes.GET_SELECTED_FILTER_LIST_SUCCESS,
-  selectedFilters
+export const getSelectedRimFiltersListSuccess = (selectedRimFilters: SelectedRimFilters): GetRimSelectedFilterListSuccess => ({
+  type: FilterServerTypes.GET_RIM_SELECTED_FILTER_LIST_SUCCESS,
+  selectedRimFilters
+})
+
+export const getTireFiltersListSuccess = (tireFilters: TireFilters): GetTireFilterListSuccess => ({
+  type: FilterServerTypes.GET_TIRE_FILTER_LIST_SUCCESS,
+  tireFilters
+})
+
+export const getSelectedTireFiltersListSuccess = (selectedTireFilters: SelectedTireFilters): GetTireSelectedFilterListSuccess => ({
+  type: FilterServerTypes.GET_TIRE_SELECTED_FILTER_LIST_SUCCESS,
+  selectedTireFilters
 })
