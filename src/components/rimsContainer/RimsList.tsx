@@ -14,6 +14,11 @@ const RimsList = () => {
             display: "flex",
             flexWrap: "wrap",
             gap: 3,
+            justifyContent: "center",
+
+            "@media(max-width: 1000px)": {
+              gap: 1,
+            },
           }}
         >
           {rimList.map((rim: any) => {
