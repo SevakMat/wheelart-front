@@ -6,12 +6,10 @@ import { Box, Typography, css } from "@mui/material";
 import { Modal as BaseModal } from "@mui/base/Modal";
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { getFiltersEffect } from "../../store/effects/filter/filter.effects";
-import { getRimsByCarDetailsEffect } from "../../store/effects/rim/rim.effect";
+import {  getTireFiltersEffect } from "../../store/effects/filter/filter.effects";
 import clsx from "clsx";
 
 import { useParamsHook, useParamsHookArrays } from "../../hook/useParams";
-import { useShowRimsBy } from "../../hook/showRimsBy";
 
 import TireFilterField from "./TireFilterField";
 
@@ -23,8 +21,6 @@ export default function ModalTireFilter() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const dispatch: AppDispatch = useDispatch();
   const { tireFilters } = useAppSelector((state: RootState) => state.filter);
@@ -32,38 +28,19 @@ export default function ModalTireFilter() {
   const [searchParams] = useSearchParams();
 
   const {
-    make: makeValue,
-    model: modelValue,
-    generation: generationValue,
-    modification: modificationValue,
     page: pageValue,
   } = useParamsHook();
 
-  const rimsRequestDetection = useShowRimsBy();
 
   const urlParamsArray = useParamsHookArrays(searchParams);
 
   useEffect(() => {
-    if (rimsRequestDetection === "by-rim") {
-      dispatch(
-        getFiltersEffect({
-          ...urlParamsArray,
-          pagination: pageValue ? +pageValue : 0,
-        })
-      );
-    } else {
-      dispatch(
-        getRimsByCarDetailsEffect(
-          location,
-          navigate,
-          makeValue,
-          modelValue,
-          generationValue,
-          modificationValue,
-          pageValue ? +pageValue : 0
-        )
-      );
-    }
+    dispatch(
+      getTireFiltersEffect({
+        ...urlParamsArray,
+        pagination: pageValue ? +pageValue : 0,
+      })
+    );
 
     // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
   }, [dispatch, pageValue, searchParams]);

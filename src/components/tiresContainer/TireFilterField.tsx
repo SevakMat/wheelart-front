@@ -51,13 +51,10 @@ function TireFilterField({ list, fieldType, name }: TireFilterFieldProps) {
   }, [list]);
 
   useEffect(() => {
-    const queryParamsArray: any = queryParams.getAll(name).map(Number);
-    // const queryParamsArray: any = queryParams.getAll(name) // toxnumem aranc number
-
+    const queryParamsArray:any = queryParams.getAll(name).map(element => isNaN(+element) ? element : +element);
+    
     setSelected(
-      typeof queryParamsArray === "string"
-        ? queryParamsArray.split(",")
-        : queryParamsArray
+      queryParamsArray
     );
   }, [queryParams]);
 
@@ -90,8 +87,7 @@ function TireFilterField({ list, fieldType, name }: TireFilterFieldProps) {
     });
     setCurrentList(filtered);
   };
-  console.log(4444,list);
-  
+    
   return (
     <FormControl
       classes={classes}

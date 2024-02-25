@@ -56,7 +56,6 @@ const SearchCars = () => {
     height: 25,
     margin: "auto 0",
   });
-  console.log(4444, GenerationList);
 
   return (
     <Box
