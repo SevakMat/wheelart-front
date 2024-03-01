@@ -74,7 +74,7 @@ const AccsContainer = () => {
           </Box>
         </Box>
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-          <PaginationBlock count={30} list={null} />
+          <PaginationBlock count={30} list={[]} />
         </Box>
       </Box>
     </Box>
