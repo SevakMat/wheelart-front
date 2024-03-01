@@ -14,18 +14,26 @@ const Slideshow = ({ images }: SlideshowProps) => {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <Box
         component="img"
         src={images[selectedImageIndex]}
-        sx={{ width: 700 }}
+        sx={{
+          maxWidth: 700,
+          width: "100%",
+        }}
       />
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           height: 100,
-          gap: 2,
         }}
       >
         {images.map((img, index) => {
