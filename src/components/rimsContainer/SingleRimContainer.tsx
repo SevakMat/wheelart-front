@@ -149,7 +149,7 @@ const SingleRim = () => {
                   return (
                     <li>
                       <TireCard
-                        isPopular={true}
+                        isPopular={false}
                         image={tire.imageUrl}
                         price={100}
                         tireWidth={tire.tireWidth}
