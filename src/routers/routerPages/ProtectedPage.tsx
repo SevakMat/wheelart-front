@@ -7,6 +7,7 @@ import TiresPage from "../../pages/TiresPage";
 import SingleTirePage from "../../pages/SingleTirePage";
 import AccsPage from "../../pages/AccsPage";
 import SingleAccsPage from "../../pages/SingleAccsPage";
+import ContactUsPage from "../../pages/ContactUsPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -42,6 +43,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/tires/:id",
       element: <SingleTirePage />,
+    },
+    {
+      path: "/contact",
+      element: <ContactUsPage />,
     },
   ],
 };
