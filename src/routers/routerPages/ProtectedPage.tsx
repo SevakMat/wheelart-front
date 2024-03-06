@@ -10,6 +10,7 @@ import SingleAccsPage from "../../pages/SingleAccsPage";
 import ContactUsPage from "../../pages/ContactUsPage";
 import FaqPage from "../../pages/FaqPage";
 import CvgPage from "../../pages/CvgPage";
+import WhoAreWePage from "../../pages/WhoAreWePage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -57,6 +58,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/genral-terms-conditions",
       element: <CvgPage />,
+    },
+    {
+      path: "/who-are-we",
+      element: <WhoAreWePage />,
     },
   ],
 };
