@@ -8,7 +8,8 @@ import SingleTirePage from "../../pages/SingleTirePage";
 import AccsPage from "../../pages/AccsPage";
 import SingleAccsPage from "../../pages/SingleAccsPage";
 import ContactUsPage from "../../pages/ContactUsPage";
-import FAQPage from "../../pages/FAQPage";
+import FaqPage from "../../pages/FaqPage";
+import CvgPage from "../../pages/CvgPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -51,7 +52,11 @@ const ProtectedPageRoute: ProtectedRoute = {
     },
     {
       path: "/faq",
-      element: <FAQPage />,
+      element: <FaqPage />,
+    },
+    {
+      path: "/genral-terms-conditions",
+      element: <CvgPage />,
     },
   ],
 };
