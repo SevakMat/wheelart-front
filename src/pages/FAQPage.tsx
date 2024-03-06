@@ -1,7 +1,7 @@
 import FaqContainer from "../components/faqContainer/FaqContainer";
 import MainContainer from "../hok/mainContainer/MainContainer";
 
-const FAQPage = () => {
+const FaqPage = () => {
   return (
     <MainContainer>
       <FaqContainer />
@@ -9,4 +9,4 @@ const FAQPage = () => {
   );
 };
 
-export default FAQPage;
+export default FaqPage;

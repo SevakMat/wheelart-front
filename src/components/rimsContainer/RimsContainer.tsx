@@ -9,7 +9,9 @@ import ModalRimFilter from "./ModalRimFilter";
 import { RootState, useAppSelector } from "../../store";
 
 const RimsContainer = () => {
-  const { rimsCount,rimList } = useAppSelector((state: RootState) => state.rim)
+  const { rimsCount, rimList } = useAppSelector(
+    (state: RootState) => state.rim
+  );
 
   return (
     <Box>
@@ -45,7 +47,7 @@ const RimsContainer = () => {
             },
           }}
         >
-          Janets
+          Jantes
         </Typography>
       </Box>
       <Box
@@ -79,7 +81,7 @@ const RimsContainer = () => {
           </Box>
         </Box>
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-          <PaginationBlock  count={rimsCount} list={rimList}/>
+          <PaginationBlock count={rimsCount} list={rimList} />
         </Box>
       </Box>
     </Box>
