@@ -110,6 +110,7 @@ function Header() {
                   "& span": {
                     transform: "rotate(360deg)",
                   },
+                  cursor: "pointer",
                 },
               }}
             >
