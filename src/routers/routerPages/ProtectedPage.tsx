@@ -11,6 +11,7 @@ import ContactUsPage from "../../pages/ContactUsPage";
 import FaqPage from "../../pages/FaqPage";
 import CvgPage from "../../pages/CvgPage";
 import WhoAreWePage from "../../pages/WhoAreWePage";
+import WarrantyPage from "../../pages/WarrantyPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -62,6 +63,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/who-are-we",
       element: <WhoAreWePage />,
+    },
+    {
+      path: "/warranty",
+      element: <WarrantyPage />,
     },
   ],
 };
