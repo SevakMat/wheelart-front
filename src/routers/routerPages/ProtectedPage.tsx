@@ -12,6 +12,7 @@ import FaqPage from "../../pages/FaqPage";
 import CvgPage from "../../pages/CvgPage";
 import WhoAreWePage from "../../pages/WhoAreWePage";
 import WarrantyPage from "../../pages/WarrantyPage";
+import RefundPage from "../../pages/RefundPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -67,6 +68,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/warranty",
       element: <WarrantyPage />,
+    },
+    {
+      path: "/refund-policy",
+      element: <RefundPage />,
     },
   ],
 };
