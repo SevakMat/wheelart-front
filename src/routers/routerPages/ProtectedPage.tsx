@@ -15,6 +15,7 @@ import WarrantyPage from "../../pages/WarrantyPage";
 import RefundPage from "../../pages/RefundPage";
 import LegalNoticePage from "../../pages/LegalNoticePage";
 import TermsOfUsePage from "../../pages/TermsOfUsePage";
+import PrivacyPolicyPage from "../../pages/PrivacyPolicyPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -82,6 +83,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/terms-of-use",
       element: <TermsOfUsePage />,
+    },
+    {
+      path: "/privacy-policy",
+      element: <PrivacyPolicyPage />,
     },
   ],
 };
