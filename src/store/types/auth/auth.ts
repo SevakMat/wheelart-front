@@ -1,5 +1,6 @@
 
 export enum AuthTypes {
+    REGISTER_REQUEST_SUCCESS = "REGISTER_REQUEST_SUCCESS",
     LOGIN_REQUEST_SUCCESS = "LOGIN_REQUEST_SUCCESS",
     LOGOUT_REQUEST_SUCCESS = "LOGOUT_REQUEST_SUCCESS",
     SET_LOADING = "SET_LOADING",
@@ -13,13 +14,19 @@ export interface AuthState {
 }
 
 export interface User {
-    id?: string;
-    userId?: string;
-    avatarUrl?: string;
-    email?: string;
-    firstName?: string;
-    lastName?: string;
-    roles?: string;
+    firstName: string ,
+    lastName: string ,
+    email: string ,
+    phoneNumber: string ,
+    password:string ,
+    passwordConfirm:string ,
+    role: string 
+}
+
+
+export interface RegisterRequestSuccess {
+    type: AuthTypes.REGISTER_REQUEST_SUCCESS;
+    user: User;
 }
 
 
@@ -27,6 +34,7 @@ export interface LoginRequestSuccess {
     type: AuthTypes.LOGIN_REQUEST_SUCCESS;
     user: User;
 }
+
 export interface LogOutRequestSuccess {
     type: AuthTypes.LOGOUT_REQUEST_SUCCESS;
 }
@@ -38,4 +46,4 @@ export interface iSetLoadingAction {
 
 
 
-export type AuthActionTypes = LoginRequestSuccess | iSetLoadingAction | LogOutRequestSuccess;
+export type AuthActionTypes = LoginRequestSuccess | iSetLoadingAction | LogOutRequestSuccess |RegisterRequestSuccess;

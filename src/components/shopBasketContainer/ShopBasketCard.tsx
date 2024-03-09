@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {
   Box,
+  Button,
   Card,
   CardActionArea,
   CardContent,
@@ -12,6 +13,9 @@ import {
 
 import ClearIcon from "@mui/icons-material/Clear";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store";
+import { removeBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
 
 const InfoCustomTypo = styled(Typography)(() => ({
   fontFamily: "'Montserrat', sans-serif",
@@ -26,6 +30,8 @@ interface ItemCardProps {
   name: string;
   size: string;
   itemId: string;
+  count: number;
+  type: string
 }
 
 const ShopBasketCard = ({
@@ -36,9 +42,20 @@ const ShopBasketCard = ({
   name,
   size,
   itemId,
-}: ItemCardProps) => {
-  const navigate = useNavigate();
+  count,
+  type
 
+}: ItemCardProps) => {
+
+  const navigate = useNavigate();
+  const dispatch: AppDispatch = useDispatch();
+
+  const removeBusketItem = (event: any) => {
+    event.stopPropagation();
+    dispatch(
+      removeBusketItemEffect(itemId, type)
+    );
+  }
 
   return (
     <Card
@@ -174,7 +191,7 @@ const ShopBasketCard = ({
                 textAlign: "center",
               }}
             >
-              pour 4 jantes
+              pour {count} jantes
             </p>
           </Box>
         </CardContent>
@@ -185,15 +202,11 @@ const ShopBasketCard = ({
             top: 1,
           }}
         >
-          <Tooltip title="Delete" placement="right" arrow>
-            <IconButton
-              sx={{
-                color: "red",
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-          </Tooltip>
+          <Button
+            onClick={(event) => { removeBusketItem(event) }}
+          >
+            <ClearIcon />
+          </Button>
         </Box>
       </CardActionArea>
     </Card>

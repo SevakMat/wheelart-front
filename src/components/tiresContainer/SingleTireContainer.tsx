@@ -1,35 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { getRimEffect } from "../../store/effects/rim/rim.effect";
 
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Box,
-  Button,
   List,
   Table,
   TableCell,
-  TableHead,
   TableRow,
   Typography,
 } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
-import QuantityInput from "../shere/quantityInput/QuantityInput";
 import RimCard from "../shere/rims/RimCard";
 import Slideshow from "../shere/slideshow/Slideshow";
 import { useParamsHook } from "../../hook/useParams";
 import TireCard from "../shere/tires/TireCard";
 import { RimType } from "../../store/types/rim/rim";
-import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
 import { getTireEffect } from "../../store/effects/tire/tire.effect";
-import { TireType } from "../../store/types/tire/tire";
+import SingleTireContainerBuySystem from "./SingleTireContainerBuySystem";
 
 const SingleTireContanier = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -61,6 +53,8 @@ const SingleTireContanier = () => {
 
   console.log(1111, tire);
 
+  if(!tire) return null
+
   return (
     <Box sx={{ margin: "30px 20px" }}>
       <Box>
@@ -86,37 +80,7 @@ const SingleTireContanier = () => {
               contact ” section of the website or on our social networks. Our
               blog remains available for more details.
             </Typography>
-
-            <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
-              <Box>
-                <QuantityInput />
-              </Box>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                  background: "#293239",
-                  "&:hover": { background: "#314554" },
-                }}
-                onClick={() => { dispatch(setShopBusketItemEffect(tire as TireType, "tire")) }}
-              >
-                Add to card
-              </Button>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                  background: "#FF5500",
-                  "&:hover": { background: "#C84300" },
-                }}
-              >
-                Buy Now
-              </Button>
-            </Box>
-            {/* <Box>
-              <Button>Add to favorites</Button>
-            </Box> */}
-
+            <SingleTireContainerBuySystem tire={tire} />
             <Box sx={{ width: "100%", paddingBottom: 5 }}>
               <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
                 Details

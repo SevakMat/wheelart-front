@@ -19,6 +19,8 @@ export interface RimType {
   color: string;
   gram: number;
   score: number;
+  count?:number,
+  type:string
 }
 
 export interface RimState {

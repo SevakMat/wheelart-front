@@ -6,10 +6,10 @@ import { useParamsHook } from "../../../hook/useParams";
 
 interface PaginationBlockProp {
   count: number,
-  list: any
+  list: any |null
 }
 
-function PaginationBlock({ count, list }: PaginationBlockProp) {
+function PaginationBlock({ count, list =[]}: PaginationBlockProp) {
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +30,7 @@ function PaginationBlock({ count, list }: PaginationBlockProp) {
 
   return (
     <center>
-      {list.length > 0 && <div
+      {list?.length > 0 && <div
         style={{
           display: "flex",
           flexDirection: "column-reverse",

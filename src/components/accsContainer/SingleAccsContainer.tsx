@@ -28,6 +28,7 @@ import { RimType } from "../../store/types/rim/rim";
 const SingleAccsContainer = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
+  const [count, setCount] = useState(1);
 
   const {
     make: makeValue,
@@ -79,7 +80,7 @@ const SingleAccsContainer = () => {
 
             <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
               <Box>
-                <QuantityInput />
+                <QuantityInput setCount={setCount} count={count} />
               </Box>
               <Button
                 variant="contained"

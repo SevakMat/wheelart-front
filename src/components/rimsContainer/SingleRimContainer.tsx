@@ -35,6 +35,7 @@ import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusk
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
+  const [count, setCount] = useState(1);
 
   const {
     make: makeValue,
@@ -86,12 +87,12 @@ const SingleRim = () => {
 
             <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
               <Box>
-                <QuantityInput />
+                <QuantityInput setCount={setCount} count={count} />
               </Box>
               <Button
                 variant="contained"
                 disableElevation
-                onClick={() => { dispatch(setShopBusketItemEffect(rim as RimType, "rim")) }}
+                onClick={() => { dispatch(setShopBusketItemEffect({ ...rim, count: count, type:'RIM' } as RimType, "rim")) }}
                 sx={{
                   background: "#293239",
                   "&:hover": { background: "#314554" },

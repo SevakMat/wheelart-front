@@ -13,11 +13,10 @@ const RoutersContainer: () => JSX.Element = () => {
       <Routes>
         {modules.map(({ isPrivate, routerProps }) => {
           return routerProps.map((flan) =>
-            // isPrivate && !isLoggedIn ? (
-            isPrivate && !true ? (
+            isPrivate && !isLoggedIn ? (
               <Route path={flan.path} element={<Navigate to="/login" />} />
             ) : !isPrivate && isLoggedIn ? (
-              <Route path={flan.path} element={<Navigate to="/dashboard" />} />
+              <Route path={flan.path} element={<Navigate to="/home" />} />
             ) : (
               <Route path={flan.path} element={flan.element} />
             )
