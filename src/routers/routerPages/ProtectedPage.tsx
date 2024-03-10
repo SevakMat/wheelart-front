@@ -7,8 +7,9 @@ import TiresPage from "../../pages/TiresPage";
 import SingleTirePage from "../../pages/SingleTirePage";
 import AccsPage from "../../pages/AccsPage";
 import SingleAccsPage from "../../pages/SingleAccsPage";
+import UserAccountPage from "../../pages/UserAccountPage";
+import OrdersPage from "../../pages/OrdersPage";
 import ContactUsPage from "../../pages/ContactUsPage";
-import FaqPage from "../../pages/FaqPage";
 import CvgPage from "../../pages/CvgPage";
 import WhoAreWePage from "../../pages/WhoAreWePage";
 import WarrantyPage from "../../pages/WarrantyPage";
@@ -16,10 +17,15 @@ import RefundPage from "../../pages/RefundPage";
 import LegalNoticePage from "../../pages/LegalNoticePage";
 import TermsOfUsePage from "../../pages/TermsOfUsePage";
 import PrivacyPolicyPage from "../../pages/PrivacyPolicyPage";
+import FaqPage from "../../pages/FAQPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
   routerProps: [
+    {
+      path: "/me",
+      element: <UserAccountPage />,
+    },
     {
       path: "/home",
       element: <HomePage />,
@@ -53,6 +59,10 @@ const ProtectedPageRoute: ProtectedRoute = {
       element: <SingleTirePage />,
     },
     {
+      path: "/orders",
+      element: <OrdersPage />,
+    },
+{
       path: "/contact",
       element: <ContactUsPage />,
     },

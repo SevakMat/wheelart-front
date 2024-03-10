@@ -1,13 +1,7 @@
-import { Box, Button, Rating, Typography } from "@mui/material";
-import QuantityInput from "../shere/quantityInput/QuantityInput";
-import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
-import { RimType } from "../../store/types/rim/rim";
-import { AppDispatch } from "../../store";
-import { useDispatch } from "react-redux";
+import { Box, Rating, Typography } from "@mui/material";
+import SingleRimContainerBuySystem from "./SingleRimContainerBuySystem";
 
 const SingleRimMainInfo = (rimInfo: any) => {
-  const dispatch: AppDispatch = useDispatch();
-
   return (
     <Box
       sx={{
@@ -37,45 +31,7 @@ const SingleRimMainInfo = (rimInfo: any) => {
         website or on our social networks. Our blog remains available for more
         details.
       </Typography>
-
-      <Box
-        sx={{
-          display: "flex",
-          gap: 2,
-          padding: 3,
-          justifyContent: "center",
-          "@media (max-width: 1000px)": { flexDirection: "column" },
-        }}
-      >
-        <Box>
-          <QuantityInput />
-        </Box>
-        <Button
-          variant="contained"
-          disableElevation
-          onClick={() => {
-            dispatch(setShopBusketItemEffect(rimInfo as RimType, "rim"));
-          }}
-          sx={{
-            background: "#293239",
-            maxWidth: 300,
-
-            "&:hover": { background: "#314554" },
-          }}
-        >
-          Add to card
-        </Button>
-        <Button
-          variant="contained"
-          disableElevation
-          sx={{
-            background: "#FF5500",
-            "&:hover": { background: "#C84300" },
-          }}
-        >
-          Buy Now
-        </Button>
-      </Box>
+      <SingleRimContainerBuySystem rim={rimInfo} />
     </Box>
   );
 };

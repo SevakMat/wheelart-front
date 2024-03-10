@@ -12,7 +12,8 @@ export interface TireType {
   rimDiameter: number,
   marka: string,
   stock: number,
-  imageUrl: string
+  imageUrl: string;
+  count?:number,
 }
 
 export interface TireState {

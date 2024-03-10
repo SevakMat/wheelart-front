@@ -1,7 +1,10 @@
 import { Box, Button, Rating, Typography } from "@mui/material";
 import QuantityInput from "../shere/quantityInput/QuantityInput";
+import { useState } from "react";
 
 const SingleAccsMainInfo = (accsInfo: any) => {
+  const [count, setCount] = useState(1);
+ 
   return (
     <Box
       sx={{
@@ -42,7 +45,7 @@ const SingleAccsMainInfo = (accsInfo: any) => {
         }}
       >
         <Box>
-          <QuantityInput />
+          <QuantityInput count={count} setCount={setCount}/>
         </Box>
         <Button
           variant="contained"

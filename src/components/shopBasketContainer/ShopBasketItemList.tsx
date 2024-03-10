@@ -3,33 +3,10 @@ import { RootState, useAppSelector } from "../../store";
 import ShopBasketCard from "./ShopBasketCard";
 
 const ShopBasketItemList = () => {
-  const itemList: any = [
-    {
-      imageUrl: "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      price: 120,
-      rimWidth: 100,
-      color: "Grey",
-      name: "DY768-01",
-      size: "1",
-      rimId: 1
-    },
-    {
-      imageUrl: "https://wheelart.fr/cdn/shop/products/DY918-01.jpg?v=1682000680&width=990",
-      price: 120,
-      rimWidth: 100,
-      color: "Grey",
-      name: "DY768-01",
-      size: "1",
-      rimId: 1
-    }
-  ];
 
   const { rimShopList, tireShopList } = useAppSelector((state: RootState) => state.shopBusket)
 
   const shopItems = [...rimShopList, ...tireShopList]
-  console.log(1111, rimShopList);
-  console.log(2222, tireShopList);
-
 
   return (
     <Box>
@@ -51,6 +28,8 @@ const ShopBasketItemList = () => {
                 name={"name"}
                 size={"250"}
                 itemId={item.id}
+                count={item.count}
+                type={item.type}
               />
             </li>;
           })}

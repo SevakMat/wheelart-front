@@ -1,13 +1,8 @@
 import { Box } from "@mui/system";
-import { AppDispatch } from "../../store";
-import { useDispatch } from "react-redux";
-import { Button, Rating, Typography } from "@mui/material";
-import QuantityInput from "../shere/quantityInput/QuantityInput";
-import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
-import { TireType } from "../../store/types/tire/tire";
+import { Rating, Typography } from "@mui/material";
+import SingleTireContainerBuySystem from "./SingleTireContainerBuySystem";
 
 const SingleTireMainInfo = (tireInfo: any) => {
-  const dispatch: AppDispatch = useDispatch();
 
   return (
     <Box
@@ -36,43 +31,7 @@ const SingleTireMainInfo = (tireInfo: any) => {
         website or on our social networks. Our blog remains available for more
         details.
       </Typography>
-
-      <Box
-        sx={{
-          display: "flex",
-          gap: 2,
-          padding: 3,
-          justifyContent: "center",
-          "@media (max-width: 1000px)": { flexDirection: "column" },
-        }}
-      >
-        <Box>
-          <QuantityInput />
-        </Box>
-        <Button
-          variant="contained"
-          disableElevation
-          sx={{
-            background: "#293239",
-            "&:hover": { background: "#314554" },
-          }}
-          onClick={() => {
-            dispatch(setShopBusketItemEffect(tireInfo as TireType, "tire"));
-          }}
-        >
-          Add to card
-        </Button>
-        <Button
-          variant="contained"
-          disableElevation
-          sx={{
-            background: "#FF5500",
-            "&:hover": { background: "#C84300" },
-          }}
-        >
-          Buy Now
-        </Button>
-      </Box>
+      <SingleTireContainerBuySystem tire={tireInfo} />
     </Box>
   );
 };

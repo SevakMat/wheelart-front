@@ -39,6 +39,7 @@ import SingleRimMainInfo from "./SingleRimMianInfo";
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
+  const [count, setCount] = useState(1);
 
   const {
     make: makeValue,
@@ -64,9 +65,13 @@ const SingleRim = () => {
     );
   }, [id]);
 
+
   const images = rim?.imageUrl
     .split(";")
     .filter((item: any) => item !== "undefined");
+
+  if (!rim) return null
+
 
   return (
     <ThemeProvider theme={customBreakpoints}>

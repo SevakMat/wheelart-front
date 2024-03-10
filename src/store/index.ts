@@ -12,6 +12,7 @@ import rimReducer from "./reducers/rim/rim.reducers";
 import filterReducer from "./reducers/filter/filter.reducers";
 import tireReducer from "./reducers/tire/tire.reducers";
 import shopBusketReducer from "./reducers/shopBusket/shopBusket.reducers";
+import OrderReducer from "./reducers/order/order.reducers";
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     filter: filterReducer,
     tire: tireReducer,
     shopBusket: shopBusketReducer,
-
+    order: OrderReducer,
+    
 });
 
 const persistConfig: PersistConfig<any> = {

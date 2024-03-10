@@ -45,9 +45,6 @@ const RimFilter = () => {
 
   }, [dispatch, pageValue, searchParams])
 
-console.log(sizeR);
-
-
   return (
     <Box
       sx={{

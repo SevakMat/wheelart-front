@@ -1,8 +1,19 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import PaginationBlock from "../shere/pagination/PaginationBlock";
 import ShopBasketItemList from "./ShopBasketItemList";
+import { AppDispatch, RootState, useAppSelector } from "../../store";
+import { useDispatch } from "react-redux";
+import { createOrderEffect } from "../../store/effects/orders/order.effect";
 
 const ShopBasketContainer = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const { rimShopList,tireShopList } = useAppSelector((state: RootState) => state.shopBusket);
+
+  const CreateOrder = () => {
+    dispatch(
+      createOrderEffect([...rimShopList,...tireShopList])
+    );
+  }
   return (
     <Box>
       <Box
@@ -43,7 +54,13 @@ const ShopBasketContainer = () => {
       >
         <ShopBasketItemList />
         <Box sx={{ paddingLeft: 40, marginBottom: 5 }}>
-        <PaginationBlock count={30} list={null} />
+          <PaginationBlock count={30} list={null} />
+
+          <Button
+            onClick={CreateOrder}
+          >
+            Create order
+          </Button>
         </Box>
       </Box>
     </Box>

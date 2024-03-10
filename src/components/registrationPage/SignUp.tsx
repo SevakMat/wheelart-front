@@ -49,7 +49,8 @@ const SignUp = () => {
       firstName: data.get('firstName') as string,
       lastName: data.get('lastName') as string,
       phoneNumber: data.get("phone") as string,
-      level: formRole as string
+      passwordConfirm: data.get("passwordConfirm") as string,
+      role: data.get("role") as string
     },
       navigate))
 
@@ -117,22 +118,6 @@ const SignUp = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Level</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={formRole}
-                    label="Level"
-                    onChange={(e) => { setFormRole(e.target.value) }}
-                  >
-                    <MenuItem value={"level1"}>Level1</MenuItem>
-                    <MenuItem value={"level2"}>Level2</MenuItem>
-                    <MenuItem value={"level3"}>Level3</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
 
               <Grid item xs={12}>
                 <TextField
@@ -143,6 +128,30 @@ const SignUp = () => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="passwordConfirm"
+                  label="passwordConfirm"
+                  type="passwordConfirm"
+                  id="passwordConfirm"
+                  autoComplete="passwordConfirm"
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="role"
+                  label="role"
+                  type="role"
+                  id="role"
+                  autoComplete="role"
                 />
               </Grid>
 

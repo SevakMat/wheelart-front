@@ -61,8 +61,8 @@ const RenderPageList = () => {
         <CustomLink onClick={() => navigate("/accessories")}>
           {t("header.accessories")}
         </CustomLink>
-        <CustomLink onClick={() => navigate("/blog")}>
-          {t("header.blog")}
+        <CustomLink onClick={() => navigate("/orders")}>
+          {t("header.orders")}
         </CustomLink>
         <CustomLink onClick={() => navigate("/faq")}>
           {t("header.faq")}

@@ -1,34 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { AppDispatch, RootState, useAppSelector } from "../../store";
-import { getRimEffect } from "../../store/effects/rim/rim.effect";
 
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Box,
-  Button,
   List,
   Table,
   TableCell,
-  TableHead,
   TableRow,
   Typography,
 } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
-import QuantityInput from "../shere/quantityInput/QuantityInput";
 import RimCard from "../shere/rims/RimCard";
 import Slideshow from "../shere/slideshow/Slideshow";
 import { useParamsHook } from "../../hook/useParams";
 import TireCard from "../shere/tires/TireCard";
 import { RimType } from "../../store/types/rim/rim";
-import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
 import { getTireEffect } from "../../store/effects/tire/tire.effect";
+import SingleTireContainerBuySystem from "./SingleTireContainerBuySystem";
 import { TireType } from "../../store/types/tire/tire";
 import SingleTireDetails from "./SingleTireDetails";
 import SingleTireMainInfo from "./SingleTireMainInfo";
@@ -63,7 +56,7 @@ const SingleTireContanier = () => {
     "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
   ];
 
-  console.log(1111, tire);
+  if(!tire) return null
 
   return (
     <ThemeProvider theme={customBreakpoints}>

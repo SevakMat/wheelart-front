@@ -7,8 +7,30 @@ import { styled } from "@mui/system";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
+type QuantityInputProps = {
+  count: number
+  setCount: React.Dispatch<React.SetStateAction<number>>
+}
+
+export default function QuantityInput({ count, setCount }: QuantityInputProps) {
+
+  const handleInputChange = (newValue: any) => {
+    setCount(newValue);
+  };
+
+  return (
+    <NumberInput
+      aria-label="Quantity Input"
+      min={1}
+      max={99}
+      count={count}
+      onChange={handleInputChange}
+    />
+  );
+}
+
 const NumberInput = React.forwardRef(function CustomNumberInput(
-  props: NumberInputProps,
+  props: any,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
@@ -30,13 +52,12 @@ const NumberInput = React.forwardRef(function CustomNumberInput(
       }}
       {...props}
       ref={ref}
+      onChange={(e: React.FocusEvent<HTMLInputElement>, qount: number | null) => {
+        props.onChange && props?.onChange(qount);
+      }}
     />
   );
 });
-
-export default function QuantityInput() {
-  return <NumberInput aria-label="Quantity Input" min={1} max={99} />;
-}
 
 const blue = {
   100: "#daecff",
@@ -62,9 +83,6 @@ const grey = {
   900: "#1C2025",
 };
 
-// deleted configs -
-// justify-content: center;
-
 const StyledInputRoot = styled("div")(
   ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
@@ -86,9 +104,8 @@ const StyledInput = styled("input")(
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
   background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
   border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  box-shadow: 0px 2px 4px ${
-    theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
-  };
+  box-shadow: 0px 2px 4px ${theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
+    };
   border-radius: 8px;
   margin: 0 8px;
   padding: 10px 12px;
@@ -103,8 +120,7 @@ const StyledInput = styled("input")(
 
   &:focus {
     border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${
-      theme.palette.mode === "dark" ? blue[700] : blue[200]
+    box-shadow: 0 0 0 3px ${theme.palette.mode === "dark" ? blue[700] : blue[200]
     };
   }
 
