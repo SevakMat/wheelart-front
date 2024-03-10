@@ -193,8 +193,6 @@ function Header() {
                 WHEEL ART
               </Box>
             </Link>
-
-            {/* main part */}
             <Box
               sx={{
                 display: "flex",
@@ -215,7 +213,7 @@ function Header() {
               <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
                 <HeaderBusket/>
                 <IconButton
-                  onClick={() => navigate("/account")}
+                  onClick={() => navigate("/me")}
                   sx={{ paddingRight: 0 }}
                 >
                   <AccountCircleIcon style={{ color: "white" }} />

@@ -7,12 +7,13 @@ import { useState } from "react";
 import Popup from "../../shared/popups/Popup";
 import ShopBasketItemList from "../shopBasketContainer/ShopBasketItemList";
 import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
+import { RimType } from "../../store/types/rim/rim";
 
-type SingleTireContainerBuySystemProps = {
-  tire: TireType
+type SingleRimContainerBuySystemProps = {
+  rim: RimType
 }
 
-const SingleTireContainerBuySystem = ({ tire }: SingleTireContainerBuySystemProps) => {
+const SingleRimContainerBuySystem = ({ rim }: SingleRimContainerBuySystemProps) => {
   const dispatch: AppDispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [open, setOpen] = useState(false);
@@ -30,13 +31,13 @@ const SingleTireContainerBuySystem = ({ tire }: SingleTireContainerBuySystemProp
         <Button
           variant="contained"
           disableElevation
+          onClick={() => {
+            dispatch(setShopBusketItemEffect({ ...rim, count: count, type: 'RIM' } as RimType, "rim"))
+            setOpen(true)
+          }}
           sx={{
             background: "#293239",
             "&:hover": { background: "#314554" },
-          }}
-          onClick={() => {
-            dispatch(setShopBusketItemEffect({ ...tire, count: count, type: "TIRE" } as TireType, "tire"))
-            setOpen(true)
           }}
         >
           Add to card
@@ -52,15 +53,14 @@ const SingleTireContainerBuySystem = ({ tire }: SingleTireContainerBuySystemProp
           Buy Now
         </Button>
       </Box>
-
-        <Popup open={open} onClose={handleClose}
-          content={
-            <div>
-                <ShopBasketItemList  />
-            </div>
-          } />
+      <Popup open={open} onClose={handleClose}
+        content={
+          <div>
+            <ShopBasketItemList />
+          </div>
+        } />
     </Box>
   )
 }
 
-export default SingleTireContainerBuySystem
+export default SingleRimContainerBuySystem

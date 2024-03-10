@@ -11,10 +11,9 @@ type ReducerType = Reducer<ShopBusketState, ShopBusketActionTypes>
 const reducer: ReducerType = (state = initialState, action: ShopBusketActionTypes) => {
 
   switch (action.type) {
-
     case ShopBusketServerTypes.SET_SHOP_BUSKET_RIM_ACTION:
       const existingRimIndex = state.rimShopList.findIndex(rim => rim.id === action.rim.id);
-
+      
       if (existingRimIndex !== -1) {
         const updatedRimShopList = state.rimShopList.map((rim, index) => {
           if (index === existingRimIndex) {
@@ -38,11 +37,11 @@ const reducer: ReducerType = (state = initialState, action: ShopBusketActionType
       }
 
     case ShopBusketServerTypes.SET_SHOP_BUSKET_TIRE_ACTION:{
-      const existingTIirendex = state.tireShopList.findIndex(tire => tire.id === action.tire.id);
+      const existingTirendex = state.tireShopList.findIndex(tire => tire.id === action.tire.id);
 
-      if (existingTIirendex !== -1) {
+      if (existingTirendex !== -1) {
         const updatedTireShopList = state.tireShopList.map((tire, index) => {
-          if (index === existingRimIndex) {
+          if (index === existingTirendex) {
 
             return {
               ...tire,
@@ -53,17 +52,15 @@ const reducer: ReducerType = (state = initialState, action: ShopBusketActionType
         });
         return {
           ...state,
-          rimShopList: updatedTireShopList
+          tireShopList: updatedTireShopList
         };
       } else {
         return {
           ...state,
-          rimShopList: [...state.tireShopList, action.tire]
+          tireShopList: [...state.tireShopList, action.tire]
         };
       }
-
     }
-      
 
     case ShopBusketServerTypes.REMOVE_SHOP_BUSKET_TIRE_ACTION:
       return {

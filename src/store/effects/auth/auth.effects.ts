@@ -48,7 +48,7 @@ export const setLoadingEffect = (loading: boolean): any => {
   };
 };
 
-export const logOutEffect = (navigate: NavigateFunction): any => {
+export const logOutEffect = (): any => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoadingEffect(true));
@@ -60,7 +60,7 @@ export const logOutEffect = (navigate: NavigateFunction): any => {
       dispatch(logOutRequestSuccess());
 
       toast.success("Successfully logout");
-      navigate("/login");
+      // navigate("/login");
       dispatch(setLoadingEffect(false));
     } catch (error: any) {
       dispatch(setLoadingEffect(false));

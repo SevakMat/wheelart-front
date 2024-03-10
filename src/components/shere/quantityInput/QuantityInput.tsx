@@ -15,8 +15,6 @@ type QuantityInputProps = {
 export default function QuantityInput({ count, setCount }: QuantityInputProps) {
 
   const handleInputChange = (newValue: any) => {
-    console.log(newValue);
-
     setCount(newValue);
   };
 

@@ -7,8 +7,6 @@ const ShopBasketItemList = () => {
   const { rimShopList, tireShopList } = useAppSelector((state: RootState) => state.shopBusket)
 
   const shopItems = [...rimShopList, ...tireShopList]
-  console.log(1111, shopItems);
-
 
   return (
     <Box>

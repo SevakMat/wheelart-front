@@ -51,8 +51,6 @@ const SingleTireContanier = () => {
     "https://armstrongtire.com/app/themes/armstrongtire/assets/images/home/passenger/1510/tire.png",
   ];
 
-  console.log(1111, tire);
-
   if(!tire) return null
 
   return (

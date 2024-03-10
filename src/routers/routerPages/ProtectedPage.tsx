@@ -7,10 +7,16 @@ import TiresPage from "../../pages/TiresPage";
 import SingleTirePage from "../../pages/SingleTirePage";
 import AccsPage from "../../pages/AccsPage";
 import SingleAccsPage from "../../pages/SingleAccsPage";
+import UserAccountPage from "../../pages/UserAccountPage";
+import OrdersPage from "../../pages/OrdersPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
   routerProps: [
+    {
+      path: "/me",
+      element: <UserAccountPage />,
+    },
     {
       path: "/home",
       element: <HomePage />,
@@ -43,6 +49,11 @@ const ProtectedPageRoute: ProtectedRoute = {
       path: "/tires/:id",
       element: <SingleTirePage />,
     },
+    {
+      path: "/orders",
+      element: <OrdersPage />,
+    },
+
   ],
 };
 

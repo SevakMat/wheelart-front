@@ -6,7 +6,7 @@ export const loginRequest = async (loginData: LoginData): Promise<any> => {
     return axios.post("api/auth/login", { ...loginData })
 }
 export const logOutRequest = async (): Promise<any> => {
-    return axios.post("api/v1/auth/sign-out", {})
+    return axios.post("api/auth/logout", {})
 }
 
 export const SignUpRequest = async (signInData: SignInData): Promise<any> => {

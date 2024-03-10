@@ -19,7 +19,9 @@ const reducer: ReducerType = (state = initialState, action: AuthActionTypes) => 
         ...state,
         authLoading: false,
         isLoggedIn: true,
-        user: action.user,
+        user: {
+          ...action.user
+        },
       };
 
       case AuthTypes.REGISTER_REQUEST_SUCCESS:

@@ -31,6 +31,7 @@ import { RimType } from "../../store/types/rim/rim";
 
 import CreateAccordion from "../shere/accordion/CreateAccordion";
 import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
+import SingleRimContainerBuySystem from "./SingleRimContainerBuySystem";
 
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -55,9 +56,13 @@ const SingleRim = () => {
     );
   }, [id]);
 
+
   const images = rim?.imageUrl
     .split(";")
     .filter((item: any) => item !== "undefined");
+
+  if (!rim) return null
+
 
   return (
     <Box sx={{ margin: "30px 20px" }}>
@@ -85,32 +90,8 @@ const SingleRim = () => {
               blog remains available for more details.
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
-              <Box>
-                <QuantityInput setCount={setCount} count={count} />
-              </Box>
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={() => { dispatch(setShopBusketItemEffect({ ...rim, count: count, type:'RIM' } as RimType, "rim")) }}
-                sx={{
-                  background: "#293239",
-                  "&:hover": { background: "#314554" },
-                }}
-              >
-                Add to card
-              </Button>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                  background: "#FF5500",
-                  "&:hover": { background: "#C84300" },
-                }}
-              >
-                Buy Now
-              </Button>
-            </Box>
+            <SingleRimContainerBuySystem rim={rim} />
+
             {/* <Box>
                 <Button>Add to favorites</Button>
               </Box> */}

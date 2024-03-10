@@ -21,8 +21,6 @@ const TireFilter = () => {
   const urlParamsArray = useParamsHookArrays(searchParams);
 
   useEffect(() => {
-    console.log("TireFilter");
-    
     dispatch(
       getTireFiltersEffect({
         ...urlParamsArray,
