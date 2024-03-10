@@ -61,7 +61,7 @@ export default function Footer() {
             item
             xs={12}
             sm={4}
-            sx={{ display: "flex", flexDirection: "column" }}
+            sx={{ display: "flex", flexDirection: "column", cursor: "pointer" }}
           >
             <Typography variant="h6" color="white" gutterBottom>
               {t("footer.shortcuts")}

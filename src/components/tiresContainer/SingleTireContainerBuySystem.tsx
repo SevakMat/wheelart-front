@@ -23,9 +23,17 @@ const SingleTireContainerBuySystem = ({ tire }: SingleTireContainerBuySystemProp
 
   return (
     <Box>
-      <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          padding: 3,
+          justifyContent: "center",
+          "@media (max-width: 1000px)": { flexDirection: "column" },
+        }}
+      >
         <Box>
-          <QuantityInput setCount={setCount} count={count} />
+          <QuantityInput count={count} setCount={setCount} />
         </Box>
         <Button
           variant="contained"
@@ -52,13 +60,12 @@ const SingleTireContainerBuySystem = ({ tire }: SingleTireContainerBuySystemProp
           Buy Now
         </Button>
       </Box>
-
-        <Popup open={open} onClose={handleClose}
-          content={
-            <div>
-                <ShopBasketItemList  />
-            </div>
-          } />
+      <Popup open={open} onClose={handleClose}
+        content={
+          <div>
+            <ShopBasketItemList />
+          </div>
+        } />
     </Box>
   )
 }

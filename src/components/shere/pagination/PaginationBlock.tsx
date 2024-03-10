@@ -13,20 +13,19 @@ function PaginationBlock({ count, list =[]}: PaginationBlockProp) {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const queryParams = React.useMemo(() => new URLSearchParams(location.search), [
-    location.search,
-  ]);
-  const { page: pageValue } = useParamsHook()
+  const queryParams = React.useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
+  const { page: pageValue } = useParamsHook();
 
   const handlePageChange = (e: any, value: any) => {
-
-    queryParams.set('page', value);
+    queryParams.set("page", value);
 
     navigate(`?${queryParams.toString()}`);
-
   };
 
-  const paginationCount = Math.ceil(count / 12)
+  const paginationCount = Math.ceil(count / 12);
 
   return (
     <center>

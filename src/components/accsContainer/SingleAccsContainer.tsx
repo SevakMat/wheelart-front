@@ -13,6 +13,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  ThemeProvider,
   Typography,
 } from "@mui/material";
 import Stack from "@mui/material/Stack";
@@ -24,11 +25,13 @@ import Slideshow from "../shere/slideshow/Slideshow";
 import { useParamsHook } from "../../hook/useParams";
 import TireCard from "../shere/tires/TireCard";
 import { RimType } from "../../store/types/rim/rim";
+import SingleAccsDetails from "./SingleAccsDetails";
+import SingleAccsMainInfo from "./SingleAccsMainInfo";
+import { customBreakpoints } from "../../customBreakpoints";
 
 const SingleAccsContainer = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
-  const [count, setCount] = useState(1);
 
   const {
     make: makeValue,
@@ -44,7 +47,13 @@ const SingleAccsContainer = () => {
 
   useEffect(() => {
     dispatch(
-      getRimEffect(id, makeValue, modelValue, generationValue, modificationValue)
+      getRimEffect(
+        id,
+        makeValue,
+        modelValue,
+        generationValue,
+        modificationValue
+      )
     );
   }, [id]);
 
@@ -53,95 +62,48 @@ const SingleAccsContainer = () => {
     .filter((item: any) => item !== "undefined");
 
   return (
-    <Box sx={{ margin: "30px 20px" }}>
+    <ThemeProvider theme={customBreakpoints}>
       <Box>
-        <Stack direction="row" spacing={5}>
-          {images && <Slideshow images={images} />}
-          <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
-            <Typography variant="h4">
-              Set of 4 {rim?.sizeR}″ {rim?.rimModel} Pneus
-            </Typography>
-            <Box>
-              <Typography sx={{ fontSize: 12, color: "#C0C0C0" }}>
-                Rate product
-              </Typography>
-              <Rating name="simple-controlled" value={rim?.score} />
-            </Box>
-            <Typography variant="h5" component="p">
-              €{rim?.price}
-            </Typography>
-            <Typography sx={{ maxWidth: 500 }}>
-              Before each purchase, we advise you to check the parameters of
-              your vehicle very carefully . For any other questions or
-              information, do not hesitate to contact us by telephone, via the “
-              contact ” section of the website or on our social networks. Our
-              blog remains available for more details.
-            </Typography>
-
-            <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
-              <Box>
-                <QuantityInput setCount={setCount} count={count} />
-              </Box>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                  background: "#293239",
-                  "&:hover": { background: "#314554" },
-                }}
-              >
-                Add to card
-              </Button>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                  background: "#FF5500",
-                  "&:hover": { background: "#C84300" },
-                }}
-              >
-                Buy Now
-              </Button>
-            </Box>
-            {/* <Box>
-                <Button>Add to favorites</Button>
-              </Box> */}
-
-            <Box sx={{ width: "100%", paddingBottom: 5 }}>
-              <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
-                Details
-              </Typography>
-              <Table>
-                <TableRow>
-                  <TableCell variant="head">Largeur</TableCell>
-                  <TableCell>{rim?.rimModel}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Longueur</TableCell>
-                  <TableCell>{rim?.sizeR}"</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Couleur</TableCell>
-                  <TableCell>
-                    {rim?.studHoles}x{rim?.pcd}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">EAN</TableCell>
-                  <TableCell> {rim?.width}J</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Gramme</TableCell>
-                  <TableCell>{rim?.centerBore}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Inclus</TableCell>
-                  <TableCell>50</TableCell>
-                </TableRow>
-              </Table>
-            </Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            justifyContent: "center",
+          }}
+        >
+          <Stack
+            direction="row"
+            spacing={5}
+            sx={{ justifyContent: "center", alignItems: "flex-start" }}
+          >
+            {images && <Slideshow images={images} />}
+            <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
+              <SingleAccsMainInfo accsInfo={rim} />
+              <SingleAccsDetails accsInfo={rim} />
+            </Stack>
           </Stack>
-        </Stack>
+        </Box>
+
+        {/* responsive */}
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            justifyContent: "center",
+          }}
+        >
+          <Stack direction="column" sx={{ justifyContent: "center" }}>
+            {images && <Slideshow images={images} />}
+            <Stack
+              direction="column"
+              sx={{
+                paddingTop: 5,
+                justifyContent: "center",
+              }}
+            >
+              <SingleAccsMainInfo accsInfo={rim} />
+              <SingleAccsDetails accsInfo={rim} />
+            </Stack>
+          </Stack>
+        </Box>
 
         <Stack direction="column" spacing={5}>
           <Box>
@@ -151,9 +113,21 @@ const SingleAccsContainer = () => {
             <List
               sx={{
                 display: "flex",
-                flexWrap: "wrap",
+                flexWrap: "no-wrap",
                 gap: 3,
                 justifyContent: "center",
+                alignItems: "flex-start",
+                overflow: "hidden",
+                listStyle: "none",
+                "@media (max-width: 1200px)": {
+                  overflowX: "scroll",
+                  justifyContent: "flex-start",
+
+                  scrollbarWidth: "thin",
+
+                  padding: "0 0 0 1rem",
+                  gap: 3,
+                },
               }}
             >
               {recommendedTires.length > 0 &&
@@ -161,7 +135,7 @@ const SingleAccsContainer = () => {
                   return (
                     <li>
                       <TireCard
-                        isPopular={true}
+                        isPopular={false}
                         image={tire.imageUrl}
                         price={100}
                         tireWidth={tire.tireWidth}
@@ -183,9 +157,21 @@ const SingleAccsContainer = () => {
             <List
               sx={{
                 display: "flex",
-                flexWrap: "wrap",
+                flexWrap: "no-wrap",
                 gap: 3,
                 justifyContent: "center",
+                alignItems: "flex-start",
+                overflow: "hidden",
+                listStyle: "none",
+                "@media (max-width: 1200px)": {
+                  overflowX: "scroll",
+                  justifyContent: "flex-start",
+
+                  scrollbarWidth: "thin",
+
+                  padding: "0 0 0 1rem",
+                  gap: 3,
+                },
               }}
             >
               {recommendedRims.length > 0 &&
@@ -209,7 +195,7 @@ const SingleAccsContainer = () => {
           </Box>
         </Stack>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 

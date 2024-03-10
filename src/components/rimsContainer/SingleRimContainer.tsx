@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { AppDispatch, RootState, useAppSelector } from "../../store";
 import { getRimEffect } from "../../store/effects/rim/rim.effect";
 
+import { ThemeProvider } from "@mui/material/styles";
+import { customBreakpoints } from "../../customBreakpoints";
 
 import {
   Box,
@@ -31,7 +33,8 @@ import { RimType } from "../../store/types/rim/rim";
 
 import CreateAccordion from "../shere/accordion/CreateAccordion";
 import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
-import SingleRimContainerBuySystem from "./SingleRimContainerBuySystem";
+import SingleRimDetails from "./SingleRimDetails";
+import SingleRimMainInfo from "./SingleRimMianInfo";
 
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -52,7 +55,13 @@ const SingleRim = () => {
 
   useEffect(() => {
     dispatch(
-      getRimEffect(id, makeValue, modelValue, generationValue, modificationValue)
+      getRimEffect(
+        id,
+        makeValue,
+        modelValue,
+        generationValue,
+        modificationValue
+      )
     );
   }, [id]);
 
@@ -65,120 +74,79 @@ const SingleRim = () => {
 
 
   return (
-    <Box sx={{ margin: "30px 20px" }}>
+    <ThemeProvider theme={customBreakpoints}>
       <Box>
-        <Stack direction="row" spacing={5}>
-          {images && <Slideshow images={images} />}
-          <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
-            <Typography variant="h4">
-              Set of 4 {rim?.sizeR}″ {rim?.rimModel} Pneus
-            </Typography>
-            <Box>
-              <Typography sx={{ fontSize: 12, color: "#C0C0C0" }}>
-                Rate product
-              </Typography>
-              <Rating name="simple-controlled" value={rim?.score} />
-            </Box>
-            <Typography variant="h5" component="p">
-              €{rim?.price}
-            </Typography>
-            <Typography sx={{ maxWidth: 500 }}>
-              Before each purchase, we advise you to check the parameters of
-              your vehicle very carefully . For any other questions or
-              information, do not hesitate to contact us by telephone, via the “
-              contact ” section of the website or on our social networks. Our
-              blog remains available for more details.
-            </Typography>
-
-            <SingleRimContainerBuySystem rim={rim} />
-
-            {/* <Box>
-                <Button>Add to favorites</Button>
-              </Box> */}
-
-            <Box sx={{ width: "100%", paddingBottom: 5 }}>
-              <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
-                Details
-              </Typography>
-              <Table>
-                <TableRow>
-                  <TableCell variant="head">Model</TableCell>
-                  <TableCell>{rim?.rimModel}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Size</TableCell>
-                  <TableCell>{rim?.sizeR}"</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Center distance</TableCell>
-                  <TableCell>
-                    {rim?.studHoles}x{rim?.pcd}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Width</TableCell>
-                  <TableCell> {rim?.width}J</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">Bore</TableCell>
-                  <TableCell>{rim?.centerBore}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell variant="head">ET offset</TableCell>
-                  <TableCell>50</TableCell>
-                </TableRow>
-              </Table>
-              <CreateAccordion>
-                <Table>
-                  <TableRow>
-                    <TableCell variant="head">Color</TableCell>
-                    <TableCell>{rim?.color}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">EAN</TableCell>
-                    <TableCell>9830727110529</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">GRAM(4)</TableCell>
-                    <TableCell>{rim?.gram}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">The pack includes</TableCell>
-                    <TableCell>
-                      4x RIMS {rim?.rimModel} <br />
-                      4x LOGOS <br />
-                      4x VALVES TR413
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">TPMs compatible</TableCell>
-                    <TableCell>Yes</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">State</TableCell>
-                    <TableCell>Nine</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Look Style (Not OEM)</TableCell>
-                    <TableCell>Palmerstone</TableCell>
-                  </TableRow>
-                </Table>
-              </CreateAccordion>
-            </Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            justifyContent: "center",
+          }}
+        >
+          <Stack
+            direction="row"
+            spacing={5}
+            sx={{ justifyContent: "center", alignItems: "flex-start" }}
+          >
+            {images && <Slideshow images={images} />}
+            <Stack direction="column" spacing={2} sx={{ paddingTop: 5 }}>
+              <SingleRimMainInfo rimInfo={rim} />
+              <SingleRimDetails info={rim} />
+            </Stack>
           </Stack>
-        </Stack>
+        </Box>
+
+        {/* responsive */}
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            justifyContent: "center",
+          }}
+        >
+          <Stack direction="column" sx={{ justifyContent: "center" }}>
+            {images && <Slideshow images={images} />}
+            <Stack
+              direction="column"
+              sx={{
+                paddingTop: 5,
+                justifyContent: "center",
+              }}
+            >
+              <SingleRimMainInfo rimInfo={rim} />
+              <SingleRimDetails info={rim} />
+            </Stack>
+          </Stack>
+        </Box>
 
         <Stack direction="column" spacing={5}>
           <Box>
-            <Typography variant="h3" sx={{ textAlign: "center" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                textAlign: "center",
+
+                "@media (max-width: 1000px)": { fontSize: 38 },
+              }}
+            >
               Recommended Tires
             </Typography>
             <List
               sx={{
                 display: "flex",
-                flexWrap: "wrap",
+                flexWrap: "no-wrap",
                 gap: 3,
                 justifyContent: "center",
+                alignItems: "flex-start",
+                overflow: "hidden",
+                listStyle: "none",
+                "@media (max-width: 1200px)": {
+                  overflowX: "scroll",
+                  justifyContent: "flex-start",
+
+                  scrollbarWidth: "thin",
+
+                  padding: "0 0 0 1rem",
+                  gap: 3,
+                },
               }}
             >
               {recommendedTires.length > 0 &&
@@ -186,7 +154,7 @@ const SingleRim = () => {
                   return (
                     <li>
                       <TireCard
-                        isPopular={true}
+                        isPopular={false}
                         image={tire.imageUrl}
                         price={100}
                         tireWidth={tire.tireWidth}
@@ -202,15 +170,33 @@ const SingleRim = () => {
             </List>
           </Box>
           <Box>
-            <Typography variant="h3" sx={{ textAlign: "center" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                textAlign: "center",
+                "@media (max-width: 1000px)": { fontSize: 38 },
+              }}
+            >
               Products you might like
             </Typography>
             <List
               sx={{
                 display: "flex",
-                flexWrap: "wrap",
+                flexWrap: "no-wrap",
                 gap: 3,
                 justifyContent: "center",
+                alignItems: "flex-start",
+                overflow: "hidden",
+                listStyle: "none",
+                "@media (max-width: 1200px)": {
+                  overflowX: "scroll",
+                  justifyContent: "flex-start",
+
+                  scrollbarWidth: "thin",
+
+                  padding: "0 0 0 1rem",
+                  gap: 3,
+                },
               }}
             >
               {recommendedRims.length > 0 &&
@@ -234,7 +220,7 @@ const SingleRim = () => {
           </Box>
         </Stack>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 

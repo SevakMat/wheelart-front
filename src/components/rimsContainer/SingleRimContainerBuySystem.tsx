@@ -2,7 +2,6 @@ import { Box, Button } from "@mui/material"
 import QuantityInput from "../shere/quantityInput/QuantityInput"
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
-import { TireType } from "../../store/types/tire/tire";
 import { useState } from "react";
 import Popup from "../../shared/popups/Popup";
 import ShopBasketItemList from "../shopBasketContainer/ShopBasketItemList";
@@ -24,9 +23,17 @@ const SingleRimContainerBuySystem = ({ rim }: SingleRimContainerBuySystemProps) 
 
   return (
     <Box>
-      <Box sx={{ display: "flex", gap: 2, padding: 3 }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          padding: 3,
+          justifyContent: "center",
+          "@media (max-width: 1000px)": { flexDirection: "column" },
+        }}
+      >
         <Box>
-          <QuantityInput setCount={setCount} count={count} />
+          <QuantityInput count={count} setCount={setCount} />
         </Box>
         <Button
           variant="contained"
@@ -37,6 +44,8 @@ const SingleRimContainerBuySystem = ({ rim }: SingleRimContainerBuySystemProps) 
           }}
           sx={{
             background: "#293239",
+            maxWidth: 300,
+
             "&:hover": { background: "#314554" },
           }}
         >
