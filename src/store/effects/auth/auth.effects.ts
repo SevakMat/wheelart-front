@@ -5,6 +5,7 @@ import {
   loginRequest,
   logOutRequest,
   SignUpRequest,
+  UpdatedUserInfoRequest,
 } from "../../../services/auth.service";
 import { LoginData, SignInData } from "../../../services/types";
 import {
@@ -80,7 +81,7 @@ export const signUpEffect = (
       // Get user
       const user = await SignUpRequest(signInData);
 
-      registerRequestSuccess(user)
+      registerRequestSuccess(user);
 
       toast.success("Successfully sign Up");
       navigate("/home");
@@ -89,6 +90,27 @@ export const signUpEffect = (
     } catch (error: any) {
       dispatch(setLoadingEffect(false));
       toast.error("Logined faild");
+    } finally {
+      dispatch(setLoadingEffect(false));
+    }
+  };
+};
+
+export const updateUserInfoEffect = (updatedUserInfo: any): any => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setLoadingEffect(true));
+      // Get user
+      const user = await UpdatedUserInfoRequest(updatedUserInfo);
+
+      // registerRequestSuccess(user);
+
+      toast.success("Updated successfully");
+
+      dispatch(setLoadingEffect(false));
+    } catch (error: any) {
+      dispatch(setLoadingEffect(false));
+      toast.error("Failed to update");
     } finally {
       dispatch(setLoadingEffect(false));
     }
