@@ -211,11 +211,18 @@ function Header() {
                 <ModalSearchBar />
               </Box>
 
-              <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
-                <HeaderBusket/>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "nowrap",
+                }}
+              >
+                <HeaderBusket />
                 <IconButton
                   onClick={() => navigate("/me")}
-                  sx={{ paddingRight: 0 }}
+                  sx={{
+                    paddingRight: 0,
+                  }}
                 >
                   <AccountCircleIcon style={{ color: "white" }} />
                 </IconButton>
