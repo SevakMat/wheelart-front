@@ -9,8 +9,23 @@ interface PopupProps {
 
 const Popup: React.FC<PopupProps> = ({ open, onClose, content }) => {
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Popup</DialogTitle>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="md"
+      sx={{
+        '& .MuiDialog-paper': {
+          maxWidth: '600px',
+          width: '100%',
+        },
+        '& .MuiDialogTitle-root': {
+          display: 'flex',
+          justifyContent: 'center',
+        },
+      }}
+    >
+      <DialogTitle>Busket</DialogTitle>
       <DialogContent>{content}</DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">

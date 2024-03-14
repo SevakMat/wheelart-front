@@ -7,6 +7,7 @@ import Popup from "../../shared/popups/Popup";
 import ShopBasketItemList from "../shopBasketContainer/ShopBasketItemList";
 import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
 import { RimType } from "../../store/types/rim/rim";
+import { useNavigate } from "react-router-dom";
 
 type SingleRimContainerBuySystemProps = {
   rim: RimType
@@ -14,8 +15,9 @@ type SingleRimContainerBuySystemProps = {
 
 const SingleRimContainerBuySystem = ({ rim }: SingleRimContainerBuySystemProps) => {
   const dispatch: AppDispatch = useDispatch();
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(4);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setOpen(false);
@@ -54,6 +56,7 @@ const SingleRimContainerBuySystem = ({ rim }: SingleRimContainerBuySystemProps) 
         <Button
           variant="contained"
           disableElevation
+          onClick={()=>{navigate("/shop-basket")}}
           sx={{
             background: "#FF5500",
             "&:hover": { background: "#C84300" },

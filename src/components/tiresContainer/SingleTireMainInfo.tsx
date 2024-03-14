@@ -2,7 +2,11 @@ import { Box } from "@mui/system";
 import { Rating, Typography } from "@mui/material";
 import SingleTireContainerBuySystem from "./SingleTireContainerBuySystem";
 
-const SingleTireMainInfo = (tireInfo: any) => {
+type SingleTireMainInfoProps = {
+  tireInfo: any
+}
+
+const SingleTireMainInfo = ({ tireInfo }: SingleTireMainInfoProps) => {
 
   return (
     <Box

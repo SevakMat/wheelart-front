@@ -8,10 +8,11 @@ import { createOrderEffect } from "../../store/effects/orders/order.effect";
 const ShopBasketContainer = () => {
   const dispatch: AppDispatch = useDispatch();
   const { rimShopList,tireShopList } = useAppSelector((state: RootState) => state.shopBusket);
+  const { user } = useAppSelector((state: RootState) => state.auth);
 
   const CreateOrder = () => {
     dispatch(
-      createOrderEffect([...rimShopList,...tireShopList])
+      createOrderEffect([...rimShopList,...tireShopList],user?.id)
     );
   }
   return (

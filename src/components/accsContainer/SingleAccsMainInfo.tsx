@@ -1,4 +1,4 @@
-import { Box, Button, Rating, Typography } from "@mui/material";
+import { Box, Button, Link, Rating, Typography } from "@mui/material";
 import QuantityInput from "../shere/quantityInput/QuantityInput";
 import { useState } from "react";
 
@@ -57,16 +57,16 @@ const SingleAccsMainInfo = (accsInfo: any) => {
         >
           Add to card
         </Button>
-        <Button
-          variant="contained"
-          disableElevation
+        <Link
+          // variant="contained"
+          // disableElevation
           sx={{
             background: "#FF5500",
             "&:hover": { background: "#C84300" },
           }}
         >
           Buy Now
-        </Button>
+        </Link>
       </Box>
     </Box>
   );
