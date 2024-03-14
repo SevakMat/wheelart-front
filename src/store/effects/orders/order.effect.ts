@@ -2,9 +2,10 @@ import { AppDispatch } from "../..";
 import { CreateOrderServide, GetOrderListServide } from "../../../services/order.service";
 import { getOrderListSuccess } from "../../actions/orders/order.actions";
 
-export const createOrderEffect = (order: any): any => {
+export const createOrderEffect = (order: any, id?: string ): any => {
   return async (dispatch: AppDispatch) => {
     try {
+      console.log(order);
 
       const filteredOrders = order.length ? order.map((item: any) => {
         return {
@@ -14,8 +15,9 @@ export const createOrderEffect = (order: any): any => {
           status: 'CREATED'
         }
       }) : []
-
-      const result = await CreateOrderServide(filteredOrders);
+      console.log(4444,id);
+      
+      const result = await CreateOrderServide(filteredOrders, id);
       // const {
       //   data: { data: { rims, tires, rimsCount, wheelDetails } }
       // } = result;

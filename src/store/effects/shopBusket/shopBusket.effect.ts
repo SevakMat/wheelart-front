@@ -5,6 +5,8 @@ import { TireType } from "../../types/tire/tire";
 
 export const setShopBusketItemEffect = (item: RimType | TireType, type: any): any => {
   return async (dispatch: AppDispatch) => {
+      console.log("item",item);
+      
     try {
       if (type === "rim") {
         dispatch(setShopBusketRimAction(item as RimType));

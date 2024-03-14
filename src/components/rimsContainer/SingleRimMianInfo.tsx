@@ -1,7 +1,12 @@
 import { Box, Rating, Typography } from "@mui/material";
 import SingleRimContainerBuySystem from "./SingleRimContainerBuySystem";
 
-const SingleRimMainInfo = (rimInfo: any) => {
+type SingleRimMainInfoProps ={
+  rimInfo:any
+}
+
+const SingleRimMainInfo = ({rimInfo}: SingleRimMainInfoProps) => {
+    
   return (
     <Box
       sx={{

@@ -1,19 +1,15 @@
 import * as React from "react";
-import {
-  Unstable_NumberInput as BaseNumberInput,
-  NumberInputProps,
-} from "@mui/base/Unstable_NumberInput";
+import { Unstable_NumberInput as BaseNumberInput, NumberInputProps } from "@mui/base/Unstable_NumberInput";
 import { styled } from "@mui/system";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 type QuantityInputProps = {
-  count: number
-  setCount: React.Dispatch<React.SetStateAction<number>>
-}
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+};
 
 export default function QuantityInput({ count, setCount }: QuantityInputProps) {
-
   const handleInputChange = (newValue: any) => {
     setCount(newValue);
   };
@@ -25,39 +21,41 @@ export default function QuantityInput({ count, setCount }: QuantityInputProps) {
       max={99}
       count={count}
       onChange={handleInputChange}
+      value={count}
     />
   );
 }
 
-const NumberInput = React.forwardRef(function CustomNumberInput(
-  props: any,
-  ref: React.ForwardedRef<HTMLDivElement>
-) {
-  return (
-    <BaseNumberInput
-      slots={{
-        root: StyledInputRoot,
-        input: StyledInput,
-        incrementButton: StyledButton,
-        decrementButton: StyledButton,
-      }}
-      slotProps={{
-        incrementButton: {
-          children: <AddIcon fontSize="small" />,
-          className: "increment",
-        },
-        decrementButton: {
-          children: <RemoveIcon fontSize="small" />,
-        },
-      }}
-      {...props}
-      ref={ref}
-      onChange={(e: React.FocusEvent<HTMLInputElement>, qount: number | null) => {
-        props.onChange && props?.onChange(qount);
-      }}
-    />
-  );
-});
+const NumberInput = React.forwardRef(
+  function CustomNumberInput(
+    props: any,
+    ref: React.ForwardedRef<HTMLDivElement>
+  ) {
+    return (
+      <BaseNumberInput
+        slots={{
+          root: StyledInputRoot,
+          input: StyledInput,
+          incrementButton: StyledButton,
+          decrementButton: StyledButton,
+        }}
+        slotProps={{
+          incrementButton: {
+            children: <AddIcon fontSize="small" />,
+            className: "increment",
+          },
+          decrementButton: {
+            children: <RemoveIcon fontSize="small" />,
+          },
+        }}
+        {...props}
+        ref={ref}
+        onChange={(e: React.FocusEvent<HTMLInputElement>, count: number | null) => {
+          props.onChange && props?.onChange(count);
+        }}
+      />
+    );
+  });
 
 const blue = {
   100: "#daecff",
@@ -83,20 +81,16 @@ const grey = {
   900: "#1C2025",
 };
 
-const StyledInputRoot = styled("div")(
-  ({ theme }) => `
+const StyledInputRoot = styled("div")(({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[500]};
   display: flex;
   flex-flow: row nowrap;
-  
   align-items: center;
-`
-);
+`);
 
-const StyledInput = styled("input")(
-  ({ theme }) => `
+const StyledInput = styled("input")(({ theme }) => `
   font-size: 0.875rem;
   font-family: inherit;
   font-weight: 400;
@@ -104,8 +98,7 @@ const StyledInput = styled("input")(
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
   background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
   border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  box-shadow: 0px 2px 4px ${theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
-    };
+  box-shadow: 0px 2px 4px ${theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"};
   border-radius: 8px;
   margin: 0 8px;
   padding: 10px 12px;
@@ -120,18 +113,15 @@ const StyledInput = styled("input")(
 
   &:focus {
     border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${theme.palette.mode === "dark" ? blue[700] : blue[200]
-    };
+    box-shadow: 0 0 0 3px ${theme.palette.mode === "dark" ? blue[700] : blue[200]};
   }
 
   &:focus-visible {
     outline: 0;
   }
-`
-);
+`);
 
-const StyledButton = styled("button")(
-  ({ theme }) => `
+const StyledButton = styled("button")(({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
@@ -165,5 +155,4 @@ const StyledButton = styled("button")(
   &.increment {
     order: 1;
   }
-`
-);
+`);
