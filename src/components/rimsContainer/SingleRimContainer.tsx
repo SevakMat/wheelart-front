@@ -35,11 +35,19 @@ import CreateAccordion from "../shere/accordion/CreateAccordion";
 import { setShopBusketItemEffect } from "../../store/effects/shopBusket/shopBusket.effect";
 import SingleRimDetails from "./SingleRimDetails";
 import SingleRimMainInfo from "./SingleRimMianInfo";
+import Popup from "../../shared/popups/Popup";
+import ShopBasketItemList from "../shopBasketContainer/ShopBasketItemList";
+import { TireType } from "../../store/types/tire/tire";
 
 const SingleRim = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams();
   const [count, setCount] = useState(1);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const {
     make: makeValue,
@@ -65,13 +73,11 @@ const SingleRim = () => {
     );
   }, [id]);
 
-
   const images = rim?.imageUrl
     .split(";")
     .filter((item: any) => item !== "undefined");
 
-  if (!rim) return null
-
+  if (!rim) return null;
 
   return (
     <ThemeProvider theme={customBreakpoints}>
@@ -164,6 +170,48 @@ const SingleRim = () => {
                         tireId={tire.id}
                         color="black"
                       />
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        <Button
+                          variant="contained"
+                          disableElevation
+                          onClick={() => {
+                            dispatch(
+                              setShopBusketItemEffect(
+                                {
+                                  ...tire,
+                                  count: count,
+                                  type: "TIRE",
+                                } as TireType,
+                                "tire"
+                              )
+                            );
+                            setOpen(true);
+                          }}
+                          sx={{
+                            background: "#293239",
+                            maxWidth: 300,
+
+                            "&:hover": { background: "#314554" },
+                          }}
+                        >
+                          Add to card
+                        </Button>
+                        <Popup
+                          open={open}
+                          onClose={handleClose}
+                          content={
+                            <div>
+                              <ShopBasketItemList />
+                            </div>
+                          }
+                        />
+                      </Box>
                     </li>
                   );
                 })}
