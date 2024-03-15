@@ -32,7 +32,7 @@ export const loginEffect = (
       dispatch(loginRequestSuccess(user));
 
       toast.success("Successfully logged in");
-      navigate("/home");
+      navigate("/me");
 
       dispatch(setLoadingEffect(false));
     } catch (error: any) {
@@ -50,7 +50,7 @@ export const setLoadingEffect = (loading: boolean): any => {
 };
 
 export const logOutEffect = (): any => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch, navigate: NavigateFunction) => {
     try {
       dispatch(setLoadingEffect(true));
       // Get user
@@ -61,7 +61,7 @@ export const logOutEffect = (): any => {
       dispatch(logOutRequestSuccess());
 
       toast.success("Successfully logout");
-      // navigate("/login");
+
       dispatch(setLoadingEffect(false));
     } catch (error: any) {
       dispatch(setLoadingEffect(false));
