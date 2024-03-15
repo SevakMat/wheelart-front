@@ -24,6 +24,8 @@ import "../../../fonts/roboto.css";
 import "../../../fonts/monsterrat.css";
 import ChangeLanguage from "./ChangeLanguage";
 import HeaderBusket from "./Busket";
+import { useAppSelector } from "../../../store";
+import { Typography } from "@mui/material";
 
 const wheelArtLogo =
   "https://wheelart.fr/cdn/shop/files/WHEEL_ART_NEW_b3db3b01-cdd1-4add-9c2b-6637d01cc768.png?v=1642688076&width=500";
@@ -52,6 +54,7 @@ function Header() {
     null
   );
   const navigate = useNavigate();
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
   // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
   //   setAnchorElNav(event.currentTarget);
@@ -199,6 +202,7 @@ function Header() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                gap: 0.8,
               }}
             >
               <RenderPageList />
@@ -217,19 +221,36 @@ function Header() {
                   flexWrap: "nowrap",
                 }}
               >
-                <HeaderBusket />
-                <IconButton
-                  onClick={() => navigate("/me")}
-                  sx={{
-                    paddingRight: 0,
-                  }}
-                >
-                  <AccountCircleIcon style={{ color: "white" }} />
-                </IconButton>
+                {isLoggedIn ? (
+                  <IconButton
+                    onClick={() => navigate("/me")}
+                    sx={{
+                      padding: 0,
+                    }}
+                  >
+                    <AccountCircleIcon style={{ color: "white" }} />
+                  </IconButton>
+                ) : (
+                  <Typography
+                    onClick={() => navigate("/login")}
+                    sx={{
+                      cursor: "pointer",
+                      color: "white",
+                      fontSize: "14px",
+                      display: "flex",
+                      alignItems: "center",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
+                    }}
+                  >
+                    Login
+                  </Typography>
+                )}
               </Box>
-              <Box sx={{ paddingLeft: 1.5 }}>
-                <ChangeLanguage />
-              </Box>
+              <HeaderBusket />
+
+              <ChangeLanguage />
             </Box>
           </Toolbar>
         </Container>

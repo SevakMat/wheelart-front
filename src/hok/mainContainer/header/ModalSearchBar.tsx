@@ -40,7 +40,7 @@ export default function ModalSearchBar() {
 
   return (
     <div>
-      <IconButton onClick={handleOpen}>
+      <IconButton onClick={handleOpen} sx={{ padding: 0 }}>
         <SearchIcon sx={{ fontSize: 28, color: "white" }} />
       </IconButton>
       <Modal

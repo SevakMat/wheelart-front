@@ -38,7 +38,7 @@ const RenderPageList = () => {
         fontFamily: "sans-serif",
         alignItems: "center",
         margin: 0,
-        paddingRight: 2,
+        paddingLeft: 1,
       }}
     >
       <Box

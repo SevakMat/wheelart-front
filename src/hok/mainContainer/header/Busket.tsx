@@ -13,7 +13,7 @@ const HeaderBusket = () => {
   return (
     <IconButton
       onClick={() => navigate("/shop-basket")}
-      sx={{ alignItems: "end" }}
+      sx={{ alignItems: "end", padding: 0 }}
     >
       <LocalMallIcon style={{ color: "white" }} />
       <Box
