@@ -17,12 +17,14 @@ import {
   logOutEffect,
   updateUserInfoEffect,
 } from "../../store/effects/auth/auth.effects";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const UserPage = () => {
   const [editMode, setEditMode] = useState(false);
   const { user } = useAppSelector((state: RootState) => state.auth);
 
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("user.firstName");
   const [lastName, setLastName] = useState("user.lastName");
@@ -51,6 +53,7 @@ const UserPage = () => {
 
   const handleLogout = () => {
     dispatch(logOutEffect());
+    navigate("/home");
   };
 
   return (

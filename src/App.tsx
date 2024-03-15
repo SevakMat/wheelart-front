@@ -8,7 +8,7 @@ function App() {
   return (
     <I18Provider>
       <RoutersContainer />
-      <ToastContainer position="top-right" style={{ paddingTop: "60px" }} />
+      <ToastContainer position="top-right" style={{ marginTop: "60px" }} />
     </I18Provider>
   );
 }
