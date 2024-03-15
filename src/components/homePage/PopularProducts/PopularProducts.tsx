@@ -66,7 +66,11 @@ const PopularProducts = () => {
           <Typography
             variant="h3"
             textTransform="uppercase"
-            sx={{ color: "white", fontWeight: "bold" }}
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              "@media(max-width: 400px)": { fontSize: "40px" },
+            }}
           >
             {t("content.popularProducts")}
           </Typography>

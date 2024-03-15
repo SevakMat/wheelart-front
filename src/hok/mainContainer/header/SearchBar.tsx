@@ -38,7 +38,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: 10,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "10ch",
       "&:focus": {
         width: "20ch",
 
@@ -54,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SarchBar = () => {
   return (
-    <Box sx={{ paddingLeft: 2 }}>
+    <Box>
       <Search>
         <SearchIconWrapper>
           <SearchIcon sx={{ fontSize: 28 }} />
