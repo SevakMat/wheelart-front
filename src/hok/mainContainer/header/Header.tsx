@@ -211,7 +211,7 @@ function Header() {
                 <SearchBar />
               </Box>
 
-              <Box sx={{ display: { xs: "flex", md: "none" }, padding: "5px" }}>
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <ModalSearchBar />
               </Box>
 
@@ -225,7 +225,7 @@ function Header() {
                   <IconButton
                     onClick={() => navigate("/me")}
                     sx={{
-                      paddingRight: 0,
+                      padding: 0,
                     }}
                   >
                     <AccountCircleIcon style={{ color: "white" }} />
