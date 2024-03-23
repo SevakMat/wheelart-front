@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 import RimFilter from "./RimFilter";
 
@@ -9,6 +9,8 @@ import ModalRimFilter from "./ModalRimFilter";
 import { RootState, useAppSelector } from "../../store";
 
 const RimsContainer = () => {
+  const isSmallScreen = useMediaQuery('(max-width:900px)');
+
   const { rimsCount, rimList } = useAppSelector(
     (state: RootState) => state.rim
   );
@@ -58,9 +60,12 @@ const RimsContainer = () => {
         }}
       >
         <Box sx={{ display: "flex" }}>
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <RimFilter />
-          </Box>
+          {
+            !isSmallScreen &&
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <RimFilter />
+            </Box>
+          }
 
           <Box
             sx={{
@@ -69,14 +74,17 @@ const RimsContainer = () => {
               flexDirection: "column",
             }}
           >
-            <Box
-              sx={{
-                display: { xs: "flex", md: "none" },
-                justifyContent: "center",
-              }}
-            >
-              <ModalRimFilter />
-            </Box>
+            {
+              isSmallScreen &&
+              <Box
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                  justifyContent: "center",
+                }}
+              >
+                <ModalRimFilter />
+              </Box>
+            }
             <RimsList />
           </Box>
         </Box>

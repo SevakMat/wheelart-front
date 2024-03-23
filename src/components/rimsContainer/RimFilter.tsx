@@ -19,7 +19,6 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 const RimFilter = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
   const dispatch: AppDispatch = useDispatch();
   const { rimFilters } = useAppSelector((state: RootState) => state.filter)
   const { sizeR, pcd, centerBore, studHoles, color, width, price } = rimFilters
@@ -37,11 +36,10 @@ const RimFilter = () => {
 
       dispatch(getFiltersEffect({ ...urlParamsArray, pagination: pageValue ? + pageValue : 0 }))
     } else {
-
+      console.log("rimfilter");
+      
       dispatch(getRimsByCarDetailsEffect(location, navigate, makeValue, modelValue, generationValue, modificationValue, pageValue ? + pageValue : 0))
     }
-
-    // dispatch(getFiltersEffect({ ...selectedFilters, pagination: pageValue ? +pageValue : 1 }))
 
   }, [dispatch, pageValue, searchParams])
 

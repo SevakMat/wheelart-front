@@ -45,6 +45,8 @@ const AccsFilter = () => {
         })
       );
     } else {
+      console.log("access filter");
+      
       dispatch(
         getRimsByCarDetailsEffect(
           location,
