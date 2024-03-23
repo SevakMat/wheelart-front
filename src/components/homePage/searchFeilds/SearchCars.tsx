@@ -12,6 +12,7 @@ import {
 import Field from "./Field";
 
 const SearchCars = () => {
+
   const dispatch: AppDispatch = useDispatch();
   const [t] = useTranslation("home");
 

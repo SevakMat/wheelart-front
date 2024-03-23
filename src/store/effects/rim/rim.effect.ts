@@ -8,11 +8,12 @@ import { getRecommendedTiresAction, getTiresListByCarDateAction } from "../../ac
 import { getPopularRimsAction, getRecommendedRimsAction, getRimAction, getRimsListByCarDateAction, getRimsListCountAction } from "../../actions/rim/rim";
 import { Location, NavigateFunction } from "react-router-dom";
 
-export const getRimsByCarDetailsEffect = (location: Location<any>, navigate: NavigateFunction, make?: string | null, model?: string | null, generationValue?: string | null, modification?: string | null, pagination?: number): any => {
+export const getRimsByCarDetailsEffect = (location: Location<any>, navigate: NavigateFunction, make?: string | null, model?: string | null, generation?: string | null, modification?: string | null, pagination?: number): any => {
   return async (dispatch: AppDispatch) => {
     try {
+      console.log(234234);
 
-      const result = await getRimsListByCarDateService(make, model, generationValue, modification, pagination);
+      const result = await getRimsListByCarDateService(make, model, generation, modification, pagination);
       const {
         data: { data: { rims, tires, rimsCount, wheelDetails } }
       } = result;

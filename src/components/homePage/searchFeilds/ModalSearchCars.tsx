@@ -2,7 +2,6 @@ import * as React from "react";
 import clsx from "clsx";
 import { styled, css } from "@mui/system";
 import { Modal as BaseModal } from "@mui/base/Modal";
-import SearchCars from "./SearchCars";
 import { useDispatch } from "react-redux";
 import { AppDispatch, RootState, useAppSelector } from "../../../store";
 import { useTranslation } from "react-i18next";
@@ -16,6 +15,8 @@ import { Box, Button, Divider, Typography } from "@mui/material";
 import Field from "./Field";
 
 export default function ModalSearchCars() {
+
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -34,6 +35,7 @@ export default function ModalSearchCars() {
   const { make, model, year, modification } = useParamsHook();
 
   React.useEffect(() => {
+
     dispatch(getCarsEffect());
   }, [dispatch]);
 

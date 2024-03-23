@@ -12,8 +12,6 @@ const TiresContainer = () => {
   const { tiresCount, tireList } = useAppSelector((state: RootState) => state.tire)
 
   const isSmallScreen = useMediaQuery('(max-width:1000px)');
-
-
   return (
     <ThemeProvider theme={customBreakpoints}>
       <Box>

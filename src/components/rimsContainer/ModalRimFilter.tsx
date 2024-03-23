@@ -19,6 +19,7 @@ import "../../fonts/monsterrat.css";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 export default function ModalRimFilter() {
+  
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,6 +53,8 @@ export default function ModalRimFilter() {
         })
       );
     } else {
+      console.log("modal rim filter");
+
       dispatch(
         getRimsByCarDetailsEffect(
           location,

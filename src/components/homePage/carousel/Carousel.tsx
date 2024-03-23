@@ -1,18 +1,19 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SearchCars from "../searchFeilds/SearchCars";
+import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 
+import SearchCars from "../searchFeilds/SearchCars";
 import "../../../fonts/monsterrat.css";
 import Slider from "./Slider";
-import { useTranslation } from "react-i18next";
-
 import { customBreakpoints } from "../../../customBreakpoints";
-import { ThemeProvider } from "@emotion/react";
 import ModalSearchCars from "../searchFeilds/ModalSearchCars";
 
 function SwipeableTextMobileStepper() {
   const [t] = useTranslation("home");
+  const isSmallScreen = useMediaQuery('(max-width:1000px)');
 
   return (
     <ThemeProvider theme={customBreakpoints}>
@@ -58,26 +59,6 @@ function SwipeableTextMobileStepper() {
           >
             {t("content.findYourRim")}
           </Typography>
-
-          {/* <Box
-            sx={{
-              display: { xs: "flex", md: "none" },
-              justifyContent: "center",
-            }}
-          >
-            <Typography
-              sx={{
-                color: "white",
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: 30,
-                fontWeight: "bold",
-                letterSpacing: 8,
-              }}
-            >
-              {t("content.findYourRim")}
-            </Typography>
-          </Box> */}
-
           <Typography
             sx={{
               color: "white",
@@ -106,16 +87,18 @@ function SwipeableTextMobileStepper() {
             },
           }}
         >
+        {
+          isSmallScreen?
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <ModalSearchCars />
+        </Box>
+        :
           <Box
             sx={{
-              // background:
-              //   "linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3617822128851541) 16%, rgba(0,0,0,0.7) 100%)",
               background:
                 "radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 100%)",
               padding: "0 10px",
               borderRadius: 20,
-              // borderTopRightRadius: 0,
-              // borderBottomRightRadius: 0,
               marginLeft: 0,
               marginRight: 0,
               left: 0,
@@ -129,9 +112,7 @@ function SwipeableTextMobileStepper() {
           >
             <SearchCars />
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <ModalSearchCars />
-          </Box>
+        }
         </Box>
       </Box>
     </ThemeProvider>

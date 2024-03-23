@@ -51,7 +51,10 @@ export default function ModalAccsFilter() {
         })
       );
     } else {
+      console.log("modal accces filter");
+      
       dispatch(
+        
         getRimsByCarDetailsEffect(
           location,
           navigate,
