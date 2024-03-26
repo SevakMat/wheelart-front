@@ -18,6 +18,7 @@ import LegalNoticePage from "../../pages/LegalNoticePage";
 import TermsOfUsePage from "../../pages/TermsOfUsePage";
 import PrivacyPolicyPage from "../../pages/PrivacyPolicyPage";
 import FaqPage from "../../pages/FAQPage";
+import PaymentPage from "../../pages/PaymentPage";
 
 const ProtectedPageRoute: ProtectedRoute = {
   isPrivate: true,
@@ -97,6 +98,10 @@ const ProtectedPageRoute: ProtectedRoute = {
     {
       path: "/privacy-policy",
       element: <PrivacyPolicyPage />,
+    },
+    {
+      path: "/user/payment",
+      element: <PaymentPage />,
     },
   ],
 };

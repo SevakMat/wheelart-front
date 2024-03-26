@@ -26,3 +26,7 @@ export const UpdatedUserInfoRequest = async (
 ): Promise<any> => {
   return axios.post("api/auth/udated-user", { ...updatedUserInfo });
 };
+
+export const CreatePaymet = async (): Promise<any> => {
+  return axios.get("api/auth/create-checkout-session");
+};
